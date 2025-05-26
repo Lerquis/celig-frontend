@@ -1,0 +1,16 @@
+---
+export const prerender = false;
+import { SuscriptorsTemplateCMS } from "@/components/templates/SuscriptorsTemplateCMS.jsx";
+import { HeaderCMSPage } from "@/components/molecules/HeaderCMSPage.jsx";
+import Background from "@/components/atoms/Background.astro";
+import DashboardLayout from "@/layouts/DashboardLayout.astro";
+---
+
+<DashboardLayout title="CMS CELIG - Suscriptores">
+  <Background />
+  <HeaderCMSPage
+    title="Suscriptores"
+    subtitle="Gestiona los suscriptores al contenido de tu página"
+  />
+  <SuscriptorsTemplateCMS client:only />
+</DashboardLayout>

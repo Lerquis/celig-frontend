@@ -1,0 +1,11 @@
+---
+export const prerender = false;
+import { BlogsTemplateCMS } from "@/components/templates/BlogsTemplateCMS.jsx";
+import Background from "@/components/atoms/Background.astro";
+import DashboardLayout from "@/layouts/DashboardLayout.astro";
+---
+
+<DashboardLayout title="CMS CELIG - Blogs">
+  <Background />
+  <BlogsTemplateCMS client:only />
+</DashboardLayout>

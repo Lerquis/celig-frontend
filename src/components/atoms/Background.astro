@@ -1,0 +1,55 @@
+---
+const getRandom = (max) => Math.floor(Math.random() * max);
+const getRandomColor = () =>
+  `hsl(${getRandom(360)}, ${getRandom(60) + 40}%, ${getRandom(30) + 50}%)`;
+
+const cubes = Array.from({ length: 30 }).map((_, i) => ({
+  top: getRandom(100),
+  left: getRandom(100),
+  color: getRandomColor(),
+  id: `cube-${i}`,
+}));
+---
+
+<div class="fixed inset-0 z-[-1]">
+  {
+    cubes.map((cube) => (
+      <div
+        class="absolute blur-[100px] opacity-20"
+        style={`top: ${cube.top}%; left: ${cube.left}%; `}
+        id={cube.id}
+      >
+        <div
+          class="w-[5px] h-[5px] rounded-full"
+          style={`background-color: ${cube.color}; padding: max(20vw, 20vh);`}
+        />
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  import gsap from "gsap";
+
+  function animateBlob(blob) {
+    const maxDistance = 200; // Máxima distancia desde su posición original
+
+    function animate() {
+      gsap.to(blob, {
+        x: gsap.utils.random(-maxDistance, maxDistance),
+        y: gsap.utils.random(-maxDistance, maxDistance),
+        duration: gsap.utils.random(6, 15),
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+    }
+
+    animate();
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const blobs = document.querySelectorAll('[id^="cube-"]');
+    blobs.forEach(animateBlob);
+  });
+</script>

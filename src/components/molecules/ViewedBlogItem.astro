@@ -1,0 +1,19 @@
+---
+const { blog } = Astro.props;
+---
+
+<div class="flex items-center justify-between gap-8">
+  <div>
+    <p class="font-medium">{blog.title}</p>
+    <p class="text-sm text-muted-foreground flex flex-wrap gap-2">
+      {
+        blog.tags.map((tag: string) => (
+          <span class="bg-black text-white py-[4px] px-[8px] text-[10px] rounded-full">
+            {tag}
+          </span>
+        ))
+      }
+    </p>
+  </div>
+  <span class="text-xs text-muted-foreground">{blog.views}</span>
+</div>

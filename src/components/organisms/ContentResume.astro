@@ -1,0 +1,77 @@
+---
+export const prerender = false;
+import { FileText } from "../icons/FileText";
+import { Headphones } from "../icons/Headphones";
+import { Images } from "../icons/Images";
+import { Mail } from "../icons/Mail";
+import { MessageSquareQuote } from "../icons/MessageSquareQuote";
+import ContentResumeCard from "../molecules/ContentResumeCard.astro";
+
+const { blogsRes, testimonialsRes, podcastsRes, suscriptorsRes, galleryRes } =
+  Astro.props;
+
+const blogsInformation = blogsRes?.status === 200 ? blogsRes.body.blogs : [];
+const testimonialInformation =
+  testimonialsRes?.status === 200 ? testimonialsRes.body.testimonials : [];
+const podcastInformation =
+  podcastsRes?.status === 200 ? podcastsRes.body.podcasts : [];
+const suscriberInformation =
+  suscriptorsRes?.status === 200 ? suscriptorsRes.body.suscriptors : [];
+const galleryInformation =
+  galleryRes?.status === 200 ? galleryRes.body.images : [];
+
+const stats = [
+  {
+    title: "Blogs",
+    value: blogsInformation.length,
+    description: "Artículos publicados",
+    icon: FileText,
+    href: "/admin/dashboard/blogs",
+  },
+  {
+    title: "Testimonios",
+    value: testimonialInformation.length,
+    description: "Testimonios recibidos",
+    icon: MessageSquareQuote,
+    href: "/admin/dashboard/testimonios",
+  },
+  {
+    title: "Podcasts",
+    value: podcastInformation.length,
+    description: "Episodios publicados",
+    icon: Headphones,
+    href: "/admin/dashboard/podcasts",
+  },
+  {
+    title: "Suscriptores",
+    value: suscriberInformation.length,
+    description: "Personas suscritas",
+    icon: Mail,
+    href: "/admin/dashboard/suscriptores",
+  },
+  {
+    title: "Imágenes",
+    value: galleryInformation.length,
+    description: "Imágenes de galería",
+    icon: Images,
+    href: "/admin/dashboard/imagenes",
+  },
+];
+---
+
+<div class={`grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5`}>
+  {
+    stats.map((stat) => {
+      return (
+        <ContentResumeCard
+          href={stat.href}
+          title={stat.title}
+          description={stat.description}
+          value={stat.value}
+        >
+          <stat.icon />
+        </ContentResumeCard>
+      );
+    })
+  }
+</div>

@@ -1,0 +1,17 @@
+---
+import ContentResumeContent from "../atoms/ContentResumeContent.astro";
+import ContentResumeHeader from "../atoms/ContentResumeHeader.astro";
+
+const { href, title, description, value } = Astro.props;
+---
+
+<a href={href}>
+  <div
+    class="rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-muted/50 transition-colors w-full"
+  >
+    <ContentResumeHeader title={title}>
+      <slot />
+    </ContentResumeHeader>
+    <ContentResumeContent description={description} value={value} />
+  </div>
+</a>

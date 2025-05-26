@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { Toaster } from "@/components/ui/sonner";
+import { SideBarCMS } from "@/components/organisms/SidebarCMS.jsx";
 
 const { title } = Astro.props;
 ---
@@ -15,7 +16,12 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <div class="flex min-h-screen flex-col md:flex-row">
+      <SideBarCMS client:only />
+      <main class="flex-1 p-4 md:p-6">
+        <slot />
+      </main>
+    </div>
     <Toaster client:only />
   </body>
 </html>

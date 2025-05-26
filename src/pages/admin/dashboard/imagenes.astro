@@ -1,0 +1,14 @@
+---
+export const prerender = false;
+import { HeaderCMSPage } from "@/components/molecules/HeaderCMSPage";
+import { ImagesTemplateCMS } from "@/components/templates/ImagesTemplateCMS";
+import Background from "@/components/atoms/Background.astro";
+import DashboardLayout from "@/layouts/DashboardLayout.astro";
+---
+
+<DashboardLayout title="CMS CELIG - Imágenes">
+  <Background />
+  <HeaderCMSPage title="Imágenes" subtitle="Gestiona tus imágenes" />
+
+  <ImagesTemplateCMS client:only />
+</DashboardLayout>

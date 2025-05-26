@@ -1,0 +1,16 @@
+---
+export const prerender = false;
+import Background from "@/components/atoms/Background.astro";
+import { HeaderCMSPage } from "@/components/molecules/HeaderCMSPage";
+import DashboardTemplateCMS from "@/components/templates/DashboardTemplateCMS.astro";
+import DashboardLayout from "@/layouts/DashboardLayout.astro";
+---
+
+<DashboardLayout title="CMS CELIG - Dashboard">
+  <Background />
+  <HeaderCMSPage
+    title="Dashboard"
+    subtitle="Bienvenid@ al sistema de gestión de contenido"
+  />
+  <DashboardTemplateCMS />
+</DashboardLayout>

@@ -1,0 +1,18 @@
+---
+export const prerender = false;
+import { PodcastsTemplateCMS } from "@/components/templates/PodcastsTemplateCMS.jsx";
+import { HeaderCMSPage } from "@/components/molecules/HeaderCMSPage";
+import Background from "@/components/atoms/Background.astro";
+import DashboardLayout from "@/layouts/DashboardLayout.astro";
+---
+
+<!-- <PodcastsTemplateCMS /> -->
+<DashboardLayout title="CMS CELIG - Podcasts">
+  <Background />
+
+  <HeaderCMSPage
+    title="Podcasts"
+    subtitle="Gestiona tus episodios de podcast"
+  />
+  <PodcastsTemplateCMS client:only />
+</DashboardLayout>

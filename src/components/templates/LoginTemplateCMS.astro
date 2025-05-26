@@ -1,0 +1,26 @@
+---
+import { LoginForm } from "@/components/organisms/LoginFormCMS.jsx";
+import TextCMS from "../atoms/TextCMS.astro";
+---
+
+<div class="relative min-h-screen w-full grid grid-cols-12">
+  <img
+    src="/HeroImage.jpeg"
+    alt="CELIG"
+    class="h-full w-full object-cover brightness-35 flex absolute top-0 left-0"
+  />
+  <div
+    class={`bg-white  flex items-center justify-center
+    
+    absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-lg
+    `}
+  >
+    <div class="max-w-[400px] p-6 gap-[40px] flex flex-col">
+      <TextCMS
+        customClass="text-2xl font-bold text-center"
+        content="Bienvenido@ al Sistema de Gestión de Contenido de CELIG"
+      />
+      <LoginForm client:only />
+    </div>
+  </div>
+</div>

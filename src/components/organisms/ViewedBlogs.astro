@@ -1,0 +1,28 @@
+---
+import ContentResumeHeader from "../atoms/ContentResumeHeader.astro";
+import ViewedBlogItem from "../molecules/ViewedBlogItem.astro";
+const { blogs } = Astro.props;
+
+let orderedBlogsByViews;
+
+if (blogs.status !== 200) {
+  orderedBlogsByViews = [];
+} else {
+  orderedBlogsByViews = blogs.body.blogs
+    .sort((a: { views: number }, b: { views: number }) => b.views - a.views)
+    .slice(0, 5);
+}
+---
+
+<div
+  class="rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-muted/50 transition-colors md:max-w-[500px] w-full"
+>
+  <ContentResumeHeader
+    title="Blogs populares"
+    customTitleClass="text-2xl font-semibold leading-none tracking-tight"
+    subtitle="Los blogs más visitados"
+  />
+  <div class="p-6 pt-0 space-y-4">
+    {orderedBlogsByViews.map((blog: any) => <ViewedBlogItem blog={blog} />)}
+  </div>
+</div>

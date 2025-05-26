@@ -1,0 +1,37 @@
+---
+import { getCookieValue } from "@/lib/auth";
+import {
+  testimonialApi,
+  blogApi,
+  podcastApi,
+  suscriptorApi,
+  galleryApi,
+} from "@/api";
+import ContentResume from "../organisms/ContentResume.astro";
+
+import ViewedBlogs from "../organisms/ViewedBlogs.astro";
+
+const token = getCookieValue(Astro, "token");
+
+const apiCalls = [
+  blogApi.getBlogsByTag(),
+  testimonialApi.getTestimonials(),
+  podcastApi.getPodcasts(),
+  suscriptorApi.getSuscriptors(token),
+  galleryApi.getGallery(),
+];
+
+const [blogsRes, testimonialsRes, podcastsRes, suscriptorsRes, galleryRes] =
+  await Promise.all(apiCalls);
+---
+
+<div class="space-y-6">
+  <ContentResume
+    blogsRes={blogsRes}
+    testimonialsRes={testimonialsRes}
+    podcastsRes={podcastsRes}
+    suscriptorsRes={suscriptorsRes}
+    galleryRes={galleryRes}
+  />
+  <ViewedBlogs blogs={blogsRes} />
+</div>

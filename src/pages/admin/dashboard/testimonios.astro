@@ -1,0 +1,13 @@
+---
+export const prerender = false;
+import { TestimonialsTemplateCMS } from "@/components/templates/TestimonialsTemplateCMS.jsx";
+import Background from "@/components/atoms/Background.astro";
+import DashboardLayout from "@/layouts/DashboardLayout.astro";
+---
+
+<!-- <TestimonialsTemplateCMS /> -->
+<DashboardLayout title="CMS CELIG - Testimonios">
+  <Background />
+
+  <TestimonialsTemplateCMS client:only />
+</DashboardLayout>

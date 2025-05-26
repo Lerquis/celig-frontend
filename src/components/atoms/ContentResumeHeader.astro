@@ -1,0 +1,14 @@
+---
+const { title, customTitleClass, subtitle } = Astro.props;
+---
+
+<div class="p-6 pb-2 space-y-2">
+  <div class="flex flex-row items-center justify-between">
+    <p class={`${customTitleClass ? customTitleClass : "text-sm font-medium"}`}>
+      {title}
+    </p>
+
+    <slot />
+  </div>
+  {subtitle && <p class="text-sm text-muted-foreground">{subtitle}</p>}
+</div>
