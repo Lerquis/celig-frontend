@@ -5,6 +5,7 @@ import { Images } from "../icons/Images";
 import { LayoutDashboard } from "../icons/LayoutDashboard";
 import { Mail } from "../icons/Mail";
 import { MessageSquareQuote } from "../icons/MessageSquareQuote";
+import { Button } from "../ui/button";
 
 const iconClassName = "mr-3 h-5 w-5";
 
@@ -42,34 +43,55 @@ const navItems = [
 ];
 
 export const SideBarPanelCMS = ({ isOpen }) => {
-  const getPathName = () => {
-    return window.location.pathname;
+  const getPathName = () => window.location.pathname;
+
+  const handleLogout = async () => {
+    const response = await fetch("/api/logout");
+    if (response.ok) {
+      window.location.href = "/admin/login"; // Redirigir al login después de cerrar sesión
+    } else {
+      console.error("Error al cerrar sesión");
+    }
   };
 
   return (
     <div
       className={`fixed inset-y-0 left-0 z-40 w-64 transform bg-background transition-transform
-      duration-200 ease-in-out
-      md:relative md:translate-x-0
-      ${isOpen ? "translate-x-0" : "-translate-x-full"}
-  `}
+        duration-200 ease-in-out
+        md:relative md:translate-x-0
+        ${isOpen ? "translate-x-0" : "-translate-x-full"}
+      `}
     >
-      <div className="flex h-16 items-center border-b px-6">
-        <h1 className="text-xl font-bold">CELIG Admin</h1>
+      <div className="flex h-full flex-col justify-between">
+        {/* Top section: título + nav */}
+        <div>
+          <div className="flex h-16 items-center border-b px-6">
+            <h1 className="text-xl font-bold">CELIG Admin</h1>
+          </div>
+          <nav className="space-y-1 px-2 py-4">
+            {navItems.map((item, index) => (
+              <SidebarLinkCMS
+                key={item.name + index}
+                href={item.href}
+                selected={getPathName() === item.href}
+                icon={item.icon}
+                name={item.name}
+              />
+            ))}
+          </nav>
+        </div>
+
+        {/* Bottom section: Cerrar sesión */}
+        <div className="p-4 border-t">
+          <Button
+            variant={"ghost"}
+            onClick={handleLogout}
+            className="w-full text-sm font-medium text-red-600 hover:text-white hover:!bg-red-600 transition-colors"
+          >
+            Cerrar sesión
+          </Button>
+        </div>
       </div>
-      <nav className="space-y-1 px-2 py-4">
-        {navItems.map((item, index) => {
-          return (
-            <SidebarLinkCMS
-              key={item.name + index}
-              href={item.href}
-              selected={getPathName() === item.href}
-              icon={item.icon}
-              name={item.name}
-            />
-          );
-        })}
-      </nav>
     </div>
   );
 };
