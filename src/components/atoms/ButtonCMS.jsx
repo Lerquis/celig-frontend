@@ -8,12 +8,14 @@ export const ButtonCMS = ({
   customClass = "",
   children = <></>,
   onClick = () => {},
+  variant,
 }) => {
   return (
     <Button
       type={type}
       className={`cursor-pointer ${customClass}`}
       disabled={loading}
+      variant={variant || "default"}
       // onClick="hola()"
       // onClick={() => {
       //   console.log("asd");

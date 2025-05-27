@@ -43,7 +43,7 @@ export function TableContent({
         return columnTestimonials(onEdit, onDelete);
 
       case "suscriptors":
-        return columnSuscriptors;
+        return columnSuscriptors(onDelete);
 
       default:
         return {};
@@ -74,7 +74,7 @@ export function TableContent({
       .getFilteredSelectedRowModel()
       .rows.map((row) => row.original.id);
 
-    console.log("delete ", ...getElementsId);
+    onDelete(getElementsId);
   };
 
   return (

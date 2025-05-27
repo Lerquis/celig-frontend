@@ -19,16 +19,28 @@ export const TestimonialsTemplateCMS = () => {
     setModalOpen(false);
   };
 
-  const handleDelete = async (id) => {
-    const response = await testimonialApi.deleteTestimonial(
-      id,
-      getCookieValueJSX("token")
-    );
-    if (response.status === 200) {
-      toast.success("Testimonio eliminado correctamente");
+  const handleDelete = async (idOrIds) => {
+    const ids = Array.isArray(idOrIds) ? idOrIds : [idOrIds];
+
+    try {
+      const token = getCookieValueJSX("token");
+
+      const responses = await Promise.all(
+        ids.map((id) => testimonialApi.deleteTestimonial(id, token))
+      );
+
+      const allSuccessful = responses.every((res) => res.status === 200);
+
+      if (allSuccessful) {
+        toast.success("Testimonio(s) eliminado(s) correctamente");
+      } else {
+        toast.error("Ocurrió un error al eliminar uno o más testimonios");
+      }
+
       loadData();
-    } else {
-      toast.error("Error al eliminar el testimonio");
+    } catch (error) {
+      console.error("Error al eliminar testimonios:", error);
+      toast.error("Error al eliminar los testimonios");
     }
   };
 

@@ -6,34 +6,34 @@ import { FormFieldCMS } from "../molecules/FormFieldCMS.jsx";
 import { toast } from "sonner";
 import { ButtonCMS } from "../atoms/ButtonCMS.jsx";
 import { Plus } from "../icons/Plus.jsx";
-import { suscriptorApi } from "@/api/suscriptor.js";
 import { getCookieValueJSX } from "@/lib/auth.js";
+import { podcastApi } from "@/api/podcasts.js";
 
-export function AddSuscriptorForm({ fetchData }) {
+export function AddPodcastForm({ fetchData }) {
   const loginSchema = z.object({
-    email: z.string().min("1"),
+    url: z.string().min("1"),
   });
 
   const form = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "",
+      url: "",
     },
   });
 
   const handleCreate = async () => {
-    toast("Creado suscripcion");
-    const response = await suscriptorApi.createSuscriptor(
+    toast("Creando podcast");
+    const response = await podcastApi.createPodcast(
       getCookieValueJSX("token"),
       form.getValues()
     );
 
     if (response.status === 201) {
-      toast.success("Suscriptor agregado");
-      fetchData();
+      toast.success("Podcast agregado");
       form.reset();
+      fetchData();
     } else {
-      toast.error("Algo salio mal creando el usuario");
+      toast.error("Algo salio mal creando el podcast");
     }
   };
 
@@ -48,9 +48,9 @@ export function AddSuscriptorForm({ fetchData }) {
         >
           <div className="col-start-1 col-span-10">
             <FormFieldCMS
-              name="email"
-              label="Correo electrónico"
-              placeholder="correo@gmail.com"
+              name="url"
+              label="URL del podcast"
+              placeholder="https://open.spotify.com/episode/6piL112ObyBmyslq6DFHlW?si=ecbfe77820564ec2"
               form={form}
               isLoading={isLoading}
             />

@@ -13,6 +13,10 @@ export class SuscriptorApi extends HttpClient {
   createSuscriptor(token = "", data) {
     return this.request({ method: "POST", token, body: data });
   }
+
+  deleteSuscriptor(token, id) {
+    return this.request({ method: "DELETE", token, endpoint: `/${id}` });
+  }
 }
 
 export const suscriptorApi = new SuscriptorApi();
