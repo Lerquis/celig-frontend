@@ -23,7 +23,7 @@ export const FormFieldCMS = ({
             <Textarea
               placeholder={placeholder}
               {...field}
-              className="min-h-[500px]"
+              className="min-h-[300px]"
             />
           ) : (
             <Input type={type} placeholder={placeholder} {...field} />

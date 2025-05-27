@@ -40,7 +40,7 @@ export function TableContent({
         return columnBlogs(onEdit, onDelete);
 
       case "testimonials":
-        return columnTestimonials;
+        return columnTestimonials(onEdit, onDelete);
 
       case "suscriptors":
         return columnSuscriptors;

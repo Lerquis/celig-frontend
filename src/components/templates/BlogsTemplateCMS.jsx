@@ -19,23 +19,22 @@ export const BlogsTemplateCMS = () => {
     setModalOpen(false);
   };
 
+  const handleDelete = async (id) => {
+    const response = await blogApi.deleteBlog(id, getCookieValueJSX("token"));
+    if (response.status === 200) {
+      toast.success("Blog eliminado correctamente");
+      loadData();
+    } else {
+      toast.error("Error al eliminar el blog");
+    }
+  };
+
   const loadData = async () => {
     const blogs = await blogApi.getBlogsByTag();
     if (blogs.status === 200) setData(blogs.body.blogs);
     else {
       toast.error("Algo salio mal obteniendo los datos");
       setData([]);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    const response = await blogApi.deleteBlog(id, getCookieValueJSX("token"));
-    console.log(response);
-    if (response.status === 200) {
-      toast.success("Blog eliminado correctamente");
-      loadData();
-    } else {
-      toast.error("Error al eliminar el blog");
     }
   };
 
