@@ -18,7 +18,13 @@ import { blogApi } from "@/api";
 import { getCookieValueJSX } from "@/lib/auth";
 
 // Lista de etiquetas disponibles (asegúrate de pasarla como prop o importar según tu estructura)
-const availableTags = ["New Tag", "React", "Node.js", "CSS", "UI", "UX"];
+const availableTags = [
+  "Derechos del Comunidad LGBTIQ+",
+  "Derecho Familia",
+  "Derecho Laboral",
+  "Derecho Migratorio",
+  "Derecho Familias Homoparentales",
+];
 
 const blogSchema = z.object({
   title: z.string().min(1, "El título es obligatorio"),

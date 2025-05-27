@@ -4,9 +4,14 @@ import { formatDateToDDMMYYYY } from "@/lib/dateFormatter";
 import { galleryApi } from "@/api";
 import { getCookieValueJSX } from "@/lib/auth";
 import { toast } from "sonner";
+import { Loader } from "../icons/Loader";
+import { useState } from "react";
 
 export const ImageGridContainer = ({ image, loadData }) => {
+  const [loading, setLoading] = useState(false);
   const handleDelete = async (name) => {
+    setLoading(true);
+    toast("Eliminando imagen");
     const response = await galleryApi.deleteImage(
       getCookieValueJSX("token"),
       name
@@ -17,6 +22,7 @@ export const ImageGridContainer = ({ image, loadData }) => {
     } else {
       toast.error("Algo salio mal al eliminar la imagen");
     }
+    setLoading(false);
   };
 
   return (
@@ -34,7 +40,7 @@ export const ImageGridContainer = ({ image, loadData }) => {
             className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-8 w-8"
             onClick={() => handleDelete(image.name)}
           >
-            <Trash2 className="h-4 w-4" />
+            {loading ? <Loader /> : <Trash2 className="h-4 w-4" />}
           </Button>
         </div>
       </div>

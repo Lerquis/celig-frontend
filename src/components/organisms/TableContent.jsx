@@ -20,6 +20,7 @@ import { Button } from "../ui/button";
 import { columns as columnBlogs } from "@/components/atoms/BlogsTableColumns";
 import { columns as columnTestimonials } from "@/components/atoms/TestimonialsTableColumns";
 import { columns as columnSuscriptors } from "@/components/atoms/SuscriptorsTableColumns";
+import { Loader } from "../icons/Loader";
 
 export function TableContent({
   data = [],
@@ -28,6 +29,7 @@ export function TableContent({
   placeholder,
   onEdit,
   onDelete,
+  loading,
 }) {
   const [sorting, setSorting] = React.useState([]);
   const [columnFilters, setColumnFilters] = React.useState([]);
@@ -111,8 +113,17 @@ export function TableContent({
               </TableRow>
             ))}
           </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
+          <TableBody className="relative">
+            {loading ? (
+              <TableRow>
+                <TableCell
+                  colSpan={returnColumn().length}
+                  className="h-24 text-center "
+                >
+                  <Loader customClass="!text-black mx-auto" />
+                </TableCell>
+              </TableRow>
+            ) : table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}

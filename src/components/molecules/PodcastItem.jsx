@@ -1,6 +1,5 @@
 import { Trash } from "lucide-react";
 import { Card, CardContent } from "../ui/card";
-import { ButtonCMS } from "../atoms/ButtonCMS";
 import { useState } from "react";
 import { podcastApi } from "@/api";
 import { toast } from "sonner";
@@ -12,6 +11,7 @@ export const PodcastItem = ({ podcast, fetchData }) => {
   const [loading, setLoading] = useState(false);
 
   const handleDelete = async (id) => {
+    toast("Eliminando podcast");
     setLoading(true);
     const response = await podcastApi.deletePodcast(
       id,

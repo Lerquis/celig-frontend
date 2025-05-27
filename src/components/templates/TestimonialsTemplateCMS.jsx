@@ -14,12 +14,14 @@ export const TestimonialsTemplateCMS = () => {
   const [data, setData] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [testimonialEdit, setTestimonialEdit] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleClose = () => {
     setModalOpen(false);
   };
 
   const handleDelete = async (idOrIds) => {
+    toast("Eliminando testimonio(s)");
     const ids = Array.isArray(idOrIds) ? idOrIds : [idOrIds];
 
     try {
@@ -45,12 +47,14 @@ export const TestimonialsTemplateCMS = () => {
   };
 
   const loadData = async () => {
+    setLoading(true);
     const testimonials = await testimonialApi.getTestimonials();
     if (testimonials.status === 200) setData(testimonials.body.testimonials);
     else {
       toast.error("Algo salio mal obteniendo los datos");
       setData([]);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -84,6 +88,7 @@ export const TestimonialsTemplateCMS = () => {
           setModalOpen(true);
         }}
         onDelete={handleDelete}
+        loading={loading}
       />
 
       <ModalContainer isOpen={modalOpen} handleClose={handleClose}>

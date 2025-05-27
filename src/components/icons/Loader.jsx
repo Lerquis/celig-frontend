@@ -1,7 +1,7 @@
-export const Loader = () => {
+export const Loader = ({ customClass }) => {
   return (
     <svg
-      className="size-5 animate-spin text-white"
+      className={`size-5 animate-spin text-white ${customClass}`}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

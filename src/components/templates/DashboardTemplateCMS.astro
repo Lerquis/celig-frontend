@@ -21,8 +21,11 @@ const apiCalls = [
   galleryApi.getGallery(),
 ];
 
+let loading = true;
 const [blogsRes, testimonialsRes, podcastsRes, suscriptorsRes, galleryRes] =
   await Promise.all(apiCalls);
+
+loading = false;
 ---
 
 <div class="space-y-6">

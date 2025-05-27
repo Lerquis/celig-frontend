@@ -14,12 +14,14 @@ export const BlogsTemplateCMS = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [blogEdit, setBlogEdit] = useState(null);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleClose = () => {
     setModalOpen(false);
   };
 
   const handleDelete = async (idOrIds) => {
+    toast("Eliminando blog(s)");
     const ids = Array.isArray(idOrIds) ? idOrIds : [idOrIds];
 
     try {
@@ -45,12 +47,14 @@ export const BlogsTemplateCMS = () => {
   };
 
   const loadData = async () => {
+    setLoading(true);
     const blogs = await blogApi.getBlogsByTag();
     if (blogs.status === 200) setData(blogs.body.blogs);
     else {
       toast.error("Algo salio mal obteniendo los datos");
       setData([]);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -81,6 +85,7 @@ export const BlogsTemplateCMS = () => {
           setModalOpen(true);
         }}
         onDelete={handleDelete}
+        loading={loading}
       />
       <ModalContainer isOpen={modalOpen} handleClose={handleClose}>
         <>

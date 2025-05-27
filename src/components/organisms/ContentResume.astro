@@ -7,8 +7,14 @@ import { Mail } from "../icons/Mail";
 import { MessageSquareQuote } from "../icons/MessageSquareQuote";
 import ContentResumeCard from "../molecules/ContentResumeCard.astro";
 
-const { blogsRes, testimonialsRes, podcastsRes, suscriptorsRes, galleryRes } =
-  Astro.props;
+const {
+  blogsRes,
+  testimonialsRes,
+  podcastsRes,
+  suscriptorsRes,
+  galleryRes,
+  loading,
+} = Astro.props;
 
 const blogsInformation = blogsRes?.status === 200 ? blogsRes.body.blogs : [];
 const testimonialInformation =

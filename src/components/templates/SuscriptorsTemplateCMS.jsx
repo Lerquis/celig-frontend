@@ -8,8 +8,10 @@ import { toast } from "sonner";
 
 export const SuscriptorsTemplateCMS = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const loadData = async () => {
+    setLoading(true);
     const suscriptors = await suscriptorApi.getSuscriptors(
       getCookieValueJSX("token")
     );
@@ -19,9 +21,11 @@ export const SuscriptorsTemplateCMS = () => {
       toast.error("Algo salio mal obteniendo los datos");
       setData([]);
     }
+    setLoading(false);
   };
 
   const handleDelete = async (idOrIds) => {
+    toast("Eliminando suscriptor(es)");
     const ids = Array.isArray(idOrIds) ? idOrIds : [idOrIds];
 
     try {
@@ -63,6 +67,7 @@ export const SuscriptorsTemplateCMS = () => {
           data={data}
           columnName="suscriptors"
           onDelete={handleDelete}
+          loading={loading}
         />
       </CardTemplate>
     </div>
