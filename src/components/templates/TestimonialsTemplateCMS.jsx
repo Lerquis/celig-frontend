@@ -64,7 +64,7 @@ export const TestimonialsTemplateCMS = () => {
   return (
     <div className="space-y-6">
       <HeaderCMSPage
-        title="Testimonials"
+        title="Testimonios"
         subtitle="Gestiona los testimonios de tus clientes"
       >
         <Button
