@@ -1,0 +1,97 @@
+<div
+  id="gridContainer"
+  class="grid-overlay pointer-events-none fixed inset-0 z-[9999] hidden"
+>
+  <div
+    class="mx-auto h-full w-full max-w-[1920px] max-w-screen-4xl sm:px-[80px] px-[20px]"
+  >
+    <div
+      id="gridColumns"
+      class="grid h-full w-full gap-[20px] grid-cols-5 sm:grid-cols-12"
+    >
+    </div>
+  </div>
+</div>
+
+<button
+  id="toggleGridBtn"
+  class="fixed bottom-4 right-4 z-[10000] rounded-full bg-gray-800 p-3 text-white shadow-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400"
+  title="Mostrar/Ocultar Grid de Figma"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-6 w-6 rotate-90 cursor-pointer"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M4 6h16M4 12h16m-7 6h7"></path>
+  </svg>
+</button>
+
+<script>
+  // Script para alternar la visibilidad del grid
+  document.getElementById("toggleGridBtn")?.addEventListener("click", () => {
+    const gridOverlay = document.querySelector(".grid-overlay");
+    if (gridOverlay) {
+      // Alternar entre mostrar y ocultar
+      if (gridOverlay.classList.contains("hidden")) {
+        gridOverlay.classList.remove("hidden");
+        localStorage.setItem("gridOverlayVisible", "true");
+      } else {
+        gridOverlay.classList.add("hidden");
+        localStorage.setItem("gridOverlayVisible", "false");
+      }
+    }
+  });
+
+  // Restaurar estado al cargar la página
+  document.addEventListener("DOMContentLoaded", () => {
+    const gridOverlay = document.querySelector(".grid-overlay");
+    const isVisible = localStorage.getItem("gridOverlayVisible") === "true";
+
+    if (gridOverlay && isVisible) {
+      gridOverlay.classList.remove("hidden");
+    }
+  });
+
+  // Compatibilidad con Astro View Transitions
+  document.addEventListener("astro:after-swap", () => {
+    const gridOverlay = document.querySelector(".grid-overlay");
+    const isVisible = localStorage.getItem("gridOverlayVisible") === "true";
+
+    if (gridOverlay && isVisible) {
+      gridOverlay.classList.remove("hidden");
+    }
+  });
+
+  function renderGridColumns(count: number) {
+    const grid = document.getElementById("gridColumns");
+    if (grid) {
+      grid.innerHTML = ""; // Limpiar columnas anteriores
+      for (let i = 0; i < count; i++) {
+        const col = document.createElement("div");
+        col.className = "h-full bg-red-500/20";
+        grid.appendChild(col);
+      }
+    }
+  }
+
+  function updateGridByScreenSize() {
+    const width = window.innerWidth;
+    const columns = width <= 590 ? 5 : 12;
+    renderGridColumns(columns);
+  }
+
+  window.addEventListener("DOMContentLoaded", updateGridByScreenSize);
+  window.addEventListener("resize", () => {
+    updateGridByScreenSize();
+  });
+
+  // Compatibilidad con Astro View Transitions
+  document.addEventListener("astro:after-swap", updateGridByScreenSize);
+</script>

@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
-import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
-import { Textarea } from "../ui/textarea";
+import { FormControl, FormField, FormItem, FormLabel } from "../../ui/form";
+import { Textarea } from "../../ui/textarea";
 
 export const FormFieldCMS = ({
   form,

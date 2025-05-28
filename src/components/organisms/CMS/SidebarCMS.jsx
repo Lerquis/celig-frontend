@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Menu } from "../icons/Menu";
-import { X } from "../icons/X";
-import { Button } from "../ui/button";
-import { SideBarPanelCMS } from "../molecules/SideBarPanelCMS";
+import { Menu } from "../../icons/Menu";
+import { X } from "../../icons/X";
+import { Button } from "../../ui/button";
+import { SideBarPanelCMS } from "../../molecules/CMS/SideBarPanelCMS";
 
 export const SideBarCMS = () => {
   const [isOpen, setIsOpen] = useState(false);

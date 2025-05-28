@@ -1,11 +1,11 @@
-import { SidebarLinkCMS } from "../atoms/SidebarLinkCMS";
-import { FileText } from "../icons/FileText";
-import { Headphones } from "../icons/Headphones";
-import { Images } from "../icons/Images";
-import { LayoutDashboard } from "../icons/LayoutDashboard";
-import { Mail } from "../icons/Mail";
-import { MessageSquareQuote } from "../icons/MessageSquareQuote";
-import { Button } from "../ui/button";
+import { SidebarLinkCMS } from "@/components/atoms/CMS/SidebarLinkCMS";
+import { FileText } from "../../icons/FileText";
+import { Headphones } from "../../icons/Headphones";
+import { Images } from "../../icons/Images";
+import { LayoutDashboard } from "../../icons/LayoutDashboard";
+import { Mail } from "../../icons/Mail";
+import { MessageSquareQuote } from "../../icons/MessageSquareQuote";
+import { Button } from "../../ui/button";
 
 const iconClassName = "mr-3 h-5 w-5";
 

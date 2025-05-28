@@ -1,8 +1,8 @@
 import { suscriptorApi } from "@/api";
 import { getCookieValueJSX } from "@/lib/auth";
-import { CardTemplate } from "../organisms/CardTemplate";
-import { AddSuscriptorForm } from "../organisms/AddSuscriptorForm";
-import { TableContent } from "../organisms/TableContent";
+import { CardTemplate } from "../../organisms/CMS/CardTemplate";
+import { AddSuscriptorForm } from "../../organisms/CMS/AddSuscriptorForm";
+import { TableContent } from "../../organisms/CMS/TableContent";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 

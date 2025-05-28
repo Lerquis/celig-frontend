@@ -1,10 +1,10 @@
 import { Trash2 } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { formatDateToDDMMYYYY } from "@/lib/dateFormatter";
 import { galleryApi } from "@/api";
 import { getCookieValueJSX } from "@/lib/auth";
 import { toast } from "sonner";
-import { Loader } from "../icons/Loader";
+import { Loader } from "../../icons/Loader";
 import { useState } from "react";
 
 export const ImageGridContainer = ({ image, loadData }) => {

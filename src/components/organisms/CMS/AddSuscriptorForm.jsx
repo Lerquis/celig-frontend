@@ -1,11 +1,11 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Form } from "../ui/form.js";
-import { FormFieldCMS } from "../molecules/FormFieldCMS.jsx";
+import { Form } from "../../ui/form.js";
+import { FormFieldCMS } from "../../molecules/CMS/FormFieldCMS.jsx";
 import { toast } from "sonner";
-import { ButtonCMS } from "../atoms/ButtonCMS.jsx";
-import { Plus } from "../icons/Plus.jsx";
+import { ButtonCMS } from "@/components/atoms/CMS/ButtonCMS.jsx";
+import { Plus } from "../../icons/Plus.jsx";
 import { suscriptorApi } from "@/api/suscriptor.js";
 import { getCookieValueJSX } from "@/lib/auth.js";
 

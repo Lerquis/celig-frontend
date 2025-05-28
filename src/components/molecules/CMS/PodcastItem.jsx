@@ -1,10 +1,10 @@
 import { Trash } from "lucide-react";
-import { Card, CardContent } from "../ui/card";
+import { Card, CardContent } from "../../ui/card";
 import { useState } from "react";
 import { podcastApi } from "@/api";
 import { toast } from "sonner";
-import { Button } from "../ui/button";
-import { Loader } from "../icons/Loader";
+import { Button } from "../../ui/button";
+import { Loader } from "../../icons/Loader";
 import { getCookieValueJSX } from "@/lib/auth";
 
 export const PodcastItem = ({ podcast, fetchData }) => {

@@ -15,12 +15,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { TableInput } from "../atoms/TableInput";
-import { Button } from "../ui/button";
-import { columns as columnBlogs } from "@/components/atoms/BlogsTableColumns";
-import { columns as columnTestimonials } from "@/components/atoms/TestimonialsTableColumns";
-import { columns as columnSuscriptors } from "@/components/atoms/SuscriptorsTableColumns";
-import { Loader } from "../icons/Loader";
+import { TableInput } from "@/components/atoms/CMS/TableInput";
+import { Button } from "../../ui/button";
+import { columns as columnBlogs } from "@/components/atoms/CMS/BlogsTableColumns";
+import { columns as columnTestimonials } from "@/components/atoms/CMS/TestimonialsTableColumns";
+import { columns as columnSuscriptors } from "@/components/atoms/CMS/SuscriptorsTableColumns";
+import { Loader } from "../../icons/Loader";
 
 export function TableContent({
   data = [],

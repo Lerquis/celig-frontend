@@ -1,10 +1,10 @@
 import { podcastApi } from "@/api";
-import { CardTemplate } from "../organisms/CardTemplate";
+import { CardTemplate } from "../../organisms/CMS/CardTemplate";
 import { useEffect, useState } from "react";
-import { AddPodcastForm } from "../organisms/AddPodcastForm";
-import { PodcastItem } from "../molecules/PodcastItem";
+import { AddPodcastForm } from "../../organisms/CMS/AddPodcastForm";
+import { PodcastItem } from "../../molecules/CMS/PodcastItem";
 import { toast } from "sonner";
-import { Loader } from "../icons/Loader";
+import { Loader } from "../../icons/Loader";
 
 export const PodcastsTemplateCMS = () => {
   const [data, setData] = useState([]);

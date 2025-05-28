@@ -1,4 +1,4 @@
-import { Dialog, DialogContent } from "../ui/dialog";
+import { Dialog, DialogContent } from "../../ui/dialog";
 
 export const ModalContainer = ({ children, isOpen, handleClose }) => {
   return (

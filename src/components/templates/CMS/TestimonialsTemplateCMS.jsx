@@ -1,14 +1,18 @@
-import { TableContent } from "@/components/organisms/TableContent";
+import { TableContent } from "@/components/organisms/CMS/TableContent.jsx";
 import { testimonialApi } from "@/api";
-import { HeaderCMSPage } from "../molecules/HeaderCMSPage.jsx";
+import { HeaderCMSPage } from "../../molecules/CMS/HeaderCMSPage.jsx";
 import { useState, useEffect } from "react";
-import { Button } from "../ui/button.js";
-import { Plus } from "../icons/Plus.jsx";
-import { ModalContainer } from "../organisms/ModalContainer.jsx";
-import { DialogDescription, DialogHeader, DialogTitle } from "../ui/dialog";
+import { Button } from "../../ui/button.js";
+import { Plus } from "../../icons/Plus.jsx";
+import { ModalContainer } from "../../organisms/CMS/ModalContainer.jsx";
+import {
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "../../ui/dialog.js";
 import { getCookieValueJSX } from "@/lib/auth.js";
 import { toast } from "sonner";
-import { TestimonialForm } from "../organisms/TestimonialForm.jsx";
+import { TestimonialForm } from "../../organisms/CMS/TestimonialForm.jsx";
 
 export const TestimonialsTemplateCMS = () => {
   const [data, setData] = useState([]);

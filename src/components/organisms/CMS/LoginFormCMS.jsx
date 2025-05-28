@@ -1,10 +1,10 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Form } from "../ui/form.js";
-import { FormFieldCMS } from "../molecules/FormFieldCMS.jsx";
+import { Form } from "../../ui/form.js";
+import { FormFieldCMS } from "../../molecules/CMS/FormFieldCMS.jsx";
 import { toast } from "sonner";
-import { ButtonCMS } from "../atoms/ButtonCMS.jsx";
+import { ButtonCMS } from "@/components/atoms/CMS/ButtonCMS.jsx";
 
 export function LoginForm() {
   const loginSchema = z.object({

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Form } from "../ui/form";
+import { Form } from "../../ui/form";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   FormField,
@@ -11,9 +11,9 @@ import {
   FormControl,
   FormMessage,
 } from "@/components/ui/form";
-import { FormFieldCMS } from "../molecules/FormFieldCMS";
-import { ButtonCMS } from "../atoms/ButtonCMS";
-import { Button } from "../ui/button";
+import { FormFieldCMS } from "../../molecules/CMS/FormFieldCMS";
+import { ButtonCMS } from "@/components/atoms/CMS/ButtonCMS";
+import { Button } from "../../ui/button";
 import { blogApi } from "@/api";
 import { getCookieValueJSX } from "@/lib/auth";
 

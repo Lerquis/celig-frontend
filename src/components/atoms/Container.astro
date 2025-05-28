@@ -1,0 +1,13 @@
+---
+const { fullWidth } = Astro.props;
+---
+
+<div
+  class={`h-full grid gap-[20px] grid-cols-5 sm:grid-cols-12 ${
+    fullWidth
+      ? "max-w-[1920px] max-w-screen-4xl sm:px-[80px] px-[20px]"
+      : "w-full"
+  }`}
+>
+  <slot />
+</div>

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { CardTemplate } from "../organisms/CardTemplate";
+import { CardTemplate } from "../../organisms/CMS/CardTemplate";
 import { galleryApi } from "@/api";
-import { AddImageForm } from "../organisms/AddImageForm";
+import { AddImageForm } from "../../organisms/CMS/AddImageForm";
 import { toast } from "sonner";
-import { ImageGridContainer } from "../molecules/ImageGridContainer";
+import { ImageGridContainer } from "../../molecules/CMS/ImageGridContainer";
 import Masonry from "react-masonry-css";
-import { Loader } from "../icons/Loader";
+import { Loader } from "../../icons/Loader";
 
 const breakpointColumnsObj = {
   default: 4,

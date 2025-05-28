@@ -4,10 +4,10 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
-import { Form } from "../ui/form";
-import { Button } from "../ui/button";
-import { FormFieldCMS } from "../molecules/FormFieldCMS";
-import { ButtonCMS } from "../atoms/ButtonCMS";
+import { Form } from "../../ui/form";
+import { Button } from "../../ui/button";
+import { FormFieldCMS } from "../../molecules/CMS/FormFieldCMS";
+import { ButtonCMS } from "@/components/atoms/CMS/ButtonCMS";
 import { Trash2 } from "lucide-react";
 import { testimonialApi } from "@/api";
 import { getCookieValueJSX } from "@/lib/auth";

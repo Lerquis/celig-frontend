@@ -1,12 +1,12 @@
 import { Plus } from "@/components/icons/Plus";
-import { TableContent } from "@/components/organisms/TableContent";
-import { HeaderCMSPage } from "../molecules/HeaderCMSPage";
-import { Button } from "../ui/button";
+import { TableContent } from "@/components/organisms/CMS/TableContent";
+import { HeaderCMSPage } from "../../molecules/CMS/HeaderCMSPage";
+import { Button } from "../../ui/button";
 import { useState, useEffect } from "react";
 import { blogApi } from "@/api";
-import { ModalContainer } from "../organisms/ModalContainer";
-import { DialogDescription, DialogHeader, DialogTitle } from "../ui/dialog";
-import { BlogForm } from "../organisms/BlogForm";
+import { ModalContainer } from "../../organisms/CMS/ModalContainer";
+import { DialogDescription, DialogHeader, DialogTitle } from "../../ui/dialog";
+import { BlogForm } from "../../organisms/CMS/BlogForm";
 import { getCookieValueJSX } from "@/lib/auth";
 import { toast } from "sonner";
 

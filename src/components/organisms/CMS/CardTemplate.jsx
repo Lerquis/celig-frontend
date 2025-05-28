@@ -1,5 +1,5 @@
-import { CardHeaderTemplate } from "../molecules/CardHeaderTemplate";
-import { Card, CardContent } from "../ui/card";
+import { CardHeaderTemplate } from "../../molecules/CMS/CardHeaderTemplate";
+import { Card, CardContent } from "../../ui/card";
 
 export const CardTemplate = ({ title, description, children }) => {
   return (

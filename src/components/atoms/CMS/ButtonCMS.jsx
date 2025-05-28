@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Loader } from "../icons/Loader";
+import { Loader } from "@/components/icons/Loader";
 
 export const ButtonCMS = ({
   loading = false,
