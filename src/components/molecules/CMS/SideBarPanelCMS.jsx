@@ -56,14 +56,13 @@ export const SideBarPanelCMS = ({ isOpen }) => {
 
   return (
     <div
-      className={`fixed inset-y-0 left-0 z-40 w-64 transform bg-background transition-transform
+      className={`fixed inset-y-0 left-0 z-40 w-64 transform bg-background transition-transform h-screen top-0
         duration-200 ease-in-out
-        md:relative md:translate-x-0
+         md:translate-x-0
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
       `}
     >
-      <div className="flex h-full flex-col justify-between">
-        {/* Top section: título + nav */}
+      <div className="flex h-screen flex-col justify-between ">
         <div>
           <div className="flex h-16 items-center border-b px-6">
             <h1 className="text-xl font-bold">CELIG Admin</h1>

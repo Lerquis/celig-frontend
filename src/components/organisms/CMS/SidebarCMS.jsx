@@ -7,7 +7,7 @@ import { SideBarPanelCMS } from "../../molecules/CMS/SideBarPanelCMS";
 export const SideBarCMS = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <>
+    <div className="relative">
       <Button
         variant="outline"
         size="icon"
@@ -19,6 +19,6 @@ export const SideBarCMS = () => {
       </Button>
 
       <SideBarPanelCMS isOpen={isOpen} />
-    </>
+    </div>
   );
 };
