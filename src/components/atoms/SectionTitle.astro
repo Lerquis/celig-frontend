@@ -1,0 +1,10 @@
+---
+const { title, serif, customClass } = Astro.props;
+---
+
+<h2
+  class={`${serif ? "rosdcel !tracking-[-2px]" : "roblight !tracking-[-5px]"} 
+  text-[48px] uppercase  ${customClass}`}
+>
+  {title}
+</h2>

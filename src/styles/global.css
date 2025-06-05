@@ -1,5 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 @import "tailwindcss";
 @import "tw-animate-css";
+
+@font-face {
+  font-family: "Roslindale-DNL";
+  src: url("/Roslindale-DisplayNarrowLight-Testing.woff");
+}
+
+@font-face {
+  font-family: "Roslindale-DCEL";
+  src: url("/Roslindale-DisplayCondensedExtraLightItalic-Testing.woff");
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -132,6 +145,10 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .masonry-grid {
   display: block;
 }
@@ -143,4 +160,34 @@
 
 .masonry-item {
   margin-bottom: 16px;
+}
+
+.customGradient {
+  background: linear-gradient(
+    to bottom,
+    #e40303 0%,
+    #ff8c00 16%,
+    #ffed00 32%,
+    #008026 48%,
+    #004dff 66%,
+    #750787 83%
+  );
+}
+
+.rosdnl {
+  font-family: "Roslindale-DNL";
+}
+
+.rosdcel {
+  font-family: "Roslindale-DCEL";
+}
+
+.montreg {
+  font-family: "Montserrat";
+  font-weight: 400;
+}
+
+.roblight {
+  font-family: "Roboto";
+  font-weight: 200;
 }

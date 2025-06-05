@@ -1,0 +1,34 @@
+---
+import { MoveDown } from "lucide-react";
+import Container from "../atoms/Container.astro";
+import CleanLogo from "../atoms/CleanLogo.astro";
+import FlagLine from "../atoms/FlagLine.astro";
+---
+
+<Container fullWidth={true} customClass="overflow-hidden">
+  <section class="h-[100dvh] w-screen relative py-4">
+    <img
+      src="/HeroImage2.jpg"
+      class="w-full h-full object-cover absolute top-0 z-[-1] brightness-50"
+    />
+    <Container fullWidth={false} customClass="items-start pb-8">
+      <div class="flex gap-2 items-center col-start-1 col-span-3">
+        <CleanLogo width="w-[75px]" />
+        <p class="text-[48px] text-white font-bold montreg">CELIG</p>
+      </div>
+
+      <FlagLine />
+    </Container>
+    <Container fullWidth={false} customClass="items-center">
+      <p class="text-white rosdnl uppercase text-[20px] col-start-1 col-span-3">
+        Bufete de abogacia especializado en derechos lgbtiq+
+      </p>
+      <MoveDown
+        className="mx-auto mt-[-20px]"
+        color="white"
+        size="32"
+        client:visible
+      />
+    </Container>
+  </section>
+</Container>

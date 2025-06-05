@@ -7,7 +7,7 @@
   >
     <div
       id="gridColumns"
-      class="grid h-full w-full gap-[20px] grid-cols-5 sm:grid-cols-12"
+      class="grid h-full w-full gap-[20px] grid-cols-4 sm:grid-cols-12"
     >
     </div>
   </div>
@@ -83,7 +83,7 @@
 
   function updateGridByScreenSize() {
     const width = window.innerWidth;
-    const columns = width <= 590 ? 5 : 12;
+    const columns = width <= 590 ? 4 : 12;
     renderGridColumns(columns);
   }
 

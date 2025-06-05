@@ -1,0 +1,51 @@
+---
+import Container from "../atoms/Container.astro";
+import SectionTitle from "../atoms/SectionTitle.astro";
+import DiferenciadoItem from "../molecules/DiferenciadoItem.astro";
+
+const diffBy = [
+  {
+    title1Sans: "Cuidar los ",
+    title1Serif: "detalles",
+    title2Sans: "Cumpliendo con la ",
+    title2Serif: "ley",
+    parragraph: `Nos encargamos minuciosamente de cada detalle para garantizar una ceremonia legal. 
+    No cumplir con este requisito podría tener serias implicaciones legales para todos. Tu boda con nosotros es 
+    legalidad y tranquilidad.`,
+  },
+  {
+    title1Sans: "Atencion ",
+    title1Serif: "personalizada",
+    title2Sans: "Celebra el ",
+    title2Serif: "amor",
+    parragraph: `Cada unión para Celig es única. Con una variedad de paquetes que se adaptan a todos los gustos, 
+    hacemos que cada boda sea especial. Además, Celig se traslada a cualquier rincón del país, llevando la 
+    celebración donde el amor los lleve.`,
+  },
+  {
+    title1Sans: "Privacidad ",
+    title1Serif: "y respeto",
+    parragraph: `Queremos que te sientas cómodo en cada momento, manteniendo siempre el respeto y la confidencialidad
+     que mereces. Además, brindamos un seguimiento excepcional a nuestros clientes, con un servicio disponible 24/7 
+     para tu tranquilidad y satisfacción constante.`,
+  },
+];
+---
+
+<section class="mb-[200px] space-y-[100px]">
+  <Container fullWidth={false} customClass="space-y-[-50px]">
+    <SectionTitle
+      title="Diferenciados"
+      customClass="col-start-1 col-span-4 text-center"
+    />
+    <SectionTitle
+      title="Por"
+      serif={true}
+      customClass="col-start-1 col-span-4 text-center"
+    />
+  </Container>
+
+  <Container fullWidth={false} customClass="space-y-[100px]">
+    {diffBy.map((item) => <DiferenciadoItem {...item} />)}
+  </Container>
+</section>

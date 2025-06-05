@@ -1,0 +1,14 @@
+---
+import Parragraph from "../atoms/Parragraph.astro";
+import ProcesoTitle from "../atoms/ProcesoTitle.astro";
+
+const { title, parragraph, index } = Astro.props;
+---
+
+<div class="col-start-1 col-span-4 border-b-[1px] pb-[50px] border-black">
+  <ProcesoTitle index={index} title={title} />
+  <Parragraph
+    text={parragraph}
+    customClass={index % 2 ? "text-right" : "text-left"}
+  />
+</div>

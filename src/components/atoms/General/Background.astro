@@ -3,7 +3,7 @@ const getRandom = (max) => Math.floor(Math.random() * max);
 const getRandomColor = () =>
   `hsl(${getRandom(360)}, ${getRandom(60) + 40}%, ${getRandom(30) + 50}%)`;
 
-const cubes = Array.from({ length: 30 }).map((_, i) => ({
+const cubes = Array.from({ length: 10 }).map((_, i) => ({
   top: getRandom(100),
   left: getRandom(100),
   color: getRandomColor(),

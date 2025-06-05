@@ -1,0 +1,12 @@
+---
+const { title, value, customClass } = Astro.props;
+---
+
+<div class={customClass}>
+  <h4 class="text-center rosdnl text-[20px]">{title}</h4>
+  <h3
+    class="text-center roblight text-[128px] leading-[100px] tracking-[-15px]"
+  >
+    {value}
+  </h3>
+</div>

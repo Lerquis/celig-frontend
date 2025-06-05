@@ -1,0 +1,19 @@
+---
+import ItemTitle from "../atoms/ItemTitle.astro";
+import Parragraph from "../atoms/Parragraph.astro";
+
+const { title1Sans, title1Serif, title2Sans, title2Serif, parragraph } =
+  Astro.props;
+---
+
+<div class="col-start-1 col-span-4 space-y-[25px]">
+  <div class="space-y-[-20px]">
+    <ItemTitle title1Sans={title1Sans} title1Serif={title1Serif} />
+    {
+      title2Sans && (
+        <ItemTitle title1Sans={title2Sans} title1Serif={title2Serif} />
+      )
+    }
+  </div>
+  <Parragraph text={parragraph} />
+</div>

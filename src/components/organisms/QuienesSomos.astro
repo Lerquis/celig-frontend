@@ -1,0 +1,98 @@
+---
+import Container from "../atoms/Container.astro";
+import Estadistica from "../atoms/Estadistica.astro";
+import Parragraph from "../atoms/Parragraph.astro";
+import SectionTitle from "../atoms/SectionTitle.astro";
+---
+
+<section class="my-[200px] space-y-[100px]">
+  <Container fullWidth={false} customClass="space-y-[-50px]">
+    <SectionTitle title="¿Quiénes" customClass="col-start-1 col-span-4" />
+    <SectionTitle
+      title="Somos?"
+      serif={true}
+      customClass="col-start-2 col-span-4"
+    />
+  </Container>
+
+  <Container fullWidth={false} customClass="space-y-[100px] ">
+    <Parragraph
+      customClass="col-start-1 col-span-3"
+      text={`CELIG nació con una misión clara: ser el primer bufete legal en Centroamérica creado por 
+    y para la comunidad LGBTIQ+. Más allá del derecho, su esencia está en la empatía, el 
+    compromiso social y la defensa activa de quienes históricamente han sido marginados. Cada
+    caso es una causa, y cada cliente, una historia que merece respeto y representación digna.`}
+    />
+
+    <Parragraph
+      customClass="col-start-2 col-span-4 text-right"
+      text={`Con más de 30 años de trayectoria, CELIG brinda servicios notariales y litigiosos en áreas 
+    como familia, sucesiones, adopciones y, desde 2020, matrimonios igualitarios. Más de 250 parejas 
+    —nacionales y extranjeras— han confiado en la firma para celebrar su amor legalmente. CELIG no solo 
+    ofrece soluciones legales, sino acompañamiento humano en cada paso.`}
+    />
+
+    <Parragraph
+      customClass="col-start-1 col-span-3"
+      text={`CELIG es también la fuerza detrás de iniciativas como Shopping Pride, Espresso Celig y la 
+      Feria del Orgullo, proyectos que celebran y visibilizan a la comunidad LGBTIQ+ más allá del ámbito 
+      jurídico. Su impacto trasciende el papel; es una plataforma viva de cambio, visibilidad y orgullo.`}
+    />
+  </Container>
+
+  <Container fullWidth={false}>
+    <div class="col-start-1 col-span-4 flex flex-col gap-[20px]">
+      <Estadistica
+        title="Matrimonios realizados"
+        value="50+"
+        customClass="self-end"
+      />
+      <Estadistica
+        title="Anos de experiencia"
+        value="32+"
+        customClass="mx-auto"
+      />
+      <Estadistica title="Anos de CELIG" value="8+" customClass="self-start" />
+    </div>
+  </Container>
+
+  <Container fullWidth={false} customClass="space-y-[-35px] text-right">
+    <SectionTitle title="Fundado por" customClass="col-start-1 col-span-4" />
+    <SectionTitle
+      title="Ana Isabel Sibaja"
+      serif={true}
+      customClass="col-start-2 col-span-4 !leading-[40px]"
+    />
+  </Container>
+
+  <img
+    src="/ProfilePhoto.jpg"
+    alt="Ana Isabel Sibaja"
+    width="100%"
+    class="w-screen"
+  />
+
+  <Container fullWidth={false} customClass="space-y-[50px]">
+    <Parragraph
+      customClass="col-start-1 col-span-3"
+      text={`Ana Isabel Sibaja no fundó CELIG por estrategia, sino por amor. Cuando sus hijos le revelaron su 
+    orientación sexual, algo cambió en ella. Desde entonces, puso su vocación al servicio de una causa 
+    mayor: defender y visibilizar a la comunidad LGBTIQ+ desde el Derecho.`}
+    />
+
+    <Parragraph
+      customClass="col-start-2 col-span-4 text-right"
+      text={`Con más de 30 años de experiencia como abogada y notaria, ha trabajado en derecho civil, penal, 
+      laboral y de familia. Su mayor legado, sin embargo, es el compromiso con la igualdad, visible en su 
+      participación en eventos como el Pride, donde ha casado parejas en tarimas y carrozas, mostrando una entrega 
+      genuina.`}
+    />
+
+    <Parragraph
+      customClass="col-start-1 col-span-3"
+      text={`Nacida en Cañas, Guanacaste, y madre soltera, inició su carrera en Batán, Limón. Hoy inspira a madres,
+       familias y profesionales, reafirmando cada día que el amor y la igualdad no se piden: se exigen, se legislan 
+       y se celebran.`}
+    />
+  </Container>
+</section>

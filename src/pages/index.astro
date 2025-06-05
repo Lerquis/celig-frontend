@@ -1,27 +1,13 @@
 ---
-import GridOverlay from "@/components/atoms/GridOverlay.astro";
-import Background from "../components/atoms/Background.astro";
+import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
+import Background from "@/components/atoms/General/Background.astro";
 import Layout from "../layouts/Layout.astro";
-import Container from "@/components/atoms/Container.astro";
+import HomePageTemplate from "@/components/templates/HomePageTemplate.astro";
 ---
 
 <Layout>
   <Background />
   <GridOverlay />
 
-  <Container>
-    <p>Hola</p>
-  </Container>
-
-  <Container fullWidth={true}>
-    <div class="col-start-2 col-span-4 sm:col-start-3 sm:col-span-5">
-      <p>Hola</p>
-    </div>
-  </Container>
-
-  <div class="h-[100vh] text-center text-9xl">1</div>
-  <div class="h-[100vh] text-center text-9xl">2</div>
-  <div class="h-[100vh] text-center text-9xl">3</div>
-  <div class="h-[100vh] text-center text-9xl">4</div>
-  <div class="h-[100vh] text-center text-9xl">5</div>
+  <HomePageTemplate />
 </Layout>

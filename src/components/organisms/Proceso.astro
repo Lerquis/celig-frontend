@@ -1,0 +1,44 @@
+---
+import Container from "../atoms/Container.astro";
+import SectionTitle from "../atoms/SectionTitle.astro";
+import ProcesoItem from "../molecules/ProcesoItem.astro";
+
+const processes = [
+  {
+    title: "Reservación y acompañamiento diario",
+    parragraph: `Luego de reservar la fecha, gestionamos los trámites legales y mantenemos contacto diario 
+    por WhatsApp para resolver dudas y acompañarlos en cada paso del proceso.`,
+  },
+  {
+    title: "Coordinación previa al evento",
+    parragraph: `Antes de la boda realizamos una videollamada por Zoom para coordinar todos los detalles y 
+    asegurar que la ceremonia esté completamente alineada con sus deseos.`,
+  },
+  {
+    title: "Requisitos para casarse",
+    parragraph: `Solo deben enviar su identificación. Extranjeros en Costa Rica pueden usar pasaporte o documento 
+    migratorio. No necesitan papeles desde su país como partida de nacimiento o estado civil.`,
+  },
+  {
+    title: "Experiencia y celebración personalizada",
+    parragraph: `Con más de 3 años de experiencia en bodas igualitarias, ofrecemos rituales, votos y decoración 
+    personalizados, con hasta 25 invitados, música y una hora y media de celebración inolvidable.`,
+  },
+];
+---
+
+<section class="mb-[200px] space-y-[100px]">
+  <Container fullWidth={false} customClass="space-y-[-50px]">
+    <SectionTitle title="Nuestro" customClass="col-start-1 col-span-4" />
+    <SectionTitle
+      title="Proceso"
+      serif={true}
+      customClass="col-start-3 col-span-4"
+    />
+    <SectionTitle title="Se basa en" customClass="col-start-2 col-span-4" />
+  </Container>
+
+  <Container>
+    {processes.map((item, i) => <ProcesoItem {...item} index={i} />)}
+  </Container>
+</section>
