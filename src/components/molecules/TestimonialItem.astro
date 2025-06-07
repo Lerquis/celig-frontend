@@ -1,0 +1,21 @@
+---
+import SmallParragraph from "../atoms/SmallParragraph.astro";
+
+const { src, names, content } = Astro.props;
+---
+
+<div class="relative col-start-1 col-span-4 overflow-hidden h-[350px]">
+  <img
+    {src}
+    class="absolute z-[-1] brightness-35 h-full w-full object-cover bg-red-200 rounded-[10px]"
+  />
+
+  <SmallParragraph
+    text={names}
+    customClass="z-10 text-white absolute top-[50%] translate-y-[-40%] px-2"
+  />
+  <SmallParragraph
+    text={content}
+    customClass="z-10 text-white absolute bottom-4 left-0 px-2"
+  />
+</div>

@@ -1,0 +1,32 @@
+---
+import Container from "../atoms/Container.astro";
+import SectionTitle from "../atoms/SectionTitle.astro";
+import ServicioItem from "../molecules/ServicioItem.astro";
+
+const services = [
+  { label: "Consulta Virtual", href: "/servicios/consulta-virtual" },
+  { label: "Consulta Presencial", href: "/servicios/consulta-presencial" },
+  { label: "Sucesiones", href: "/servicios/sucesiones" },
+  { label: "Defensa de derechos LGBTQ+", href: "/servicios/derechos-lgbtq+" },
+  {
+    label: "Matrimonios entre parejas del mismo sexo",
+    href: "/matrimonios",
+  },
+  { label: "Servicios Notariales", href: "/servicios/notariales" },
+];
+---
+
+<section class="mb-[200px] space-y-[100px]">
+  <Container fullWidth={false} customClass="space-y-[-50px]">
+    <SectionTitle title="Nuestros" customClass="col-start-1 col-span-4" />
+    <SectionTitle
+      title="Servicios"
+      serif={true}
+      customClass="col-start-2 col-span-4"
+    />
+  </Container>
+
+  <Container customClass="space-y-[20px] items-center">
+    {services.map((item) => <ServicioItem {...item} />)}
+  </Container>
+</section>

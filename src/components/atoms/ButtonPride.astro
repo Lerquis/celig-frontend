@@ -1,0 +1,79 @@
+---
+const { customClass } = Astro.props;
+---
+
+<button
+  class={`bg-black text-white font-semibold py-3 px-6 rounded-[4px] relative overflow-hidden cursor-pointer
+  ${customClass}
+  buttonAnimation montreg text-[12px]`}
+>
+  <div
+    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-red-500 opacity-0 transform -translate-x-full"
+  >
+  </div>
+  <div
+    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-orange-500 opacity-0 transform -translate-x-full"
+  >
+  </div>
+  <div
+    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-yellow-500 opacity-0 transform -translate-x-full"
+  >
+  </div>
+  <div
+    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-green-500 opacity-0 transform -translate-x-full"
+  >
+  </div>
+  <div
+    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-blue-500 opacity-0 transform -translate-x-full"
+  >
+  </div>
+  <div
+    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-purple-500 opacity-0 transform -translate-x-full"
+  >
+  </div>
+
+  <div
+    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-black opacity-0 transform -translate-x-full"
+  >
+  </div>
+  <slot />
+</button>
+
+<script>
+  import gsap from "gsap";
+  const prideButtons = document.querySelectorAll(".buttonAnimation");
+
+  const handleEnter = (event: any) => {
+    const buttonHovered = event.srcElement;
+    const colorStripes = [...buttonHovered.querySelectorAll(".color-stripe")];
+    const lastIndex = colorStripes.length - 1;
+    const lastElement = colorStripes[lastIndex];
+    const others = colorStripes.slice(0, lastIndex);
+
+    gsap.fromTo(
+      others,
+      { x: -100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 0.5,
+        duration: 0.3,
+        stagger: 0.1,
+      }
+    );
+
+    gsap.fromTo(
+      lastElement,
+      { x: -100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.3,
+        delay: 0.1 * lastIndex, // espera a que los demás terminen
+      }
+    );
+  };
+
+  prideButtons.forEach((button) => {
+    button.addEventListener("mouseenter", handleEnter);
+  });
+</script>

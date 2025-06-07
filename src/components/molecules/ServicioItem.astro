@@ -1,0 +1,17 @@
+---
+import ButtonPride from "../atoms/ButtonPride.astro";
+import Parragraph from "../atoms/Parragraph.astro";
+
+const { label, href } = Astro.props;
+---
+
+<div
+  class="col-start-1 col-span-4 grid grid-cols-[1fr_1fr] items-center border-b-[1px] pb-[20px] border-dashed border-black"
+>
+  <Parragraph text={label} customClass="" />
+  <ButtonPride customClass="w-fit h-fit justify-self-end">
+    <span class="relative z-10">
+      <a {href} class="text-white no-underline">Leer mas</a>
+    </span>
+  </ButtonPride>
+</div>

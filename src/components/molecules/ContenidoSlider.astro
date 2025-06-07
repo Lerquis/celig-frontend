@@ -1,0 +1,39 @@
+---
+const { right, images } = Astro.props;
+---
+
+<div
+  class={`${right ? "translate-x-[75%] slider-right" : "translate-x-[-350%] slider-left"} flex gap-[100px] `}
+>
+  {
+    images.map((src: string) => (
+      <img
+        src={src}
+        alt={src}
+        class="h-[250px] w-[250px] min-w-[250px] object-cover shrink-0"
+      />
+    ))
+  }
+</div>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/all";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const leftSlider = document.querySelector(".slider-left");
+  const rightSlider = document.querySelector(".slider-right");
+  const sectionContent = document.querySelector(".content-section");
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: sectionContent,
+      start: "top top",
+      end: "+=1000",
+      scrub: true,
+      markers: true,
+      pin: true,
+    },
+  });
+</script>

@@ -1,0 +1,55 @@
+---
+import Container from "../atoms/Container.astro";
+import SectionTitle from "../atoms/SectionTitle.astro";
+import TestimonialItem from "../molecules/TestimonialItem.astro";
+
+const testimonials = [
+  {
+    src: "/Testimonio1.jpeg",
+    names: "Andrea y Riselda",
+    content: `Encontrar a alguien que oficiara nuestra boda en Costa Rica fue un reto como pareja del 
+    mismo sexo. Pero al descubrir a Ana Isabel Sibaja Rojas, todo cambió. Su apoyo y apertura marcaron 
+    la diferencia.`,
+  },
+  {
+    src: "/Testimonio2.jpg",
+    names: "José y Luis Ángel",
+    content: `Muy agradecidos de todo lo que ha hecho por nosotros.Dos extranjerxs que vinieron 
+    exclusivamente a casarse.`,
+  },
+  {
+    src: "/Testimonio3.webp",
+    names: "Michelle y Heidy",
+    content: `Gracias Ana, estamos agradecidas por toda su ayuda con las recomendaciones para que 
+    nuestra boda fuera todo un sueño que se hizo realidad. Muy amable, encantadora y profesional, 
+    nos encantó.`,
+  },
+  {
+    src: "/Testimonio4.webp",
+    names: "John y Ariel",
+    content: `Linda Experiencia Ana Isabel, gracias por la hospitalidad y el amor brindado, se siente 
+    la buena vibra y el amor al entrar en tus oficinas, en tu espacio y en tu atmósfera. Estamos 
+    grandemente agradecidos, ¡Eres lo máximo, somos lo máximo!`,
+  },
+];
+---
+
+<section class="mb-[200px] space-y-[100px]">
+  <Container fullWidth={false} customClass="space-y-[-50px]">
+    <SectionTitle title="Historias de" customClass="col-start-1 col-span-4" />
+    <SectionTitle
+      title="Nuestros"
+      serif={true}
+      customClass="col-start-2 col-span-4"
+    />
+    <SectionTitle
+      title="Clientes"
+      serif={true}
+      customClass="col-start-1 col-span-4"
+    />
+  </Container>
+
+  <Container customClass="space-y-[20px]">
+    {testimonials.map((item) => <TestimonialItem {...item} />)}
+  </Container>
+</section>

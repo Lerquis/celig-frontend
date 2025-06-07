@@ -1,0 +1,51 @@
+---
+import ButtonPride from "../atoms/ButtonPride.astro";
+import Container from "../atoms/Container.astro";
+import SectionTitle from "../atoms/SectionTitle.astro";
+import ContenidoSlider from "../molecules/ContenidoSlider.astro";
+
+const images = [
+  "Testimonio1.jpeg",
+  "Testimonio2.jpg",
+  "Testimonio3.webp",
+  "Testimonio4.webp",
+];
+---
+
+<section class="mb-[200px] space-y-[100px] content-section">
+  <Container fullWidth={false} customClass="space-y-[-50px]">
+    <SectionTitle title="Nuestro" customClass="col-start-1 col-span-4" />
+    <SectionTitle
+      title="Contenido"
+      serif={true}
+      customClass="col-start-2 col-span-4"
+    />
+  </Container>
+
+  <div class="flex flex-col gap-2 overflow-hidden">
+    <ContenidoSlider right={true} images={images} />
+    <ContenidoSlider images={images} />
+  </div>
+
+  <Container>
+    <div class="col-start-1 col-span-4 space-y-[30px]">
+      <p class="montreg">
+        Además de nuestra <span class="rosdcel text-[18px] tracking-[1px]"
+          >galería visual,</span
+        > contamos con un espacio de <span
+          class="rosdcel text-[18px] tracking-[1px]">blogs y noticias</span
+        > donde tratamos temas <span class="rosdcel text-[18px] tracking-[1px]">
+          legales, migratorios y familiares</span
+        > relevantes para nuestra comunidad.
+      </p>
+
+      <ButtonPride customClass="float-end w-[150px]">
+        <span class="relative z-10">
+          <a href="/contenido-multimedia" class="text-white no-underline"
+            >Ver más</a
+          >
+        </span>
+      </ButtonPride>
+    </div>
+  </Container>
+</section>
