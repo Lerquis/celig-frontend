@@ -3,7 +3,7 @@ const { right, images } = Astro.props;
 ---
 
 <div
-  class={`${right ? "translate-x-[75%] slider-right" : "translate-x-[-300%] slider-left"} flex gap-[100px] `}
+  class={`${right ? "translate-x-[75vw] slider-right" : "translate-x-[-1100px] md:translate-x-[-1100px] slider-left"} flex gap-[100px] `}
 >
   {
     images.map((src: string) => (

@@ -3,7 +3,7 @@
   class="grid-overlay pointer-events-none fixed inset-0 z-[9999] hidden"
 >
   <div
-    class="mx-auto h-full w-full max-w-[1920px] max-w-screen-4xl md:px-[80px] px-[20px]"
+    class="mx-auto h-full w-full max-w-[1920px] max-w-screen-4xl md:px-[40px] px-[20px] xl:px-[80px]"
   >
     <div
       id="gridColumns"
@@ -84,8 +84,8 @@
   function updateGridByScreenSize() {
     const width = window.innerWidth;
     let columns = 4;
-    if (width > 767 && width < 1279) columns = 8;
-    if (width > 1280) {
+    if (width > 767 && width <= 1279) columns = 8;
+    if (width >= 1280) {
       columns = 12;
     }
     renderGridColumns(columns);

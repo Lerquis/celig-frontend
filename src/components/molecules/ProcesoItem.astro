@@ -5,7 +5,13 @@ import ProcesoTitle from "../atoms/ProcesoTitle.astro";
 const { title, parragraph, index } = Astro.props;
 ---
 
-<div class="col-start-1 col-span-4 border-b-[1px] pb-[50px] border-black">
+<div
+  class={`col-start-1 col-span-4 border-b-[1px] pb-[50px] border-black
+  ${index % 2 ? "md:col-start-2 md:col-span-7" : "md:col-span-7"}
+
+
+`}
+>
   <ProcesoTitle index={index} title={title} />
   <Parragraph
     text={parragraph}

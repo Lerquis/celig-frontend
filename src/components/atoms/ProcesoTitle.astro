@@ -6,19 +6,19 @@ const isOdd = index % 2;
 {
   isOdd ? (
     <div class="grid grid-cols-[1fr_3fr] gap-[20px] items-center">
-      <span class="col-start-1 col-span-1 text-left rosdcel text-[100px]">
+      <span class="col-start-1 col-span-1 text-left rosdcel text-[100px] md:text-[120px]">
         {index + 1}
       </span>
-      <h3 class="col-start-2 col-span-4 roblight text-[36px] tracking-[-3px] leading-[35px] text-right">
+      <h3 class="col-start-2 col-span-4 roblight text-[36px] md:text-[48px] md:leading-[40px] tracking-[-3px] leading-[35px] text-right">
         {title}
       </h3>
     </div>
   ) : (
     <div class="grid grid-cols-[3fr_1fr] gap-[20px] items-center">
-      <h3 class="col-start-1 col-span-3 roblight text-[36px] tracking-[-3px] leading-[35px]">
+      <h3 class="col-start-1 col-span-3 roblight text-[36px] md:text-[48px] md:leading-[40px] tracking-[-3px] leading-[35px]">
         {title}
       </h3>
-      <span class="col-start-4 col-span-4 text-right rosdcel text-[100px]">
+      <span class="col-start-4 col-span-4 text-right rosdcel text-[100px] md:text-[120px]">
         {index + 1}
       </span>
     </div>

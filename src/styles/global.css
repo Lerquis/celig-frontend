@@ -174,6 +174,20 @@
   );
 }
 
+@media (min-width: 768px) {
+  .customGradient {
+    background: linear-gradient(
+      to right,
+      #e40303 0%,
+      #ff8c00 16%,
+      #ffed00 32%,
+      #008026 48%,
+      #004dff 66%,
+      #750787 83%
+    );
+  }
+}
+
 .rosdnl {
   font-family: "Roslindale-DNL";
 }
