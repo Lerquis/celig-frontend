@@ -1,0 +1,8 @@
+---
+const { title, content } = Astro.props;
+---
+
+<div class="col-start-1 col-span-4">
+  <h3 class="uppercase mb-[10px] rosdcel text-[28px]">{title}</h3>
+  {content ? <p>{content}</p> : <slot />}
+</div>

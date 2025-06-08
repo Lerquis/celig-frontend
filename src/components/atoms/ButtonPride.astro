@@ -1,39 +1,41 @@
 ---
-const { customClass } = Astro.props;
+const { customClass, white } = Astro.props;
 ---
 
 <button
-  class={`bg-black text-white font-semibold py-3 px-6 rounded-[4px] relative overflow-hidden cursor-pointer
+  class={`${white ? "bg-white text-black" : "bg-black text-white "}
+  font-semibold py-3 px-6 rounded-[4px] relative overflow-hidden cursor-pointer
   ${customClass}
   buttonAnimation montreg text-[12px]`}
 >
   <div
-    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-red-500 opacity-0 transform -translate-x-full"
+    class="color-stripe absolute top-0 left-0 w-full h-full bg-red-500 opacity-0 transform -translate-x-full"
   >
   </div>
   <div
-    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-orange-500 opacity-0 transform -translate-x-full"
+    class="color-stripe absolute top-0 left-0 w-full h-full bg-orange-500 opacity-0 transform -translate-x-full"
   >
   </div>
   <div
-    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-yellow-500 opacity-0 transform -translate-x-full"
+    class="color-stripe absolute top-0 left-0 w-full h-full bg-yellow-500 opacity-0 transform -translate-x-full"
   >
   </div>
   <div
-    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-green-500 opacity-0 transform -translate-x-full"
+    class="color-stripe absolute top-0 left-0 w-full h-full bg-green-500 opacity-0 transform -translate-x-full"
   >
   </div>
   <div
-    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-blue-500 opacity-0 transform -translate-x-full"
+    class="color-stripe absolute top-0 left-0 w-full h-full bg-blue-500 opacity-0 transform -translate-x-full"
   >
   </div>
   <div
-    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-purple-500 opacity-0 transform -translate-x-full"
+    class="color-stripe absolute top-0 left-0 w-full h-full bg-purple-500 opacity-0 transform -translate-x-full"
   >
   </div>
 
   <div
-    class="color-stripe absolute top-0 left-0 w-full h-full rounded-t-[10px] rounded-b-[10px] bg-black opacity-0 transform -translate-x-full"
+    class={`color-stripe absolute top-0 left-0 w-full h-full
+    ${white ? "bg-white" : "bg-black"} opacity-0 transform -translate-x-full`}
   >
   </div>
   <slot />

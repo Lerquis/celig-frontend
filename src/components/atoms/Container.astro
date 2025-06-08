@@ -3,9 +3,9 @@ const { fullWidth, customClass } = Astro.props;
 ---
 
 <div
-  class={`grid gap-[20px] grid-cols-4 sm:grid-cols-12 ${customClass} ${
+  class={`grid gap-[20px] grid-cols-4 md:grid-cols-8 xl:grid-cols-12 ${customClass} ${
     !fullWidth
-      ? "max-w-[1920px] max-w-screen-4xl sm:px-[80px] px-[20px]"
+      ? "max-w-[1920px] max-w-screen-4xl md:px-[80px] px-[20px]"
       : "w-full"
   }`}
 >

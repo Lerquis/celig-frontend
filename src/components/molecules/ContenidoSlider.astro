@@ -3,7 +3,7 @@ const { right, images } = Astro.props;
 ---
 
 <div
-  class={`${right ? "translate-x-[75%] slider-right" : "translate-x-[-350%] slider-left"} flex gap-[100px] `}
+  class={`${right ? "translate-x-[75%] slider-right" : "translate-x-[-300%] slider-left"} flex gap-[100px] `}
 >
   {
     images.map((src: string) => (
@@ -26,14 +26,14 @@ const { right, images } = Astro.props;
   const rightSlider = document.querySelector(".slider-right");
   const sectionContent = document.querySelector(".content-section");
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: sectionContent,
-      start: "top top",
-      end: "+=1000",
-      scrub: true,
-      markers: true,
-      pin: true,
-    },
-  });
+  // const tl = gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: sectionContent,
+  //     start: "top top",
+  //     end: "+=1000",
+  //     scrub: true,
+  //     markers: true,
+  //     pin: true,
+  //   },
+  // });
 </script>
