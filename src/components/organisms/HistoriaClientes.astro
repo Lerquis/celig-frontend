@@ -43,16 +43,16 @@ const testimonials = [
     <SectionTitle
       title="Nuestros"
       serif={true}
-      customClass="col-start-2 col-span-3 "
+      customClass="col-start-2 col-span-3"
     />
     <SectionTitle
       title="Clientes"
       serif={true}
-      customClass="col-start-1 col-span-4 md:col-start-3 md:col-span-5"
+      customClass="col-start-1 col-span-4 md:col-start-3"
     />
   </Container>
 
   <Container customClass="space-y-[20px]">
-    {testimonials.map((item) => <TestimonialItem {...item} />)}
+    {testimonials.map((item, index) => <TestimonialItem {...item} {index} />)}
   </Container>
 </section>

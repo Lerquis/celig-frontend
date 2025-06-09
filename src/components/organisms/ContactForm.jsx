@@ -31,7 +31,7 @@ export function ContactForm({ children }) {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
-          className="col-start-1 col-span-4 md:col-span-8 space-y-[30px]"
+          className="col-start-1 col-span-4 md:col-span-8 space-y-[50px] xl:col-span-6"
         >
           <ContactFormField
             name="name"

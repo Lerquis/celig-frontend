@@ -11,19 +11,19 @@ export const ContactFormField = ({ form, isLoading, name, label, type }) => {
       render={({ field }) => (
         <FormItem>
           <FormControl />
-          <FormLabel className="uppercase mb-[10px] rosdcel text-[28px]">
+          <FormLabel className="uppercase rosdcel text-[28px]">
             {label}
           </FormLabel>
           {type === "textarea" ? (
             <Textarea
               {...field}
-              className="min-h-[100px] !bg-transparent !border-b-[1px] border-0 rounded-none"
+              className="min-h-[100px] !bg-transparent !border-b-[1px] border-0 rounded-none montreg"
             />
           ) : (
             <Input
               type={type}
               {...field}
-              className={`!bg-transparent !border-b-[1px] border-0 rounded-none`}
+              className={`!bg-transparent !border-b-[1px] border-0 rounded-none montreg`}
             />
           )}
         </FormItem>

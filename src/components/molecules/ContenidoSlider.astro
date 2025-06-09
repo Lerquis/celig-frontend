@@ -2,18 +2,21 @@
 const { right, images } = Astro.props;
 ---
 
-<div
-  class={`${right ? "translate-x-[75vw] slider-right" : "translate-x-[-1100px] md:translate-x-[-1100px] slider-left"} flex gap-[100px] `}
->
-  {
-    images.map((src: string) => (
-      <img
-        src={src}
-        alt={src}
-        class="h-[250px] w-[250px] min-w-[250px] object-cover shrink-0"
-      />
-    ))
-  }
+<div class="relative overflow-hidden h-[250px]">
+  <div
+    class={`absolute top-0 flex gap-[100px] transition-transform duration-500
+    ${right ? "right-[-80%]" : "left-[-80%]"}`}
+  >
+    {
+      images.map((src: string) => (
+        <img
+          src={src}
+          alt={src}
+          class="h-[250px] w-[250px] min-w-[250px] object-cover shrink-0"
+        />
+      ))
+    }
+  </div>
 </div>
 
 <script>

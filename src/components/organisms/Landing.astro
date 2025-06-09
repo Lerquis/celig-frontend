@@ -5,15 +5,17 @@ import CleanLogo from "../atoms/CleanLogo.astro";
 import FlagLine from "../atoms/FlagLine.astro";
 ---
 
-<section class="h-[100dvh] w-screen relative py-4 overflow-hidden">
+<section class="h-[100dvh] relative py-4 overflow-hidden">
   <img
     src="/HeroImage2.jpg"
-    class="w-full h-full object-cover absolute top-0 z-[-1] brightness-50"
+    class="w-screen h-full object-cover absolute top-0 z-[-1] brightness-50"
   />
   <Container fullWidth={false} customClass="items-start pb-8 md:h-[80dvh]">
     <div class="flex gap-2 items-center col-start-1 col-span-3">
-      <CleanLogo width="w-[75px] md:w-[100px]" />
-      <p class="text-[48px] md:text-[96px] text-white font-bold montreg">
+      <CleanLogo width="w-[75px] md:w-[100px] xl:w-[125px]" />
+      <p
+        class="text-[48px] md:text-[96px] xl:text-[128px] text-white font-bold montreg"
+      >
         CELIG
       </p>
     </div>
@@ -25,7 +27,7 @@ import FlagLine from "../atoms/FlagLine.astro";
     <p class="text-white rosdnl uppercase text-[20px] col-start-1 col-span-3">
       Bufete de abogacia especializado en derechos lgbtiq+
     </p>
-    <div class="col-start-4 col-span-4 hidden md:flex">
+    <div class="col-start-4 col-span-4 hidden md:flex xl:col-span-8">
       <FlagLine />
     </div>
     <MoveDown

@@ -28,7 +28,9 @@ const images = [
   </div>
 
   <Container>
-    <div class="col-start-1 col-span-4 space-y-[30px] md:col-span-8">
+    <div
+      class="col-start-1 col-span-4 space-y-[30px] md:col-span-8 xl:col-start-3 xl:col-span-7"
+    >
       <p class="montreg md:text-[20px]">
         Además de nuestra <span
           class="rosdcel text-[18px] md:text-[22px] tracking-[1px]"
@@ -43,7 +45,7 @@ const images = [
         > relevantes para nuestra comunidad.
       </p>
 
-      <ButtonPride customClass="float-end w-[150px]">
+      <ButtonPride customClass="float-end w-[150px] xl:hidden">
         <span class="relative z-10">
           <a href="/contenido-multimedia" class="text-white no-underline"
             >Ver más</a
@@ -51,5 +53,15 @@ const images = [
         </span>
       </ButtonPride>
     </div>
+
+    <ButtonPride
+      customClass="float-end w-[150px] hidden xl:flex xl:justify-center xl:col-start-11 xl:col-span-2 xl:h-fit xl:self-end xl:justify-self-end xl:translate-y-[-30px]"
+    >
+      <span class="relative z-10">
+        <a href="/contenido-multimedia" class="text-white no-underline"
+          >Ver más</a
+        >
+      </span>
+    </ButtonPride>
   </Container>
 </section>

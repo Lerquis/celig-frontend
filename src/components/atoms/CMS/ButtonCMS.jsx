@@ -16,10 +16,6 @@ export const ButtonCMS = ({
       className={`cursor-pointer ${customClass}`}
       disabled={loading}
       variant={variant || "default"}
-      // onClick="hola()"
-      // onClick={() => {
-      //   console.log("asd");
-      // }}
     >
       {loading && <Loader />}
       {text ? text : children}

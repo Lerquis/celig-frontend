@@ -28,16 +28,23 @@ const processes = [
 ---
 
 <section class="mb-[200px] space-y-[100px]">
-  <Container fullWidth={false} customClass="space-y-[-50px] md:space-y-[-80px]">
-    <SectionTitle title="Nuestro" customClass="col-start-1 col-span-4" />
+  <Container fullWidth={false} customClass="space-y-[-50px] md:space-y-[-55px]">
+    <SectionTitle
+      title="Nuestro"
+      customClass="col-start-1 col-span-4 md:hidden"
+    />
     <SectionTitle
       title="Proceso"
       serif={true}
-      customClass="col-start-2 col-span-1 md:col-start-5 md:col-span-3 md:pl-[10px] text-right md:text-left"
+      customClass="col-start-2 col-span-1 text-right md:hidden"
     />
+    <div class="md:col-start-1 md:col-span-8 md:flex gap-[10px] hidden">
+      <SectionTitle title="Nuestro" customClass="" />
+      <SectionTitle title="Proceso" serif={true} customClass=" md:text-left" />
+    </div>
     <SectionTitle
       title="Se basa en"
-      customClass="col-start-1 col-span-3 text-right md:col-start-3 md:col-span-5"
+      customClass="col-start-1 col-span-3 text-right md:col-start-3 md:col-span-5 md:leading-[80px]"
     />
   </Container>
 

@@ -6,7 +6,9 @@ const { title1Sans, title1Serif, title2Sans, title2Serif, parragraph } =
   Astro.props;
 ---
 
-<div class="col-start-1 col-span-4 md:col-span-8 space-y-[25px] text-center">
+<div
+  class="col-start-1 col-span-4 md:col-span-8 space-y-[25px] text-center xl:col-span-12 xl:w-[70%] 2xl:w-[50%] xl:mx-auto"
+>
   <div class="space-y-[-20px]">
     <ItemTitle title1Sans={title1Sans} title1Serif={title1Serif} />
     {
