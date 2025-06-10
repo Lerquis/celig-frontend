@@ -1,14 +1,13 @@
 ---
 import Container from "../atoms/Container.astro";
 import MenuBar from "../atoms/MenuBar.astro";
-import MenuCol from "../atoms/MenuCol.astro";
 import NavSocial from "../atoms/NavSocial.astro";
 
 const links = [
   { label: "Contenido", href: "/contenido" },
-  { label: "Servicios", href: "/contenido" },
-  { label: "Testimonios", href: "/contenido" },
-  { label: "Contacto", href: "/contenido" },
+  { label: "Servicios", href: "./#servicios" },
+  { label: "Testimonios", href: "/testimonios" },
+  { label: "Contacto", href: "../#contacto" },
 ];
 
 const socials = [
@@ -18,11 +17,15 @@ const socials = [
   { label: "Spotify", href: "" },
   { label: "LinkedIn", href: "" },
 ];
+
+const directions = [
+  "Edificio SIGMA",
+  "Segundo piso San Pedro",
+  "Montes de Oca",
+  "Costado Oeste del Mall San Pedro",
+];
 ---
 
-<div class="logo absolute top-2 left-2">
-  <a href="#">CELIG</a>
-</div>
 <div
   class={`fixed top-2 right-2 w-[120px] h-[60px] bg-black rounded-[1000px] origin-right cursor-pointer z-[100]
 menu-toggle closed `}
@@ -43,7 +46,7 @@ menu-toggle closed `}
 </div>
 
 <Container
-  customClass="bg-black fixed top-0 left-0 h-[100vh] w-[100vw] menu z-[10] pointer-events-none perspective-[1000px] text-white"
+  customClass="bg-black/95 fixed top-0 left-0 h-[100vh] w-[100vw] menu z-[10] pointer-events-none perspective-[1000px] text-white "
 >
   <div class="col-start-1 col-span-3 pt-[50px] xl:pt-[150px]">
     {
@@ -65,26 +68,13 @@ menu-toggle closed `}
   >
     <div class="flex justify-between">
       <div>
-        <p
-          class="text-white translate-y-[30px] opacity-0 uppercase text-[12px]"
-        >
-          Edificio SIGMA
-        </p>
-        <p
-          class="text-white translate-y-[30px] opacity-0 uppercase text-[12px]"
-        >
-          Segundo piso San Pedro
-        </p>
-        <p
-          class="text-white translate-y-[30px] opacity-0 uppercase text-[12px]"
-        >
-          Montes de Oca
-        </p>
-        <p
-          class="text-white translate-y-[30px] opacity-0 uppercase text-[12px]"
-        >
-          Costado Oeste del Mall San Pedro
-        </p>
+        {
+          directions.map((dir) => (
+            <p class="text-white translate-y-[30px] opacity-0 uppercase text-[12px] montreg">
+              {dir}
+            </p>
+          ))
+        }
       </div>
       <div>
         {socials.map((social) => <NavSocial {...social} />)}
@@ -93,14 +83,18 @@ menu-toggle closed `}
 
     <div>
       <p
-        class="text-white translate-y-[30px] opacity-0 uppercase text-[12px] mb-[30px]"
+        class="text-white translate-y-[30px] opacity-0 uppercase text-[12px] mb-[30px] montreg"
       >
         info@celigcr.com
       </p>
-      <p class="text-white translate-y-[30px] opacity-0 uppercase text-[12px]">
+      <p
+        class="text-white translate-y-[30px] opacity-0 uppercase text-[12px] montreg"
+      >
         +506 8334 6441
       </p>
-      <p class="text-white translate-y-[30px] opacity-0 uppercase text-[12px]">
+      <p
+        class="text-white translate-y-[30px] opacity-0 uppercase text-[12px] montreg"
+      >
         +506 4001 6439
       </p>
     </div>
@@ -145,94 +139,109 @@ menu-toggle closed `}
 
     splitTextIntoSpans(".header h1");
 
+    const openMenuAnimation = () => {
+      document.querySelector("body")?.classList.add("overflow-hidden");
+      menuToggle.classList.remove("closed");
+      menuToggle.classList.add("opened");
+
+      isAnimating = true;
+
+      gsap.to(menu, {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+        ease: "hop",
+        duration: 1.5,
+        onStart: () => {
+          menu.style.pointerEvents = "all";
+        },
+        onComplete: () => {
+          isAnimating = false;
+        },
+      });
+
+      // Animate main links when opening
+      gsap.to(links, {
+        y: 0,
+        opacity: 1,
+        stagger: 0.1,
+        delay: 0.85,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      // Animate social links when opening
+      gsap.to(socialLinks, {
+        y: 0,
+        opacity: 1,
+        stagger: 0.05,
+        delay: 0.85,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      // Animate header text rotation
+      gsap.to(".header h1 span", {
+        rotateY: 0,
+        stagger: 0.05,
+        delay: 0.75,
+        duration: 1.5,
+        ease: "power4.out",
+      });
+
+      // Animate header text vertical movement
+      gsap.to(".header h1 span", {
+        y: 0,
+        scale: 1,
+        stagger: 0.05,
+        delay: 0.5,
+        duration: 1.5,
+        ease: "power4.out",
+      });
+      return;
+    };
+
+    const closeMenuAnimation = () => {
+      document.querySelector("body")?.classList.remove("overflow-hidden");
+      menuToggle.classList.remove("opened");
+      menuToggle.classList.add("closed");
+
+      isAnimating = true;
+
+      gsap.to(menu, {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+        ease: "hop",
+        duration: 1.5,
+        onComplete: () => {
+          menu.style.pointerEvents = "none";
+          gsap.set(menu, {
+            clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+          });
+
+          gsap.set(links, { y: 30, opacity: 0 });
+          gsap.set(socialLinks, { y: 30, opacity: 0 });
+
+          gsap.set(".header h1 span", {
+            y: 500,
+            rotateY: 90,
+            scale: 0.8,
+          });
+
+          isAnimating = false;
+        },
+      });
+      return;
+    };
+
+    links.forEach((element) => {
+      element.addEventListener("click", () => {
+        closeMenuAnimation();
+      });
+    });
+
     menuToggle.addEventListener("click", () => {
       if (isAnimating) return;
 
-      if (menuToggle.classList.contains("closed")) {
-        menuToggle.classList.remove("closed");
-        menuToggle.classList.add("opened");
-
-        isAnimating = true;
-
-        gsap.to(menu, {
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-          ease: "hop",
-          duration: 1.5,
-          onStart: () => {
-            menu.style.pointerEvents = "all";
-          },
-          onComplete: () => {
-            isAnimating = false;
-          },
-        });
-
-        // Animate main links when opening
-        gsap.to(links, {
-          y: 0,
-          opacity: 1,
-          stagger: 0.1,
-          delay: 0.85,
-          duration: 1,
-          ease: "power3.out",
-        });
-
-        // Animate social links when opening
-        gsap.to(socialLinks, {
-          y: 0,
-          opacity: 1,
-          stagger: 0.05,
-          delay: 0.85,
-          duration: 1,
-          ease: "power3.out",
-        });
-
-        // Animate header text rotation
-        gsap.to(".header h1 span", {
-          rotateY: 0,
-          stagger: 0.05,
-          delay: 0.75,
-          duration: 1.5,
-          ease: "power4.out",
-        });
-
-        // Animate header text vertical movement
-        gsap.to(".header h1 span", {
-          y: 0,
-          scale: 1,
-          stagger: 0.05,
-          delay: 0.5,
-          duration: 1.5,
-          ease: "power4.out",
-        });
-      } else {
-        menuToggle.classList.remove("opened");
-        menuToggle.classList.add("closed");
-
-        isAnimating = true;
-
-        gsap.to(menu, {
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-          ease: "hop",
-          duration: 1.5,
-          onComplete: () => {
-            menu.style.pointerEvents = "none";
-            gsap.set(menu, {
-              clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-            });
-
-            gsap.set(links, { y: 30, opacity: 0 });
-            gsap.set(socialLinks, { y: 30, opacity: 0 });
-
-            gsap.set(".header h1 span", {
-              y: 500,
-              rotateY: 90,
-              scale: 0.8,
-            });
-
-            isAnimating = false;
-          },
-        });
-      }
+      if (menuToggle.classList.contains("closed")) openMenuAnimation();
+      else closeMenuAnimation();
     });
   });
 </script>
