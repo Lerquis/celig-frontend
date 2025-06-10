@@ -188,6 +188,125 @@
   }
 }
 
+.menu-toggle {
+  transition: width 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.menu-toggle:hover .menu-copy {
+  left: 20px;
+}
+
+.menu-toggle-icon {
+  clip-path: circle(10% at 50% 50%);
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.menu-toggle.opened .menu-toggle-icon {
+  clip-path: circle(50% at 50% 50%);
+  transform: scale(1.125);
+}
+
+.menu-toggle.opened {
+  width: 60px;
+}
+
+.menu-toggle.opened .menu-copy {
+  opacity: 0;
+}
+
+.menu-toggle-icon {
+  position: absolute;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  clip-path: circle(10% at 50% 50%);
+  background-color: white;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.menu-toggle:hover .menu-toggle-icon {
+  clip-path: circle(35% at 50% 50%);
+}
+
+.hamburger {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  opacity: 0;
+}
+
+.menu-toggle:hover .hamburger,
+.menu-toggle.opened .hamburger {
+  top: 50%;
+  opacity: 1;
+}
+
+.menu-bar {
+  transition-property: transform;
+  transition: all 250ms ease-out;
+}
+
+.menu-toggle.opened .menu-bar[data-position="top"] {
+  transform: translateY(3px) rotate(45deg) scaleX(1.05);
+}
+
+.menu-toggle.opened .menu-bar[data-position="bottom"] {
+  transform: translateY(-3px) rotate(-45deg) scaleX(1.05);
+}
+
+.menu-copy {
+  transition: left 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.menu {
+  clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+  transform-style: preserve-3d;
+}
+
+.header h1 span {
+  position: relative;
+  display: inline-block;
+  transform: scale(0.75) translateY(500px) rotateY(90deg);
+  transform-origin: bottom;
+}
+
+/* @media (max-width: 900px) {
+  .col-1 {
+    flex: 2;
+    align-items: flex-start;
+  }
+
+  .link a {
+    font-size: 30px;
+  }
+
+  .video-wrapper {
+    padding: 0.4em;
+  }
+
+  .socials {
+    width: 100%;
+    flex-direction: column;
+    gap: 8em;
+  }
+
+  .header h1 {
+    font-size: 150px;
+    height: 120px;
+  }
+} */
+
+/* !Fonts! */
 .rosdnl {
   font-family: "Roslindale-DNL";
 }

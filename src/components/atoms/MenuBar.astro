@@ -1,0 +1,11 @@
+---
+const { position } = Astro.props;
+---
+
+<div
+  class={`absolute w-[15px] h-[1.5px] bg-black ${position === "top" ? "translate-y-[-3px]" : "translate-y-[3px]"}
+
+menu-bar`}
+  data-position={position}
+>
+</div>
