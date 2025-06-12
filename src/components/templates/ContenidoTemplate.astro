@@ -1,0 +1,20 @@
+---
+export const prerender = true;
+
+import Container from "../atoms/Container.astro";
+import SectionTitle from "../atoms/SectionTitle.astro";
+import Footer from "../organisms/Footer.astro";
+---
+
+<section class="pt-24 space-y-[50px] xl:space-y-[100px]">
+  <Container fullWidth={false} customClass="space-y-[-50px] md:space-y-[-80px]">
+    <SectionTitle title="Nuestro" customClass="col-start-1 col-span-4" />
+    <SectionTitle
+      title="Contenido"
+      serif={true}
+      customClass="col-start-2 col-span-3"
+    />
+  </Container>
+
+  <Footer />
+</section>

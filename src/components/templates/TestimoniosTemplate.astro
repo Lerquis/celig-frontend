@@ -1,0 +1,46 @@
+---
+export const prerender = true;
+
+import { testimonialApi } from "@/api";
+import Container from "../atoms/Container.astro";
+import SectionTitle from "../atoms/SectionTitle.astro";
+import TestimonialItem from "../molecules/TestimonialItem.astro";
+import Footer from "../organisms/Footer.astro";
+
+const response = await testimonialApi.getTestimonials();
+const testimonials = response.body.testimonials;
+---
+
+<section class="pt-24 space-y-[50px] xl:space-y-[100px]">
+  <Container fullWidth={false} customClass="space-y-[-50px] md:space-y-[-80px]">
+    <SectionTitle
+      title="Historias de"
+      customClass="col-start-1 col-span-4 md:col-span-8"
+    />
+    <SectionTitle
+      title="Nuestros"
+      serif={true}
+      customClass="col-start-2 col-span-3"
+    />
+    <SectionTitle
+      title="Clientes"
+      serif={true}
+      customClass="col-start-1 col-span-4 md:col-start-3"
+    />
+  </Container>
+
+  <Container customClass="space-y-[20px]">
+    {
+      testimonials.map((item: any, index: number) => (
+        <TestimonialItem
+          src={item.imageUrl}
+          names={item.names}
+          content={item.content}
+          {index}
+        />
+      ))
+    }
+  </Container>
+
+  <Footer />
+</section>

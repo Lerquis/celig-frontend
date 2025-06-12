@@ -1,5 +1,6 @@
 ---
-export const prerender = false;
+export const prerender = true;
+export const revalidate = 1;
 
 import { blogApi } from "@/api";
 import Background from "@/components/atoms/General/Background.astro";
@@ -7,14 +8,15 @@ import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
 import BlogsSlugTemplate from "@/components/templates/BlogsSlugTemplate.astro";
 import Layout from "@/layouts/Layout.astro";
 
-const { slug } = Astro.params;
+export async function getStaticPaths() {
+  const blogs = await blogApi.getBlogsByTag();
+  return blogs.body.blogs.map((blog: any) => ({
+    params: { slug: blog.slug },
+    props: blog,
+  }));
+}
 
-const response = await blogApi.getBlogsByTag();
-const blogInformation = response.body.blogs.find(
-  (b: { slug: string }) => b.slug === slug
-);
-
-if (!blogInformation) return Astro.redirect("/");
+const blogInformation = Astro.props as any;
 ---
 
 <Layout title={`CELIG - ${blogInformation.title}`}>

@@ -1,15 +1,13 @@
 ---
-import Container from "@/components/atoms/Container.astro";
 import Background from "@/components/atoms/General/Background.astro";
-import Footer from "@/components/organisms/Footer.astro";
+import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
+import TestimoniosTemplate from "@/components/templates/TestimoniosTemplate.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="CELIG - Testimonios">
   <Background />
-  <Container>
-    <p class="col-start-1 col-span-4 min-h-[100vh]">Testimonios</p>
-  </Container>
+  <GridOverlay />
 
-  <Footer />
+  <TestimoniosTemplate />
 </Layout>
