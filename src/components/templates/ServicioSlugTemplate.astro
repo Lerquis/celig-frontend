@@ -1,0 +1,44 @@
+---
+import Parragraph from "@/components/atoms/Parragraph.astro";
+import Footer from "@/components/organisms/Footer.astro";
+import Container from "../atoms/Container.astro";
+import TitleServiceBlog from "../atoms/TitleServiceBlog.astro";
+
+const { service } = Astro.props;
+---
+
+<section class="pt-24 space-y-[50px] xl:space-y-[100px]">
+  <Container>
+    <TitleServiceBlog text={service.title} />
+  </Container>
+
+  <Container>
+    {
+      service.contenido
+        .split("\n\n")
+        .map((p: string) => (
+          <Parragraph
+            text={p}
+            customClass="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 xl:w-[70%] xl:mx-auto"
+          />
+        ))
+    }
+
+    {
+      service.slug === "derechos-lgbtq+" && (
+        <div class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 montreg tracking-[1px] text-[16px] !leading-[25px]">
+          <p>
+            Conoce el
+            <a href="/testimonios" class="cursor-pointer text-green-700">
+              testimonio
+            </a>
+            de muchos de nuestros clientes que cumplieron su sueño de un
+            matrimonio igualitario.
+          </p>
+        </div>
+      )
+    }
+  </Container>
+
+  <Footer />
+</section>

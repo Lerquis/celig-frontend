@@ -1,0 +1,9 @@
+---
+import SmallParragraph from "./SmallParragraph.astro";
+
+const { tag } = Astro.props;
+---
+
+<div class="bg-black text-white w-fit px-6 py-2 rounded-full">
+  <SmallParragraph text={tag} />
+</div>

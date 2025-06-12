@@ -1,0 +1,25 @@
+---
+export const prerender = false;
+
+import { blogApi } from "@/api";
+import Background from "@/components/atoms/General/Background.astro";
+import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
+import BlogsSlugTemplate from "@/components/templates/BlogsSlugTemplate.astro";
+import Layout from "@/layouts/Layout.astro";
+
+const { slug } = Astro.params;
+
+const response = await blogApi.getBlogsByTag();
+const blogInformation = response.body.blogs.find(
+  (b: { slug: string }) => b.slug === slug
+);
+
+if (!blogInformation) return Astro.redirect("/");
+---
+
+<Layout title={`CELIG - ${blogInformation.title}`}>
+  <Background />
+  <GridOverlay />
+
+  <BlogsSlugTemplate blog={blogInformation} />
+</Layout>

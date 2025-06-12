@@ -1,0 +1,23 @@
+---
+import { servicios } from "@/data/servicios";
+import Background from "@/components/atoms/General/Background.astro";
+import Layout from "@/layouts/Layout.astro";
+import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
+import ServicioSlugTemplate from "@/components/templates/ServicioSlugTemplate.astro";
+
+export function getStaticPaths() {
+  return servicios.map((serv) => ({ params: { slug: serv.slug } }));
+}
+
+const { slug } = Astro.params;
+const service = servicios.find((s) => s.slug === slug);
+
+if (!service) return Astro.redirect("/404");
+---
+
+<Layout title=`CELIG - ${service.title}`>
+  <Background />
+  <GridOverlay />
+
+  <ServicioSlugTemplate {service} />
+</Layout>
