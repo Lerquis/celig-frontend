@@ -11,9 +11,7 @@ export default defineConfig({
   },
   integrations: [react()],
   adapter: vercel({
-    isr: {
-      expiration: 120,
-    },
+    isr: true,
   }),
   output: "server",
 });
