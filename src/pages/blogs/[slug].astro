@@ -1,5 +1,6 @@
 ---
 export const prerender = true;
+export const revalidate = 120;
 
 import { blogApi } from "@/api";
 import Background from "@/components/atoms/General/Background.astro";
@@ -10,13 +11,10 @@ import Layout from "@/layouts/Layout.astro";
 export async function getStaticPaths() {
   console.log("entra al GSP de blogs");
   const blogs = await blogApi.getBlogsByTag();
-  return {
-    paths: blogs.body.blogs.map((blog: any) => ({
-      params: { slug: blog.slug },
-      props: blog,
-    })),
-    fallback: true,
-  };
+  return blogs.body.blogs.map((blog: any) => ({
+    params: { slug: blog.slug },
+    props: blog,
+  }));
 }
 
 const blogInformation = Astro.props as any;
