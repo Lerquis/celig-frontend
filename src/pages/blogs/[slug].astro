@@ -1,6 +1,5 @@
 ---
-// export const prerender = false;
-export const revalidate = 120;
+export const prerender = false;
 
 import { blogApi } from "@/api";
 import Background from "@/components/atoms/General/Background.astro";
@@ -8,28 +7,10 @@ import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
 import BlogsSlugTemplate from "@/components/templates/BlogsSlugTemplate.astro";
 import Layout from "@/layouts/Layout.astro";
 
-// export async function getStaticPaths() {
-//   console.log("entra al GSP de blogs");
-//   const blogs = await blogApi.getBlogsByTag();
-//   return blogs.body.blogs.map((blog: any) => ({
-//     params: { slug: blog.slug },
-//     props: blog,
-//   }));
-// }
-
-// const blogInformation = Astro.props as any;
-
-console.log("entra");
-
 const { slug } = Astro.params;
-if (!slug) return Astro.redirect("/404");
-
-const blogResponse = await blogApi.getBlogsByTag();
-console.log("llama a blogResponse");
-
-const blogInformation = blogResponse.body.blogs.find(
-  (b: any) => b.slug === slug
-);
+const response = await blogApi.getBlogsByTag();
+if (response.status !== 200) return Astro.redirect("/404");
+const blogInformation = response.body.blogs.find((b: any) => b.slug === slug);
 if (!blogInformation) return Astro.redirect("/404");
 ---
 
