@@ -10,13 +10,11 @@ import Layout from "@/layouts/Layout.astro";
 export async function getStaticPaths() {
   console.log("entra al GSP de blogs");
   const blogs = await blogApi.getBlogsByTag();
-  const blogsParams = blogs.body.blogs.map((blog: any) => ({
-    params: { slug: blog.slug },
-    props: blog,
-  }));
-
   return {
-    paths: blogsParams,
+    paths: blogs.body.blogs.map((blog: any) => ({
+      params: { slug: blog.slug },
+      props: blog,
+    })),
     fallback: true,
   };
 }
