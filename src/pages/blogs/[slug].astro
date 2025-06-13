@@ -1,6 +1,5 @@
 ---
 export const prerender = true;
-export const revalidate = 1;
 
 import { blogApi } from "@/api";
 import Background from "@/components/atoms/General/Background.astro";
@@ -9,6 +8,7 @@ import BlogsSlugTemplate from "@/components/templates/BlogsSlugTemplate.astro";
 import Layout from "@/layouts/Layout.astro";
 
 export async function getStaticPaths() {
+  console.log("entra al GSP de blogs");
   const blogs = await blogApi.getBlogsByTag();
   return blogs.body.blogs.map((blog: any) => ({
     params: { slug: blog.slug },
