@@ -10,6 +10,7 @@ import { Facebook, Instagram } from "lucide-react";
 import { XTwitter } from "../icons/XTwitter";
 import { Spotify } from "../icons/Spotify";
 import { TikTok } from "../icons/TikTok";
+import MinimalistButton from "../atoms/MinimalistButton.astro";
 ---
 
 <footer
@@ -75,13 +76,7 @@ import { TikTok } from "../icons/TikTok";
 
   <Container>
     <ContactForm client:only>
-      <button
-        type="submit"
-        class={`cursor-pointer py-3 px-6 rounded-[4px] border-[1px] border-white hover:bg-black hover:text-white bg-white
-         text-black montreg text-[12px] md:text-[16px] float-end w-[150px] transition-all ease-in`}
-      >
-        Contáctanos
-      </button>
+      <MinimalistButton type="submit" text="Contáctanos" />
     </ContactForm>
 
     <div class="hidden xl:flex col-start-7 col-span-6">

@@ -1,0 +1,85 @@
+---
+import Container from "../atoms/Container.astro";
+import ContentNavBarButton from "../atoms/ContentNavBarButton.astro";
+import MinimalistButton from "../atoms/MinimalistButton.astro";
+---
+
+<Container>
+  <div
+    class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 flex justify-between gap-2 flex-wrap"
+  >
+    <ContentNavBarButton text="Blogs" />
+    <ContentNavBarButton text="Galeria" />
+    <ContentNavBarButton text="Podcasts" />
+  </div>
+</Container>
+
+<script>
+  import gsap from "gsap";
+
+  const blogButton = document.querySelector(".content-navbar-blogs");
+  const galleryButton = document.querySelector(".content-navbar-galeria");
+  const podcastsButton = document.querySelector(".content-navbar-podcasts");
+
+  // initial state to button
+  blogButton?.classList.add("selectedNavBar");
+
+  const changeSelectedButton = (e: any) => {
+    if (!e) return;
+    const currentSelectedButton = document.querySelector(".selectedNavBar");
+    if (currentSelectedButton === e.target) return;
+    // cambiar los botones
+    currentSelectedButton?.classList.remove("selectedNavBar");
+    e.target.classList.add("selectedNavBar");
+
+    // seleccionamos el contenedor
+    const nextContainer = document.querySelector(
+      `.${e.target.dataset.container}`
+    );
+    const currentContainer = document.querySelector(
+      `.${currentSelectedButton?.getAttribute("data-container")}`
+    );
+    if (!nextContainer || !currentContainer) return;
+
+    // creamos timeline para la animacion
+    const tl = gsap.timeline();
+
+    // movemos el contenedor actual
+    tl.to(currentContainer, {
+      x: -500,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.inOut",
+      onComplete: () => {
+        // el contenedor actual lo escondemos del dom para que no estorbe
+        gsap.set(currentContainer, {
+          display: "none",
+        });
+        console.log(currentContainer);
+      },
+      // seteamos y movemos el siguiente contenedor
+    }).fromTo(
+      nextContainer,
+      {
+        display: "none",
+        opacity: 0,
+        x: 500,
+      },
+      {
+        display: "grid",
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power3.inOut",
+      }
+    );
+
+    return;
+
+    // realizamos la animacion de los contenedores
+  };
+
+  blogButton?.addEventListener("click", changeSelectedButton);
+  galleryButton?.addEventListener("click", changeSelectedButton);
+  podcastsButton?.addEventListener("click", changeSelectedButton);
+</script>

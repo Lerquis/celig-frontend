@@ -3,6 +3,10 @@ export const prerender = true;
 
 import Container from "../atoms/Container.astro";
 import SectionTitle from "../atoms/SectionTitle.astro";
+import ContenidoNavBar from "../molecules/ContenidoNavBar.astro";
+import ContenidoBlogs from "../organisms/ContenidoBlogs.astro";
+import ContenidoGaleria from "../organisms/ContenidoGaleria.astro";
+import ContenidoPodcasts from "../organisms/ContenidoPodcasts.astro";
 import Footer from "../organisms/Footer.astro";
 ---
 
@@ -15,6 +19,13 @@ import Footer from "../organisms/Footer.astro";
       customClass="col-start-2 col-span-3"
     />
   </Container>
+
+  <ContenidoNavBar />
+  <div class="content-container col-start-1 col-span-4">
+    <ContenidoBlogs />
+    <ContenidoPodcasts />
+    <ContenidoGaleria />
+  </div>
 
   <Footer />
 </section>

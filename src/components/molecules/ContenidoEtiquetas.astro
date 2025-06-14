@@ -1,0 +1,20 @@
+---
+import ContentNavBarButton from "../atoms/ContentNavBarButton.astro";
+import Parragraph from "../atoms/Parragraph.astro";
+
+const tags = [
+  "Derechos de la Comunidad LGBTIQ+",
+  "Derecho Familia",
+  "Derecho Laboral",
+  "Derecho Migratorio",
+  "Derecho Familias Homoparentales",
+];
+---
+
+<div class="flex gap-4 overflow-hidden items-center w-full">
+  <!-- <h4 class="montreg flex-shrink-0">Etiquetas:</h4> -->
+  <Parragraph text="Etiquetas:" customClass="flex-shrink-0" />
+  <div class="flex overflow-x-auto gap-2 scrollbar-hide">
+    {tags.map((tag) => <ContentNavBarButton tag={true} text={tag} />)}
+  </div>
+</div>

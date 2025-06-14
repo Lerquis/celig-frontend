@@ -1,0 +1,52 @@
+---
+export const prerender = false;
+import { blogApi } from "@/api";
+import Container from "../atoms/Container.astro";
+import ContenidoEtiquetas from "../molecules/ContenidoEtiquetas.astro";
+import BlogItem from "../molecules/BlogItem.astro";
+
+let blogs = [];
+const response = await blogApi.getBlogsByTag("");
+if (response.status === 200) blogs = response.body.blogs;
+---
+
+<Container customClass="content-container-blogs">
+  <div
+    class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 space-y-[50px]"
+  >
+    <ContenidoEtiquetas />
+    <div class="space-y-[20px] w-full">
+      {blogs.map((blog: any) => <BlogItem {...blog} />)}
+    </div>
+  </div>
+</Container>
+
+<script>
+  import { blogApi } from "@/api";
+
+  const tags = document.querySelectorAll(".content-blog-tag");
+
+  const handleDocumentRewrite = () => {
+    // creamos el nuevo DOM con los blogs necesarios
+  };
+
+  const handleRequest = async () => {
+    // obtenemos todas las tags seleccionadas
+
+    // llamamos al api
+    const response = await blogApi.getBlogsByTag();
+  };
+
+  const handleTagClick = async (e: any) => {
+    if (!e.target) return;
+    // marcamos como seleccionada o no seleccionada
+    if (![...e.target.classList].includes("tag-selected"))
+      e.target.classList.add("tag-selected");
+    else e.target.classList.remove("tag-selected");
+    handleRequest();
+  };
+
+  tags.forEach((tag) => {
+    tag.addEventListener("click", handleTagClick);
+  });
+</script>
