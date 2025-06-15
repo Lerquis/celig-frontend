@@ -1,9 +1,23 @@
 ---
+export const prerender = false;
+
+import { galleryApi } from "@/api";
 import Container from "../atoms/Container.astro";
+import GaleriaMasonry from "../molecules/GaleriaMasonry";
+
+const breakpointColumnsObj = {
+  default: 4,
+  1100: 3,
+  700: 2,
+  500: 1,
+};
+let images = [];
+const response = await galleryApi.getGallery();
+if (response.status === 200) images = response.body.images;
 ---
 
 <Container customClass="content-container-galeria hidden opacity-0">
-  <div class="col-start-1 col-span-4 min-h-[1700px] bg-red-500">
-    <p>Galeria</p>
+  <div class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 space-y-6">
+    <GaleriaMasonry images={images} client:only />
   </div>
 </Container>

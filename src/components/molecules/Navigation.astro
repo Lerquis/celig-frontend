@@ -1,4 +1,5 @@
 ---
+import CleanLogo from "../atoms/CleanLogo.astro";
 import Container from "../atoms/Container.astro";
 import MenuBar from "../atoms/MenuBar.astro";
 import NavSocial from "../atoms/NavSocial.astro";
@@ -36,6 +37,7 @@ menu-toggle closed `}
       <MenuBar position="bottom" />
     </div>
   </div>
+
   <div
     class={`absolute top-[50%] left-[30px] translate-y-[-50%] text-white z-index-[1]
   
@@ -43,6 +45,18 @@ menu-toggle closed `}
   >
     <p class="uppercase m-0 p-0 rosdnl text-[16px]">Menu</p>
   </div>
+</div>
+
+<div class="fixed top-2 left-2 isolate logo-text-bar z-50">
+  <div class="flex gap-2 items-center col-start-1 col-span-3">
+    <CleanLogo width="w-[45px]" />
+  </div>
+</div>
+
+<div
+  class="fixed top-2 left-14 isolate logo-text-bar z-50 text-white mix-blend-difference"
+>
+  <p class="text-[24px] font-bold montreg">CELIG</p>
 </div>
 
 <Container
@@ -112,6 +126,26 @@ menu-toggle closed `}
       "hop",
       "M0,0 C0.354,0 0.464,0.133 0.498,0.502 0.532,0.872 0.651,1 1,1"
     );
+
+    const landingPage = document.querySelector(".landing-section");
+    const logoTextBar = document.querySelectorAll(".logo-text-bar");
+    if (landingPage) {
+      gsap.set([...logoTextBar], {
+        opacity: 0,
+      });
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: landingPage,
+            // markers: true,
+            start: "bottom top",
+            end: "bottom+=300",
+            scrub: true,
+          },
+        })
+        .to([...logoTextBar], { opacity: 1 });
+    }
 
     const menuToggle = document.querySelector(".menu-toggle");
     const menu = document.querySelector(".menu");

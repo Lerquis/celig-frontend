@@ -4,6 +4,9 @@ import { blogApi } from "@/api";
 import Container from "../atoms/Container.astro";
 import ContenidoEtiquetas from "../molecules/ContenidoEtiquetas.astro";
 import BlogItem from "../molecules/BlogItem.astro";
+import { SuscribeForm } from "./SuscribeForm";
+import ButtonPride from "../atoms/ButtonPride.astro";
+import ContentNavBarButton from "../atoms/ContentNavBarButton.astro";
 
 let blogs = [];
 const response = await blogApi.getBlogsByTag("");
@@ -11,6 +14,15 @@ if (response.status === 200) blogs = response.body.blogs;
 ---
 
 <Container customClass="content-container-blogs">
+  <SuscribeForm client:only>
+    <ContentNavBarButton
+      tag={false}
+      text="Suscribirse"
+      customClass="!w-fit h-fit self-end"
+      type="submit"
+    />
+  </SuscribeForm>
+
   <div
     class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 space-y-[50px]"
   >

@@ -1,7 +1,6 @@
 ---
 import Container from "../atoms/Container.astro";
 import ContentNavBarButton from "../atoms/ContentNavBarButton.astro";
-import MinimalistButton from "../atoms/MinimalistButton.astro";
 ---
 
 <Container>
@@ -20,15 +19,18 @@ import MinimalistButton from "../atoms/MinimalistButton.astro";
   const blogButton = document.querySelector(".content-navbar-blogs");
   const galleryButton = document.querySelector(".content-navbar-galeria");
   const podcastsButton = document.querySelector(".content-navbar-podcasts");
+  let isAnimating = false;
 
   // initial state to button
   blogButton?.classList.add("selectedNavBar");
 
   const changeSelectedButton = (e: any) => {
-    if (!e) return;
+    console.log(isAnimating);
+    if (!e || isAnimating) return;
     const currentSelectedButton = document.querySelector(".selectedNavBar");
     if (currentSelectedButton === e.target) return;
     // cambiar los botones
+    isAnimating = true;
     currentSelectedButton?.classList.remove("selectedNavBar");
     e.target.classList.add("selectedNavBar");
 
@@ -70,9 +72,11 @@ import MinimalistButton from "../atoms/MinimalistButton.astro";
         x: 0,
         duration: 1,
         ease: "power3.inOut",
+        onComplete: () => {
+          isAnimating = false;
+        },
       }
     );
-
     return;
 
     // realizamos la animacion de los contenedores

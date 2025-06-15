@@ -1,12 +1,15 @@
 ---
-const { text, tag } = Astro.props;
+const { text, tag, customClass, type } = Astro.props;
 ---
 
 <button
+  type={type ? type : "button"}
   data-container={`content-container-${text.toLowerCase()}`}
   class={`bg-transparent py-2 px-4 border-[1px] border-dashed rounded-[4px] 
   montreg text-[12px] cursor-pointer whitespace-nowrap transition-all
-  ${!tag ? `w-[150px] xl:w-[300px] mx-auto content-navbar-${text.toLowerCase()} hover:scale-[1.05]` : "!min-w-fit content-blog-tag"}`}
+  ${!tag ? `w-[150px] xl:w-[300px] mx-auto content-navbar-${text.toLowerCase()} hover:scale-[1.05] ` : "!min-w-fit content-blog-tag "}
+  ${customClass}
+  `}
 >
   {text}
 </button>
