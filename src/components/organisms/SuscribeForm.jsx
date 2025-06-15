@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Form } from "../ui/form";
 import { ContactFormField } from "../molecules/ContactFormField";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 
 export function SuscribeForm({ children }) {
   const suscribeSchema = z.object({
