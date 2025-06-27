@@ -2,6 +2,7 @@
 import Container from "../atoms/Container.astro";
 import SectionTitle from "../atoms/SectionTitle.astro";
 import TestimonialItem from "../molecules/TestimonialItem.astro";
+import ButtonPride from "../atoms/ButtonPride.astro";
 
 const testimonials = [
   {
@@ -54,5 +55,15 @@ const testimonials = [
 
   <Container customClass="space-y-[20px]">
     {testimonials.map((item, index) => <TestimonialItem {...item} {index} />)}
+  </Container>
+
+  <Container customClass="flex justify-center">
+    <ButtonPride
+      customClass="float-end w-[200px] hidden xl:flex xl:justify-center xl:col-start-11 xl:col-span-2 xl:h-fit xl:self-end xl:justify-self-end xl:translate-y-[-30px]"
+    >
+      <span class="relative z-10">
+        <a href="/contenido" class="text-white no-underline">Ver testimonios</a>
+      </span>
+    </ButtonPride>
   </Container>
 </section>

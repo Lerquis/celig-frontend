@@ -19,7 +19,7 @@ import { getCookieValueJSX } from "@/lib/auth";
 
 // Lista de etiquetas disponibles (asegúrate de pasarla como prop o importar según tu estructura)
 const availableTags = [
-  "Derechos del Comunidad LGBTIQ+",
+  "Derechos de la Comunidad LGBTIQ+",
   "Derecho Familia",
   "Derecho Laboral",
   "Derecho Migratorio",

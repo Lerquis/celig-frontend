@@ -2,17 +2,16 @@
 const { right, images } = Astro.props;
 ---
 
-<div class="relative overflow-hidden h-[250px]">
-  <div
-    class={`absolute top-0 flex gap-[100px] transition-transform duration-500
-    ${right ? "right-[-80%]" : "left-[-80%]"}`}
-  >
+<div
+  class={`relative overflow-hidden h-[250px] w-full ${right ? "slider-right" : "slider-left"}`}
+>
+  <div class={`flex gap-[50px] slider-track slider-track-positioning`}>
     {
       images.map((src: string) => (
         <img
           src={src}
           alt={src}
-          class="h-[250px] w-[250px] min-w-[250px] object-cover shrink-0"
+          class="h-[250px] w-[200px] md:w-[250px] object-cover shrink-0 rounded-lg"
         />
       ))
     }
@@ -25,18 +24,95 @@ const { right, images } = Astro.props;
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const leftSlider = document.querySelector(".slider-left");
-  const rightSlider = document.querySelector(".slider-right");
-  const sectionContent = document.querySelector(".content-section");
+  document.addEventListener("DOMContentLoaded", () => {
+    const leftSlider = document.querySelector(".slider-left .slider-track");
+    const rightSlider = document.querySelector(".slider-right .slider-track");
+    const sliderContainer = document.querySelector(".slider-container");
 
-  // const tl = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: sectionContent,
-  //     start: "top top",
-  //     end: "+=1000",
-  //     scrub: true,
-  //     markers: true,
-  //     pin: true,
-  //   },
-  // });
+    if (leftSlider && rightSlider && sliderContainer) {
+      const createResponsiveAnimations = () => {
+        const screenWidth = window.innerWidth;
+
+        // Calcular configuración basada en el ancho de pantalla
+        let movementDistance,
+          scrubValue,
+          initialLeftPosition,
+          initialRightPosition;
+
+        if (screenWidth <= 480) {
+          // Móviles muy pequeños - posicionamiento inicial diferente
+          movementDistance = "35vw";
+          scrubValue = 0.8;
+          initialLeftPosition = "-40vw"; // Primer slider más a la derecha
+          initialRightPosition = "10vw"; // Segundo slider más a la izquierda
+        } else if (screenWidth <= 768) {
+          // Tablets/móviles grandes - posicionamiento moderado
+          movementDistance = "25vw";
+          scrubValue = 1.2;
+          initialLeftPosition = "-20vw";
+          initialRightPosition = "5vw";
+        } else if (screenWidth <= 1024) {
+          // Tablets grandes/laptops pequeñas - centrado
+          movementDistance = "20vw";
+          scrubValue = 1.4;
+          initialLeftPosition = "0vw";
+          initialRightPosition = "0vw";
+        } else {
+          // Desktop - centrado
+          movementDistance = "15vw";
+          scrubValue = 1.6;
+          initialLeftPosition = "0vw";
+          initialRightPosition = "0vw";
+        }
+
+        // Limpiar animaciones existentes
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+        // Aplicar clases de centrado para dispositivos grandes
+        if (screenWidth > 768) {
+          leftSlider.style.justifyContent = "flex-start";
+          rightSlider.style.justifyContent = "flex-end";
+        } else {
+          leftSlider.style.justifyContent = "flex-start";
+          rightSlider.style.justifyContent = "flex-start";
+        }
+
+        // Establecer posicionamiento inicial responsivo
+        gsap.set(leftSlider, { x: initialLeftPosition });
+        gsap.set(rightSlider, { x: initialRightPosition });
+
+        // Animación para el slider izquierdo (desde posición inicial hacia la derecha)
+        gsap.to(leftSlider, {
+          x: `${parseFloat(initialLeftPosition) + parseFloat(movementDistance)}vw`,
+          scrollTrigger: {
+            trigger: sliderContainer,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: scrubValue,
+            ease: "power1.out",
+          },
+        });
+
+        // Animación para el slider derecho (desde posición inicial hacia la izquierda)
+        gsap.to(rightSlider, {
+          x: `${parseFloat(initialRightPosition) - parseFloat(movementDistance)}vw`,
+          scrollTrigger: {
+            trigger: sliderContainer,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: scrubValue,
+            ease: "power1.out",
+          },
+        });
+      };
+
+      // Crear animaciones iniciales
+      createResponsiveAnimations();
+
+      // Recrear animaciones en resize
+      window.addEventListener("resize", () => {
+        createResponsiveAnimations();
+      });
+    }
+  });
 </script>

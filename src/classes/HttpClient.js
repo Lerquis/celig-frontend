@@ -54,6 +54,13 @@ export class HttpClient {
       });
 
       if (!response.ok) {
+        if (response.status === 401) {
+          // Eliminar cookie de autenticación
+          if (typeof document !== 'undefined') {
+            document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            window.location.href = '/admin/login';
+          }
+        }
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.message || "Error en la solicitud");
       }
