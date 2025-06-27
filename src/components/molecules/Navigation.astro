@@ -47,14 +47,14 @@ menu-toggle closed `}
   </div>
 </div>
 
-<div class="fixed top-2 left-2 isolate logo-text-bar z-50">
+<div class="fixed top-2 left-2 isolate logo-container z-50">
   <div class="flex gap-2 items-center col-start-1 col-span-3">
     <CleanLogo width="w-[45px]" />
   </div>
 </div>
 
 <div
-  class="fixed top-2 left-14 isolate logo-text-bar z-50 text-white mix-blend-difference"
+  class="fixed top-2 left-14 isolate text-container z-50 text-white mix-blend-difference"
 >
   <a href="/" class="text-[24px] font-bold montreg">CELIG</a>
 </div>
@@ -117,36 +117,54 @@ menu-toggle closed `}
 
 <script>
   import gsap from "gsap";
-  import { CustomEase } from "gsap/all";
+  import { CustomEase, ScrollTrigger } from "gsap/all";
 
-  gsap.registerPlugin(CustomEase);
+  gsap.registerPlugin(CustomEase, ScrollTrigger);
+  
   document.addEventListener("DOMContentLoaded", () => {
-    gsap.registerPlugin(CustomEase);
     CustomEase.create(
       "hop",
       "M0,0 C0.354,0 0.464,0.133 0.498,0.502 0.532,0.872 0.651,1 1,1"
     );
 
-    const landingPage = document.querySelector(".landing-section");
-    const logoTextBar = document.querySelectorAll(".logo-text-bar");
-    if (landingPage) {
-      gsap.set([...logoTextBar], {
-        opacity: 0,
+    // Elementos del logo y texto
+    const logoContainer = document.querySelector(".logo-container");
+    const textContainer = document.querySelector(".text-container");
+    
+    // Verificar si estamos en la página de inicio
+    const isHomePage = window.location.pathname === '/';
+    
+    if (isHomePage) {
+      // En la página de inicio: ocultar hasta que se scrollee 100vh
+      gsap.set([logoContainer, textContainer], { opacity: 0 });
+      
+      // Usar scroll directo para mostrar después de 100vh
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const viewportHeight = window.innerHeight;
+        
+        if (scrollY >= viewportHeight) {
+          // Mostrar el logo cuando se pase 100vh
+          gsap.to([logoContainer, textContainer], {
+            opacity: 1,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        } else {
+          // Ocultar si vuelve arriba
+          gsap.to([logoContainer, textContainer], {
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        }
       });
-
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: landingPage,
-            // markers: true,
-            start: "bottom top",
-            end: "bottom+=300",
-            scrub: true,
-          },
-        })
-        .to([...logoTextBar], { opacity: 1 });
+    } else {
+      // En otras páginas: mostrar inmediatamente
+      gsap.set([logoContainer, textContainer], { opacity: 1 });
     }
 
+    // Resto de la funcionalidad del menú
     const menuToggle = document.querySelector(".menu-toggle");
     const menu = document.querySelector(".menu");
     const links = document.querySelectorAll(".link");

@@ -25,9 +25,13 @@ const { right, images } = Astro.props;
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener("DOMContentLoaded", () => {
-    const leftSlider = document.querySelector(".slider-left .slider-track");
-    const rightSlider = document.querySelector(".slider-right .slider-track");
-    const sliderContainer = document.querySelector(".slider-container");
+    const leftSlider: any = document.querySelector(
+      ".slider-left .slider-track"
+    );
+    const rightSlider: any = document.querySelector(
+      ".slider-right .slider-track"
+    );
+    const sliderContainer: any = document.querySelector(".slider-container");
 
     if (leftSlider && rightSlider && sliderContainer) {
       const createResponsiveAnimations = () => {
@@ -89,7 +93,6 @@ const { right, images } = Astro.props;
             start: "top bottom",
             end: "bottom top",
             scrub: scrubValue,
-            ease: "power1.out",
           },
         });
 
@@ -101,7 +104,6 @@ const { right, images } = Astro.props;
             start: "top bottom",
             end: "bottom top",
             scrub: scrubValue,
-            ease: "power1.out",
           },
         });
       };
