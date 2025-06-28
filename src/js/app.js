@@ -278,7 +278,7 @@ class App {
       // Reanudar Lenis después de la intro
       setTimeout(() => {
         this.lenis.start();
-      }, 4500); // 4.5 segundos de duración total de la intro
+      }, 3900); // 3.9 segundos de duración total de la intro
     }
   }
 }
