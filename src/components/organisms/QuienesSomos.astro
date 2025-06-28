@@ -6,7 +6,10 @@ import SectionTitle from "../atoms/SectionTitle.astro";
 ---
 
 <section class="mt-[100px] mb-[200px] space-y-[100px] md:mt-[200px]">
-  <Container fullWidth={false} customClass="space-y-[-50px] md:space-y-[-80px]">
+  <Container
+    fullWidth={false}
+    customClass="space-y-[-50px] md:space-y-[-80px] title-animation"
+  >
     <SectionTitle title="¿Quiénes" customClass="col-start-1 col-span-4" />
     <SectionTitle
       title="Somos?"
@@ -17,7 +20,7 @@ import SectionTitle from "../atoms/SectionTitle.astro";
 
   <Container fullWidth={false} customClass="space-y-[100px] ">
     <Parragraph
-      customClass="col-start-1 col-span-3 md:col-start-3 md:col-span-5 xl:col-start-6 xl:col-span-5"
+      customClass="col-start-1 col-span-3 md:col-start-3 md:col-span-5 xl:col-start-6 xl:col-span-5 text-animation"
       text={`CELIG nació con una misión clara: ser el primer bufete legal en Centroamérica creado por 
     y para la comunidad LGBTIQ+. Más allá del derecho, su esencia está en la empatía, el 
     compromiso social y la defensa activa de quienes históricamente han sido marginados. Cada
@@ -25,7 +28,7 @@ import SectionTitle from "../atoms/SectionTitle.astro";
     />
 
     <Parragraph
-      customClass="col-start-2 col-span-3 text-right md:text-left md:col-start-1 md:col-span-5 xl:col-start-3 xl:col-span-5"
+      customClass="col-start-2 col-span-3 text-right md:text-left md:col-start-1 md:col-span-5 xl:col-start-3 xl:col-span-5 text-animation"
       text={`Con más de 30 años de trayectoria, CELIG brinda servicios notariales y litigiosos en áreas 
     como familia, sucesiones, adopciones y, desde 2020, matrimonios igualitarios. Más de 250 parejas 
     —nacionales y extranjeras— han confiado en la firma para celebrar su amor legalmente. CELIG no solo 
@@ -33,7 +36,7 @@ import SectionTitle from "../atoms/SectionTitle.astro";
     />
 
     <Parragraph
-      customClass="col-start-1 col-span-3 md:col-start-4 md:col-span-5 xl:col-start-7 col-span-5"
+      customClass="col-start-1 col-span-3 md:col-start-4 md:col-span-5 xl:col-start-7 col-span-5 text-animation"
       text={`CELIG es también la fuerza detrás de iniciativas como Shopping Pride, Espresso Celig y la 
       Feria del Orgullo, proyectos que celebran y visibilizan a la comunidad LGBTIQ+ más allá del ámbito 
       jurídico. Su impacto trasciende el papel; es una plataforma viva de cambio, visibilidad y orgullo.`}
@@ -42,7 +45,7 @@ import SectionTitle from "../atoms/SectionTitle.astro";
 
   <Container fullWidth={false}>
     <div
-      class="col-start-1 col-span-4 flex flex-col gap-[20px] md:col-span-8 md:gap-[50px] xl:col-span-12 xl:flex-row xl:justify-between xl:w-[80%] xl:mx-auto"
+      class="col-start-1 col-span-4 flex flex-col gap-[20px] md:col-span-8 md:gap-[50px] xl:col-span-12 xl:flex-row xl:justify-between xl:w-[80%] xl:mx-auto estadisticas"
     >
       <Estadistica
         title="Matrimonios realizados"
@@ -50,15 +53,18 @@ import SectionTitle from "../atoms/SectionTitle.astro";
         customClass="self-end"
       />
       <Estadistica
-        title="Anos de experiencia"
+        title="Años de experiencia"
         value="32+"
         customClass="mx-auto"
       />
-      <Estadistica title="Anos de CELIG" value="8+" customClass="self-start" />
+      <Estadistica title="Años de CELIG" value="8+" customClass="self-start" />
     </div>
   </Container>
 
-  <Container fullWidth={false} customClass="space-y-[-35px] text-right">
+  <Container
+    fullWidth={false}
+    customClass="space-y-[-35px] text-right title-animation"
+  >
     <SectionTitle
       title="Fundado por"
       customClass="col-start-1 col-span-4 md:col-span-8 xl:col-span-12"
@@ -82,14 +88,14 @@ import SectionTitle from "../atoms/SectionTitle.astro";
     customClass="space-y-[50px] overflow-hidden relative"
   >
     <Parragraph
-      customClass="col-start-1 col-span-3 md:col-span-5 "
+      customClass="col-start-1 col-span-3 md:col-span-5 text-animation"
       text={`Ana Isabel Sibaja no fundó CELIG por estrategia, sino por amor. Cuando sus hijos le revelaron su 
     orientación sexual, algo cambió en ella. Desde entonces, puso su vocación al servicio de una causa 
     mayor: defender y visibilizar a la comunidad LGBTIQ+ desde el Derecho.`}
     />
 
     <Parragraph
-      customClass="col-start-2 col-span-3 md:col-span-5 text-right xl:col-start-2"
+      customClass="col-start-2 col-span-3 md:col-span-5 text-right xl:col-start-2 text-animation"
       text={`Con más de 30 años de experiencia como abogada y notaria, ha trabajado en derecho civil, penal, 
       laboral y de familia. Su mayor legado, sin embargo, es el compromiso con la igualdad, visible en su 
       participación en eventos como el Pride, donde ha casado parejas en tarimas y carrozas, mostrando una entrega 
@@ -97,7 +103,7 @@ import SectionTitle from "../atoms/SectionTitle.astro";
     />
 
     <Parragraph
-      customClass="col-start-1 col-span-3 md:col-span-5 xl:col-start-1"
+      customClass="col-start-1 col-span-3 md:col-span-5 xl:col-start-1 text-animation"
       text={`Nacida en Cañas, Guanacaste, y madre soltera, inició su carrera en Batán, Limón. Hoy inspira a madres,
        familias y profesionales, reafirmando cada día que el amor y la igualdad no se piden: se exigen, se legislan 
        y se celebran.`}
@@ -109,33 +115,5 @@ import SectionTitle from "../atoms/SectionTitle.astro";
       width="100%"
       class="hidden md:flex md:h-[500px] xl:h-[100%] md:object-cover md:absolute md:right-0 md:w-[37%] xl:w-[49%]"
     />
-
-    <!-- <img
-      src="/ProfilePhoto.jpg"
-      alt="Ana Isabel Sibaja"
-      width="100%"
-      class="hidden md:flex md:col-start-5 md:col-span-4 md:h-[500px] md:object-cover md:translate-x-[90px]"
-    />
-    <Parragraph
-      customClass="col-start-1 col-span-3 md:col-span-5"
-      text={`Ana Isabel Sibaja no fundó CELIG por estrategia, sino por amor. Cuando sus hijos le revelaron su 
-    orientación sexual, algo cambió en ella. Desde entonces, puso su vocación al servicio de una causa 
-    mayor: defender y visibilizar a la comunidad LGBTIQ+ desde el Derecho.`}
-    />
-
-    <Parragraph
-      customClass="col-start-2 col-span-3 text-right"
-      text={`Con más de 30 años de experiencia como abogada y notaria, ha trabajado en derecho civil, penal, 
-      laboral y de familia. Su mayor legado, sin embargo, es el compromiso con la igualdad, visible en su 
-      participación en eventos como el Pride, donde ha casado parejas en tarimas y carrozas, mostrando una entrega 
-      genuina.`}
-    />
-
-    <Parragraph
-      customClass="col-start-1 col-span-3"
-      text={`Nacida en Cañas, Guanacaste, y madre soltera, inició su carrera en Batán, Limón. Hoy inspira a madres,
-       familias y profesionales, reafirmando cada día que el amor y la igualdad no se piden: se exigen, se legislan 
-       y se celebran.`}
-    /> -->
   </Container>
 </section>
