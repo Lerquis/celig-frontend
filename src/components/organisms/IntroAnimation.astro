@@ -248,18 +248,49 @@
     }
   }
 
+  // Solo ejecutar la intro si no hay hash en la URL
+  function shouldShowIntro() {
+    const isHomePage = window.location.pathname === "/";
+    const hasHash = window.location.hash !== "";
+    
+    return isHomePage && !hasHash;
+  }
+
   // Iniciar la animación cuando el DOM esté listo
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => new IntroAnimation());
+    document.addEventListener("DOMContentLoaded", () => {
+      if (shouldShowIntro()) {
+        new IntroAnimation();
+      } else {
+        // Si no se debe mostrar la intro, remover el overlay inmediatamente
+        const overlay = document.getElementById("intro-overlay");
+        if (overlay) {
+          overlay.remove();
+        }
+      }
+    });
   } else {
-    new IntroAnimation();
+    if (shouldShowIntro()) {
+      new IntroAnimation();
+    } else {
+      // Si no se debe mostrar la intro, remover el overlay inmediatamente
+      const overlay = document.getElementById("intro-overlay");
+      if (overlay) {
+        overlay.remove();
+      }
+    }
   }
 
   // También manejar navegación SPA de Astro
   document.addEventListener("astro:page-load", () => {
-    // Solo ejecutar en la página principal
-    if (window.location.pathname === "/") {
+    if (shouldShowIntro()) {
       new IntroAnimation();
+    } else {
+      // Si no se debe mostrar la intro, remover el overlay inmediatamente
+      const overlay = document.getElementById("intro-overlay");
+      if (overlay) {
+        overlay.remove();
+      }
     }
   });
 </script>

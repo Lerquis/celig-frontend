@@ -266,8 +266,12 @@ class App {
   }
 
   _initIntroAnimation() {
-    // Solo ejecutar en la página principal y si existe el overlay
-    if (window.location.pathname === '/' && document.getElementById('intro-overlay')) {
+    // Solo ejecutar si se va a mostrar la intro
+    const isHomePage = window.location.pathname === '/';
+    const hasHash = window.location.hash !== '';
+    const shouldShowIntro = isHomePage && !hasHash;
+    
+    if (shouldShowIntro && document.getElementById('intro-overlay')) {
       // Pausar Lenis durante la intro
       this.lenis.stop();
       
