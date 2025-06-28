@@ -1,0 +1,216 @@
+---
+---
+
+<div id="intro-overlay" class="intro-overlay">
+  <!-- 6 Secciones negras para la animación de salida -->
+  <div class="intro-section intro-section-1"></div>
+  <div class="intro-section intro-section-2"></div>
+  <div class="intro-section intro-section-3"></div>
+  <div class="intro-section intro-section-4"></div>
+  <div class="intro-section intro-section-5"></div>
+  <div class="intro-section intro-section-6"></div>
+  
+  <!-- Contenido del texto -->
+  <div class="intro-content">
+    <div class="intro-text-line">
+      <h1 class="intro-fixed-text">Creemos en</h1>
+      <div class="intro-rotating-container">
+        <h2 class="intro-rotating-text intro-word-1">derechos</h2>
+        <h2 class="intro-rotating-text intro-word-2">libertad</h2>
+        <h2 class="intro-rotating-text intro-word-3">amor</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .intro-section {
+    position: absolute;
+    width: calc(100vw / 6 + 1px);
+    height: 100vh;
+    background-color: black;
+    top: 0;
+  }
+
+  .intro-section-1 { left: 0; }
+  .intro-section-2 { left: calc(100vw / 6); }
+  .intro-section-3 { left: calc(100vw / 6 * 2); }
+  .intro-section-4 { left: calc(100vw / 6 * 3); }
+  .intro-section-5 { left: calc(100vw / 6 * 4); }
+  .intro-section-6 { left: calc(100vw / 6 * 5); }
+
+  .intro-content {
+    position: relative;
+    z-index: 10000;
+    text-align: center;
+    color: white;
+  }
+
+  .intro-text-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .intro-fixed-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-weight: 400;
+    margin: 0;
+    opacity: 0;
+    line-height: 1.2;
+  }
+
+  .intro-rotating-container {
+    position: relative;
+    height: clamp(1.8rem, 6vw, 3.5rem);
+    min-width: 200px;
+  }
+
+  .intro-rotating-text {
+    font-family: 'Roslindale', serif;
+    font-size: clamp(1.8rem, 6vw, 3.5rem);
+    font-weight: 400;
+    font-style: italic;
+    margin: 0;
+    margin-top: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .intro-text-line {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .intro-rotating-container {
+      min-width: auto;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  class IntroAnimation {
+    constructor() {
+      this.overlay = document.getElementById('intro-overlay');
+      this.fixedText = document.querySelector('.intro-fixed-text');
+      this.rotatingWords = document.querySelectorAll('.intro-rotating-text');
+      this.sections = document.querySelectorAll('.intro-section');
+      
+      this.init();
+    }
+
+    init() {
+      // Bloquear scroll durante la intro
+      document.body.style.overflow = 'hidden';
+      
+      // Crear timeline principal
+      this.tl = gsap.timeline({
+        onComplete: () => {
+          // Habilitar scroll y remover overlay
+          document.body.style.overflow = '';
+          this.overlay.remove();
+        }
+      });
+
+      this.createIntroSequence();
+    }
+
+    createIntroSequence() {
+      // 1. Aparecer texto fijo "Creemos en" (0.8s)
+      this.tl.to(this.fixedText, {
+        opacity: 1,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+
+      // 2. Secuencia de palabras rotativas (6s total)
+      const words = ['derechos', 'libertad', 'amor'];
+      words.forEach((word, index) => {
+        const wordElement = document.querySelector(`.intro-word-${index + 1}`);
+        
+        // Entrada de la palabra (desde y: -50)
+        this.tl.fromTo(wordElement, 
+          { opacity: 0, y: -50 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+          index === 0 ? "+=0.5" : "+=0.5"
+        );
+
+        // Mantener visible por 0.5 segundos
+        this.tl.to({}, { duration: 0.5 });
+
+        // Salida de la palabra (hacia y: 50)
+        if (index < words.length - 1) {
+          this.tl.to(wordElement, {
+            opacity: 0,
+            y: 50,
+            duration: 0.5,
+            ease: "power2.in"
+          });
+        } else {
+          // La última palabra se mantiene un poco más
+          this.tl.to({}, { duration: 1 });
+          this.tl.to(wordElement, {
+            opacity: 0,
+            y: 50,
+            duration: 0.5,
+            ease: "power2.in"
+          });
+        }
+      });
+
+      // 3. Desvanecer texto fijo
+      this.tl.to(this.fixedText, {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.in"
+      }, "-=0.5");
+
+      // 4. Animación de secciones saliendo hacia arriba (verticales)
+      this.tl.to(this.sections, {
+        y: "-100%",
+        duration: 1.2,
+        ease: "power2.inOut",
+        stagger: 0.1
+      }, "+=0.3");
+    }
+  }
+
+  // Iniciar la animación cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => new IntroAnimation());
+  } else {
+    new IntroAnimation();
+  }
+
+  // También manejar navegación SPA de Astro
+  document.addEventListener('astro:page-load', () => {
+    // Solo ejecutar en la página principal
+    if (window.location.pathname === '/') {
+      new IntroAnimation();
+    }
+  });
+</script>

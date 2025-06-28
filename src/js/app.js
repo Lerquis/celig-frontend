@@ -17,6 +17,7 @@ class App {
     this._processAnimation();
     this._servicesAnimation();
     this._testimonialsAnimation();
+    this._initIntroAnimation();
   }
 
   _createLenis() {
@@ -262,6 +263,19 @@ class App {
         });
       }
     });
+  }
+
+  _initIntroAnimation() {
+    // Solo ejecutar en la página principal y si existe el overlay
+    if (window.location.pathname === '/' && document.getElementById('intro-overlay')) {
+      // Pausar Lenis durante la intro
+      this.lenis.stop();
+      
+      // Reanudar Lenis después de la intro
+      setTimeout(() => {
+        this.lenis.start();
+      }, 4500); // 4.5 segundos de duración total de la intro
+    }
   }
 }
 
