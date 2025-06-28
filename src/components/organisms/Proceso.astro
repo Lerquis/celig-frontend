@@ -16,13 +16,19 @@ const processes = [
   },
   {
     title: "Requisitos para casarse",
-    parragraph: `Solo deben enviar su identificación. Extranjeros en Costa Rica pueden usar pasaporte o documento 
-    migratorio. No necesitan papeles desde su país como partida de nacimiento o estado civil.`,
+    parragraph: `Solo deben enviar su identificación. Extranjeros en Costa Rica pueden usar         
+  pasaporte o documento migratorio. No necesitan traer de su país, ni partida de      
+  nacimiento ni de estado civil. Sí, extranjerxs pueden venir exclusivamente a        
+  casarse. No necesitan otro motivo para su viaje. No necesitan residir en el         
+  país ni quedarse varios días.`,
   },
   {
     title: "Experiencia y celebración personalizada",
-    parragraph: `Con más de 3 años de experiencia en bodas igualitarias, ofrecemos rituales, votos y decoración 
-    personalizados, con hasta 25 invitados, música y una hora y media de celebración inolvidable.`,
+    parragraph: `Con más de 5 años de experiencia en bodas igualitarias, en Celig ustedes 
+  deciden si solo la parte civil, o acompañar ese momento con una ceremonia 
+  significativa. En privado o rodeados de las personas que aman. En nuestras 
+  acogedoras y elegantes oficinas o en un lugar que elijan. Lo más importantes:       
+  que sea como ustedes lo sueñan.`,
   },
 ];
 ---
@@ -51,7 +57,7 @@ const processes = [
     />
   </Container>
 
-  <Container>
+  <Container customClass="overflow-hidden">
     {processes.map((item, i) => <ProcesoItem {...item} index={i} />)}
   </Container>
 </section>
