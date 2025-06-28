@@ -16,6 +16,7 @@ class App {
     this._diffsAnimation();
     this._processAnimation();
     this._servicesAnimation();
+    this._testimonialsAnimation();
   }
 
   _createLenis() {
@@ -226,6 +227,37 @@ class App {
             { scaleX: 0 },
             { scaleX: 1, duration: 0.6, ease: "power2.out" },
             "-=0.2" // overlap de 0.2s
+          );
+        });
+      }
+    });
+  }
+
+  _testimonialsAnimation() {
+    document.addEventListener("DOMContentLoaded", async () => {
+      // Si GSAP se carga de forma asíncrona
+      const { gsap } = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const testimonials = document.querySelectorAll(".testimonial-animation");
+      if (testimonials.length > 0) {
+        testimonials.forEach((el) => {
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: el,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+              once: true,
+            },
+          });
+
+          // Animación: opacidad 0 y 100 → opacidad 1 y 0
+          tl.fromTo(
+            el,
+            { opacity: 0, y: 100 },
+            { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
           );
         });
       }
