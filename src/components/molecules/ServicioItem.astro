@@ -6,13 +6,32 @@ const { label, href } = Astro.props;
 ---
 
 <div
-  class={`col-start-1 col-span-4 md:col-span-8 xl:col-span-12 grid grid-cols-[1fr_1fr] items-center 
-  border-b-[1px] pb-[20px] border-dashed border-black`}
+  class={`col-start-1 col-span-4 md:col-span-8 xl:col-span-12 pb-[20px] relative service-animation`}
 >
-  <Parragraph text={label} customClass="md:text-[20px]" />
-  <ButtonPride customClass="w-fit h-fit justify-self-end">
-    <span class="relative z-[5]">
-      <a {href} class="text-white no-underline">Leer más</a>
-    </span>
-  </ButtonPride>
+  <div class="service-content grid grid-cols-[1fr_1fr] items-center">
+    <Parragraph text={label} customClass="md:text-[20px]" />
+    <ButtonPride customClass="w-fit h-fit justify-self-end">
+      <span class="relative z-[5]">
+        <a {href} class="text-white no-underline">Leer más</a>
+      </span>
+    </ButtonPride>
+  </div>
+  <div class="service-border absolute bottom-0 left-0 w-full h-[1px] bg-black origin-left border-dashed-line"></div>
 </div>
+
+<style>
+  .border-dashed-line {
+    background-image: repeating-linear-gradient(
+      to right,
+      transparent,
+      transparent 0px,
+      black 0px,
+      black 8px,
+      transparent 8px,
+      transparent 16px
+    );
+    background-size: 16px 1px;
+    background-repeat: repeat-x;
+    background-position: 0 0;
+  }
+</style>
