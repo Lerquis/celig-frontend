@@ -127,7 +127,7 @@ menu-toggle closed `}
       "M0,0 C0.354,0 0.464,0.133 0.498,0.502 0.532,0.872 0.651,1 1,1"
     );
 
-    // Elementos del logo, texto y botón menu
+    // Elementos del logo y texto
     const logoContainer = document.querySelector(".logo-container");
     const textContainer = document.querySelector(".text-container");
     const menuToggle = document.querySelector(".menu-toggle");
@@ -137,7 +137,8 @@ menu-toggle closed `}
 
     if (isHomePage) {
       // En la página de inicio: ocultar hasta que se scrollee 100vh
-      gsap.set([logoContainer, textContainer, menuToggle], { opacity: 0 });
+      gsap.set([logoContainer, textContainer], { opacity: 0 });
+      gsap.set(menuToggle, { opacity: 1 }); // El menú siempre visible
 
       // Usar scroll directo para mostrar después de 100vh
       window.addEventListener("scroll", () => {
@@ -145,15 +146,15 @@ menu-toggle closed `}
         const viewportHeight = window.innerHeight;
 
         if (scrollY >= viewportHeight) {
-          // Mostrar el logo, texto y menú cuando se pase 100vh
-          gsap.to([logoContainer, textContainer, menuToggle], {
+          // Mostrar solo el logo y texto cuando se pase 100vh
+          gsap.to([logoContainer, textContainer], {
             opacity: 1,
             duration: 0.3,
             ease: "power2.out",
           });
         } else {
           // Ocultar si vuelve arriba
-          gsap.to([logoContainer, textContainer, menuToggle], {
+          gsap.to([logoContainer, textContainer], {
             opacity: 0,
             duration: 0.3,
             ease: "power2.out",
