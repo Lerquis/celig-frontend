@@ -14,7 +14,7 @@ import { getCookieValueJSX } from "@/lib/auth";
 
 const testimonialSchema = z.object({
   names: z.string().min(1, "El nombre es obligatorio"),
-  content: z.string().min(1, "El contenido es obligatorio"),
+  content: z.string().min(1, "El contenido es obligatorio").max(250, "El contenido no puede exceder los 250 caracteres"),
   image: z.string().optional(),
 });
 
@@ -106,14 +106,19 @@ export const TestimonialForm = ({
           isLoading={isLoading}
         />
 
-        <FormFieldCMS
-          name="content"
-          label="Contenido"
-          placeholder="Contenido del testimonio"
-          form={form}
-          isLoading={isLoading}
-          type="textarea"
-        />
+        <div className="space-y-2">
+          <FormFieldCMS
+            name="content"
+            label="Contenido"
+            placeholder="Contenido del testimonio"
+            form={form}
+            isLoading={isLoading}
+            type="textarea"
+          />
+          <div className="text-xs text-muted-foreground text-right">
+            {form.watch("content")?.length || 0}/250 caracteres
+          </div>
+        </div>
 
         {/* Campo de imagen */}
         <div className="space-y-2">
