@@ -48,7 +48,7 @@ Desde la identificación de activos hasta la resolución de posibles disputas le
 
   {
     title: "Servicio Defensa de Derechos LGBTIQ+",
-    slug: "derechos-lgbtq+",
+    slug: "derechos-lgbtiq+",
     contenido: `En CELIG, estamos comprometidos con la defensa de los derechos LGBTQI+. Abogamos por la igualdad y la justicia en Costa Rica. Nuestra experiencia legal respalda a la comunidad LGBTIQ+ en la lucha por la igualdad.
 
 Nuestro enfoque abarca diversas áreas, incluido el apoyo al matrimonio igualitario. Trabajamos incansablemente para asegurar que todas las parejas tengan acceso a este derecho fundamental. Nuestros abogados están aquí para guiar y empoderar a la comunidad LGBTIQ+.
@@ -66,7 +66,7 @@ Si eres parte de la comunidad LGBTIQ+ y necesitas apoyo legal, estamos aquí par
 
   {
     title: "Matrimonios entre parejas del mismo sexo",
-    slug: "derechos-lgbtq+",
+    slug: "matrimonios",
     contenido: `En CELIG, celebramos el amor a través de los matrimonios entre parejas del mismo sexo. Nuestros servicios legales respaldan la igualdad en Costa Rica. El matrimonio igualitario es un derecho fundamental para la comunidad LGBTIQ+.
 
 Nuestros abogados especializados en matrimonios igualitarios te guiarán en cada paso. Desde la preparación de documentos hasta la ceremonia, estamos contigo. Nuestra experiencia asegura que este proceso sea sin inconvenientes.

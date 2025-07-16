@@ -6,7 +6,7 @@ import Map from "../atoms/Map.astro";
 import SmallParragraph from "../atoms/SmallParragraph.astro";
 import ContactItem from "../molecules/ContactItem.astro";
 import { ContactForm } from "./ContactForm.jsx";
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import { XTwitter } from "../icons/XTwitter";
 import { Spotify } from "../icons/Spotify";
 import { TikTok } from "../icons/TikTok";
@@ -53,17 +53,52 @@ import MinimalistButton from "../atoms/MinimalistButton.astro";
 
     <ContactItem title="Redes Sociales" customClass="flex gap-4">
       <div class="flex gap-4">
-        <Facebook
-          size={32}
-          className="cursor-pointer hover:text-blue-500 transition-all ease-in"
-        />
-        <Instagram
-          size="32"
-          className="cursor-pointer hover:text-orange-300 transition-all ease-in"
-        />
-        <XTwitter />
-        <Spotify />
-        <TikTok />
+        <a href="https://www.facebook.com/CELIGCR/" target="_blank">
+          <Facebook
+            size={32}
+            className="cursor-pointer hover:text-blue-500 transition-all ease-in"
+          />
+        </a>
+        <a
+          href="https://www.instagram.com/celigcr_?igshid=YmMyMTA2M2Y%3D"
+          target="_blank"
+        >
+          <Instagram
+            size="32"
+            className="cursor-pointer hover:text-orange-300 transition-all ease-in"
+          />
+        </a>
+        <a href="https://x.com/CeligCR_" target="_blank">
+          <XTwitter />
+        </a>
+        <a
+          href="https://open.spotify.com/show/4uHDYtDQvHSdy9SyA6R8p4?si=yUL2cZMLR5KHPFa2b2_jdQ&nd=1&dlsi=05d2cd3b21e74042"
+          target="_blank"
+        >
+          <Spotify />
+        </a>
+        <a
+          href="https://www.tiktok.com/@celigcr?_t=8bDkwPdWu9d&_r=1"
+          target="_blank"
+        >
+          <TikTok />
+        </a>
+        <a
+          href="https://www.youtube.com/channel/UCj8Tl63R_i0dSqOcpZAVEiw"
+          target="_blank"
+        >
+          <Youtube
+            size="32"
+            className="cursor-pointer hover:text-red-600 transition-all ease-in"
+          />
+        </a>
+
+        <a href="https://www.linkedin.com/in/celig/" target="_blank">
+          <Linkedin
+            size={32}
+            className="cursor-pointer hover:text-blue-500 transition-all ease-in"
+          /></a
+        >
       </div>
     </ContactItem>
 

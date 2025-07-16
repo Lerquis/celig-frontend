@@ -12,11 +12,25 @@ const links = [
 ];
 
 const socials = [
-  { label: "Facebook", href: "" },
-  { label: "Instagram", href: "" },
-  { label: "Tik Tok", href: "" },
-  { label: "Spotify", href: "" },
-  { label: "LinkedIn", href: "" },
+  { label: "Facebook", href: "https://www.facebook.com/CELIGCR/" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/celigcr_?igshid=YmMyMTA2M2Y%3D",
+  },
+  { label: "X", href: "https://x.com/CeligCR_" },
+  {
+    label: "Tik Tok",
+    href: "https://www.tiktok.com/@celigcr?_t=8bDkwPdWu9d&_r=1",
+  },
+  {
+    label: "Spotify",
+    href: "https://open.spotify.com/show/4uHDYtDQvHSdy9SyA6R8p4?si=yUL2cZMLR5KHPFa2b2_jdQ&nd=1&dlsi=05d2cd3b21e74042",
+  },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/celig/" },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/channel/UCj8Tl63R_i0dSqOcpZAVEiw",
+  },
 ];
 
 const directions = [
@@ -59,61 +73,63 @@ menu-toggle closed `}
   <a href="/" class="text-[24px] font-bold montreg">CELIG</a>
 </div>
 
-<Container
-  customClass="bg-black/95 fixed top-0 left-0 h-[100vh] w-[100vw] menu z-[10] pointer-events-none perspective-[1000px] text-white "
+<div
+  class="bg-black/95 fixed top-0 left-0 h-[100vh] w-[100vw] menu z-[10] pointer-events-none perspective-[1000px] text-white"
 >
-  <div class="col-start-1 col-span-3 pt-[50px] xl:pt-[150px]">
-    {
-      links.map((link) => (
-        <div class="link relative translate-y-[30px] opacity-0">
-          <a
-            class="no-underline text-white text-[24px] md:text-[48px] xl:text-[96px] rosdcel"
-            href={link.href}
-          >
-            {link.label}
-          </a>
+  <Container customClass="">
+    <div class="col-start-1 col-span-3 pt-[50px] xl:pt-[150px]">
+      {
+        links.map((link) => (
+          <div class="link relative translate-y-[30px] opacity-0">
+            <a
+              class="no-underline text-white text-[24px] md:text-[48px] xl:text-[96px] rosdcel"
+              href={link.href}
+            >
+              {link.label}
+            </a>
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="col-start-1 col-span-3 md:col-start-4 md:col-span-4 xl:col-start-6 xl:col-span-4 md:pt-[50px] xl:pt-[150px] socials space-y-[100px]"
+    >
+      <div class="flex justify-between">
+        <div>
+          {
+            directions.map((dir) => (
+              <p class="text-white translate-y-[30px] opacity-0 uppercase text-[12px] montreg">
+                {dir}
+              </p>
+            ))
+          }
         </div>
-      ))
-    }
-  </div>
-
-  <div
-    class="col-start-1 col-span-3 md:col-start-4 md:col-span-4 xl:col-start-6 xl:col-span-4 md:pt-[50px] xl:pt-[150px] socials space-y-[100px]"
-  >
-    <div class="flex justify-between">
-      <div>
-        {
-          directions.map((dir) => (
-            <p class="text-white translate-y-[30px] opacity-0 uppercase text-[12px] montreg">
-              {dir}
-            </p>
-          ))
-        }
+        <div>
+          {socials.map((social) => <NavSocial {...social} />)}
+        </div>
       </div>
+
       <div>
-        {socials.map((social) => <NavSocial {...social} />)}
+        <p
+          class="text-white translate-y-[30px] opacity-0 uppercase text-[12px] mb-[30px] montreg"
+        >
+          info@celigcr.com
+        </p>
+        <p
+          class="text-white translate-y-[30px] opacity-0 uppercase text-[12px] montreg"
+        >
+          +506 8334 6441
+        </p>
+        <p
+          class="text-white translate-y-[30px] opacity-0 uppercase text-[12px] montreg"
+        >
+          +506 4001 6439
+        </p>
       </div>
     </div>
-
-    <div>
-      <p
-        class="text-white translate-y-[30px] opacity-0 uppercase text-[12px] mb-[30px] montreg"
-      >
-        info@celigcr.com
-      </p>
-      <p
-        class="text-white translate-y-[30px] opacity-0 uppercase text-[12px] montreg"
-      >
-        +506 8334 6441
-      </p>
-      <p
-        class="text-white translate-y-[30px] opacity-0 uppercase text-[12px] montreg"
-      >
-        +506 4001 6439
-      </p>
-    </div>
-  </div>
-</Container>
+  </Container>
+</div>
 
 <script>
   import gsap from "gsap";
