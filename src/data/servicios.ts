@@ -2,9 +2,13 @@ export const servicios = [
   {
     title: "Consulta Legal Virtual",
     slug: "consulta-virtual",
-    contenido: `Nuestro servicio legal de consulta virtual representa asesoramiento accesible y eficiente para la comunidad LGBTQI+. Reconocemos que las necesidades legales no conocen fronteras, y es por eso que hemos creado un método ágil y moderno para ofrecer apoyo legal sin importar dónde te encuentres en Costa Rica o en cualquier parte del mundo.
+    contenido: `En CELIG ofrecemos el servicio de consulta legal virtual, dirigido a todas aquellas personas que necesitan orientación jurídica de manera segura, confidencial y desde la comodidad de su casa o país de residencia. En CELIG te ofrezco consultas virtuales personalizadas, seguras y 100% confidenciales. Como fundadora de CELIG y profesional con más de 33 años de experiencia en Derecho Notarial, comprendo profundamente las necesidades legales, especialmente de la comunidad LGBTIQ+.
 
-La consulta virtual, diseñada para ajustarse a tus horarios y comodidad, ofrece una solución flexible. Nuestro equipo de abogados altamente capacitados y con un profundo entendimiento de los asuntos LGBTQI+ está listo para abordar una amplia variedad de áreas legales, garantizando un enfoque integral. Desde cuestiones de derecho de familia hasta consultas sobre temas laborales y el proceso de matrimonio igualitario, estamos aquí para proporcionarte orientación y apoyo legal en múltiples frentes.
+Reconocemos que las necesidades legales no conocen fronteras, y es por eso que hemos creado un método ágil y moderno para ofrecer apoyo legal sin importar dónde te encuentres en Costa Rica o en cualquier parte del mundo.
+
+La consulta virtual, diseñada para ajustarse a tus horarios y comodidad, ofrece una solución flexible. Pudiendo ayudarte en temas como matrimonios (nacionales o extranjerxs), sucesiones, testamentos y herencias, unión de hecho, legalización de documentos, poderes, traducciones y apostillas, comaternidades, sociedades, entre otros.
+
+Desde cuestiones de derecho de familia hasta consultas sobre temas laborales y el proceso de matrimonio igualitario, estamos aquí para proporcionarte orientación y apoyo legal en múltiples frentes.
 
 Al elegir nuestra consulta legal virtual, puedes esperar un proceso simple y conveniente.
 
@@ -69,7 +73,13 @@ Si eres parte de la comunidad LGBTIQ+ y necesitas apoyo legal, estamos aquí par
     slug: "matrimonios",
     contenido: `En CELIG, celebramos el amor a través de los matrimonios entre parejas del mismo sexo. Nuestros servicios legales respaldan la igualdad en Costa Rica. El matrimonio igualitario es un derecho fundamental para la comunidad LGBTIQ+.
 
+Con más de 5 años de experiencia en bodas igualitarias, en CELIG ustedes deciden si solo la parte civil, o acompañar ese momento con una ceremonia significativa. En privado o rodeados de las personas que aman. En nuestras acogedoras y elegantes oficinas o en un lugar que elijan. Lo más importante: que sea como ustedes lo sueñan.
+
 Nuestros abogados especializados en matrimonios igualitarios te guiarán en cada paso. Desde la preparación de documentos hasta la ceremonia, estamos contigo. Nuestra experiencia asegura que este proceso sea sin inconvenientes.
+
+Luego de reservar la fecha, gestionamos los trámites legales y mantenemos contacto por WhatsApp para resolver dudas y acompañarlos en cada paso del proceso.
+
+Para extranjeros es muy sencillo: solo deben enviar su identificación. Extranjeros en Costa Rica pueden usar pasaporte o documento migratorio. No necesitan traer de su país, ni partida de nacimiento ni de estado civil. Sí, extranjerxs pueden venir exclusivamente a casarse. No necesitan otro motivo para su viaje. No necesitan residir en el país ni quedarse varios días.
 
 El matrimonio entre parejas del mismo sexo es un logro importante en la lucha por los derechos LGBTIQ+. Por lo que nuestro compromiso es hacer que este sueño sea una realidad para todos. Así que trabajamos para superar obstáculos legales y lograr igualdad que Costa Rica se merece.
 

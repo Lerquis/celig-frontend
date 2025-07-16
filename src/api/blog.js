@@ -34,6 +34,13 @@ export class BlogApi extends HttpClient {
       token,
     });
   }
+
+  updateView(id) {
+    return this.request({
+      method: "PATCH",
+      endpoint: `/${id}`,
+    });
+  }
 }
 
 export const blogApi = new BlogApi();

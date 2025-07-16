@@ -21,6 +21,7 @@ import { columns as columnBlogs } from "@/components/atoms/CMS/BlogsTableColumns
 import { columns as columnTestimonials } from "@/components/atoms/CMS/TestimonialsTableColumns";
 import { columns as columnSuscriptors } from "@/components/atoms/CMS/SuscriptorsTableColumns";
 import { Loader } from "../../icons/Loader";
+import { TablePagination } from "../../molecules/CMS/TablePagination";
 
 export function TableContent({
   data = [],
@@ -63,6 +64,11 @@ export function TableContent({
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
+    initialState: {
+      pagination: {
+        pageSize: 10,
+      },
+    },
     state: {
       sorting,
       columnFilters,
@@ -92,6 +98,9 @@ export function TableContent({
             Eliminar
           </Button>
         )}
+      </div>
+      <div className="mb-4">
+        <TablePagination table={table} />
       </div>
       <div className="rounded-md border">
         <Table>
@@ -152,8 +161,8 @@ export function TableContent({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="flex-1 text-sm">
+      <div className="flex items-center justify-start space-x-2 py-4">
+        <div className="text-sm">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>

@@ -12,6 +12,13 @@ const response = await blogApi.getBlogsByTag();
 if (response.status !== 200) return Astro.redirect("/404");
 const blogInformation = response.body.blogs.find((b: any) => b.slug === slug);
 if (!blogInformation) return Astro.redirect("/404");
+
+// Incrementar vistas del blog
+try {
+  await blogApi.updateView(blogInformation.id);
+} catch (error) {
+  console.error("Error updating blog views:", error);
+}
 ---
 
 <Layout title={`CELIG - ${blogInformation.title}`}>
