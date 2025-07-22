@@ -6,6 +6,7 @@ import Container from "../atoms/Container.astro";
 import SectionTitle from "../atoms/SectionTitle.astro";
 import TestimonialItem from "../molecules/TestimonialItem.astro";
 import Footer from "../organisms/Footer.astro";
+import placeholderImage from "../../assets/placeholder.svg";
 
 const response = await testimonialApi.getTestimonials();
 const testimonials = response.body.testimonials;
@@ -36,7 +37,11 @@ const testimonials = response.body.testimonials;
     {
       testimonials.map((item: any, index: number) => (
         <TestimonialItem
-          src={item.imageUrl}
+          src={
+            item.imageUrl.length > 0
+              ? item.imageUrl
+              : placeholderImage.src
+          }
           names={item.names}
           content={item.content}
           {index}

@@ -39,7 +39,14 @@ export const columns = (onEdit, onDelete) => {
     {
       accessorKey: "title",
       header: "Title",
-      cell: ({ row }) => <div>{row.getValue("title")}</div>,
+      cell: ({ row }) => (
+        <div className="max-w-[400px] truncate" title={row.getValue("title")}>
+          {row.getValue("title")}
+        </div>
+      ),
+      meta: {
+        style: { maxWidth: "400px" },
+      },
     },
     {
       accessorKey: "tags",
@@ -48,16 +55,18 @@ export const columns = (onEdit, onDelete) => {
         const tags = row.getValue("tags");
 
         return (
-          <p className="text-sm text-muted-foreground flex flex-wrap gap-2">
-            {tags.map((tag, index) => (
-              <span
-                key={index}
-                className="bg-black text-white py-[4px] px-[8px] text-[10px] rounded-full"
-              >
-                {tag}
-              </span>
-            ))}
-          </p>
+          <div className="min-w-[120px]">
+            <p className="text-sm text-muted-foreground flex flex-wrap gap-1">
+              {tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="bg-black text-white py-[2px] px-[6px] text-[10px] rounded-full whitespace-nowrap"
+                >
+                  {tag}
+                </span>
+              ))}
+            </p>
+          </div>
         );
       },
     },
@@ -75,7 +84,7 @@ export const columns = (onEdit, onDelete) => {
         );
       },
       cell: ({ row }) => (
-        <div className="text-center">{row.getValue("views")}</div>
+        <div className="text-center min-w-[60px]">{row.getValue("views")}</div>
       ),
     },
 
@@ -85,7 +94,7 @@ export const columns = (onEdit, onDelete) => {
       cell: ({ row }) => {
         const date = formatDateToDDMMYYYY(row.getValue("createdAt"));
 
-        return <div className="text-right font-medium">{date}</div>;
+        return <div className="text-right font-medium min-w-[100px]">{date}</div>;
       },
     },
 
@@ -95,7 +104,7 @@ export const columns = (onEdit, onDelete) => {
       cell: ({ row }) => {
         const date = formatDateToDDMMYYYY(row.getValue("updatedAt"));
 
-        return <div className="text-right font-medium">{date}</div>;
+        return <div className="text-right font-medium min-w-[100px]">{date}</div>;
       },
     },
     {
@@ -107,7 +116,7 @@ export const columns = (onEdit, onDelete) => {
         return (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
+              <Button variant="ghost" className="h-8 w-8 p-0 min-w-[32px]">
                 <span className="sr-only">Open menu</span>
                 <MoreHorizontal />
               </Button>

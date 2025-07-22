@@ -102,14 +102,14 @@ export function TableContent({
       <div className="mb-4">
         <TablePagination table={table} />
       </div>
-      <div className="rounded-md border">
-        <Table>
+      <div className="rounded-md border overflow-x-auto">
+        <Table className="min-w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className="whitespace-nowrap">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -139,7 +139,10 @@ export function TableContent({
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell 
+                      key={cell.id} 
+                      className={cell.column.id === "title" ? "" : "whitespace-nowrap"}
+                    >
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

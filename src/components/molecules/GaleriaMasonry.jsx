@@ -20,7 +20,7 @@ export default function GalleryMasonry({ images }) {
           key={i}
           src={image.url || "/placeholder.svg"}
           alt="Imagen"
-          className="w-full h-auto object-cover transition-all duration-300 group-hover:scale-105"
+          className="w-full h-auto object-cover transition-all duration-300 group-hover:scale-105 mb-4"
         />
       ))}
     </Masonry>

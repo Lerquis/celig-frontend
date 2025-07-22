@@ -45,7 +45,9 @@ export const columns = (onEdit, onDelete) => {
       accessorKey: "content",
       header: () => <div className="text-left">Content</div>,
       cell: ({ row }) => {
-        return <div>{row.getValue("content")}</div>;
+        const content = row.getValue("content");
+        const truncatedContent = content.length > 30 ? content.substring(0, 30) + "..." : content;
+        return <div>{truncatedContent}</div>;
       },
     },
     {

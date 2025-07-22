@@ -20,6 +20,16 @@ export class HttpClient {
     return url;
   }
 
+  handleUnauthorized() {
+    // En el cliente, eliminar cookie y redirigir
+    if (typeof window !== "undefined") {
+      document.cookie = "token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      window.location.href = "/admin/login";
+    }
+    // En el servidor, solo devolvemos un objeto de error sin lanzar excepción
+    // El error será manejado por el código que llama al HttpClient
+  }
+
   async request({
     method = "GET",
     endpoint = "",
@@ -55,11 +65,8 @@ export class HttpClient {
 
       if (!response.ok) {
         if (response.status === 401) {
-          // Eliminar cookie de autenticación
-          if (typeof document !== 'undefined') {
-            document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-            window.location.href = '/admin/login';
-          }
+          this.handleUnauthorized();
+          return { status: 401, body: { message: "Unauthorized", shouldRedirect: true } };
         }
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.message || "Error en la solicitud");
@@ -68,6 +75,14 @@ export class HttpClient {
       return { status: response.status, body: await response.json() };
     } catch (error) {
       console.log(error);
+      console.log(error.message);
+
+      // Verificar si el error es de tipo Unauthorized
+      if (error.message === "Unauthorized") {
+        this.handleUnauthorized();
+        return { status: 401, body: { message: "Unauthorized", shouldRedirect: true } };
+      }
+
       return {
         status: 500,
         body: { message: error.message || "Error en la solicitud" },

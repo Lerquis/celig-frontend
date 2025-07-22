@@ -5,7 +5,7 @@ const { src, names, content, index } = Astro.props;
 ---
 
 <div
-  class={`relative col-start-1 col-span-4 md:col-span-8 md:w-[90%] md:mx-auto overflow-hidden h-[350px] md:h-[450px]
+  class={`relative col-start-1 col-span-4 md:col-span-8 md:w-[90%] md:mx-auto overflow-hidden aspect-square
   xl:col-span-6 xl:w-[100%] ${index % 2 ? "xl:col-start-7" : ""} testimonial-animation
   `}
 >
@@ -16,7 +16,7 @@ const { src, names, content, index } = Astro.props;
 
   <SmallParragraph
     text={names}
-    customClass="z-[5] text-white absolute top-[50%] translate-y-[-40%] px-2"
+    customClass="z-[5] text-white absolute top-[80%] translate-y-[-40%] px-2"
   />
   <SmallParragraph
     text={content}
