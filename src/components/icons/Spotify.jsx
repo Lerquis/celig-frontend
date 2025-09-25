@@ -4,7 +4,7 @@ export const Spotify = (props) => {
       className="hover:fill-green-500 transition-all ease-in cursor-pointer"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 496 512"
-      fill="#fff"
+      fill={props.fill ? props.fill : "#fff"}
       height={32}
       width={32}
     >

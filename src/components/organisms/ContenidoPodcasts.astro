@@ -2,15 +2,27 @@
 export const prerender = false;
 import { podcastApi } from "@/api";
 import Container from "../atoms/Container.astro";
+import Parragraph from "../atoms/Parragraph.astro";
+import { Spotify } from "../icons/Spotify";
 
 let podcasts = [];
 const response = await podcastApi.getPodcasts();
 if (response.status === 200) podcasts = response.body.podcasts;
 ---
 
-<Container customClass="content-container-podcasts hidden opacity-0">
+<Container customClass="content-container-podcasts hidden opacity-0 relative">
+  <a
+    class="absolute flex flex-col md:flex-row gap-2 items-center justify-center left-[50%] translate-x-[-50%] hover:scale-[1.1] transition-all ease-in"
+    href="https://open.spotify.com/show/4uHDYtDQvHSdy9SyA6R8p4?si=yUL2cZMLR5KHPFa2b2_jdQ&nd=1&dlsi=05d2cd3b21e74042"
+    target="_blank"
+  >
+    <Parragraph text="Nuestro Spotify" customClass="montbold" />
+
+    <Spotify fill="#22C55E" />
+  </a>
+
   <div
-    class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[10px]"
+    class="mt-20 md:mt-12 col-start-1 col-span-4 md:col-span-8 xl:col-span-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[10px]"
   >
     {
       podcasts.map((podcast: { url: string }) => (

@@ -56,7 +56,7 @@ export const columns = (onDelete) => {
       id: "actions",
       enableHiding: false,
       cell: ({ row }) => {
-        // ! Se encuentra toda la informacion del blog
+        // ! Se encuentra toda la información del blog
         const { id } = row.original;
         return (
           <DropdownMenu>

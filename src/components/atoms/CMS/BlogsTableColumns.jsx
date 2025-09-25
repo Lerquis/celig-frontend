@@ -111,7 +111,7 @@ export const columns = (onEdit, onDelete) => {
       id: "actions",
       enableHiding: false,
       cell: ({ row }) => {
-        // ! Se encuentra toda la informacion del blog
+        // ! Se encuentra toda la información del blog
         const blog = row.original;
         return (
           <DropdownMenu>

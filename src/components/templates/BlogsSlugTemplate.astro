@@ -21,7 +21,7 @@ const { blog } = Astro.props;
     <div
       class="col-start-1 col-span-4 md:col-span-8 md:w-[50%] md:mx-auto xl:col-span-12 flex justify-between"
     >
-      <Parragraph text="Ana Isabel Sibaja" />
+      <Parragraph text="Ana Isabel Sibaja" customClass="montbold" />
       <Parragraph text={formatDateToDDMMYYYY(blog.updatedAt, false)} />
     </div>
   </Container>
@@ -33,7 +33,7 @@ const { blog } = Astro.props;
         .map((p: string) => (
           <Parragraph
             text={p}
-            customClass="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 xl:w-[70%] xl:mx-auto"
+            customClass="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 xl:w-[70%] xl:mx-auto text-justify"
           />
         ))
     }

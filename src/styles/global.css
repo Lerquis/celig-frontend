@@ -382,6 +382,11 @@
   font-weight: 400;
 }
 
+.montbold {
+  font-family: "Montserrat";
+  font-weight: 500;
+}
+
 .montlight {
   font-family: "Montserrat";
   font-weight: 200;

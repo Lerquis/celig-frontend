@@ -18,8 +18,11 @@ const xlIndex = index * 2 + 1;
     <ProcesoTitle index={index} title={title} />
     <Parragraph
       text={parragraph}
-      customClass={`${index % 2 ? "text-right" : "text-left"} xl:text-left`}
+      customClass={`${index % 2 ? "text-right" : "text-left"} xl:text-left  text-justify`}
     />
   </div>
-  <div class="process-border absolute bottom-0 left-0 w-full h-[1px] bg-black origin-left"></div>
+  <div
+    class="process-border absolute bottom-0 left-0 w-full h-[1px] bg-black origin-left"
+  >
+  </div>
 </div>
