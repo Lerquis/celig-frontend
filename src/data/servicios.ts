@@ -55,17 +55,15 @@ Desde la identificación de activos hasta la resolución de posibles disputas le
   {
     title: "Servicio Defensa de Derechos LGBTIQ+",
     slug: "derechos-lgbtiq+",
-    contenido: `En CELIG, estamos comprometidos con la defensa de los derechos LGBTQI+. Abogamos por la igualdad y la justicia en Costa Rica. Nuestra experiencia legal respalda a la comunidad LGBTIQ+ en la lucha por la igualdad.
-
-Mi enfoque abarca diversas áreas, incluido el apoyo al matrimonio igualitario. Trabajamos incansablemente para asegurar que todas las parejas tengan acceso a este derecho fundamental. Nuestros abogados están aquí para guiar y empoderar a la comunidad LGBTIQ+.
+    contenido: `Mi enfoque abarca diversas áreas, incluido el apoyo al matrimonio igualitario. Trabajamos incansablemente para asegurar que todas las parejas tengan acceso a este derecho fundamental.
 
 Buscamos crear un impacto duradero en la sociedad, fomentando la sensibilización y la educación en torno a los derechos LGBTIQ+.
 
-En CELIG, reconocemos que la lucha por los derechos LGBTIQ+ es constante. Apoyamos la comunidad a través de asesoramiento legal especializado y representación en casos importantes. Creemos en una sociedad igualitaria donde todos sean tratados con respeto y equidad.
+En CELIG, reconocemos que la lucha por los derechos LGBTIQ+ es constante. Apoyamos la comunidad a través de asesoramiento legal especializado. Creemos en una sociedad igualitaria donde todos sean tratados con respeto y equidad.
 
-La defensa de los derechos LGBTIQ+ no es solo nuestra vocación, sino también nuestra pasión. Luchamos por cambiar las leyes y las percepciones en Costa Rica para garantizar que todos puedan vivir sin miedo ni discriminación. Nuestros abogados están aquí para brindar una voz legal fuerte y valiente.
+La defensa de los derechos LGBTIQ+ no es solo nuestra vocación, sino también nuestra pasión. Luchamos por cambiar las leyes y las percepciones en Costa Rica para garantizar que todos puedan vivir sin miedo ni discriminación. 
 
-Si eres parte de la comunidad LGBTIQ+ y necesitas apoyo legal, estamos aquí para ti. Defendemos tus derechos con determinación y comprensión.
+Si eres parte de la comunidad LGBTIQ+ y necesitas apoyo legal, estamos aquí para ti. Defendemos tus derechos con determinación y comprensión
 
 **Esta lucha es profundamente personal para mí.** Como Ana Isabel Sibaja, madre de hijos LGBTIQ+, esta no es solo mi profesión, sino mi compromiso de vida. Cada caso de discriminación que enfrento, cada derecho que defendemos, lo vivo desde la perspectiva de una madre que quiere un mundo más justo para sus hijos y para toda nuestra comunidad. Con más de 34 años de experiencia legal y la motivación más poderosa que existe—el amor de madre—te ofrezco mi acompañamiento personal y mi lucha incansable por tus derechos. Juntos, trabajamos hacia un futuro donde la igualdad sea una realidad para todos en la comunidad LGBTIQ+.`,
   },
@@ -77,7 +75,7 @@ Si eres parte de la comunidad LGBTIQ+ y necesitas apoyo legal, estamos aquí par
 
 Con más de 5 años de experiencia en bodas igualitarias, en CELIG ustedes deciden si solo la parte civil, o acompañar ese momento con una ceremonia significativa. En privado o rodeados de las personas que aman. En nuestras acogedoras y elegantes oficinas o en un lugar que elijan. Lo más importante: que sea como ustedes lo sueñan.
 
-Nuestros abogados especializados en matrimonios igualitarios te guiarán en cada paso. Desde la preparación de documentos hasta la ceremonia, estamos contigo. Nuestra experiencia asegura que este proceso sea sin inconvenientes.
+Te guío en cada paso para cumplir tu sueño. Desde la preparación de documentos hasta la ceremonia y debida inscripción del matrimonio ante el Registro Civil.
 
 Luego de reservar la fecha, gestionamos los trámites legales y mantenemos contacto por WhatsApp para resolver dudas y acompañarlos en cada paso del proceso.
 
@@ -85,15 +83,15 @@ Para extranjeros es muy sencillo, solo deben enviar su identificación. Extranje
 
 El matrimonio entre parejas del mismo sexo es un logro importante en la lucha por los derechos LGBTIQ+. Por lo que mi compromiso es hacer que este sueño sea una realidad para todos. Así que trabajamos para superar obstáculos legales y lograr igualdad que Costa Rica se merece.
 
-En CELIG, comprendemos que este día es especial. Te apoyamos en tu ceremonia y garantizar que tu amor se celebre de la manera que elijas. Tu felicidad es nuestra prioridad.
+En CELIG, comprendemos que este día es especial. Te apoyo en tu ceremonia y garantizar que tu amor se celebre de la manera que elijas. Tu felicidad es mi prioridad.
 
-Los matrimonios igualitarios son un símbolo de avance en la sociedad costarricense. Me enorgullezco de ser parte de este progreso. Luchamos por la igualdad en cada matrimonio y luchamos por un futuro inclusivo para la comunidad LGBTIQ+.
+Los matrimonios igualitarios son un símbolo de avance en la sociedad costarricense. Me enorgullezco de ser parte de este progreso. Lucho por la igualdad en cada matrimonio y luchamos por un futuro inclusivo para la comunidad LGBTIQ+.
 
-Si sueñas con un matrimonio igualitario, estás en la firma legal correcta. Nuestra dedicación a la comunidad LGBTIQ+ nos impulsa a dar servicios legales excepcionales tal y como se lo merecen. Tu amor merece ser celebrado con todos los derechos que mereces.
+Si sueñas con un matrimonio igualitario, estás en la firma legal correcta. Mi dedicación a la comunidad LGBTIQ+ nos impulsa a dar servicios legales excepcionales tal y como se lo merecen. Tu amor merece ser celebrado con todos los derechos que mereces.
 
 En CELIG, creemos en la fortaleza del amor. Nuestros servicios legales están diseñados para hacer que el matrimonio entre parejas del mismo sexo sea una realidad.
 
-**Te acompaño personalmente en el día más importante de tu vida.** Como Ana Isabel Sibaja, he tenido el privilegio de oficiar más de 250 matrimonios igualitarios desde 2020. Cada ceremonia es especial para mí porque entiendo, como madre de hijos LGBTIQ+, el valor profundo de este momento. No solo celebro tu amor, sino que lo hago desde la comprensión genuina de lo que significa para nuestra comunidad. Con más de 34 años de experiencia legal y el corazón de una madre que lucha por la igualdad, me aseguro de que tu día especial sea perfecto en cada detalle legal y emocional. Celebra tu amor conmigo y avancemos juntos hacia un futuro igualitario y lleno de amor.`,
+**Te acompaño personalmente en el día más importante de tu vida.** Como Ana Isabel Sibaja, he tenido el privilegio de oficiar más de 350 matrimonios igualitarios desde 2020. Cada ceremonia es especial para mí porque entiendo, como madre de hijos LGBTIQ+, el valor profundo de este momento. No solo celebro tu amor, sino que lo hago desde la comprensión genuina de lo que significa para nuestra comunidad. Con más de 34 años de experiencia legal y el corazón de una madre que lucha por la igualdad, me aseguro de que tu día especial sea perfecto en cada detalle legal y emocional. Celebra tu amor conmigo y avancemos juntos hacia un futuro igualitario y lleno de amor.`,
   },
 
   {
