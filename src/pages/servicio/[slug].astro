@@ -45,7 +45,7 @@ const serviceSchema = {
     "@type": "Country",
     name: "Costa Rica",
   },
-  url: `https://celigcr.com/servicios/${service.slug}`,
+  url: `https://celigcr.com/servicio/${service.slug}`,
 };
 
 // Títulos y descripciones optimizados para SEO
@@ -71,7 +71,7 @@ const seoDescription = getServiceDescription(service.title, service.contenido);
 <Layout
   title={seoTitle}
   description={seoDescription}
-  canonical={`/servicios/${service.slug}`}
+  canonical={`/servicio/${service.slug}`}
   schema={serviceSchema}
 >
   <Background />

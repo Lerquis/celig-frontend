@@ -14,7 +14,7 @@ export const GET: APIRoute = async () => {
 
   // Páginas de servicios
   const servicePages = servicios.map((service) => ({
-    url: `/servicios/${service.slug}`,
+    url: `/servicio/${service.slug}`,
     priority: "0.9",
     changefreq: "monthly",
   }));
