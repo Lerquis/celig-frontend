@@ -3,9 +3,33 @@ import Background from "@/components/atoms/General/Background.astro";
 import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
 import ContenidoTemplate from "@/components/templates/ContenidoTemplate.astro";
 import Layout from "@/layouts/Layout.astro";
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Contenido Multimedia LGBTIQ+ - CELIG",
+  description:
+    "Blogs, podcasts y galería de imágenes sobre derechos LGBTIQ+ en Costa Rica. Contenido educativo y recursos legales.",
+  url: "https://celigcr.com/contenido",
+  isPartOf: {
+    "@type": "WebSite",
+    name: "CELIG - Centro Legal LGBTIQ+",
+    url: "https://celigcr.com",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "CELIG - Centro Legal LGBTIQ+",
+    logo: "https://celigcr.com/CroppedLogo.PNG",
+  },
+};
 ---
 
-<Layout title="CELIG - Contenido Multimedia">
+<Layout
+  title="Contenido LGBTIQ+ Costa Rica | Blogs, Podcasts y Galería - CELIG"
+  description="Explora nuestro contenido multimedia sobre derechos LGBTIQ+ en Costa Rica. Blogs informativos, podcasts educativos y galería de eventos. Recursos legales gratuitos."
+  canonical="/contenido"
+  schema={pageSchema}
+>
   <Background />
   <GridOverlay />
 

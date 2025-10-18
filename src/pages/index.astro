@@ -4,9 +4,98 @@ import Background from "@/components/atoms/General/Background.astro";
 import Layout from "../layouts/Layout.astro";
 import HomePageTemplate from "@/components/templates/HomePageTemplate.astro";
 import IntroAnimation from "@/components/organisms/IntroAnimation.astro";
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  name: "CELIG - Centro Legal LGBTIQ+",
+  description:
+    "Servicios legales especializados para la comunidad LGBTIQ+ en Costa Rica. Matrimonios igualitarios, consultas legales virtuales y presenciales, sucesiones, defensa de derechos y servicios notariales.",
+  url: "https://celigcr.com",
+  logo: "https://celigcr.com/CroppedLogo.PNG",
+  image: "https://celigcr.com/og-image.jpg",
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "CR",
+    addressRegion: "San José",
+    addressLocality: "Costa Rica",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Costa Rica",
+  },
+  founder: {
+    "@type": "Person",
+    name: "Ana Isabel Sibaja",
+    jobTitle: "Abogada Notaria",
+    description:
+      "Notaria con más de 34 años de experiencia especializada en derechos LGBTIQ+ y madre de hijos LGBTIQ+",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Servicios Legales LGBTIQ+",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Matrimonios Igualitarios",
+          description:
+            "Celebración de matrimonios entre parejas del mismo sexo en Costa Rica. Más de 350 ceremonias realizadas desde 2020.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Consulta Legal Virtual",
+          description:
+            "Consultas legales virtuales personalizadas, seguras y 100% confidenciales desde cualquier parte del mundo.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Defensa de Derechos LGBTIQ+",
+          description:
+            "Asesoramiento legal especializado en defensa de derechos de la comunidad LGBTIQ+.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Servicios Notariales",
+          description:
+            "Servicios notariales completos incluyendo divorcios, segregaciones, traspasos, declaraciones juradas e hipotecas.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Servicio de Sucesiones",
+          description:
+            "Asesoría legal en procesos de sucesión, testamentos y herencias con sensibilidad a estructuras familiares diversas.",
+        },
+      },
+    ],
+  },
+  sameAs: [
+    "https://www.facebook.com/celigcr",
+    "https://www.instagram.com/celigcr_",
+    "https://www.tiktok.com/@celigcr",
+  ],
+};
 ---
 
-<Layout title="CELIG - Inicio">
+<Layout
+  title="CELIG - Servicios Legales LGBTIQ+ en Costa Rica | Matrimonios Igualitarios y Consultas Legales"
+  description="Centro legal especializado en derechos LGBTIQ+ en Costa Rica. Matrimonios igualitarios, consultas legales virtuales y presenciales, sucesiones, defensa de derechos. Más de 34 años de experiencia con Ana Isabel Sibaja."
+  schema={pageSchema}
+>
   <IntroAnimation />
   <Background />
   <GridOverlay />

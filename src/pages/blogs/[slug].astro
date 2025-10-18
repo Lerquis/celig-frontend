@@ -19,9 +19,63 @@ try {
 } catch (error) {
   console.error("Error updating blog views:", error);
 }
+
+// Generar descripción SEO del contenido del blog
+const blogDescription = blogInformation.content
+  ? blogInformation.content
+      .substring(0, 160)
+      .replace(/<[^>]*>/g, "")
+      .trim()
+  : `Lee sobre ${blogInformation.title} en el blog de CELIG. Información legal LGBTIQ+ en Costa Rica.`;
+
+// Schema.org para artículos de blog
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: blogInformation.title,
+  description: blogDescription,
+  author: {
+    "@type": "Person",
+    name: "Ana Isabel Sibaja",
+    jobTitle: "Abogada Notaria",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "CELIG - Centro Legal LGBTIQ+",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://celigcr.com/CroppedLogo.PNG",
+    },
+  },
+  datePublished: blogInformation.createdAt,
+  dateModified: blogInformation.updatedAt || blogInformation.createdAt,
+  image: blogInformation.imageUrl || "https://celigcr.com/og-image.jpg",
+  url: `https://celigcr.com/blogs/${blogInformation.slug}`,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `https://celigcr.com/blogs/${blogInformation.slug}`,
+  },
+  keywords:
+    blogInformation.tags?.join(", ") || "LGBTIQ+, derechos, legal, Costa Rica",
+};
+
+const articleData = {
+  publishedTime: blogInformation.createdAt,
+  modifiedTime: blogInformation.updatedAt || blogInformation.createdAt,
+  author: "Ana Isabel Sibaja",
+  tags: blogInformation.tags || [],
+};
 ---
 
-<Layout title={`CELIG - ${blogInformation.title}`}>
+<Layout
+  title={`${blogInformation.title} | Blog CELIG - Derechos LGBTIQ+ Costa Rica`}
+  description={blogDescription}
+  canonical={`/blogs/${blogInformation.slug}`}
+  ogImage={blogInformation.imageUrl || "/og-image.jpg"}
+  ogType="article"
+  article={articleData}
+  schema={blogSchema}
+>
   <Background />
   <GridOverlay />
 

@@ -3,9 +3,33 @@ import Background from "@/components/atoms/General/Background.astro";
 import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
 import TestimoniosTemplate from "@/components/templates/TestimoniosTemplate.astro";
 import Layout from "@/layouts/Layout.astro";
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Testimonios - CELIG",
+  description:
+    "Lee las experiencias reales de nuestros clientes con los servicios legales LGBTIQ+ de CELIG. Historias de matrimonios igualitarios, consultas legales y defensa de derechos.",
+  url: "https://celigcr.com/testimonios",
+  isPartOf: {
+    "@type": "WebSite",
+    name: "CELIG - Centro Legal LGBTIQ+",
+    url: "https://celigcr.com",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "CELIG - Centro Legal LGBTIQ+",
+    logo: "https://celigcr.com/CroppedLogo.PNG",
+  },
+};
 ---
 
-<Layout title="CELIG - Testimonios">
+<Layout
+  title="Testimonios Servicios Legales LGBTIQ+ | Experiencias Reales - CELIG"
+  description="Lee testimonios reales de clientes que han usado nuestros servicios legales LGBTIQ+ en Costa Rica. Historias de matrimonios igualitarios, consultas legales y más. Conoce las experiencias de nuestra comunidad."
+  canonical="/testimonios"
+  schema={pageSchema}
+>
   <Background />
   <GridOverlay />
 

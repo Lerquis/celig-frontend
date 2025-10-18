@@ -13,9 +13,67 @@ const { slug } = Astro.params;
 const service = servicios.find((s) => s.slug === slug);
 
 if (!service) return Astro.redirect("/404");
+
+// Generar descripción SEO basada en el contenido del servicio
+const getServiceDescription = (title: string, contenido: string) => {
+  const firstParagraph = contenido.split("\n\n")[0];
+  return firstParagraph.substring(0, 160).replace(/\*\*/g, "").trim();
+};
+
+// Schema.org para cada servicio
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: service.title,
+  description: getServiceDescription(service.title, service.contenido),
+  provider: {
+    "@type": "LegalService",
+    name: "CELIG - Centro Legal LGBTIQ+",
+    image: "https://celigcr.com/CroppedLogo.PNG",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "CR",
+      addressLocality: "Costa Rica",
+    },
+    founder: {
+      "@type": "Person",
+      name: "Ana Isabel Sibaja",
+      jobTitle: "Abogada Notaria",
+    },
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Costa Rica",
+  },
+  url: `https://celigcr.com/servicios/${service.slug}`,
+};
+
+// Títulos y descripciones optimizados para SEO
+const seoTitles: Record<string, string> = {
+  "consulta-virtual":
+    "Consulta Legal Virtual LGBTIQ+ | Asesoría Legal Online Costa Rica - CELIG",
+  "consulta-presencial":
+    "Consulta Legal Presencial LGBTIQ+ | Abogada Especializada Costa Rica - CELIG",
+  sucesiones:
+    "Servicio de Sucesiones y Herencias LGBTIQ+ | Testamentos Costa Rica - CELIG",
+  "derechos-lgbtiq+":
+    "Defensa de Derechos LGBTIQ+ | Abogada Especializada Costa Rica - CELIG",
+  matrimonios:
+    "Matrimonios Igualitarios en Costa Rica | Bodas Gay y Lesbianas - CELIG",
+  notariales:
+    "Servicios Notariales LGBTIQ+ | Notaria Especializada Costa Rica - CELIG",
+};
+
+const seoTitle = seoTitles[service.slug] || `${service.title} - CELIG`;
+const seoDescription = getServiceDescription(service.title, service.contenido);
 ---
 
-<Layout title=`CELIG - ${service.title}`>
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  canonical={`/servicios/${service.slug}`}
+  schema={serviceSchema}
+>
   <Background />
   <GridOverlay />
 

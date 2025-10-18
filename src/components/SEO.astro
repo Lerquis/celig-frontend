@@ -1,0 +1,124 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  article?: {
+    publishedTime?: string;
+    modifiedTime?: string;
+    author?: string;
+    tags?: string[];
+  };
+  noindex?: boolean;
+  schema?: any;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = "/og-image.jpg",
+  ogType = "website",
+  article,
+  noindex = false,
+  schema,
+} = Astro.props;
+
+const siteUrl = Astro.site || "https://celigcr.com";
+const canonicalURL = canonical
+  ? new URL(canonical, siteUrl)
+  : new URL(Astro.url.pathname, siteUrl);
+const ogImageURL = new URL(ogImage, siteUrl);
+
+// Schema.org por defecto para la organización
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "CELIG - Centro Legal LGBTIQ+",
+  description:
+    "Servicios legales especializados para la comunidad LGBTIQ+ en Costa Rica. Matrimonios igualitarios, consultas legales, sucesiones y defensa de derechos.",
+  url: siteUrl,
+  logo: new URL("/CroppedLogo.PNG", siteUrl),
+  founder: {
+    "@type": "Person",
+    name: "Ana Isabel Sibaja",
+    jobTitle: "Abogada Notaria",
+    description:
+      "Notaria con más de 34 años de experiencia especializada en derechos LGBTIQ+",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Costa Rica",
+  },
+  sameAs: [
+    "https://www.facebook.com/celigcr",
+    "https://www.instagram.com/celigcr_",
+    "https://www.tiktok.com/@celigcr",
+  ],
+};
+---
+
+<!-- SEO Meta Tags Básicos -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageURL} />
+<meta property="og:site_name" content="CELIG - Centro Legal LGBTIQ+" />
+<meta property="og:locale" content="es_CR" />
+
+{
+  article && (
+    <>
+      {article.publishedTime && (
+        <meta
+          property="article:published_time"
+          content={article.publishedTime}
+        />
+      )}
+      {article.modifiedTime && (
+        <meta property="article:modified_time" content={article.modifiedTime} />
+      )}
+      {article.author && (
+        <meta property="article:author" content={article.author} />
+      )}
+      {article.tags &&
+        article.tags.map((tag) => (
+          <meta property="article:tag" content={tag} />
+        ))}
+    </>
+  )
+}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageURL} />
+
+<!-- Metadatos adicionales -->
+<meta name="language" content="Spanish" />
+<meta name="author" content="CELIG - Ana Isabel Sibaja" />
+<meta name="geo.region" content="CR" />
+<meta name="geo.placename" content="Costa Rica" />
+
+<!-- Keywords específicos -->
+<meta
+  name="keywords"
+  content="abogada LGBTIQ+, matrimonio igualitario Costa Rica, derechos LGBTIQ+, servicios legales LGBTIQ+, notaria LGBTIQ+, consulta legal virtual, Ana Isabel Sibaja, CELIG, sucesiones, testamentos, bodas gay Costa Rica, matrimonio homosexual, defensa derechos LGBTIQ+"
+/>
+
+<!-- Schema.org JSON-LD -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(schema || defaultSchema)}
+/>

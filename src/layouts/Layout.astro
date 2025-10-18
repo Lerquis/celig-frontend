@@ -3,19 +3,29 @@ import WhatsApp from "@/components/atoms/WhatsApp.astro";
 import "../styles/global.css";
 import { Toaster } from "@/components/ui/sonner";
 import Navigation from "@/components/molecules/Navigation.astro";
+import SEO from "@/components/SEO.astro";
 
-const { title } = Astro.props;
+const { title, description, canonical, ogImage, ogType, article, noindex, schema } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/CroppedLogo.PNG" />
     <meta name="generator" content={Astro.generator} />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>{title}</title>
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+      ogType={ogType}
+      article={article}
+      noindex={noindex}
+      schema={schema}
+    />
     <script src="/src/js/app"></script>
   </head>
   <body>
