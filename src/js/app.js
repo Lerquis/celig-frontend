@@ -10,13 +10,13 @@ class App {
     this._createLenis();
     this._render();
     this._backToTop();
-    this._textsToReveal();
-    this._statisticsAnimation();
-    this._titlesAnimation();
-    this._diffsAnimation();
-    this._processAnimation();
-    this._servicesAnimation();
-    this._testimonialsAnimation();
+    // this._textsToReveal();
+    // this._statisticsAnimation();
+    // this._titlesAnimation();
+    // this._diffsAnimation();
+    // this._processAnimation();
+    // this._servicesAnimation();
+    // this._testimonialsAnimation();
     this._initIntroAnimation();
   }
 
@@ -84,17 +84,36 @@ class App {
       const titles = document.querySelectorAll(".title-animation");
       if (titles.length > 0) {
         titles.forEach((el) => {
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-              scrub: true,
-              once: true,
+          ScrollTrigger.matchMedia({
+            // Desktop
+            "(min-width: 1024px)": function () {
+              const tl = gsap.timeline({
+                scrollTrigger: {
+                  trigger: el,
+                  start: "top 80%",
+                  toggleActions: "play none none reverse",
+                  scrub: true,
+                  once: true,
+                },
+              });
+
+              tl.fromTo(el, { opacity: 0, y: 100 }, { opacity: 1, y: 0 });
+            },
+            // Mobile y Tablet
+            "(max-width: 1023px)": function () {
+              const tl = gsap.timeline({
+                scrollTrigger: {
+                  trigger: el,
+                  start: "top 20%",
+                  toggleActions: "play none none reverse",
+                  scrub: true,
+                  once: true,
+                },
+              });
+
+              tl.fromTo(el, { opacity: 0, y: 100 }, { opacity: 1, y: 0 });
             },
           });
-
-          tl.fromTo(el, { opacity: 0, y: 100 }, { opacity: 1, y: 0 });
         });
       }
     });
@@ -141,12 +160,12 @@ class App {
           const index = parseInt(el.getAttribute("data-index"));
           const content = el.querySelector(".process-content");
           const border = el.querySelector(".process-border");
-          
+
           // Verificar si es desktop (1280px+) o mobile
           const isDesktop = window.innerWidth >= 1280;
-          
+
           let xFrom, xTo;
-          
+
           if (isDesktop) {
             // Desktop: todos van de x: -100 a x: 0
             xFrom = -100;
@@ -267,14 +286,14 @@ class App {
 
   _initIntroAnimation() {
     // Solo ejecutar si se va a mostrar la intro
-    const isHomePage = window.location.pathname === '/';
-    const hasHash = window.location.hash !== '';
+    const isHomePage = window.location.pathname === "/";
+    const hasHash = window.location.hash !== "";
     const shouldShowIntro = isHomePage && !hasHash;
-    
-    if (shouldShowIntro && document.getElementById('intro-overlay')) {
+
+    if (shouldShowIntro && document.getElementById("intro-overlay")) {
       // Pausar Lenis durante la intro
       this.lenis.stop();
-      
+
       // Reanudar Lenis después de la intro
       setTimeout(() => {
         this.lenis.start();

@@ -35,6 +35,7 @@ export default class TextReveal extends Observer {
       yPercent: 0,
       stagger: 0.03,
       ease: "power3.out",
+      marker: true,
     });
   }
 
