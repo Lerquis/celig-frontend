@@ -1,0 +1,132 @@
+---
+import Background from "@/components/atoms/General/Background.astro";
+import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/atoms/Container.astro";
+import SectionTitle from "@/components/atoms/SectionTitle.astro";
+import Parragraph from "@/components/atoms/Parragraph.astro";
+import Footer from "@/components/organisms/Footer.astro";
+
+const subsectionItems = [
+  "Reserva de fecha y agenda profesional",
+  "Análisis jurídico previo",
+  "Revisión y preparación documental",
+  "Disponibilidad exclusiva para el cliente",
+];
+
+const sections = [
+  {
+    title: "Reservas y Anticipos",
+    paragraphs: [
+      "Para confirmar cualquier servicio profesional se requiere un anticipo del 50% del valor total, el cual garantiza:",
+    ],
+    list: subsectionItems,
+    footer:
+      "Este anticipo no es reembolsable bajo ninguna circunstancia, ya que corresponde a tiempo profesional reservado y gestión administrativa iniciada.",
+  },
+  {
+    title: "Reembolsos",
+    paragraphs: [
+      "No se realizan devoluciones de dinero, totales ni parciales, una vez efectuado el pago del anticipo o del servicio completo.",
+      "En caso de cancelación por parte del cliente, los montos abonados no serán reintegrados.",
+    ],
+  },
+  {
+    title: "Correcciones",
+    paragraphs: [
+      "En caso de error material atribuible exclusivamente a nuestra gestión profesional, se procederá a su corrección sin costo adicional para el cliente. Esto no implicará devolución de dinero.",
+    ],
+  },
+];
+---
+
+<Layout
+  title="Política de Reembolsos y Cancelaciones - CELIG"
+  description="Conoce la política de devoluciones, cancelaciones y reembolsos de CELIG para servicios notariales, matrimonios igualitarios y asesorías legales en Costa Rica."
+  canonical="/politica-reembolsos"
+  noindex={false}
+>
+  <Background />
+  <GridOverlay />
+
+  <section class="pt-24 pb-0 space-y-[80px] xl:space-y-[120px]">
+    <!-- Título principal -->
+    <Container
+      customClass="space-y-[-50px] md:space-y-[-80px] mt-[40px] md:mt-[60px]"
+    >
+      <SectionTitle
+        title="Política de"
+        customClass="col-start-1 col-span-4 md:col-span-8"
+      />
+      <SectionTitle
+        title="Reembolsos"
+        serif={true}
+        customClass="col-start-2 col-span-3 xl:col-start-3"
+      />
+    </Container>
+
+    <!-- Introducción -->
+    <Container>
+      <div
+        class="col-start-1 col-span-4 md:col-span-8 xl:col-span-8 xl:col-start-3 space-y-[30px]"
+      >
+        <div class="customGradient h-[3px] w-full rounded-full"></div>
+        <Parragraph
+          text="Debido a la naturaleza personalizada, jurídica y profesional de los servicios ofrecidos por Celig Costa Rica, incluyendo servicios notariales, matrimonios civiles, apostillado, traducciones oficiales y gestión documental, no se aceptan devoluciones ni cambios una vez que el servicio ha sido contratado, reservado o iniciado."
+          customClass="text-justify"
+        />
+      </div>
+    </Container>
+
+    <!-- Secciones -->
+    {
+      sections.map((section) => (
+        <Container>
+          <div class="col-start-1 col-span-4 md:col-span-8 xl:col-span-8 xl:col-start-3 space-y-[24px]">
+            <div class="border-b border-black/10 pb-[24px]">
+              <h3 class="rosdcel text-[28px] md:text-[40px] uppercase tracking-[-1px]">
+                {section.title}
+              </h3>
+            </div>
+
+            {section.paragraphs.map((p) => (
+              <Parragraph text={p} customClass="text-justify" />
+            ))}
+
+            {section.list && (
+              <ul class="space-y-[10px] border-l-2 border-black pl-5">
+                {section.list.map((item) => (
+                  <li class="montreg tracking-[1px] text-[16px] leading-[25px]">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {section.footer && (
+              <Parragraph
+                text={section.footer}
+                customClass="text-justify italic opacity-70"
+              />
+            )}
+          </div>
+        </Container>
+      ))
+    }
+
+    <!-- Nota de aceptación -->
+    <Container>
+      <div
+        class="col-start-1 col-span-4 md:col-span-8 xl:col-span-8 xl:col-start-3"
+      >
+        <div class="customGradient h-[3px] w-full rounded-full mb-[30px]"></div>
+        <Parragraph
+          text="La contratación de cualquiera de nuestros servicios implica la aceptación expresa de esta política."
+          customClass="text-center montbold mb-[100px]"
+        />
+      </div>
+    </Container>
+  </section>
+
+  <Footer />
+</Layout>
