@@ -40,7 +40,9 @@ const whatsappUrl =
   </Container>
 
   <!-- CTA: crece y se centra verticalmente en mobile -->
-  <div class="flex-1 flex items-center md:flex-none md:block pb-[60px] md:pb-0">
+  <div
+    class="flex-1 flex flex-col justify-center md:flex-none md:block md:pb-0"
+  >
     <Container fullWidth={false} customClass="w-full">
       <div
         class="col-span-4 md:col-span-5 xl:col-span-6 flex flex-col gap-3 md:gap-5"
@@ -74,6 +76,14 @@ const whatsappUrl =
         />
       </div>
     </Container>
+
+    <!-- Foto solo mobile -->
+    <img
+      src="/ProfilePhoto4.png"
+      alt="Ana Isabel Sibaja"
+      class="md:hidden w-full h-[35vh] object-cover"
+      style="object-position: 40px top"
+    />
   </div>
 
   <!-- Tagline + flag + arrow (solo md+) -->
