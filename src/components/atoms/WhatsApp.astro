@@ -3,7 +3,9 @@ import { WhatsApp as WhatsAppIcon } from "../icons/WhatsApp";
 ---
 
 <div
-  class="flex items-center gap-2 px-4 py-3 rounded-full bg-green-500 w-fit fixed bottom-4 right-4 cursor-pointer hover:scale-110 transition-all"
+  id="whatsapp-fab"
+  class="flex items-center gap-2 px-4 py-3 rounded-full bg-green-500 w-fit fixed bottom-4 right-4 cursor-pointer hover:scale-110 transition-all duration-300"
+  style="transition-property: opacity, transform;"
 >
   <a
     href="https://api.whatsapp.com/send/?phone=50683346441&text&type=phone_number&app_absent=0"
@@ -15,3 +17,19 @@ import { WhatsApp as WhatsAppIcon } from "../icons/WhatsApp";
     >
   </a>
 </div>
+
+<script>
+  const fab = document.getElementById("whatsapp-fab");
+  const btn = document.getElementById("reservar-fecha-btn");
+
+  if (fab && btn) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        fab.style.opacity = entry.isIntersecting ? "0" : "1";
+        fab.style.pointerEvents = entry.isIntersecting ? "none" : "auto";
+      },
+      { threshold: 0 }
+    );
+    observer.observe(btn);
+  }
+</script>

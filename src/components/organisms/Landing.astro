@@ -3,38 +3,87 @@ import { MoveDown } from "lucide-react";
 import Container from "../atoms/Container.astro";
 import CleanLogo from "../atoms/CleanLogo.astro";
 import FlagLine from "../atoms/FlagLine.astro";
+
+const whatsappUrl =
+  "https://api.whatsapp.com/send/?phone=50683346441&text&type=phone_number&app_absent=0";
 ---
 
-<section class="h-[100vh] relative py-4 overflow-hidden landing-section">
+<section
+  class="h-[100dvh] relative py-4 overflow-hidden landing-section flex flex-col md:justify-between"
+>
   <img
     src="/HeroImage2.jpg"
-    class="w-screen h-full object-cover absolute top-0 z-[-1] brightness-50"
+    class="w-screen h-full object-cover absolute top-0 z-[-1] brightness-40"
   />
-  <Container fullWidth={false} customClass="items-start pb-8 md:h-[80dvh]">
-    <div class="flex gap-2 items-center col-start-1 col-span-3">
-      <CleanLogo width="w-[75px] md:w-[100px] xl:w-[125px]" />
+
+  <!-- Gradiente mobile -->
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent md:hidden pointer-events-none"
+  >
+  </div>
+
+  <!-- Logo -->
+  <Container fullWidth={false} customClass="items-center">
+    <div class="flex gap-2 items-center col-span-2 md:col-span-3">
+      <CleanLogo width="w-[44px] md:w-[100px] xl:w-[125px]" />
       <p
-        class="text-[48px] md:text-[96px] xl:text-[128px] text-white font-bold montreg"
+        class="text-[32px] md:text-[96px] xl:text-[128px] text-white font-bold montreg leading-none"
       >
         CELIG
       </p>
     </div>
-    <div class="md:hidden">
-      <FlagLine />
+    <!-- FlagLine solo en md+ -->
+    <div
+      class="hidden md:flex md:col-start-4 md:col-span-5 xl:col-span-9 items-center"
+    >
     </div>
   </Container>
-  <Container fullWidth={false} customClass="items-center">
+
+  <!-- CTA: crece y se centra verticalmente en mobile -->
+  <div class="flex-1 flex items-center md:flex-none md:block pb-[60px] md:pb-0">
+    <Container fullWidth={false} customClass="w-full">
+      <div
+        class="col-span-4 md:col-span-5 xl:col-span-6 flex flex-col gap-3 md:gap-5"
+      >
+        <h2
+          class="leading-none text-white text-[36px] md:text-[60px] xl:text-[76px]"
+        >
+          <span class="rosdcel">Matrimonios Igualitarios </span><span
+            class="roblight !tracking-[-3px] md:!tracking-[-5px]"
+            >en Costa Rica.
+          </span><span class="rosdcel">Legalidad. Experiencia. Elegancia.</span>
+        </h2>
+
+        <a
+          id="reservar-fecha-btn"
+          href={whatsappUrl}
+          class="w-fit px-5 py-3 border border-white text-white montreg text-[11px] md:text-[13px] uppercase tracking-wide rounded-[4px] hover:bg-white hover:text-black transition-all duration-300"
+        >
+          Agendar Matrimonio
+        </a>
+      </div>
+
+      <!-- Foto solo md+ -->
+      <div
+        class="hidden md:block md:col-start-6 md:col-span-3 xl:col-start-8 xl:col-span-5 relative"
+      >
+        <img
+          src="/ProfilePhoto4.png"
+          alt="Ana Isabel Sibaja"
+          class="w-full h-full object-cover object-top scale-[1.5]"
+        />
+      </div>
+    </Container>
+  </div>
+
+  <!-- Tagline + flag + arrow (solo md+) -->
+  <Container fullWidth={false} customClass="items-center hidden md:grid">
     <p class="text-white rosdnl uppercase text-[20px] col-start-1 col-span-3">
       Bufete de abogacía y notariado especializado en derechos LGBTIQ+
     </p>
     <div class="col-start-4 col-span-4 hidden md:flex xl:col-span-8">
       <FlagLine />
     </div>
-    <MoveDown
-      className="mx-auto mt-[-20px] md:mt-0"
-      color="white"
-      size="32"
-      client:visible
-    />
+    <MoveDown className="mx-auto" color="white" size="32" client:visible />
   </Container>
 </section>
