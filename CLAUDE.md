@@ -11,6 +11,8 @@ npm run build      # Production build
 npm run preview    # Preview production build
 ```
 
+No lint or test scripts/frameworks are configured in this repo.
+
 ## Environment Variables
 
 `PUBLIC_API_BASE_URL` must be set in `.env` — it's the base URL for the backend REST API. The `HttpClient` class will throw on startup if this is missing.
@@ -35,7 +37,7 @@ npm run preview    # Preview production build
 - `src/api/` — resource-specific classes extending `HttpClient` (`BlogApi`, `PodcastApi`, etc.), each exported as a singleton instance (e.g., `blogApi`)
 - `src/api/index.js` — re-exports all API modules
 
-**Auth:** JWT stored in a `token` cookie. Server-side parsing via `src/lib/auth.js` (`getCookieValue`). Client-side via `getCookieValueJSX`. On 401, `HttpClient` clears the cookie and redirects to `/admin/login`.
+**Auth:** JWT stored in a `token` cookie. Server-side parsing via `src/lib/auth.js` (`getCookieValue`, `getUserFromRequest`). Client-side via `getCookieValueJSX`. On 401, `HttpClient` clears the cookie and redirects to `/admin/login`. Login/logout are handled by `src/pages/api/login.js` and `src/pages/api/logout.js`.
 
 **Path alias:** `@/` maps to `src/`.
 
