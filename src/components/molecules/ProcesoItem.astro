@@ -3,15 +3,16 @@ import Parragraph from "../atoms/Parragraph.astro";
 import ProcesoTitle from "../atoms/ProcesoTitle.astro";
 
 const { title, parragraph, index } = Astro.props;
-
-const xlIndex = index * 2 + 1;
-// const xlIndex = 5;
 ---
 
 <div
   class={`col-start-1 col-span-4 pb-[50px] inline-block md:col-span-7 relative process-animation
-  ${index % 2 && `md:col-start-2 `} ${index === 2 && "xl:col-start-5"} ${index === 0 && "xl:col-start-1"} 
-  ${index === 1 && "xl:col-start-3"} ${index === 3 && "xl:col-start-7"} xl:col-span-6`}
+  ${index % 2 && `md:col-start-2 `}
+  ${(index === 0 || index === 4) && "xl:col-start-1"}
+  ${(index === 1 || index === 5) && "xl:col-start-3"}
+  ${(index === 2 || index === 6) && "xl:col-start-5"}
+  ${(index === 3 || index === 7) && "xl:col-start-7"}
+  xl:col-span-6`}
   data-index={index}
 >
   <div class="process-content">

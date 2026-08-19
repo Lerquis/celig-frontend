@@ -2,7 +2,7 @@ export const servicios = [
   {
     title: "Consulta Legal Virtual",
     slug: "consulta-virtual",
-    contenido: `En CELIG ofrecemos el servicio de consulta legal virtual, dirigido a todas aquellas personas que necesitan orientación jurídica de manera segura, confidencial y desde la comodidad de su casa o país de residencia. En CELIG te ofrezco consultas virtuales personalizadas, seguras y 100% confidenciales. Como fundadora de CELIG y profesional con más de 34 años de experiencia en Derecho Notarial, comprendo profundamente las necesidades legales, especialmente de la comunidad LGBTIQ+.
+    contenido: `En CELIG ofrecemos el servicio de consulta legal virtual, dirigido a todas aquellas personas que necesitan orientación jurídica de manera segura, confidencial y desde la comodidad de su casa o país de residencia. En CELIG te ofrezco consultas virtuales personalizadas, seguras y 100% confidenciales. Como fundadora de CELIG y profesional con más de 35 años de experiencia en Derecho Notarial, comprendo profundamente las necesidades legales, especialmente de la comunidad LGBTIQ+.
 
 Reconocemos que las necesidades legales no conocen fronteras, y es por eso que hemos creado un método ágil y moderno para ofrecer apoyo legal sin importar dónde te encuentres en Costa Rica o en cualquier parte del mundo.
 
@@ -14,7 +14,7 @@ Comprendo la importancia de la privacidad y la confidencialidad en asuntos legal
 
 En CELIG, creemos que el acceso a servicios legales de calidad no debe limitarse. Nuestra consulta legal virtual es un testimonio del compromiso por superar barreras y hacer que el apoyo legal sea más inclusivo y accesible. 
 
-**Tu consulta será atendida personalmente por Ana Isabel Sibaja**, quien como madre de hijos LGBTIQ+ comprende desde la experiencia vivida las necesidades de nuestra comunidad. Con más de 34 años de experiencia legal, te brindo no solo conocimiento técnico, sino la empatía y comprensión que solo puede dar alguien que ha vivido esta realidad de cerca. No importa dónde te encuentres, estoy aquí para ser tu aliada legal con atención personalizada y genuina.`,
+**Tu consulta será atendida personalmente por Ana Isabel Sibaja**, quien como madre de hijos LGBTIQ+ comprende desde la experiencia vivida las necesidades de nuestra comunidad. Con más de 35 años de experiencia legal, te brindo no solo conocimiento técnico, sino la empatía y comprensión que solo puede dar alguien que ha vivido esta realidad de cerca. No importa dónde te encuentres, estoy aquí para ser tu aliada legal con atención personalizada y genuina.`,
   },
   {
     title: "Consulta Legal Presencial",
@@ -31,7 +31,7 @@ Nos enorgullecemos de ser defensores de los derechos y la igualdad para la comun
 
 En CELIG, creemos que cada individuo merece acceso a una representación legal que refleje sus necesidades y valores. Nuestra consulta legal presencial es un testimonio del compromiso en ofrecer un servicio integral y cercano para la comunidad LGBTQI+.
 
-**En cada consulta presencial, te atiendo personalmente** como Ana Isabel Sibaja, fundadora de CELIG. Mi experiencia como madre de hijos LGBTIQ+ me ha enseñado la importancia de la empatía genuina y el acompañamiento cercano. Con más de 34 años de trayectoria legal, combino el conocimiento jurídico con la comprensión profunda de nuestra comunidad. Estoy aquí para caminar contigo en la búsqueda de justicia y equidad, brindándote la atención personalizada que mereces en cada paso del camino legal.`,
+**En cada consulta presencial, te atiendo personalmente** como Ana Isabel Sibaja, fundadora de CELIG. Mi experiencia como madre de hijos LGBTIQ+ me ha enseñado la importancia de la empatía genuina y el acompañamiento cercano. Con más de 35 años de trayectoria legal, combino el conocimiento jurídico con la comprensión profunda de nuestra comunidad. Estoy aquí para caminar contigo en la búsqueda de justicia y equidad, brindándote la atención personalizada que mereces en cada paso del camino legal.`,
   },
 
   {
@@ -49,7 +49,7 @@ Centramos el enfoque en ti y en preservar los deseos de tu ser querido. En situa
 
 Desde la identificación de activos hasta la resolución de posibles disputas legales, diseñamos nuestro servicio de sucesiones para brindarte apoyo. Te representaremos activamente en cada etapa del proceso legal, asegurando el logro de tus objetivos y el respeto de los deseos de tu ser querido.
 
-**Te acompaño personalmente en este momento tan delicado.** Como Ana Isabel Sibaja, comprendo que los procesos de sucesión son momentos emocionalmente complejos para las familias. Mi experiencia como madre y mi comprensión profunda de las diversas estructuras familiares, incluidas las de nuestra comunidad LGBTIQ+, me permiten ofrecerte no solo experticia legal de más de 34 años, sino también el apoyo humano y la sensibilidad que necesitas durante este proceso.`,
+**Te acompaño personalmente en este momento tan delicado.** Como Ana Isabel Sibaja, comprendo que los procesos de sucesión son momentos emocionalmente complejos para las familias. Mi experiencia como madre y mi comprensión profunda de las diversas estructuras familiares, incluidas las de nuestra comunidad LGBTIQ+, me permiten ofrecerte no solo experticia legal de más de 35 años, sino también el apoyo humano y la sensibilidad que necesitas durante este proceso.`,
   },
 
   {
@@ -65,7 +65,7 @@ La defensa de los derechos LGBTIQ+ no es solo nuestra vocación, sino también n
 
 Si eres parte de la comunidad LGBTIQ+ y necesitas apoyo legal, estamos aquí para ti. Defendemos tus derechos con determinación y comprensión
 
-**Esta lucha es profundamente personal para mí.** Como Ana Isabel Sibaja, madre de hijos LGBTIQ+, esta no es solo mi profesión, sino mi compromiso de vida. Cada caso de discriminación que enfrento, cada derecho que defendemos, lo vivo desde la perspectiva de una madre que quiere un mundo más justo para sus hijos y para toda nuestra comunidad. Con más de 34 años de experiencia legal y la motivación más poderosa que existe—el amor de madre—te ofrezco mi acompañamiento personal y mi lucha incansable por tus derechos. Juntos, trabajamos hacia un futuro donde la igualdad sea una realidad para todos en la comunidad LGBTIQ+.`,
+**Esta lucha es profundamente personal para mí.** Como Ana Isabel Sibaja, madre de hijos LGBTIQ+, esta no es solo mi profesión, sino mi compromiso de vida. Cada caso de discriminación que enfrento, cada derecho que defendemos, lo vivo desde la perspectiva de una madre que quiere un mundo más justo para sus hijos y para toda nuestra comunidad. Con más de 35 años de experiencia legal y la motivación más poderosa que existe—el amor de madre—te ofrezco mi acompañamiento personal y mi lucha incansable por tus derechos. Juntos, trabajamos hacia un futuro donde la igualdad sea una realidad para todos en la comunidad LGBTIQ+.`,
   },
 
   {
@@ -73,7 +73,7 @@ Si eres parte de la comunidad LGBTIQ+ y necesitas apoyo legal, estamos aquí par
     slug: "matrimonios",
     contenido: `En CELIG, celebramos el amor a través de los matrimonios entre parejas del mismo sexo. Nuestros servicios legales respaldan la igualdad en Costa Rica. El matrimonio igualitario es un derecho fundamental para la comunidad LGBTIQ+.
 
-Con más de 5 años de experiencia en bodas igualitarias, en CELIG tú decides si quieres solo la parte civil, o acompañar ese momento con una ceremonia significativa. En privado o rodeado de las personas que amas. En nuestras acogedoras y elegantes oficinas o en el lugar que elijas. Lo más importante: que sea como lo sueñas.
+Desde 2020, cuando entró en vigencia el matrimonio entre personas del mismo sexo en Costa Rica, en CELIG tú decides si quieres solo la parte civil, o acompañar ese momento con una ceremonia significativa. En privado o rodeado de las personas que amas. En nuestras acogedoras y elegantes oficinas o en el lugar que elijas. Lo más importante: que sea como lo sueñas.
 
 Te guío en cada paso para cumplir tu sueño. Desde la preparación de documentos hasta la ceremonia y su debida inscripción ante el Registro Civil.
 
@@ -104,7 +104,7 @@ Si sueñas con un matrimonio igualitario, estás en la firma legal correcta. Mi 
 
 En CELIG creemos en la fortaleza del amor. Mis servicios legales están diseñados para hacer que el matrimonio entre parejas del mismo sexo sea una realidad.
 
-**Te acompaño personalmente en el día más importante de tu vida.** Como Ana Isabel Sibaja, he tenido el privilegio de oficiar más de 350 matrimonios igualitarios desde 2020. Cada ceremonia es especial para mí porque entiendo, como madre de hijos LGBTIQ+, el valor profundo de este momento. No solo celebro tu amor, sino que lo hago desde la comprensión genuina de lo que significa para nuestra comunidad. Con más de 34 años de experiencia legal y el corazón de una madre que lucha por la igualdad, me aseguro de que tu día especial sea perfecto en cada detalle legal y emocional. Celebra tu amor conmigo y avancemos juntos hacia un futuro igualitario y lleno de amor.`,
+**Te acompaño personalmente en el día más importante de tu vida.** Como Ana Isabel Sibaja, he tenido el privilegio de oficiar más de 550 matrimonios igualitarios desde 2020. Cada ceremonia es especial para mí porque entiendo, como madre de hijos LGBTIQ+, el valor profundo de este momento. No solo celebro tu amor, sino que lo hago desde la comprensión genuina de lo que significa para nuestra comunidad. Con más de 35 años de experiencia legal y el corazón de una madre que lucha por la igualdad, me aseguro de que tu día especial sea perfecto en cada detalle legal y emocional. Celebra tu amor conmigo y avancemos juntos hacia un futuro igualitario y lleno de amor.`,
   },
 
   {
@@ -124,6 +124,6 @@ En CELIG creemos en la fortaleza del amor. Mis servicios legales están diseñad
 
 En CELIG, entendemos la importancia de contar con servicios confiables y eficientes.
 
-**Todos los trámites notariales los realizo personalmente.** Como Ana Isabel Sibaja, notaria con más de 34 años de experiencia, me aseguro de que cada documento, cada trámite y cada detalle legal reciba mi atención directa y profesional. Mi compromiso con la comunidad LGBTIQ+, nacido de mi experiencia como madre, se refleja en el cuidado especial que pongo en cada proceso notarial, garantizando que recibas un servicio confiable, empático y completamente personalizado. Estoy aquí para brindarte orientación legal y asistencia en una variedad de trámites, asegurando que cada detalle se maneje de manera correcta y precisa.`,
+**Todos los trámites notariales los realizo personalmente.** Como Ana Isabel Sibaja, notaria con más de 35 años de experiencia, me aseguro de que cada documento, cada trámite y cada detalle legal reciba mi atención directa y profesional. Mi compromiso con la comunidad LGBTIQ+, nacido de mi experiencia como madre, se refleja en el cuidado especial que pongo en cada proceso notarial, garantizando que recibas un servicio confiable, empático y completamente personalizado. Estoy aquí para brindarte orientación legal y asistencia en una variedad de trámites, asegurando que cada detalle se maneje de manera correcta y precisa.`,
   },
 ];
