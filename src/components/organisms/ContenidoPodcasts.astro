@@ -4,10 +4,13 @@ import { podcastApi } from "@/api";
 import Container from "../atoms/Container.astro";
 import Parragraph from "../atoms/Parragraph.astro";
 import { Spotify } from "../icons/Spotify";
+import { ContenidoPodcastsReact } from "./ContenidoPodcastsReact";
 
-let podcasts = [];
-const response = await podcastApi.getPodcasts();
-if (response.status === 200) podcasts = response.body.podcasts;
+const PODCASTS_PER_PAGE = 6;
+
+let initialData = { podcasts: [] };
+const response = await podcastApi.getPodcasts({ page: 1, limit: PODCASTS_PER_PAGE });
+if (response.status === 200) initialData = response.body;
 ---
 
 <Container customClass="content-container-podcasts hidden opacity-0 relative">
@@ -21,20 +24,11 @@ if (response.status === 200) podcasts = response.body.podcasts;
     <Spotify fill="#22C55E" />
   </a>
 
-  <div
-    class="mt-20 md:mt-12 col-start-1 col-span-4 md:col-span-8 xl:col-span-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[10px]"
-  >
-    {
-      podcasts.map((podcast: { url: string }) => (
-        <iframe
-          class="rounded-[12px]"
-          src={podcast.url}
-          width="100%"
-          height="152"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        />
-      ))
-    }
+  <div class="mt-20 md:mt-12 col-start-1 col-span-4 md:col-span-8 xl:col-span-12">
+    <ContenidoPodcastsReact
+      initialData={initialData}
+      itemsPerPage={PODCASTS_PER_PAGE}
+      client:load
+    />
   </div>
 </Container>

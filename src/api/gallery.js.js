@@ -6,8 +6,8 @@ export class GalleryApi extends HttpClient {
     super("/gallery");
   }
 
-  getGallery() {
-    return this.request({ method: "GET" });
+  getGallery({ page, limit } = {}) {
+    return this.request({ method: "GET", query: { page, limit } });
   }
 
   createImage(token = "", data) {

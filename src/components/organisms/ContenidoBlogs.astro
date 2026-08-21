@@ -7,9 +7,11 @@ import { SuscribeForm } from "./SuscribeForm";
 import ContentNavBarButton from "../atoms/ContentNavBarButton.astro";
 import { ContenidoBlogsReact } from "./ContenidoBlogsReact";
 
-let blogs = [];
-const response = await blogApi.getBlogsByTag("");
-if (response.status === 200) blogs = response.body.blogs;
+const BLOGS_PER_PAGE = 9;
+
+let initialData = { blogs: [] };
+const response = await blogApi.getBlogsByTag("", { page: 1, limit: BLOGS_PER_PAGE });
+if (response.status === 200) initialData = response.body;
 ---
 
 <Container customClass="content-container-blogs">
@@ -26,7 +28,11 @@ if (response.status === 200) blogs = response.body.blogs;
     class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 space-y-[50px]"
   >
     <ContenidoEtiquetas />
-    <ContenidoBlogsReact initialBlogs={blogs} client:load />
+    <ContenidoBlogsReact
+      initialData={initialData}
+      itemsPerPage={BLOGS_PER_PAGE}
+      client:load
+    />
   </div>
 </Container>
 

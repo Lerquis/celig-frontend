@@ -10,12 +10,24 @@ export class HttpClient {
     }
   }
 
-  buildUrl(endpoint = "", params) {
+  buildUrl(endpoint = "", params, query) {
     let url = `${this.baseUrl}${this.basePath}${endpoint}`;
     if (params) {
       Object.keys(params).forEach((key) => {
         url = url.replace(`{${key}}`, encodeURIComponent(params[key]));
       });
+    }
+    if (query) {
+      const searchParams = new URLSearchParams();
+      Object.keys(query).forEach((key) => {
+        if (query[key] !== undefined && query[key] !== null) {
+          searchParams.set(key, query[key]);
+        }
+      });
+      const queryString = searchParams.toString();
+      if (queryString) {
+        url += (url.includes("?") ? "&" : "?") + queryString;
+      }
     }
     return url;
   }
@@ -34,11 +46,12 @@ export class HttpClient {
     method = "GET",
     endpoint = "",
     params,
+    query,
     body,
     token,
     headers = {},
   }) {
-    const url = this.buildUrl(endpoint, params);
+    const url = this.buildUrl(endpoint, params, query);
 
     const finalHeaders = {
       ...(typeof body === "string"

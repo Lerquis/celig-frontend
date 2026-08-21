@@ -6,8 +6,12 @@ export class BlogApi extends HttpClient {
     super("/blog");
   }
 
-  getBlogsByTag(tag = "") {
-    return this.request({ method: "GET", endpoint: `/tags?tag=${tag}` });
+  getBlogsByTag(tag = "", { page, limit } = {}) {
+    return this.request({
+      method: "GET",
+      endpoint: "/tags",
+      query: { tag, page, limit },
+    });
   }
 
   updateBlog(id, data, token) {

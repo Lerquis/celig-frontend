@@ -6,8 +6,8 @@ export class PodcastApi extends HttpClient {
     super("/podcast");
   }
 
-  getPodcasts() {
-    return this.request({ method: "GET" });
+  getPodcasts({ page, limit } = {}) {
+    return this.request({ method: "GET", query: { page, limit } });
   }
 
   createPodcast(token, data) {

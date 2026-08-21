@@ -3,6 +3,7 @@ import { MoveDown } from "lucide-react";
 import Container from "../atoms/Container.astro";
 import CleanLogo from "../atoms/CleanLogo.astro";
 import FlagLine from "../atoms/FlagLine.astro";
+import { WhatsApp as WhatsAppIcon } from "../icons/WhatsApp";
 
 const whatsappUrl =
   "https://api.whatsapp.com/send/?phone=50683346441&text&type=phone_number&app_absent=0";
@@ -48,20 +49,24 @@ const whatsappUrl =
         class="col-span-4 md:col-span-5 xl:col-span-6 flex flex-col gap-3 md:gap-5"
       >
         <h2
-          class="leading-none text-white text-[36px] md:text-[60px] xl:text-[76px]"
+          class="leading-none text-white text-[26px] md:text-[42px] xl:text-[52px]"
         >
-          <span class="rosdcel">Matrimonios Igualitarios </span><span
-            class="roblight !tracking-[-3px] md:!tracking-[-5px]"
-            >en Costa Rica.
-          </span><span class="rosdcel">Legalidad. Experiencia. Elegancia.</span>
+          <span class="roblight block !tracking-[-3px] md:!tracking-[-5px]"
+            >MATRIMONIOS ENTRE PERSONAS DEL MISMO SEXO EN COSTA RICA.</span
+          >
+          <span class="rosdcel block">Legalidad. Experiencia. Exclusividad.</span
+          >
         </h2>
 
         <a
           id="reservar-fecha-btn"
           href={whatsappUrl}
-          class="w-fit px-5 py-3 border border-white text-white montreg text-[11px] md:text-[13px] uppercase tracking-wide rounded-[4px] hover:bg-white hover:text-black transition-all duration-300"
+          class="group w-fit flex items-center gap-2 px-5 py-3 border border-green-500 bg-green-500 text-white montreg text-[11px] md:text-[13px] uppercase tracking-wide rounded-[4px] hover:bg-green-600 hover:border-green-600 transition-all duration-300"
         >
-          Agendar Matrimonio
+          <WhatsAppIcon
+            className="h-[14px] w-[14px] md:h-[16px] md:w-[16px] fill-white whatsapp-shake-icon"
+          />
+          Reservar mi matrimonio
         </a>
       </div>
 
