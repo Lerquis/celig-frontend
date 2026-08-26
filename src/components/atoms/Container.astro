@@ -1,13 +1,14 @@
 ---
-const { fullWidth, customClass } = Astro.props;
+const { fullWidth, customClass, ...rest } = Astro.props;
 ---
 
 <div
-  class={`grid gap-[20px] grid-cols-4 md:grid-cols-8 xl:grid-cols-12 ${customClass} ${
+  class={`grid gap-[20px] grid-cols-4 md:grid-cols-8 xl:grid-cols-12 ${customClass || ""} ${
     !fullWidth
       ? "max-w-[1920px] max-w-screen-4xl md:px-[40px] px-[20px] xl:px-[80px] mx-auto"
       : "w-full"
   }`}
+  {...rest}
 >
   <slot />
 </div>

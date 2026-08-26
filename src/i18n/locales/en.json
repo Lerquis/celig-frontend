@@ -1,0 +1,323 @@
+{
+  "nav": {
+    "menu": "Menu",
+    "content": "Content",
+    "services": "Services",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "address": [
+      "SIGMA Building",
+      "Second Floor, San Pedro",
+      "Montes de Oca",
+      "West side of Mall San Pedro"
+    ]
+  },
+  "footer": {
+    "stayInTouch": "Stay in",
+    "contact": "Touch",
+    "email": "Email",
+    "phone": "Phone",
+    "addressTitle": "Address",
+    "address": "SIGMA Building, 2nd Floor, San Pedro de Montes de Oca, West side of Mall San Pedro",
+    "socials": "Social Media",
+    "contactUs": "Contact Us",
+    "refundPolicy": "Refund Policy",
+    "copyright": "© 2025 CELIG",
+    "backToTop": "Back to top"
+  },
+  "whatsapp": {
+    "cta": "BOOK VIA WHATSAPP",
+    "defaultMessage": "Hello, I would like to receive legal consultation regarding CELIG services"
+  },
+  "contactForm": {
+    "name": "Name",
+    "email": "Email address",
+    "message": "Message",
+    "submit": "Contact Us",
+    "success": "Email sent successfully!",
+    "error": "Something went wrong sending the email."
+  },
+  "home": {
+    "seo": {
+      "title": "CELIG - Same-Sex Civil Marriages in Costa Rica | LGBTIQ+ Legal Services",
+      "description": "Specialized legal center in LGBTIQ+ rights in Costa Rica. Same-sex marriages, virtual and in-person legal consultations, estate planning, and rights defense. Over 35 years of experience with Ana Isabel Sibaja."
+    },
+    "landing": {
+      "title1": "SAME-SEX MARRIAGES IN COSTA RICA.",
+      "title2": "Legality. Experience. Exclusivity.",
+      "cta": "Book my wedding",
+      "tagline": "Law firm specialized in same-sex marriages in Costa Rica"
+    },
+    "quienesSomos": {
+      "title1": "Who",
+      "title2": "We Are",
+      "p1": "CELIG was born with a clear mission: to provide the LGBTIQ+ community with professional legal services, dignified representation, legal certainty, respect, and compassionate guidance. Beyond the law, its essence lies in empathy, social commitment, and the defense of those who have historically faced discrimination. Every client has a story that deserves respect, privacy, and professional representation.",
+      "p2": "Founded and led by Licda. Ana Isabel Sibaja, an attorney and public notary with 35 years of professional experience, CELIG offers direct, personalized, private, and secure legal and notarial services: civil marriages, property transfers, donations, wills, notarial acts, and legal advice. Since same-sex marriage came into effect in Costa Rica in 2020, Ana Isabel has conducted over 550 weddings, assisting Costa Rican and international couples from around the world.",
+      "p3": "CELIG also provides specialized legal counsel on LGBTIQ+ rights in Costa Rica. Through legal practice, we accompany and advise community members on matters that require professional, respectful legal care that understands their reality. We maintain an unwavering commitment to equality, legal certainty, respect, and the dignity of LGBTIQ+ individuals.",
+      "p4": "Ana Isabel Sibaja and CELIG have participated consecutively in Costa Rica Pride since 2022, maintaining a presence every year, including Pride 2026. Throughout these years, we have also spearheaded initiatives such as Shopping Pride, Espresso CELIG, and the Pride Fair, fostering spaces of community, information, support, and visibility. Here we are, we exist, we love, and we deserve to marry, inherit, be respected, and live without fear.",
+      "stat1Title": "Weddings performed",
+      "stat1Value": "550+",
+      "stat2Title": "Years of experience",
+      "stat2Value": "35+",
+      "stat3Title": "Years of CELIG",
+      "stat3Value": "9+",
+      "founderTitle1": "Founded by",
+      "founderTitle2": "Ana Isabel Sibaja",
+      "founderP1": "Ana Isabel Sibaja founded CELIG following a deeply personal experience. As the mother of LGBTIQ+ children, she decided to place her extensive professional expertise at the service of a community that has historically fought for the recognition and protection of its rights.",
+      "founderP2": "With 35 years of experience as an attorney and notary public, she has practiced across diverse areas of law. Since same-sex marriage became legal in Costa Rica in 2020, she has developed vast expertise in the field, performing more than 550 marriages for local and international couples.",
+      "founderP3": "Born in Cañas, Guanacaste, and a single mother, she began her career in Batán, Limón. At CELIG, legal expertise combines with a close and genuine understanding of the realities faced by LGBTIQ+ people and families."
+    },
+    "proceso": {
+      "title1": "Our",
+      "title2": "Process",
+      "title3": "Is based on",
+      "steps": [
+        {
+          "title": "Date Reservation",
+          "parragraph": "The first step is selecting and reserving your wedding date. Once confirmed, Ana Isabel personally begins preparing the legal process. You only need to send us the identification documents of both spouses and your two witnesses; CELIG does not provide unknown witnesses to spouses. Witnesses serve a real legal function and must fulfill all conditions required by Costa Rican legislation. International couples can use their passports, without needing birth certificates, marital status certificates, or blood tests."
+        },
+        {
+          "title": "Private WhatsApp Group",
+          "parragraph": "Upon booking confirmation, we create a private WhatsApp group with the couple: our direct channel throughout the entire preparation. There we coordinate the drafts of the legal deeds, verify names and information, answer legal process questions, and share key pre-wedding instructions. Direct communication with Ana Isabel is maintained at every step."
+        },
+        {
+          "title": "Preparation of Legal Deeds",
+          "parragraph": "CELIG prepares the legal deeds and necessary documentation ahead of time. Drafts are sent to the couple via the private WhatsApp group for review prior to the wedding day—a process designed for maximum convenience for international couples, who can leave everything ready before traveling to Costa Rica."
+        },
+        {
+          "title": "Wedding and/or Ceremony Coordination",
+          "parragraph": "Each couple decides how to experience this milestone: an intimate civil marriage focused on legal formalization, or a civil marriage paired with a special, emotional, and personalized ceremony. When a ceremony is booked, all details are also coordinated through the private WhatsApp group according to the couple's desires."
+        },
+        {
+          "title": "Wedding Celebration",
+          "parragraph": "On the reserved date, the couple arrives accompanied by their two witnesses. Licda. Ana Isabel Sibaja personally officiates the wedding and oversees the signing of the legal deeds. Everything is arranged beforehand so you only need to cherish the moment. You arrive single and leave married."
+        },
+        {
+          "title": "Marriage Registration",
+          "parragraph": "Following the celebration and deed signing, we manage the official legal registration of the marriage with the Costa Rican Civil Registry. The couple receives continued guidance throughout this stage and stays in direct communication with CELIG."
+        },
+        {
+          "title": "Apostille, Translation & International Shipping",
+          "parragraph": "For those needing documentation outside Costa Rica, we provide complete post-registration services: official certificates, marital status records, apostilles, certified translations, and secure international shipping worldwide. International couples can marry, return home, and conveniently receive all necessary documents abroad."
+        }
+      ]
+    },
+    "apostilla": {
+      "title1": "Apostille and",
+      "title2": "Shipping",
+      "intro": "Our service for international couples does not end on the wedding day. Following marriage registration, we manage all necessary documentation to validate your marriage or civil status outside Costa Rica.",
+      "items": [
+        {
+          "title1Sans": "Civil status ",
+          "title1Serif": "certificates",
+          "parragraph": "We manage the required certificates whenever the couple needs them."
+        },
+        {
+          "title1Sans": "Official records and ",
+          "title1Serif": "certifications",
+          "parragraph": "Once the marriage is officially registered, we obtain the corresponding marriage records and certificates."
+        },
+        {
+          "title1Sans": "",
+          "title1Serif": "Apostille",
+          "parragraph": "When documentation must be used in another country, we process its official apostille."
+        },
+        {
+          "title1Sans": "",
+          "title1Serif": "Translation",
+          "parragraph": "When required by the destination country or specific legal procedure, we also handle certified official translations."
+        },
+        {
+          "title1Sans": "International ",
+          "title1Serif": "shipping",
+          "parragraph": "We ship marriage certificates, civil status documents, and all related paperwork anywhere in the world, so international couples don't have to return to Costa Rica just to pick them up."
+        }
+      ]
+    },
+    "oficinasPrivadas": {
+      "title1": "Private",
+      "title2": "Offices",
+      "p": "CELIG offers you the opportunity to celebrate your marriage in private, elegant, and discreet offices. Every wedding is conducted with personalized care, in a space thoughtfully designed for you to experience this milestone in complete peace, comfort, and privacy. You may opt for an intimate civil wedding or celebrate alongside your loved ones. We also coordinate weddings in other destinations across Costa Rica based on the contracted service."
+    },
+    "diferenciados": {
+      "title1": "What Sets",
+      "title2": "Us Apart",
+      "items": [
+        {
+          "title1Sans": "Over 550 ",
+          "title1Serif": "marriages",
+          "parragraph": "Ana Isabel Sibaja has performed more than 550 same-sex marriages, assisting local and international couples. The vast experience gained since 2020 ensures a profound understanding of each couple's unique needs, especially those residing abroad and traveling solely to marry."
+        },
+        {
+          "title1Sans": "35 years of ",
+          "title1Serif": "experience",
+          "parragraph": "Your marriage is prepared and officiated by an attorney and public notary with 35 years of professional career experience. A marriage is not merely a celebration: it is a legal act that must be carried out with utmost precision and responsibility."
+        },
+        {
+          "title1Sans": "Personalized ",
+          "title1Serif": "attention",
+          "parragraph": "At CELIG, every couple receives direct, dedicated attention. Ana Isabel personally guides the process from start to finish: from initial booking to celebration, registration, and post-wedding procedures, maintaining constant direct communication."
+        },
+        {
+          "title1Sans": "Private ",
+          "title1Serif": "WhatsApp group",
+          "parragraph": "Upon booking, we establish a private WhatsApp group with the couple. There we share deed drafts, review details, coordinate wedding logistics, and, when applicable, design the custom ceremony."
+        },
+        {
+          "title1Sans": "Experience with ",
+          "title1Serif": "international couples",
+          "parragraph": "We are experts in the specific requirements of couples living outside Costa Rica. As a result, the majority of the legal process is prepared prior to your arrival: you arrive single and leave married."
+        },
+        {
+          "title1Sans": "Privacy ",
+          "title1Serif": "and respect",
+          "parragraph": "Every couple deserves to feel comfortable, respected, and safe. We provide a private, refined, and discreet setting, entirely away from impersonal or crowded venues."
+        },
+        {
+          "title1Sans": "Legal ",
+          "title1Serif": "certainty",
+          "parragraph": "Every marriage is meticulously prepared in full compliance with Costa Rican law. Your peace of mind starts with knowing your marriage is officiated by an experienced attorney and notary public."
+        }
+      ]
+    },
+    "nuestrosServicios": {
+      "title1": "Our",
+      "title2": "Services",
+      "readMore": "Read more"
+    },
+    "testimonios": {
+      "title1": "Stories from",
+      "title2": "Our",
+      "title3": "Clients",
+      "viewAll": "View testimonials",
+      "items": [
+        {
+          "names": "Andrea and Riselda",
+          "content": "Finding someone to officiate our wedding in Costa Rica was a challenge as a same-sex couple. But when we discovered Ana Isabel Sibaja Rojas, everything changed. Her support and openness made all the difference."
+        },
+        {
+          "names": "José and Luis Ángel",
+          "content": "Deeply grateful for everything she did for us. Two foreigners who came exclusively to get married."
+        },
+        {
+          "names": "John Michael and Ariel Francisco",
+          "content": "Thank you Ana, we are so grateful for all your help and recommendations that made our wedding a dream come true. Very kind, charming, and professional, we loved it."
+        },
+        {
+          "names": "Michelle and Heidy",
+          "content": "A wonderful experience Ana Isabel, thank you for the hospitality and love provided. You can feel the great vibes and warmth the moment you enter your offices. We are tremendously thankful, you're the best, we're the best!"
+        }
+      ]
+    },
+    "nuestroContenido": {
+      "title1": "Our",
+      "title2": "Content",
+      "p1": "In addition to our ",
+      "pGallery": "visual gallery,",
+      "p2": " we feature a space for ",
+      "pBlogs": "blogs and news",
+      "p3": " exploring ",
+      "pLgbtiq": "LGBTIQ+",
+      "p4": " legal topics vital to our community.",
+      "seeMore": "See more"
+    },
+    "ctaContacto": {
+      "title1": "Want to marry",
+      "title2": "in Costa Rica?",
+      "p1": "If you are a same-sex couple, local or international, and wish to celebrate your legal marriage in Costa Rica, contact us directly. Licda. Ana Isabel Sibaja will personally attend to your inquiry and guide you through the required documents and steps to reserve your date. For international couples, the legal process can be arranged prior to traveling to Costa Rica. Following the wedding, we also handle marriage certificates, apostilles, translations, and global shipping.",
+      "p2": "Over 550 weddings performed. 35 years of legal and notarial experience. Local and international couples. Direct, private, and personalized attention. You arrive single and leave married.",
+      "button": "Book Wedding"
+    }
+  },
+  "servicios": {
+    "seo": {
+      "title": "LGBTIQ+ Legal Services in Costa Rica | Marriages & Legal Counsel - CELIG",
+      "description": "Explore our specialized legal services: same-sex civil marriages, virtual and in-person consultations, estate and probate, rights defense, and notarial services in Costa Rica."
+    },
+    "disclaimer": "Hiring this service implies acceptance of our",
+    "disclaimerLink": "Refund and Cancellation Policy",
+    "derechosTestimonialPre": "Read the",
+    "derechosTestimonialLink": "testimonials",
+    "derechosTestimonialPost": "of many of our clients who achieved their dream of marriage equality."
+  },
+  "testimoniosPage": {
+    "seo": {
+      "title": "LGBTIQ+ Legal Services Testimonials | Real Experiences - CELIG",
+      "description": "Read authentic testimonials from clients who used our LGBTIQ+ legal services in Costa Rica. Stories of marriage equality, legal advice, and more."
+    },
+    "title1": "Stories from",
+    "title2": "Our",
+    "title3": "Clients"
+  },
+  "contenidoPage": {
+    "seo": {
+      "title": "LGBTIQ+ Content, Blogs & Podcasts in Costa Rica | CELIG",
+      "description": "Discover articles, news, visual gallery, and podcasts covering legal topics, LGBTIQ+ rights, and civil marriages in Costa Rica."
+    },
+    "title1": "Our",
+    "title2": "Content",
+    "tabs": {
+      "blogs": "Blogs",
+      "galeria": "Gallery",
+      "podcasts": "Podcasts"
+    },
+    "tagsLabel": "Tags:",
+    "tags": {
+      "derechosLgbtiq": "LGBTIQ+ Community Rights",
+      "derechoFamilia": "Family Law",
+      "derechoLaboral": "Labor Law",
+      "derechoMigratorio": "Immigration Law",
+      "familiasHomoparentales": "Same-Sex Family Law"
+    },
+    "subscribeLabel": "Subscribe to our blog",
+    "subscribeButton": "Subscribe",
+    "subscribeSuccess": "You have subscribed to our blog",
+    "subscribeError": "Something went wrong with the subscription",
+    "readMore": "Read more",
+    "noBlogs": "No blogs available yet. We'll have new content for you soon!",
+    "noPodcasts": "No podcasts available yet. We'll have new content for you soon!",
+    "showingBlogs": "Showing",
+    "of": "of",
+    "blogsWord": "blogs",
+    "pageWord": "Page",
+    "ourSpotify": "Our Spotify"
+  },
+  "reembolsosPage": {
+    "seo": {
+      "title": "Refund and Cancellation Policy - CELIG",
+      "description": "Review CELIG's return, cancellation, and refund policy for notarial services, same-sex marriages, and legal consultations in Costa Rica."
+    },
+    "title1": "Refund",
+    "title2": "Policy",
+    "intro": "Due to the personalized, legal, and professional nature of the services offered by Celig Costa Rica, including notarial services, civil marriages, apostilles, official translations, and document management, no refunds or exchanges are accepted once the service has been contracted, reserved, or initiated.",
+    "acceptance": "Hiring any of our services implies express acceptance of this policy.",
+    "sections": [
+      {
+        "title": "Reservations and Advance Payments",
+        "paragraphs": [
+          "To confirm any professional service, a 50% advance payment of the total fee is required, which guarantees:"
+        ],
+        "list": [
+          "Date reservation and dedicated professional schedule",
+          "Prior legal analysis",
+          "Document review and preparation",
+          "Exclusive availability for the client"
+        ],
+        "footer": "This advance payment is strictly non-refundable under any circumstances, as it corresponds to reserved professional time and administrative work initiated."
+      },
+      {
+        "title": "Refunds",
+        "paragraphs": [
+          "No full or partial monetary refunds are issued once payment of the advance or full service fee has been made.",
+          "In the event of cancellation by the client, paid amounts will not be refunded."
+        ]
+      },
+      {
+        "title": "Corrections",
+        "paragraphs": [
+          "In case of a material error exclusively attributable to our professional management, correction will be performed at no additional cost to the client. This does not entail any monetary refund."
+        ]
+      }
+    ]
+  }
+}

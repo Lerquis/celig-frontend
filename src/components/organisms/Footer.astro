@@ -11,6 +11,15 @@ import { XTwitter } from "../icons/XTwitter";
 import { Spotify } from "../icons/Spotify";
 import { TikTok } from "../icons/TikTok";
 import MinimalistButton from "../atoms/MinimalistButton.astro";
+import { getLangFromUrl, useTranslations, getLocalizedPath, type Locale } from "@/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 ---
 
 <footer
@@ -22,36 +31,36 @@ import MinimalistButton from "../atoms/MinimalistButton.astro";
     customClass="space-y-[-50px] md:space-y-[-80px] title-animation"
   >
     <SectionTitle
-      title="Estemos en"
+      title={t("footer.stayInTouch")}
       customClass="col-start-1 col-span-4 md:col-span-8"
     />
     <SectionTitle
-      title="Contacto"
+      title={t("footer.contact")}
       serif={true}
       customClass="col-start-2 col-span-3 xl:col-start-3"
     />
   </Container>
 
   <Container customClass="space-y-[50px]">
-    <ContactItem title="Email">
+    <ContactItem title={t("footer.email")}>
       <a href="mailto:info@celigcr.com"
         ><Parragraph text="info@celigcr.com" customClass="md:text-[20px]" /></a
       >
     </ContactItem>
 
-    <ContactItem title="Numero" pair={true}>
+    <ContactItem title={t("footer.phone")} pair={true}>
       <Parragraph text="+506 8334 6441" customClass="md:text-[20px]" />
       <Parragraph text="+506 4001 6439" customClass="md:text-[20px]" />
     </ContactItem>
 
-    <ContactItem title="Dirección">
+    <ContactItem title={t("footer.addressTitle")}>
       <Parragraph
         customClass="md:text-[20px]"
-        text="Edificio SIGMA segundo Piso San Pedro de Montes de Oca, costado oeste del Mall San Pedro"
+        text={t("footer.address")}
       />
     </ContactItem>
 
-    <ContactItem title="Redes Sociales" customClass="flex gap-4">
+    <ContactItem title={t("footer.socials")} customClass="flex gap-4">
       <div class="flex gap-4">
         <a href="https://www.facebook.com/CELIGCR/" target="_blank">
           <Facebook
@@ -113,8 +122,8 @@ import MinimalistButton from "../atoms/MinimalistButton.astro";
   </Container>
 
   <Container>
-    <ContactForm client:only>
-      <MinimalistButton type="submit" text="Contáctanos" />
+    <ContactForm client:load lang={lang}>
+      <MinimalistButton type="submit" text={t("footer.contactUs")} />
     </ContactForm>
 
     <div class="hidden xl:flex col-start-7 col-span-6">
@@ -126,11 +135,11 @@ import MinimalistButton from "../atoms/MinimalistButton.astro";
     <div
       class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 border-t-[1px] border-white pt-[20px] flex justify-between items-center mt-[30px]"
     >
-      <SmallParragraph text="© 2025 CELIG" />
-      <a href="/politica-reembolsos" class="montlight tracking-[1px] text-[12px] md:text-[14px] text-white/60 hover:text-white transition-colors duration-200">
-        Política de Reembolsos
+      <SmallParragraph text={t("footer.copyright")} />
+      <a href={getLocalizedPath("/politica-reembolsos", lang)} class="montlight tracking-[1px] text-[12px] md:text-[14px] text-white/60 hover:text-white transition-colors duration-200">
+        {t("footer.refundPolicy")}
       </a>
-      <SmallParragraph text="Back to top" />
+      <SmallParragraph text={t("footer.backToTop")} />
     </div>
   </Container>
 </footer>

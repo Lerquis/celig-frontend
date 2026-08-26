@@ -2,8 +2,15 @@ import { useCallback } from "react";
 import { podcastApi } from "@/api";
 import { usePaginatedList } from "@/hooks/usePaginatedList";
 import { PaginationControls } from "@/components/molecules/PaginationControls";
+import { translations } from "@/i18n/ui";
 
-export const ContenidoPodcastsReact = ({ initialData = { podcasts: [] }, itemsPerPage = 6 }) => {
+export const ContenidoPodcastsReact = ({
+  initialData = { podcasts: [] },
+  itemsPerPage = 6,
+  lang = "es",
+}) => {
+  const t = translations[lang] || translations.es;
+
   const fetchPage = useCallback(
     (page) => podcastApi.getPodcasts({ page, limit: itemsPerPage }),
     [itemsPerPage]
@@ -29,12 +36,14 @@ export const ContenidoPodcastsReact = ({ initialData = { podcasts: [] }, itemsPe
   if (!loading && podcasts.length === 0) {
     return (
       <p className="text-center text-gray-600 py-8 montreg tracking-[1px] text-[16px]">
-        Aún no existen podcasts disponibles. ¡Pronto tendremos contenido nuevo para ti!
+        {t.contenidoPage?.noPodcasts ||
+          "Aún no existen podcasts disponibles. ¡Pronto tendremos contenido nuevo para ti!"}
       </p>
     );
   }
 
-  const skeletonCount = podcasts.length > 0 ? podcasts.length : Math.min(itemsPerPage, 6);
+  const skeletonCount =
+    podcasts.length > 0 ? podcasts.length : Math.min(itemsPerPage, 6);
 
   return (
     <div className="space-y-[20px] w-full">

@@ -1,4 +1,12 @@
-export const servicios = [
+import type { Locale } from "@/i18n";
+
+export interface ServicioItemData {
+  title: string;
+  slug: string;
+  contenido: string;
+}
+
+export const serviciosEs: ServicioItemData[] = [
   {
     title: "Consulta Legal Virtual",
     slug: "consulta-virtual",
@@ -33,7 +41,6 @@ En CELIG, creemos que cada individuo merece acceso a una representación legal q
 
 **En cada consulta presencial, te atiendo personalmente** como Ana Isabel Sibaja, fundadora de CELIG. Mi experiencia como madre de hijos LGBTIQ+ me ha enseñado la importancia de la empatía genuina y el acompañamiento cercano. Con más de 35 años de trayectoria legal, combino el conocimiento jurídico con la comprensión profunda de nuestra comunidad. Estoy aquí para caminar contigo en la búsqueda de justicia y equidad, brindándote la atención personalizada que mereces en cada paso del camino legal.`,
   },
-
   {
     title: "Servicio de Sucesiones",
     slug: "sucesiones",
@@ -51,7 +58,6 @@ Desde la identificación de activos hasta la resolución de posibles disputas le
 
 **Te acompaño personalmente en este momento tan delicado.** Como Ana Isabel Sibaja, comprendo que los procesos de sucesión son momentos emocionalmente complejos para las familias. Mi experiencia como madre y mi comprensión profunda de las diversas estructuras familiares, incluidas las de nuestra comunidad LGBTIQ+, me permiten ofrecerte no solo experticia legal de más de 35 años, sino también el apoyo humano y la sensibilidad que necesitas durante este proceso.`,
   },
-
   {
     title: "Servicio Defensa de Derechos LGBTIQ+",
     slug: "derechos-lgbtiq+",
@@ -67,7 +73,6 @@ Si eres parte de la comunidad LGBTIQ+ y necesitas apoyo legal, estamos aquí par
 
 **Esta lucha es profundamente personal para mí.** Como Ana Isabel Sibaja, madre de hijos LGBTIQ+, esta no es solo mi profesión, sino mi compromiso de vida. Cada caso de discriminación que enfrento, cada derecho que defendemos, lo vivo desde la perspectiva de una madre que quiere un mundo más justo para sus hijos y para toda nuestra comunidad. Con más de 35 años de experiencia legal y la motivación más poderosa que existe—el amor de madre—te ofrezco mi acompañamiento personal y mi lucha incansable por tus derechos. Juntos, trabajamos hacia un futuro donde la igualdad sea una realidad para todos en la comunidad LGBTIQ+.`,
   },
-
   {
     title: "Matrimonios entre parejas del mismo sexo",
     slug: "matrimonios",
@@ -106,7 +111,6 @@ En CELIG creemos en la fortaleza del amor. Mis servicios legales están diseñad
 
 **Te acompaño personalmente en el día más importante de tu vida.** Como Ana Isabel Sibaja, he tenido el privilegio de oficiar más de 550 matrimonios igualitarios desde 2020. Cada ceremonia es especial para mí porque entiendo, como madre de hijos LGBTIQ+, el valor profundo de este momento. No solo celebro tu amor, sino que lo hago desde la comprensión genuina de lo que significa para nuestra comunidad. Con más de 35 años de experiencia legal y el corazón de una madre que lucha por la igualdad, me aseguro de que tu día especial sea perfecto en cada detalle legal y emocional. Celebra tu amor conmigo y avancemos juntos hacia un futuro igualitario y lleno de amor.`,
   },
-
   {
     title: "Servicios Notariales",
     slug: "notariales",
@@ -127,3 +131,140 @@ En CELIG, entendemos la importancia de contar con servicios confiables y eficien
 **Todos los trámites notariales los realizo personalmente.** Como Ana Isabel Sibaja, notaria con más de 35 años de experiencia, me aseguro de que cada documento, cada trámite y cada detalle legal reciba mi atención directa y profesional. Mi compromiso con la comunidad LGBTIQ+, nacido de mi experiencia como madre, se refleja en el cuidado especial que pongo en cada proceso notarial, garantizando que recibas un servicio confiable, empático y completamente personalizado. Estoy aquí para brindarte orientación legal y asistencia en una variedad de trámites, asegurando que cada detalle se maneje de manera correcta y precisa.`,
   },
 ];
+
+export const serviciosEn: ServicioItemData[] = [
+  {
+    title: "Virtual Legal Consultation",
+    slug: "consulta-virtual",
+    contenido: `At CELIG, we offer virtual legal consultation services for anyone seeking legal guidance securely, confidentially, and from the comfort of their home or country of residence. At CELIG, I provide personalized, secure, and 100% confidential virtual consultations. As the founder of CELIG and a legal professional with over 35 years of experience in Notarial Law, I deeply understand legal needs, particularly within the LGBTIQ+ community.
+
+We recognize that legal needs know no borders, which is why we created an agile, modern method to provide legal support no matter where you are in Costa Rica or anywhere around the globe.
+
+The virtual consultation, designed to fit your schedule and convenience, offers a flexible solution. We can assist you with same-sex marriages (local or international), estate and probate, wills and inheritances, civil partnerships, document authentication, powers of attorney, translations and apostilles, co-motherhood, company incorporation, and more.
+
+By choosing our virtual legal consultation, you can expect a straightforward, convenient process with direct guidance from a specialist in LGBTQI+ rights.
+
+I understand the utmost importance of privacy and confidentiality in sensitive legal matters. You can be assured that any information shared during your virtual consultation is handled with the highest standard of privacy and security.
+
+At CELIG, we believe that access to premier legal services should know no boundaries. Our virtual legal consultation stands as a testament to our commitment to breaking down barriers and making legal representation more inclusive and accessible.
+
+**Your consultation will be personally attended by Ana Isabel Sibaja**, who, as the mother of LGBTIQ+ children, understands from lived experience the unique realities of our community. With over 35 years of legal practice, I offer you not only technical expertise, but also the empathy and genuine understanding that only someone close to this reality can provide. Wherever you are in the world, I am here to be your trusted legal ally with personalized, caring attention.`,
+  },
+  {
+    title: "In-Person Legal Consultation",
+    slug: "consulta-presencial",
+    contenido: `Our in-person legal consultation service is designed to give you direct, personalized guidance in seeking legal solutions. We recognize the profound importance of face-to-face communication in legal matters, especially concerning sensitive and important issues for the LGBTQI+ community.
+
+At CELIG, we value the trust you place in us when sharing your concerns and legal challenges. Our in-person consultation provides you with the opportunity to meet directly. Whether you want to clarify questions regarding family law or are exploring options for marriage equality in Costa Rica, we are here to listen to your needs and provide comprehensive counsel.
+
+We understand that every legal situation is unique and deserves focused, independent attention. When choosing our in-person consultation, you can expect a warm, comfortable, and non-judgmental environment.
+
+To schedule an in-person consultation, simply reach out to us and we will arrange an appointment at our offices.
+
+We are proud advocates for the rights and equality of the LGBTQI+ community.
+
+At CELIG, we believe every individual deserves access to legal representation that reflects their values and needs. Our in-person legal consultation reflects our ongoing commitment to providing an inclusive, comprehensive, and compassionate service.
+
+**In every in-person consultation, I attend to you personally** as Ana Isabel Sibaja, founder of CELIG. My experience as the mother of LGBTIQ+ children has taught me the vital importance of genuine empathy and close guidance. With more than 35 years of legal experience, I combine in-depth legal knowledge with a deep understanding of our community. I am here to walk alongside you in the pursuit of justice and fairness, giving you the dedicated personal care you deserve at every stage of your legal journey.`,
+  },
+  {
+    title: "Estate & Probate Services",
+    slug: "sucesiones",
+    contenido: `Our estate and probate legal service plays an essential role during delicate moments. When a loved one passes away, legal matters can feel overwhelming. At CELIG, we understand the emotional sensitivity of these situations and are here to provide all the legal guidance and peace of mind you need.
+
+In inheritance and estate cases, it is crucial that the client fully understands the legal procedures. I will be available for you and your family. We work together with you to ensure that the wishes of your loved one are fulfilled in accordance with their designated will and legal testament.
+
+Within probate and estate administration, it is first necessary to identify and appraise the assets and liabilities of the deceased. I have extensive experience in this process, allowing us to manage it efficiently while ensuring all legal procedures comply strictly with prevailing laws.
+
+Your emotional well-being is a priority for us. As part of our counsel, we provide the reassurance needed while navigating the legal aspects of succession. We guide you through each step of the probate process, from document filing to asset distribution.
+
+Our focus is centered on you and on honoring the wishes of your loved one. In situations where no will exists, we provide full assistance in intestate succession proceedings according to Costa Rican inheritance law. Our goal is to alleviate your legal burdens during what can be an exceptionally complex time.
+
+From asset identification to resolving potential legal disputes, our estate service is designed to support you every step of the way. We will actively represent you at each stage, ensuring your objectives are achieved and your loved one's wishes are respected.
+
+**I accompany you personally in this sensitive moment.** As Ana Isabel Sibaja, I understand that succession processes are emotionally complex for families. My experience as a mother and my deep understanding of diverse family structures, including those of our LGBTIQ+ community, enable me to offer you not only 35+ years of legal expertise, but also the human warmth and sensitivity you need throughout this process.`,
+  },
+  {
+    title: "LGBTIQ+ Rights Defense Service",
+    slug: "derechos-lgbtiq+",
+    contenido: `My legal approach encompasses diverse areas, including full support for marriage equality. We work tirelessly to ensure that all couples have access to this fundamental human right.
+
+We seek to make a lasting impact on society by fostering awareness and education regarding LGBTIQ+ rights.
+
+At CELIG, we recognize that the fight for LGBTIQ+ rights is continuous. We support the community through specialized legal counseling. We believe in an egalitarian society where everyone is treated with dignity, respect, and fairness.
+
+Defending LGBTIQ+ rights is not merely our vocation—it is our passion. We advocate to advance laws and societal perceptions in Costa Rica, ensuring everyone can live free of fear and discrimination.
+
+If you are part of the LGBTIQ+ community and require legal support, we are here for you. We defend your rights with unwavering determination and empathy.
+
+**This mission is deeply personal to me.** As Ana Isabel Sibaja, mother of LGBTIQ+ children, this is not just my profession, but my lifelong commitment. Every case of discrimination we confront and every right we defend is experienced through the eyes of a mother who seeks a fairer world for her children and our entire community. With more than 35 years of legal experience and the strongest driving force there is—a mother's love—I offer you my personal accompaniment and relentless advocacy for your rights. Together, we move toward a future where equality is a reality for everyone in the LGBTIQ+ community.`,
+  },
+  {
+    title: "Same-Sex Civil Marriages",
+    slug: "matrimonios",
+    contenido: `At CELIG, we celebrate love through same-sex civil marriages. Our legal services uphold equality across Costa Rica. Marriage equality is a fundamental right for the LGBTIQ+ community.
+
+Since 2020, when same-sex marriage legally took effect in Costa Rica, CELIG empowers you to choose whether you desire only the legal civil ceremony or wish to complement this moment with a meaningful, emotional celebration. In private or surrounded by those you love. In our welcoming, elegant offices or at the destination of your choice. What matters most: that it unfolds exactly as you envision.
+
+I guide you through every single step to fulfill your dream. From initial document preparation to the ceremony and official registration before the Costa Rican Civil Registry.
+
+After reserving your date, I handle all legal formalities and maintain ongoing contact via WhatsApp to answer questions and accompany you throughout the entire process.
+
+
+
+**GETTING MARRIED IN COSTA RICA IS THIS SIMPLE**
+
+1. You only need a passport or ID.
+
+2. We coordinate everything via WhatsApp.
+
+3. You arrive, get married, and celebrate!
+
+
+
+
+For international couples, it is remarkably straightforward: you only need to provide your identification. Those in Costa Rica can use a passport or immigration document. There is no need to bring birth certificates or marital status certificates. International couples can travel exclusively to get married, without needing any other reason for travel, residency, or extended stays.
+
+Same-sex marriage is a historic milestone in the fight for LGBTIQ+ equality. My commitment is to make this dream an effortless reality for everyone, overcoming legal obstacles and advancing toward the equality Costa Rica deserves.
+
+At CELIG, we understand how special this day is. I support your ceremony and ensure your love is celebrated just as you choose. Your happiness is my priority.
+
+Marriage equality is a symbol of progress in Costa Rican society. I take immense pride in being part of this progress, championing equality in every marriage, and building a more inclusive future for the LGBTIQ+ community.
+
+If you dream of marriage equality, you have come to the right law firm. My dedication to the LGBTIQ+ community drives me to deliver exceptional legal services. Your love deserves to be celebrated with all the legal rights you are entitled to.
+
+At CELIG, we believe in the transformative power of love. My legal services are tailored to make same-sex marriage a joyful reality.
+
+**I accompany you personally on the most important day of your life.** As Ana Isabel Sibaja, I have had the privilege of officiating over 550 same-sex marriages since 2020. Each ceremony holds a special place in my heart because, as a mother of LGBTIQ+ children, I understand the profound significance of this moment. I celebrate your love from a place of genuine understanding of what it means for our community. With over 35 years of legal experience and the heart of a mother who fights for equality, I ensure your special day is flawless in every legal and emotional detail. Celebrate your love with me, and let us step forward together into an equal and love-filled future.`,
+  },
+  {
+    title: "Notarial Services",
+    slug: "notariales",
+    contenido: `At CELIG, we provide a complete suite of notarial services in Costa Rica to meet your legal requirements with precision, speed, and diligence. I am committed to offering you expert legal advice and support across a variety of procedures, including:
+
+▶ **Marriages:** End-to-end services from preparation to celebration and official registration with the Civil Registry, ensuring every legal requirement is flawlessly handled.
+
+▶ **Divorces:** Assisting you in drafting and recording the necessary documentation to conduct a respectful, orderly, and legally binding dissolution.
+
+▶ **Property Transfers & Segregations:** Qualified guidance in preparing and executing documents to transfer real estate cleanly, legally, and transparently.
+
+▶ **Sworn Declarations & Affidavits:** Official notarial instruments required in diverse legal contexts, prepared and certified with full legal validity.
+
+▶ **Mortgage Procedures:** Extensive legal backing to give you security and peace of mind, including meticulous preparation and official registry recording of mortgage documents.
+
+At CELIG, we understand the importance of dependable, efficient notarial services.
+
+**All notarial procedures are performed by me personally.** As Ana Isabel Sibaja, a public notary with over 35 years of experience, I ensure that every document, procedure, and legal nuance receives my direct, professional oversight. My commitment to the LGBTIQ+ community, born from my experience as a mother, is reflected in the care and empathy I bring to each notarial process. I am here to provide you with clear guidance and reliable assistance, ensuring every detail is handled with exactitude and respect.`,
+  },
+];
+
+export const servicios = serviciosEs;
+
+export function getServicios(lang: Locale = "es"): ServicioItemData[] {
+  return lang === "en" ? serviciosEn : serviciosEs;
+}
+
+export function getServicioBySlug(slug: string, lang: Locale = "es"): ServicioItemData | undefined {
+  const list = getServicios(lang);
+  return list.find((s) => s.slug === slug);
+}

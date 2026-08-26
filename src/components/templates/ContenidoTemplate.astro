@@ -6,24 +6,33 @@ import ContenidoBlogs from "../organisms/ContenidoBlogs.astro";
 import ContenidoGaleria from "../organisms/ContenidoGaleria.astro";
 import ContenidoPodcasts from "../organisms/ContenidoPodcasts.astro";
 import Footer from "../organisms/Footer.astro";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 ---
 
 <section class="pt-24 space-y-[50px]">
   <Container fullWidth={false} customClass="space-y-[-50px] md:space-y-[-80px]">
-    <SectionTitle title="Nuestro" customClass="col-start-1 col-span-4" />
+    <SectionTitle title={t("contenidoPage.title1")} customClass="col-start-1 col-span-4" />
     <SectionTitle
-      title="Contenido"
+      title={t("contenidoPage.title2")}
       serif={true}
       customClass="col-start-2 col-span-3"
     />
   </Container>
 
-  <ContenidoNavBar />
+  <ContenidoNavBar lang={lang} />
   <div class="content-container col-start-1 col-span-4">
-    <ContenidoBlogs />
-    <ContenidoPodcasts />
+    <ContenidoBlogs lang={lang} />
+    <ContenidoPodcasts lang={lang} />
     <ContenidoGaleria />
   </div>
 
-  <Footer />
+  <Footer lang={lang} />
 </section>

@@ -6,6 +6,15 @@ import ContenidoEtiquetas from "../molecules/ContenidoEtiquetas.astro";
 import { SuscribeForm } from "./SuscribeForm";
 import ContentNavBarButton from "../atoms/ContentNavBarButton.astro";
 import { ContenidoBlogsReact } from "./ContenidoBlogsReact";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 
 const BLOGS_PER_PAGE = 9;
 
@@ -15,10 +24,10 @@ if (response.status === 200) initialData = response.body;
 ---
 
 <Container customClass="content-container-blogs">
-  <SuscribeForm client:only>
+  <SuscribeForm client:load lang={lang}>
     <ContentNavBarButton
       tag={true}
-      text="Suscribirse"
+      text={t("contenidoPage.subscribeButton")}
       customClass="!w-fit h-fit self-end !mx-0"
       type="submit"
     />
@@ -27,10 +36,10 @@ if (response.status === 200) initialData = response.body;
   <div
     class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 space-y-[50px]"
   >
-    <ContenidoEtiquetas />
     <ContenidoBlogsReact
       initialData={initialData}
       itemsPerPage={BLOGS_PER_PAGE}
+      lang={lang}
       client:load
     />
   </div>

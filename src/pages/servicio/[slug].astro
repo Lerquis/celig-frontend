@@ -1,16 +1,16 @@
 ---
-import { servicios } from "@/data/servicios";
+export const prerender = false;
+
+import { getServicioBySlug } from "@/data/servicios";
 import Background from "@/components/atoms/General/Background.astro";
 import Layout from "@/layouts/Layout.astro";
 import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
 import ServicioSlugTemplate from "@/components/templates/ServicioSlugTemplate.astro";
-
-export function getStaticPaths() {
-  return servicios.map((serv) => ({ params: { slug: serv.slug } }));
-}
+import { getLangFromUrl, getLocalizedPath } from "@/i18n";
 
 const { slug } = Astro.params;
-const service = servicios.find((s) => s.slug === slug);
+const lang = getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const service = getServicioBySlug(slug as string, lang);
 
 if (!service) return Astro.redirect("/404");
 
@@ -38,7 +38,7 @@ const serviceSchema = {
     founder: {
       "@type": "Person",
       name: "Ana Isabel Sibaja",
-      jobTitle: "Abogada Notaria",
+      jobTitle: lang === "en" ? "Attorney & Public Notary" : "Abogada Notaria",
     },
   },
   areaServed: {
@@ -49,7 +49,7 @@ const serviceSchema = {
 };
 
 // Títulos y descripciones optimizados para SEO
-const seoTitles: Record<string, string> = {
+const seoTitlesEs: Record<string, string> = {
   "consulta-virtual":
     "Consulta Legal Virtual LGBTIQ+ | Asesoría Legal Online Costa Rica - CELIG",
   "consulta-presencial":
@@ -64,6 +64,22 @@ const seoTitles: Record<string, string> = {
     "Servicios Notariales LGBTIQ+ | Notaria Especializada Costa Rica - CELIG",
 };
 
+const seoTitlesEn: Record<string, string> = {
+  "consulta-virtual":
+    "Virtual Legal Consultation LGBTIQ+ | Online Legal Counsel Costa Rica - CELIG",
+  "consulta-presencial":
+    "In-Person Legal Consultation LGBTIQ+ | Specialized Attorney Costa Rica - CELIG",
+  sucesiones:
+    "Estate & Probate Legal Services LGBTIQ+ | Wills Costa Rica - CELIG",
+  "derechos-lgbtiq+":
+    "LGBTIQ+ Rights Defense | Specialized Attorney Costa Rica - CELIG",
+  matrimonios:
+    "Same-Sex Civil Marriages in Costa Rica | Marriage Equality - CELIG",
+  notariales:
+    "Notarial Legal Services LGBTIQ+ | Specialized Notary Costa Rica - CELIG",
+};
+
+const seoTitles = lang === "en" ? seoTitlesEn : seoTitlesEs;
 const seoTitle = seoTitles[service.slug] || `${service.title} - CELIG`;
 const seoDescription = getServiceDescription(service.title, service.contenido);
 ---
@@ -71,11 +87,12 @@ const seoDescription = getServiceDescription(service.title, service.contenido);
 <Layout
   title={seoTitle}
   description={seoDescription}
-  canonical={`/servicio/${service.slug}`}
+  canonical={getLocalizedPath(`/servicio/${service.slug}`, lang)}
   schema={serviceSchema}
+  lang={lang}
 >
   <Background />
   <GridOverlay />
 
-  <ServicioSlugTemplate {service} />
+  <ServicioSlugTemplate {service} lang={lang} />
 </Layout>

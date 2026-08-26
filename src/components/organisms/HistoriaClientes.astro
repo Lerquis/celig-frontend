@@ -3,36 +3,29 @@ import Container from "../atoms/Container.astro";
 import SectionTitle from "../atoms/SectionTitle.astro";
 import TestimonialItem from "../molecules/TestimonialItem.astro";
 import ButtonPride from "../atoms/ButtonPride.astro";
+import { getLangFromUrl, useTranslations, getLocalizedPath, type Locale } from "@/i18n";
 
-const testimonials = [
-  {
-    src: "/Testimonio1.jpeg",
-    names: "Andrea y Riselda",
-    content: `Encontrar a alguien que oficiara nuestra boda en Costa Rica fue un reto como pareja del 
-    mismo sexo. Pero al descubrir a Ana Isabel Sibaja Rojas, todo cambió. Su apoyo y apertura marcaron 
-    la diferencia.`,
-  },
-  {
-    src: "/Testimonio2.jpg",
-    names: "José y Luis Ángel",
-    content: `Muy agradecidos de todo lo que ha hecho por nosotros.Dos extranjerxs que vinieron 
-    exclusivamente a casarse.`,
-  },
-  {
-    src: "/Testimonio3.webp",
-    names: "John Michael y Ariel Francisco",
-    content: `Gracias Ana, estamos agradecidas por toda su ayuda con las recomendaciones para que 
-    nuestra boda fuera todo un sueño que se hizo realidad. Muy amable, encantadora y profesional, 
-    nos encantó.`,
-  },
-  {
-    src: "/Testimonio4.webp",
-    names: "Michelle y Heidy",
-    content: `Linda Experiencia Ana Isabel, gracias por la hospitalidad y el amor brindado, se siente 
-    la buena vibra y el amor al entrar en tus oficinas, en tu espacio y en tu atmósfera. Estamos 
-    grandemente agradecidos, ¡Eres lo máximo, somos lo máximo!`,
-  },
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
+
+const rawTestimonialData = t("home.testimonios.items") || [];
+const staticSources = [
+  "/Testimonio1.jpeg",
+  "/Testimonio2.jpg",
+  "/Testimonio3.webp",
+  "/Testimonio4.webp",
 ];
+
+const testimonials = rawTestimonialData.map((item: any, i: number) => ({
+  src: staticSources[i] || "/Testimonio1.jpeg",
+  names: item.names,
+  content: item.content,
+}));
 ---
 
 <section class="mb-[200px] space-y-[100px]">
@@ -41,23 +34,23 @@ const testimonials = [
     customClass="space-y-[-50px] md:space-y-[-80px] title-animation"
   >
     <SectionTitle
-      title="Historias de"
+      title={t("home.testimonios.title1")}
       customClass="col-start-1 col-span-4 md:col-span-8"
     />
     <SectionTitle
-      title="Nuestros"
+      title={t("home.testimonios.title2")}
       serif={true}
       customClass="col-start-2 col-span-3"
     />
     <SectionTitle
-      title="Clientes"
+      title={t("home.testimonios.title3")}
       serif={true}
       customClass="col-start-1 col-span-4 md:col-start-3"
     />
   </Container>
 
   <Container customClass="space-y-[20px]">
-    {testimonials.map((item, index) => <TestimonialItem {...item} {index} />)}
+    {testimonials.map((item: any, index: number) => <TestimonialItem {...item} {index} />)}
   </Container>
 
   <Container customClass="flex justify-center">
@@ -65,7 +58,7 @@ const testimonials = [
       customClass="float-end w-[200px] hidden xl:flex xl:justify-center xl:col-start-11 xl:col-span-2 xl:h-fit xl:self-end xl:justify-self-end xl:translate-y-[-30px]"
     >
       <span class="relative z-10">
-        <a href="/contenido" class="text-white no-underline">Ver testimonios</a>
+        <a href={getLocalizedPath("/testimonios", lang)} class="text-white no-underline">{t("home.testimonios.viewAll")}</a>
       </span>
     </ButtonPride>
   </Container>

@@ -1,20 +1,23 @@
 ---
-const target = "https://www.celigcr.com/#servicios"; // usa tu dominio CANÓNICO y HTTPS
+export const prerender = false;
+
+import { getLangFromUrl, getLocalizedPath } from "@/i18n";
+
+const lang = getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const target = getLocalizedPath("/#servicios", lang);
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
-    <title>Servicios</title>
+    <title>{lang === "en" ? "Services" : "Servicios"}</title>
     <!-- Redirección inmediata (fallback compatible) -->
     <meta http-equiv="refresh" content={`0; url=${target}`} />
   </head>
   <body>
-    <!-- <p>Redirigiendo a <a href={target}>Servicios</a>…</p> -->
-    <script>
-      // Redirección rápida en navegadores modernos
-      window.location.replace("https://www.celigcr.com/#servicios");
+    <script define:vars={{ target }}>
+      window.location.replace(target);
     </script>
   </body>
 </html>

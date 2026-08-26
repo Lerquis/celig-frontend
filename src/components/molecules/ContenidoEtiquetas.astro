@@ -1,20 +1,51 @@
 ---
 import ContentNavBarButton from "../atoms/ContentNavBarButton.astro";
 import Parragraph from "../atoms/Parragraph.astro";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
 
-const tags = [
-  "Derechos de la Comunidad LGBTIQ+",
-  "Derecho Familia",
-  "Derecho Laboral",
-  "Derecho Migratorio",
-  "Derecho Familias Homoparentales",
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
+
+const tagMapping = [
+  {
+    apiKey: "Derechos de la Comunidad LGBTIQ+",
+    label: t("contenidoPage.tags.derechosLgbtiq"),
+  },
+  {
+    apiKey: "Derecho Familia",
+    label: t("contenidoPage.tags.derechoFamilia"),
+  },
+  {
+    apiKey: "Derecho Laboral",
+    label: t("contenidoPage.tags.derechoLaboral"),
+  },
+  {
+    apiKey: "Derecho Migratorio",
+    label: t("contenidoPage.tags.derechoMigratorio"),
+  },
+  {
+    apiKey: "Derecho Familias Homoparentales",
+    label: t("contenidoPage.tags.familiasHomoparentales"),
+  },
 ];
 ---
 
 <div class="flex gap-4 overflow-hidden items-center w-full">
-  <!-- <h4 class="montreg flex-shrink-0">Etiquetas:</h4> -->
-  <Parragraph text="Etiquetas:" customClass="flex-shrink-0" />
+  <Parragraph text={t("contenidoPage.tagsLabel")} customClass="flex-shrink-0" />
   <div class="flex overflow-x-auto gap-2 scrollbar-hide">
-    {tags.map((tag) => <ContentNavBarButton tag={true} text={tag} />)}
+    {
+      tagMapping.map((item) => (
+        <ContentNavBarButton
+          tag={true}
+          text={item.label}
+          dataTag={item.apiKey}
+        />
+      ))
+    }
   </div>
 </div>

@@ -4,8 +4,11 @@ import { z } from "zod";
 import { Form } from "../ui/form";
 import { ContactFormField } from "../molecules/ContactFormField";
 import { toast } from "sonner";
+import { translations } from "@/i18n/ui";
 
-export function ContactForm({ children }) {
+export function ContactForm({ children, lang = "es" }) {
+  const tForm = translations[lang]?.contactForm || translations.es.contactForm;
+
   const contactSchema = z.object({
     name: z.string().min(3),
     email: z.string().min(5),
@@ -35,8 +38,8 @@ export function ContactForm({ children }) {
       }),
     });
     const data = await response.json();
-    if (data.success) toast.success("Correo enviado!");
-    else toast.error("Algo salio mal enviando el correo.");
+    if (data.success) toast.success(tForm.success);
+    else toast.error(tForm.error);
     form.reset();
   };
 
@@ -51,19 +54,19 @@ export function ContactForm({ children }) {
         >
           <ContactFormField
             name="name"
-            label="Nombre"
+            label={tForm.name}
             form={form}
             isLoading={isLoading}
           />
           <ContactFormField
             name="email"
-            label="Correo electrónico"
+            label={tForm.email}
             form={form}
             isLoading={isLoading}
           />
           <ContactFormField
             name="message"
-            label="Mensaje"
+            label={tForm.message}
             type="textarea"
             form={form}
             isLoading={isLoading}

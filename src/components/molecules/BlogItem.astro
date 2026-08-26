@@ -2,8 +2,20 @@
 import { formatDateToDDMMYYYY } from "@/lib/dateFormatter";
 import ButtonPride from "../atoms/ButtonPride.astro";
 import Parragraph from "../atoms/Parragraph.astro";
+import { getLangFromUrl, useTranslations, getLocalizedPath, type Locale } from "@/i18n";
 
-const { title, tags, updatedAt, content, slug } = Astro.props;
+interface Props {
+  title: string;
+  tags: string[];
+  updatedAt: string;
+  content: string;
+  slug: string;
+  lang?: Locale;
+}
+
+const { title, tags, updatedAt, content, slug, lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 ---
 
 <div
@@ -22,7 +34,9 @@ const { title, tags, updatedAt, content, slug } = Astro.props;
     <Parragraph text={formatDateToDDMMYYYY(updatedAt, false)} />
     <ButtonPride customClass="w-fit self-end">
       <span class="relative z-[5]">
-        <a href={`/blogs/${slug}`} class="text-white no-underline">Leer más</a>
+        <a href={getLocalizedPath(`/blogs/${slug}`, lang)} class="text-white no-underline">
+          {t("contenidoPage.readMore") || (lang === "en" ? "Read more" : "Leer más")}
+        </a>
       </span>
     </ButtonPride>
   </div>

@@ -1,16 +1,24 @@
 ---
+export const prerender = false;
+
 import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
 import Background from "@/components/atoms/General/Background.astro";
 import Layout from "../layouts/Layout.astro";
 import HomePageTemplate from "@/components/templates/HomePageTemplate.astro";
 import IntroAnimation from "@/components/organisms/IntroAnimation.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n";
+
+const lang = getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 
 const pageSchema = {
   "@context": "https://schema.org",
   "@type": "LegalService",
   name: "CELIG - Centro Legal LGBTIQ+",
   description:
-    "Servicios legales especializados para la comunidad LGBTIQ+ en Costa Rica. Matrimonios igualitarios, consultas legales virtuales y presenciales, sucesiones, defensa de derechos y servicios notariales.",
+    lang === "en"
+      ? "Specialized legal services for the LGBTIQ+ community in Costa Rica. Same-sex marriages, virtual and in-person legal consultations, estate planning, rights defense, and notarial services."
+      : "Servicios legales especializados para la comunidad LGBTIQ+ en Costa Rica. Matrimonios igualitarios, consultas legales virtuales y presenciales, sucesiones, defensa de derechos y servicios notariales.",
   url: "https://celigcr.com",
   logo: "https://celigcr.com/CroppedLogo.PNG",
   image: "https://celigcr.com/og-image.jpg",
@@ -28,57 +36,69 @@ const pageSchema = {
   founder: {
     "@type": "Person",
     name: "Ana Isabel Sibaja",
-    jobTitle: "Abogada Notaria",
+    jobTitle: lang === "en" ? "Attorney & Public Notary" : "Abogada Notaria",
     description:
-      "Notaria con más de 35 años de experiencia especializada en derechos LGBTIQ+ y madre de hijos LGBTIQ+",
+      lang === "en"
+        ? "Notary with over 35 years of experience specializing in LGBTIQ+ rights and mother of LGBTIQ+ children."
+        : "Notaria con más de 35 años de experiencia especializada en derechos LGBTIQ+ y madre de hijos LGBTIQ+",
   },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Servicios Legales LGBTIQ+",
+    name: lang === "en" ? "LGBTIQ+ Legal Services" : "Servicios Legales LGBTIQ+",
     itemListElement: [
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Matrimonios Igualitarios",
+          name: lang === "en" ? "Same-Sex Marriages" : "Matrimonios Igualitarios",
           description:
-            "Celebración de matrimonios entre parejas del mismo sexo en Costa Rica. Más de 550 matrimonios realizados desde 2020.",
+            lang === "en"
+              ? "Celebration of same-sex civil marriages in Costa Rica. Over 550 marriages conducted since 2020."
+              : "Celebración de matrimonios entre parejas del mismo sexo en Costa Rica. Más de 550 matrimonios realizados desde 2020.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Consulta Legal Virtual",
+          name: lang === "en" ? "Virtual Legal Consultation" : "Consulta Legal Virtual",
           description:
-            "Consultas legales virtuales personalizadas, seguras y 100% confidenciales desde cualquier parte del mundo.",
+            lang === "en"
+              ? "Personalized, secure, and 100% confidential virtual legal consultations from anywhere in the world."
+              : "Consultas legales virtuales personalizadas, seguras y 100% confidenciales desde cualquier parte del mundo.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Defensa de Derechos LGBTIQ+",
+          name: lang === "en" ? "LGBTIQ+ Rights Defense" : "Defensa de Derechos LGBTIQ+",
           description:
-            "Asesoramiento legal especializado en defensa de derechos de la comunidad LGBTIQ+.",
+            lang === "en"
+              ? "Specialized legal counseling in defense of LGBTIQ+ community rights."
+              : "Asesoramiento legal especializado en defensa de derechos de la comunidad LGBTIQ+.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Servicios Notariales",
+          name: lang === "en" ? "Notarial Services" : "Servicios Notariales",
           description:
-            "Servicios notariales completos incluyendo divorcios, segregaciones, traspasos, declaraciones juradas e hipotecas.",
+            lang === "en"
+              ? "Comprehensive notarial services including divorces, property transfers, sworn statements, and mortgages."
+              : "Servicios notariales completos incluyendo divorcios, segregaciones, traspasos, declaraciones juradas e hipotecas.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Servicio de Sucesiones",
+          name: lang === "en" ? "Estate & Probate Services" : "Servicio de Sucesiones",
           description:
-            "Asesoría legal en procesos de sucesión, testamentos y herencias con sensibilidad a estructuras familiares diversas.",
+            lang === "en"
+              ? "Legal counsel in inheritance and probate processes with sensitivity to diverse family structures."
+              : "Asesoría legal en procesos de sucesión, testamentos y herencias con sensibilidad a estructuras familiares diversas.",
         },
       },
     ],
@@ -92,13 +112,14 @@ const pageSchema = {
 ---
 
 <Layout
-  title="CELIG - Matrimonios Civiles para parejas del mismo sexo en Costa Rica | Servicios Legales LGBTIQ+ en Costa Rica"
-  description="Centro legal especializado en derechos LGBTIQ+ en Costa Rica. Matrimonios igualitarios, consultas legales virtuales y presenciales, sucesiones, defensa de derechos. Más de 35 años de experiencia con Ana Isabel Sibaja."
+  title={t("home.seo.title")}
+  description={t("home.seo.description")}
   schema={pageSchema}
+  lang={lang}
 >
   <!-- <IntroAnimation /> -->
   <Background />
   <GridOverlay />
 
-  <HomePageTemplate />
+  <HomePageTemplate lang={lang} />
 </Layout>

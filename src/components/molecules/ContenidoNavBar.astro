@@ -1,15 +1,24 @@
 ---
 import Container from "../atoms/Container.astro";
 import ContentNavBarButton from "../atoms/ContentNavBarButton.astro";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 ---
 
 <Container>
   <div
     class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 flex justify-between gap-2 flex-wrap"
   >
-    <ContentNavBarButton text="Blogs" />
-    <ContentNavBarButton text="Galeria" />
-    <ContentNavBarButton text="Podcasts" />
+    <ContentNavBarButton text={t("contenidoPage.tabs.blogs")} container="blogs" />
+    <ContentNavBarButton text={t("contenidoPage.tabs.galeria")} container="galeria" />
+    <ContentNavBarButton text={t("contenidoPage.tabs.podcasts")} container="podcasts" />
   </div>
 </Container>
 
@@ -25,23 +34,22 @@ import ContentNavBarButton from "../atoms/ContentNavBarButton.astro";
   blogButton?.classList.add("selectedNavBar");
 
   const changeSelectedButton = (e: any) => {
-    console.log(isAnimating);
-    if (!e || isAnimating) return;
+    const btn = e.currentTarget || e.target.closest("button");
+    if (!btn || isAnimating) return;
     const currentSelectedButton = document.querySelector(".selectedNavBar");
-    if (currentSelectedButton === e.target) return;
+    if (currentSelectedButton === btn) return;
+
+    const containerName = btn.dataset.container || btn.getAttribute("data-container");
+    const currentContainerName = currentSelectedButton?.getAttribute("data-container");
+
+    const nextContainer = document.querySelector(`.${containerName}`);
+    const currentContainer = document.querySelector(`.${currentContainerName}`);
+    if (!nextContainer || !currentContainer) return;
+
     // cambiar los botones
     isAnimating = true;
     currentSelectedButton?.classList.remove("selectedNavBar");
-    e.target.classList.add("selectedNavBar");
-
-    // seleccionamos el contenedor
-    const nextContainer = document.querySelector(
-      `.${e.target.dataset.container}`
-    );
-    const currentContainer = document.querySelector(
-      `.${currentSelectedButton?.getAttribute("data-container")}`
-    );
-    if (!nextContainer || !currentContainer) return;
+    btn.classList.add("selectedNavBar");
 
     // creamos timeline para la animacion
     const tl = gsap.timeline();
@@ -50,7 +58,7 @@ import ContentNavBarButton from "../atoms/ContentNavBarButton.astro";
     tl.to(currentContainer, {
       x: -500,
       opacity: 0,
-      duration: 1,
+      duration: 0.4,
       ease: "power3.inOut",
       onComplete: () => {
         // el contenedor actual lo escondemos del dom para que no estorbe
@@ -62,7 +70,7 @@ import ContentNavBarButton from "../atoms/ContentNavBarButton.astro";
     }).fromTo(
       nextContainer,
       {
-        display: "none",
+        display: "grid",
         opacity: 0,
         x: 500,
       },
@@ -70,16 +78,13 @@ import ContentNavBarButton from "../atoms/ContentNavBarButton.astro";
         display: "grid",
         opacity: 1,
         x: 0,
-        duration: 1,
+        duration: 0.4,
         ease: "power3.inOut",
         onComplete: () => {
           isAnimating = false;
         },
       }
     );
-    return;
-
-    // realizamos la animacion de los contenedores
   };
 
   blogButton?.addEventListener("click", changeSelectedButton);

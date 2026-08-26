@@ -3,6 +3,15 @@ import ButtonPride from "../atoms/ButtonPride.astro";
 import Container from "../atoms/Container.astro";
 import SectionTitle from "../atoms/SectionTitle.astro";
 import ContenidoSlider from "../molecules/ContenidoSlider.astro";
+import { getLangFromUrl, useTranslations, getLocalizedPath, type Locale } from "@/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 
 const images = [
   "Testimonio1.jpeg",
@@ -24,9 +33,9 @@ const images2 = [
     fullWidth={false}
     customClass="space-y-[-50px] md:space-y-[-80px] title-animation"
   >
-    <SectionTitle title="Nuestro" customClass="col-start-1 col-span-4" />
+    <SectionTitle title={t("home.nuestroContenido.title1")} customClass="col-start-1 col-span-4" />
     <SectionTitle
-      title="Contenido"
+      title={t("home.nuestroContenido.title2")}
       serif={true}
       customClass="col-start-2 col-span-3"
     />
@@ -42,22 +51,22 @@ const images2 = [
       class="col-start-1 col-span-4 space-y-[30px] md:col-span-8 xl:col-start-3 xl:col-span-7"
     >
       <p class="montreg md:text-[20px]">
-        Además de nuestra <span
+        {t("home.nuestroContenido.p1")}<span
           class="rosdcel text-[18px] md:text-[22px] tracking-[1px]"
-          >galería visual,</span
-        > contamos con un espacio de <span
+          >{t("home.nuestroContenido.pGallery")}</span
+        >{t("home.nuestroContenido.p2")}<span
           class="rosdcel text-[18px] md:text-[22px] tracking-[1px]"
-          >blogs y noticias</span
-        > donde tratamos temas <span
+          >{t("home.nuestroContenido.pBlogs")}</span
+        >{t("home.nuestroContenido.p3")}<span
           class="rosdcel text-[18px] md:text-[22px] tracking-[1px]"
         >
-          LGBTIQ+</span
-        > relevantes para nuestra comunidad.
+          {t("home.nuestroContenido.pLgbtiq")}</span
+        >{t("home.nuestroContenido.p4")}
       </p>
 
       <ButtonPride customClass="float-end w-[150px] xl:hidden">
         <span class="relative z-10">
-          <a href="/contenido" class="text-white no-underline">Ver más</a>
+          <a href={getLocalizedPath("/contenido", lang)} class="text-white no-underline">{t("home.nuestroContenido.seeMore")}</a>
         </span>
       </ButtonPride>
     </div>
@@ -66,7 +75,7 @@ const images2 = [
       customClass="float-end w-[150px] hidden xl:flex xl:justify-center xl:col-start-11 xl:col-span-2 xl:h-fit xl:self-end xl:justify-self-end xl:translate-y-[-30px]"
     >
       <span class="relative z-10">
-        <a href="/contenido" class="text-white no-underline">Ver más</a>
+        <a href={getLocalizedPath("/contenido", lang)} class="text-white no-underline">{t("home.nuestroContenido.seeMore")}</a>
       </span>
     </ButtonPride>
   </Container>

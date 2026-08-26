@@ -1,0 +1,323 @@
+{
+  "nav": {
+    "menu": "Menu",
+    "content": "Contenido",
+    "services": "Servicios",
+    "testimonials": "Testimonios",
+    "contact": "Contacto",
+    "address": [
+      "Edificio SIGMA",
+      "Segundo piso San Pedro",
+      "Montes de Oca",
+      "Costado Oeste del Mall San Pedro"
+    ]
+  },
+  "footer": {
+    "stayInTouch": "Estemos en",
+    "contact": "Contacto",
+    "email": "Email",
+    "phone": "Numero",
+    "addressTitle": "Dirección",
+    "address": "Edificio SIGMA segundo Piso San Pedro de Montes de Oca, costado oeste del Mall San Pedro",
+    "socials": "Redes Sociales",
+    "contactUs": "Contáctanos",
+    "refundPolicy": "Política de Reembolsos",
+    "copyright": "© 2025 CELIG",
+    "backToTop": "Back to top"
+  },
+  "whatsapp": {
+    "cta": "AGENDA POR WHATSAPP",
+    "defaultMessage": "Hola, me gustaría recibir asesoría sobre los servicios de CELIG"
+  },
+  "contactForm": {
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "submit": "Contáctanos",
+    "success": "¡Correo enviado!",
+    "error": "Algo salió mal enviando el correo."
+  },
+  "home": {
+    "seo": {
+      "title": "CELIG - Matrimonios Civiles para parejas del mismo sexo en Costa Rica | Servicios Legales LGBTIQ+ en Costa Rica",
+      "description": "Centro legal especializado en derechos LGBTIQ+ en Costa Rica. Matrimonios igualitarios, consultas legales virtuales y presenciales, sucesiones, defensa de derechos. Más de 35 años de experiencia con Ana Isabel Sibaja."
+    },
+    "landing": {
+      "title1": "MATRIMONIOS ENTRE PERSONAS DEL MISMO SEXO EN COSTA RICA.",
+      "title2": "Legalidad. Experiencia. Exclusividad.",
+      "cta": "Reservar mi matrimonio",
+      "tagline": "Firma legal especializada en matrimonios entre personas del mismo sexo en Costa Rica"
+    },
+    "quienesSomos": {
+      "title1": "¿Quiénes",
+      "title2": "Somos?",
+      "p1": "CELIG nació con una misión clara: brindar a la comunidad LGBTIQ+ servicios jurídicos profesionales, representación digna, seguridad legal, respeto y acompañamiento humano. Más allá del Derecho, su esencia está en la empatía, el compromiso social y la defensa de quienes históricamente han enfrentado discriminación. Cada cliente tiene una historia que merece respeto, privacidad y representación profesional.",
+      "p2": "Fundada y dirigida por la Licda. Ana Isabel Sibaja, abogada y notaria pública con 35 años de experiencia profesional, CELIG ofrece servicios legales y notariales con atención directa, personalizada, privada y segura: matrimonios civiles, traspasos, donaciones, testamentos, servicios notariales y asesoramiento legal. Desde la entrada en vigencia del matrimonio entre personas del mismo sexo en Costa Rica en 2020, Ana Isabel ha realizado más de 550 matrimonios, atendiendo a parejas costarricenses y extranjerxs de distintas nacionalidades.",
+      "p3": "CELIG brinda también asesoramiento legal especializado en derechos LGBTIQ+ en Costa Rica. Desde el Derecho, acompañamos y asesoramos a personas de la comunidad en asuntos que requieren atención jurídica profesional, respetuosa y conocedora de su realidad. Mantenemos un compromiso permanente con la igualdad, la seguridad jurídica, el respeto y la dignidad de las personas LGBTIQ+.",
+      "p4": "Ana Isabel Sibaja y CELIG participan de manera consecutiva en el Pride de Costa Rica desde 2022, manteniendo presencia todos los años, incluido el Pride 2026. A lo largo de estos años también hemos impulsado iniciativas como Shopping Pride, Espresso CELIG y la Feria del Orgullo, creando espacios de encuentro, información, apoyo y visibilidad. Aquí estamos, existimos, amamos y merecemos casarnos, heredar, ser respetadxs y vivir libres de miedo.",
+      "stat1Title": "Matrimonios realizados",
+      "stat1Value": "550+",
+      "stat2Title": "Años de experiencia",
+      "stat2Value": "35+",
+      "stat3Title": "Años de CELIG",
+      "stat3Value": "9+",
+      "founderTitle1": "Fundado por",
+      "founderTitle2": "Ana Isabel Sibaja",
+      "founderP1": "Ana Isabel Sibaja fundó CELIG a partir de una experiencia profundamente personal. Como madre de hijos LGBTIQ+, decidió poner su experiencia profesional al servicio de una comunidad que históricamente ha debido luchar por el reconocimiento y protección de sus derechos.",
+      "founderP2": "Con 35 años de experiencia como abogada y notaria pública, ha ejercido en distintas áreas del Derecho. Desde la entrada en vigencia del matrimonio entre personas del mismo sexo en Costa Rica en 2020, ha desarrollado una amplia experiencia en esta materia y realizado más de 550 matrimonios para parejas nacionales y extranjerxs.",
+      "founderP3": "Nacida en Cañas, Guanacaste, y madre soltera, inició su carrera en Batán, Limón. En CELIG, la experiencia jurídica se combina con una comprensión cercana y genuina de las realidades de las personas y familias LGBTIQ+."
+    },
+    "proceso": {
+      "title1": "Nuestro",
+      "title2": "Proceso",
+      "title3": "Se basa en",
+      "steps": [
+        {
+          "title": "Reservación de la fecha",
+          "parragraph": "El primer paso es seleccionar y reservar la fecha de tu matrimonio. Una vez confirmada la reservación, Ana Isabel comienza personalmente la preparación del proceso legal. Solo deben enviarnos los documentos de identificación de ambas personas contrayentes y de sus dos testigos, CELIG no proporciona testigos desconocidos a los contrayentes. Los testigos tienen una función jurídica real y deben cumplir con las condiciones exigidas por la legislación costarricense. Las parejas extranjerxs pueden usar pasaporte, sin necesidad de partida de nacimiento, certificación de estado civil ni exámenes de sangre."
+        },
+        {
+          "title": "Grupo privado de WhatsApp",
+          "parragraph": "Al confirmar la reserva creamos un grupo privado de WhatsApp con la pareja: nuestro canal directo durante toda la preparación. Ahí coordinamos los borradores de las escrituras, revisamos nombres y datos, resolvemos dudas sobre el proceso legal y compartimos indicaciones importantes antes de la boda. La comunicación es directa con Ana Isabel en cada etapa."
+        },
+        {
+          "title": "Preparación de las escrituras",
+          "parragraph": "CELIG prepara previamente las escrituras y demás documentación necesaria para la celebración. Los borradores se envían a la pareja por el grupo privado de WhatsApp para su revisión antes de la boda, un procedimiento especialmente cómodo para las parejas extranjerxs, que pueden dejar todo listo antes de llegar a Costa Rica."
+        },
+        {
+          "title": "Coordinación de la boda y/o ceremonia",
+          "parragraph": "Cada pareja decide cómo vivir este momento: un matrimonio civil íntimo centrado en la formalización legal, o un matrimonio civil con ceremonia especial, emotiva y personalizada. Cuando se contrata una ceremonia, sus detalles también se coordinan por el grupo privado de WhatsApp, según lo que la pareja desee."
+        },
+        {
+          "title": "Celebración del matrimonio",
+          "parragraph": "El día reservado, la pareja se presenta junto a sus dos testigos. La Licda. Ana Isabel Sibaja realiza personalmente el matrimonio y dirige la firma de las escrituras. Todo fue preparado con anticipación para que ustedes solo tengan que disfrutar el momento. Llegan solteros y se van casadxs."
+        },
+        {
+          "title": "Inscripción del matrimonio",
+          "parragraph": "Después de la celebración y firma de las escrituras, gestionamos la inscripción legal del matrimonio en Costa Rica. La pareja recibe acompañamiento durante esta etapa y se mantiene en comunicación con CELIG."
+        },
+        {
+          "title": "Apostilla, traducción y envío internacional",
+          "parragraph": "Para quienes necesitan usar su documentación fuera de Costa Rica ofrecemos servicios posteriores a la inscripción: actas, certificados de estado civil, apostilla, traducción y envío internacional a cualquier parte del mundo. Así, las parejas extranjerxs pueden casarse, regresar a su país y recibir después los documentos que necesiten."
+        }
+      ]
+    },
+    "apostilla": {
+      "title1": "Apostilla y",
+      "title2": "Envíos",
+      "intro": "Nuestro servicio para parejas extranjerxs no termina el día de la boda. Después de la inscripción del matrimonio podemos gestionar la documentación que necesiten para acreditar su matrimonio o estado civil fuera de Costa Rica.",
+      "items": [
+        {
+          "title1Sans": "Certificados de ",
+          "title1Serif": "estado civil",
+          "parragraph": "Gestionamos los certificados correspondientes cuando la pareja los necesite."
+        },
+        {
+          "title1Sans": "Actas y ",
+          "title1Serif": "certificaciones",
+          "parragraph": "Una vez inscrito el matrimonio, gestionamos las actas o certificaciones de matrimonio correspondientes."
+        },
+        {
+          "title1Sans": "",
+          "title1Serif": "Apostilla",
+          "parragraph": "Cuando la documentación deba usarse en otro país, gestionamos su apostilla."
+        },
+        {
+          "title1Sans": "",
+          "title1Serif": "Traducción",
+          "parragraph": "Cuando el país de destino o el trámite correspondiente lo requiera, gestionamos también la traducción de los documentos."
+        },
+        {
+          "title1Sans": "Envíos ",
+          "title1Serif": "internacionales",
+          "parragraph": "Enviamos actas de matrimonio, certificados de estado civil y demás documentación a cualquier parte del mundo, para que las parejas extranjerxs no tengan que volver a Costa Rica solo a retirarlos."
+        }
+      ]
+    },
+    "oficinasPrivadas": {
+      "title1": "Oficinas",
+      "title2": "Privadas",
+      "p": "CELIG te ofrece la posibilidad de celebrar tu matrimonio en oficinas privadas, elegantes y discretas. Cada matrimonio se atiende de forma personalizada, en un espacio pensado para que vivan ese momento con tranquilidad, comodidad y privacidad. Pueden optar por una boda civil íntima o compartir el momento con quienes deseen tener presentes. También coordinamos matrimonios en otros lugares de Costa Rica, según el servicio contratado."
+    },
+    "diferenciados": {
+      "title1": "Diferenciados",
+      "title2": "Por",
+      "items": [
+        {
+          "title1Sans": "Más de 550 ",
+          "title1Serif": "matrimonios",
+          "parragraph": "Ana Isabel Sibaja ha realizado más de 550 matrimonios entre personas del mismo sexo, atendiendo a parejas nacionales y extranjerxs. La experiencia adquirida desde 2020 permite comprender las necesidades particulares de cada pareja, especialmente las de quienes viven fuera de Costa Rica y viajan exclusivamente para casarse."
+        },
+        {
+          "title1Sans": "35 años de ",
+          "title1Serif": "experiencia",
+          "parragraph": "Tu matrimonio es preparado y celebrado por una abogada y notaria pública con 35 años de experiencia profesional. Un matrimonio no es solo una celebración: es un acto jurídico que debe prepararse con responsabilidad y precisión."
+        },
+        {
+          "title1Sans": "Atención ",
+          "title1Serif": "personalizada",
+          "parragraph": "En CELIG cada pareja recibe atención directa. Ana Isabel las atiende personalmente y dirige el proceso de principio a fin: desde la reservación hasta la celebración, inscripción y trámites posteriores, siempre en comunicación directa."
+        },
+        {
+          "title1Sans": "Grupo privado de ",
+          "title1Serif": "WhatsApp",
+          "parragraph": "Después de reservar creamos un grupo privado de WhatsApp con la pareja. Ahí enviamos los borradores de las escrituras, revisamos los datos, coordinamos los detalles del matrimonio y, cuando corresponde, los de la ceremonia."
+        },
+        {
+          "title1Sans": "Experiencia con ",
+          "title1Serif": "parejas extranjerxs",
+          "parragraph": "Conocemos las necesidades particulares de quienes viven fuera de Costa Rica. Por eso gran parte del proceso puede prepararse antes de que la pareja llegue al país: llegan solteros y se van casadxs."
+        },
+        {
+          "title1Sans": "Privacidad ",
+          "title1Serif": "y respeto",
+          "parragraph": "Cada pareja merece sentirse cómoda, respetada y segura. Ofrecemos un ambiente privado, elegante y discreto, alejado de espacios impersonales o masivos."
+        },
+        {
+          "title1Sans": "Seguridad ",
+          "title1Serif": "jurídica",
+          "parragraph": "Cada matrimonio se prepara cuidadosamente conforme a la legislación costarricense. Tu tranquilidad comienza con la certeza de que tu matrimonio lo gestiona una abogada y notaria pública con amplia experiencia profesional."
+        }
+      ]
+    },
+    "nuestrosServicios": {
+      "title1": "Nuestros",
+      "title2": "Servicios",
+      "readMore": "Leer más"
+    },
+    "testimonios": {
+      "title1": "Historias de",
+      "title2": "Nuestros",
+      "title3": "Clientes",
+      "viewAll": "Ver testimonios",
+      "items": [
+        {
+          "names": "Andrea y Riselda",
+          "content": "Encontrar a alguien que oficiara nuestra boda en Costa Rica fue un reto como pareja del mismo sexo. Pero al descubrir a Ana Isabel Sibaja Rojas, todo cambió. Su apoyo y apertura marcaron la diferencia."
+        },
+        {
+          "names": "José y Luis Ángel",
+          "content": "Muy agradecidos de todo lo que ha hecho por nosotros. Dos extranjerxs que vinieron exclusivamente a casarse."
+        },
+        {
+          "names": "John Michael y Ariel Francisco",
+          "content": "Gracias Ana, estamos agradecidas por toda su ayuda con las recomendaciones para que nuestra boda fuera todo un sueño que se hizo realidad. Muy amable, encantadora y profesional, nos encantó."
+        },
+        {
+          "names": "Michelle y Heidy",
+          "content": "Linda Experiencia Ana Isabel, gracias por la hospitalidad y el amor brindado, se siente la buena vibra y el amor al entrar en tus oficinas, en tu espacio y en tu atmósfera. Estamos grandemente agradecidos, ¡Eres lo máximo, somos lo máximo!"
+        }
+      ]
+    },
+    "nuestroContenido": {
+      "title1": "Nuestro",
+      "title2": "Contenido",
+      "p1": "Además de nuestra ",
+      "pGallery": "galería visual,",
+      "p2": " contamos con un espacio de ",
+      "pBlogs": "blogs y noticias",
+      "p3": " donde tratamos temas ",
+      "pLgbtiq": "LGBTIQ+",
+      "p4": " relevantes para nuestra comunidad.",
+      "seeMore": "Ver más"
+    },
+    "ctaContacto": {
+      "title1": "¿Desean casarse",
+      "title2": "en Costa Rica?",
+      "p1": "Si son una pareja del mismo sexo, nacional o extranjerx, y quieren celebrar su matrimonio legal en Costa Rica, escríbannos directamente. La Licda. Ana Isabel Sibaja atenderá personalmente tu consulta y te indicará los documentos y pasos para reservar la fecha. Para las parejas extranjerxs, el proceso puede prepararse antes de su llegada al país. Después del matrimonio también podemos gestionar actas y certificaciones, certificados de estado civil, apostillas, traducciones y envíos internacionales.",
+      "p2": "Más de 550 matrimonios realizados. 35 años de experiencia legal y notarial. Parejas nacionales y extranjerxs. Atención directa, privada y personalizada. Llegan solteros y se van casadxs.",
+      "button": "Agendar Matrimonio"
+    }
+  },
+  "servicios": {
+    "seo": {
+      "title": "Servicios Legales LGBTIQ+ en Costa Rica | Matrimonios y Asesoría - CELIG",
+      "description": "Explora nuestros servicios legales especializados: matrimonios entre parejas del mismo sexo, consulta legal virtual y presencial, sucesiones, defensa de derechos y servicios notariales."
+    },
+    "disclaimer": "La contratación de este servicio implica la aceptación de nuestra",
+    "disclaimerLink": "Política de Reembolsos y Cancelaciones",
+    "derechosTestimonialPre": "Conoce el",
+    "derechosTestimonialLink": "testimonio",
+    "derechosTestimonialPost": "de muchos de nuestros clientes que cumplieron su sueño de un matrimonio igualitario."
+  },
+  "testimoniosPage": {
+    "seo": {
+      "title": "Testimonios Servicios Legales LGBTIQ+ | Experiencias Reales - CELIG",
+      "description": "Lee testimonios reales de clientes que han usado nuestros servicios legales LGBTIQ+ en Costa Rica. Historias de matrimonios igualitarios, consultas legales y más."
+    },
+    "title1": "Historias de",
+    "title2": "Nuestros",
+    "title3": "Clientes"
+  },
+  "contenidoPage": {
+    "seo": {
+      "title": "Contenido, Blogs y Podcasts LGBTIQ+ en Costa Rica | CELIG",
+      "description": "Descubre artículos, noticias, galería visual y podcasts sobre temas legales, derechos LGBTIQ+ y matrimonios civiles en Costa Rica."
+    },
+    "title1": "Nuestro",
+    "title2": "Contenido",
+    "tabs": {
+      "blogs": "Blogs",
+      "galeria": "Galeria",
+      "podcasts": "Podcasts"
+    },
+    "tagsLabel": "Etiquetas:",
+    "tags": {
+      "derechosLgbtiq": "Derechos de la Comunidad LGBTIQ+",
+      "derechoFamilia": "Derecho Familia",
+      "derechoLaboral": "Derecho Laboral",
+      "derechoMigratorio": "Derecho Migratorio",
+      "familiasHomoparentales": "Derecho Familias Homoparentales"
+    },
+    "subscribeLabel": "Suscribete a nuestro blog",
+    "subscribeButton": "Suscribirse",
+    "subscribeSuccess": "Te has suscrito a nuestros blogs",
+    "subscribeError": "Algo salio mal en la suscripcion",
+    "readMore": "Leer más",
+    "noBlogs": "Aún no existen blogs disponibles. ¡Pronto tendremos contenido nuevo para ti!",
+    "noPodcasts": "Aún no existen podcasts disponibles. ¡Pronto tendremos contenido nuevo para ti!",
+    "showingBlogs": "Mostrando",
+    "of": "de",
+    "blogsWord": "blogs",
+    "pageWord": "Página",
+    "ourSpotify": "Nuestro Spotify"
+  },
+  "reembolsosPage": {
+    "seo": {
+      "title": "Política de Reembolsos y Cancelaciones - CELIG",
+      "description": "Conoce la política de devoluciones, cancelaciones y reembolsos de CELIG para servicios notariales, matrimonios igualitarios y asesorías legales en Costa Rica."
+    },
+    "title1": "Política de",
+    "title2": "Reembolsos",
+    "intro": "Debido a la naturaleza personalizada, jurídica y profesional de los servicios ofrecidos por Celig Costa Rica, incluyendo servicios notariales, matrimonios civiles, apostillado, traducciones oficiales y gestión documental, no se aceptan devoluciones ni cambios una vez que el servicio ha sido contratado, reservado o iniciado.",
+    "acceptance": "La contratación de cualquiera de nuestros servicios implica la aceptación expresa de esta política.",
+    "sections": [
+      {
+        "title": "Reservas y Anticipos",
+        "paragraphs": [
+          "Para confirmar cualquier servicio profesional se requiere un anticipo del 50% del valor total, el cual garantiza:"
+        ],
+        "list": [
+          "Reserva de fecha y agenda profesional",
+          "Análisis jurídico previo",
+          "Revisión y preparación documental",
+          "Disponibilidad exclusiva para el cliente"
+        ],
+        "footer": "Este anticipo no es reembolsable bajo ninguna circunstancia, ya que corresponde a tiempo profesional reservado y gestión administrativa iniciada."
+      },
+      {
+        "title": "Reembolsos",
+        "paragraphs": [
+          "No se realizan devoluciones de dinero, totales ni parciales, una vez efectuado el pago del anticipo o del servicio completo.",
+          "En caso de cancelación por parte del cliente, los montos abonados no serán reintegrados."
+        ]
+      },
+      {
+        "title": "Correcciones",
+        "paragraphs": [
+          "En caso de error material atribuible exclusivamente a nuestra gestión profesional, se procederá a su corrección sin costo adicional para el cliente. Esto no implicará devolución de dinero."
+        ]
+      }
+    ]
+  }
+}

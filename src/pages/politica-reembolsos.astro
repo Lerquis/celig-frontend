@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import Background from "@/components/atoms/General/Background.astro";
 import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
 import Layout from "@/layouts/Layout.astro";
@@ -6,45 +8,25 @@ import Container from "@/components/atoms/Container.astro";
 import SectionTitle from "@/components/atoms/SectionTitle.astro";
 import Parragraph from "@/components/atoms/Parragraph.astro";
 import Footer from "@/components/organisms/Footer.astro";
+import { getLangFromUrl, useTranslations, getLocalizedPath } from "@/i18n";
 
-const subsectionItems = [
-  "Reserva de fecha y agenda profesional",
-  "Análisis jurídico previo",
-  "Revisión y preparación documental",
-  "Disponibilidad exclusiva para el cliente",
-];
+const lang = getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 
-const sections = [
-  {
-    title: "Reservas y Anticipos",
-    paragraphs: [
-      "Para confirmar cualquier servicio profesional se requiere un anticipo del 50% del valor total, el cual garantiza:",
-    ],
-    list: subsectionItems,
-    footer:
-      "Este anticipo no es reembolsable bajo ninguna circunstancia, ya que corresponde a tiempo profesional reservado y gestión administrativa iniciada.",
-  },
-  {
-    title: "Reembolsos",
-    paragraphs: [
-      "No se realizan devoluciones de dinero, totales ni parciales, una vez efectuado el pago del anticipo o del servicio completo.",
-      "En caso de cancelación por parte del cliente, los montos abonados no serán reintegrados.",
-    ],
-  },
-  {
-    title: "Correcciones",
-    paragraphs: [
-      "En caso de error material atribuible exclusivamente a nuestra gestión profesional, se procederá a su corrección sin costo adicional para el cliente. Esto no implicará devolución de dinero.",
-    ],
-  },
-];
+const sections: {
+  title: string;
+  paragraphs: string[];
+  list?: string[];
+  footer?: string;
+}[] = t("reembolsosPage.sections") || [];
 ---
 
 <Layout
-  title="Política de Reembolsos y Cancelaciones - CELIG"
-  description="Conoce la política de devoluciones, cancelaciones y reembolsos de CELIG para servicios notariales, matrimonios igualitarios y asesorías legales en Costa Rica."
-  canonical="/politica-reembolsos"
+  title={t("reembolsosPage.seo.title")}
+  description={t("reembolsosPage.seo.description")}
+  canonical={getLocalizedPath("/politica-reembolsos", lang)}
   noindex={false}
+  lang={lang}
 >
   <Background />
   <GridOverlay />
@@ -55,11 +37,11 @@ const sections = [
       customClass="space-y-[-50px] md:space-y-[-80px] mt-[40px] md:mt-[60px]"
     >
       <SectionTitle
-        title="Política de"
+        title={t("reembolsosPage.title1")}
         customClass="col-start-1 col-span-4 md:col-span-8"
       />
       <SectionTitle
-        title="Reembolsos"
+        title={t("reembolsosPage.title2")}
         serif={true}
         customClass="col-start-2 col-span-3 xl:col-start-3"
       />
@@ -72,7 +54,7 @@ const sections = [
       >
         <div class="customGradient h-[3px] w-full rounded-full"></div>
         <Parragraph
-          text="Debido a la naturaleza personalizada, jurídica y profesional de los servicios ofrecidos por Celig Costa Rica, incluyendo servicios notariales, matrimonios civiles, apostillado, traducciones oficiales y gestión documental, no se aceptan devoluciones ni cambios una vez que el servicio ha sido contratado, reservado o iniciado."
+          text={t("reembolsosPage.intro")}
           customClass="text-justify"
         />
       </div>
@@ -121,12 +103,12 @@ const sections = [
       >
         <div class="customGradient h-[3px] w-full rounded-full mb-[30px]"></div>
         <Parragraph
-          text="La contratación de cualquiera de nuestros servicios implica la aceptación expresa de esta política."
+          text={t("reembolsosPage.acceptance")}
           customClass="text-center montbold mb-[100px]"
         />
       </div>
     </Container>
   </section>
 
-  <Footer />
+  <Footer lang={lang} />
 </Layout>

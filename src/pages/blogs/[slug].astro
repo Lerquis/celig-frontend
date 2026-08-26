@@ -6,8 +6,11 @@ import Background from "@/components/atoms/General/Background.astro";
 import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
 import BlogsSlugTemplate from "@/components/templates/BlogsSlugTemplate.astro";
 import Layout from "@/layouts/Layout.astro";
+import { getLangFromUrl, getLocalizedPath } from "@/i18n";
 
 const { slug } = Astro.params;
+const lang = getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+
 const response = await blogApi.getBlogsByTag();
 if (response.status !== 200) return Astro.redirect("/404");
 const blogInformation = response.body.blogs.find((b: any) => b.slug === slug);
@@ -37,7 +40,7 @@ const blogSchema = {
   author: {
     "@type": "Person",
     name: "Ana Isabel Sibaja",
-    jobTitle: "Abogada Notaria",
+    jobTitle: lang === "en" ? "Attorney & Public Notary" : "Abogada Notaria",
   },
   publisher: {
     "@type": "Organization",
@@ -68,16 +71,17 @@ const articleData = {
 ---
 
 <Layout
-  title={`${blogInformation.title} | Blog CELIG - Derechos LGBTIQ+ Costa Rica`}
+  title={`${blogInformation.title} | Blog CELIG - ${lang === "en" ? "LGBTIQ+ Rights Costa Rica" : "Derechos LGBTIQ+ Costa Rica"}`}
   description={blogDescription}
-  canonical={`/blogs/${blogInformation.slug}`}
+  canonical={getLocalizedPath(`/blogs/${blogInformation.slug}`, lang)}
   ogImage={blogInformation.imageUrl || "/og-image.jpg"}
   ogType="article"
   article={articleData}
   schema={blogSchema}
+  lang={lang}
 >
   <Background />
   <GridOverlay />
 
-  <BlogsSlugTemplate blog={blogInformation} />
+  <BlogsSlugTemplate blog={blogInformation} lang={lang} />
 </Layout>

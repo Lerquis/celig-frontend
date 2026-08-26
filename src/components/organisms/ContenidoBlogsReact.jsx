@@ -1,36 +1,84 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState, useMemo } from "react";
 import { blogApi } from "@/api";
 import { formatDateToDDMMYYYY } from "@/lib/dateFormatter";
 import { usePaginatedList } from "@/hooks/usePaginatedList";
 import { PaginationControls } from "@/components/molecules/PaginationControls";
+import { translations } from "@/i18n/ui";
 
-export const ContenidoBlogsReact = ({ initialData = { blogs: [] }, itemsPerPage = 9 }) => {
-  const [selectedTags, setSelectedTags] = useState([]);
+const TAG_DEFINITIONS = [
+  { apiKey: "Derechos de la Comunidad LGBTIQ+", labelKey: "derechosLgbtiq" },
+  { apiKey: "Derecho Familia", labelKey: "derechoFamilia" },
+  { apiKey: "Derecho Laboral", labelKey: "derechoLaboral" },
+  { apiKey: "Derecho Migratorio", labelKey: "derechoMigratorio" },
+  { apiKey: "Derecho Familias Homoparentales", labelKey: "familiasHomoparentales" },
+];
+
+export const ContenidoBlogsReact = ({
+  initialData = { blogs: [] },
+  itemsPerPage = 9,
+  lang = "es",
+}) => {
+  const t = translations[lang] || translations.es;
+  const [selectedTag, setSelectedTag] = useState("");
+
+  const tagList = useMemo(() => {
+    return TAG_DEFINITIONS.map((def) => ({
+      apiKey: def.apiKey,
+      label: t.contenidoPage?.tags?.[def.labelKey] || def.apiKey,
+    }));
+  }, [t]);
 
   const fetchPage = useCallback(
-    (page) => {
-      const tag = selectedTags.map((t) => encodeURIComponent(t));
-      return blogApi.getBlogsByTag(tag, { page, limit: itemsPerPage });
+    async (page) => {
+      const res = await blogApi.getBlogsByTag(selectedTag, { page, limit: itemsPerPage });
+      if (selectedTag && res.status === 200 && res.body?.blogs) {
+        const filtered = res.body.blogs.filter((b) =>
+          Array.isArray(b.tags) &&
+          b.tags.some(
+            (tagStr) =>
+              tagStr.trim().toLowerCase() === selectedTag.trim().toLowerCase()
+          )
+        );
+        return { status: 200, body: { blogs: filtered } };
+      }
+      return res;
     },
-    [selectedTags, itemsPerPage]
+    [selectedTag, itemsPerPage]
   );
 
-  const { items: blogs, page: currentPage, totalPages, total, loading, setPage, reset } =
-    usePaginatedList({
-      fetchPage,
-      legacyKey: "blogs",
-      itemsPerPage,
-      initialData,
+  const {
+    items: blogs,
+    page: currentPage,
+    totalPages,
+    total,
+    loading,
+    setPage,
+    reset,
+  } = usePaginatedList({
+    fetchPage,
+    legacyKey: "blogs",
+    itemsPerPage,
+    initialData,
+  });
+
+  const handleTagClick = async (tagApiKey) => {
+    const nextTag = selectedTag === tagApiKey ? "" : tagApiKey;
+    setSelectedTag(nextTag);
+
+    await reset(async (page) => {
+      const res = await blogApi.getBlogsByTag(nextTag, { page, limit: itemsPerPage });
+      if (nextTag && res.status === 200 && res.body?.blogs) {
+        const filtered = res.body.blogs.filter((b) =>
+          Array.isArray(b.tags) &&
+          b.tags.some(
+            (tagStr) =>
+              tagStr.trim().toLowerCase() === nextTag.trim().toLowerCase()
+          )
+        );
+        return { status: 200, body: { blogs: filtered } };
+      }
+      return res;
     });
-
-  const handleTagClick = async (tagText) => {
-    const newSelectedTags = selectedTags.includes(tagText) ? [] : [tagText];
-    setSelectedTags(newSelectedTags);
-
-    // Se pasa un fetcher explícito para evitar depender del closure de `fetchPage`,
-    // que todavía no refleja `newSelectedTags` en este mismo ciclo de render.
-    const encodedTags = newSelectedTags.map((tag) => encodeURIComponent(tag));
-    await reset((page) => blogApi.getBlogsByTag(encodedTags, { page, limit: itemsPerPage }));
   };
 
   const createButtonPride = (text, href, customClass = "") => {
@@ -44,6 +92,9 @@ export const ContenidoBlogsReact = ({ initialData = { blogs: [] }, itemsPerPage 
     );
   };
 
+  const readMoreText =
+    t.contenidoPage?.readMore || (lang === "en" ? "Read more" : "Leer más");
+
   const BlogItem = ({ blog }) => (
     <div className="bg-white px-4 py-2 md:py-6 md:px-6 flex flex-col space-y-[20px] shadow-2xl rounded-sm">
       {/* Header con título y tags */}
@@ -51,7 +102,7 @@ export const ContenidoBlogsReact = ({ initialData = { blogs: [] }, itemsPerPage 
         <h3 className="montreg text-[20px] xl:text-[24px] tracking-[1px] !leading-[25px]">
           {blog.title}
         </h3>
-        <p className="text-[12px]">{blog.tags.join(", ")}</p>
+        <p className="text-[12px]">{Array.isArray(blog.tags) ? blog.tags.join(", ") : ""}</p>
       </div>
 
       {/* Contenido */}
@@ -64,7 +115,11 @@ export const ContenidoBlogsReact = ({ initialData = { blogs: [] }, itemsPerPage 
         <p className="montreg tracking-[1px] text-[16px] !leading-[25px]">
           {formatDateToDDMMYYYY(blog.updatedAt, false)}
         </p>
-        {createButtonPride("Leer más", `/blogs/${blog.slug}`, "w-fit self-end")}
+        {createButtonPride(
+          readMoreText,
+          `/blogs/${blog.slug}${lang === "en" ? "?lang=en" : ""}`,
+          "w-fit self-end"
+        )}
       </div>
     </div>
   );
@@ -92,78 +147,77 @@ export const ContenidoBlogsReact = ({ initialData = { blogs: [] }, itemsPerPage 
     </div>
   );
 
-  useEffect(() => {
-    // Actualizar tags cuando cambian los blogs filtrados
-    const tags = document.querySelectorAll(".content-blog-tag");
-
-    const handleTagClickEvent = (e) => {
-      e.preventDefault();
-      const tagText = e.target.textContent.trim();
-
-      // Primero remover la clase de todos los tags
-      tags.forEach((tag) => tag.classList.remove("tag-selected"));
-
-      // Si el tag clickeado no estaba seleccionado, seleccionarlo
-      if (!selectedTags.includes(tagText)) {
-        e.target.classList.add("tag-selected");
-      }
-
-      handleTagClick(tagText);
-    };
-
-    tags.forEach((tag) => {
-      tag.removeEventListener("click", handleTagClickEvent);
-      tag.addEventListener("click", handleTagClickEvent);
-    });
-
-    return () => {
-      tags.forEach((tag) => {
-        tag.removeEventListener("click", handleTagClickEvent);
-      });
-    };
-  }, [selectedTags]);
-
-  if (!loading && blogs.length === 0) {
-    return (
-      <div className="space-y-[20px] w-full">
-        <p className="text-center text-gray-600 py-8 montreg tracking-[1px] text-[16px]">
-          Aún no existen blogs disponibles. ¡Pronto tendremos contenido nuevo para ti!
-        </p>
-      </div>
-    );
-  }
-
-  const skeletonCount = blogs.length > 0 ? blogs.length : Math.min(itemsPerPage, 3);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-
   return (
-    <div className="space-y-[20px] w-full">
-      {/* Blogs de la página actual o Skeletons durante loading */}
-      <div className="space-y-[20px]">
-        {loading
-          ? Array.from({ length: skeletonCount }).map((_, index) => (
-              <BlogItemSkeleton key={`blog-skeleton-${index}`} />
-            ))
-          : blogs.map((blog) => <BlogItem key={blog.id} blog={blog} />)}
+    <div className="space-y-[35px] w-full">
+      {/* Barra de etiquetas interactiva */}
+      <div className="flex gap-4 overflow-hidden items-center w-full">
+        <p className="montreg tracking-[1px] text-[16px] leading-[25px] flex-shrink-0">
+          {t.contenidoPage?.tagsLabel || "Etiquetas:"}
+        </p>
+        <div className="flex overflow-x-auto gap-2 scrollbar-hide py-1">
+          {tagList.map((item) => {
+            const isSelected = selectedTag === item.apiKey;
+            return (
+              <button
+                key={item.apiKey}
+                type="button"
+                onClick={() => handleTagClick(item.apiKey)}
+                className={`py-2 px-4 border-[1px] rounded-[4px] montreg cursor-pointer whitespace-nowrap transition-all !min-w-fit text-[12px] select-none ${
+                  isSelected
+                    ? "tag-selected bg-black text-white border-solid border-black shadow-md"
+                    : "bg-transparent text-black border-dashed border-black/40 hover:scale-[1.05] hover:border-black"
+                }`}
+              >
+                {item.label}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Controles de paginación */}
-      <PaginationControls
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={setPage}
-        disabled={loading}
-      />
+      {/* Listado de blogs o estado vacío */}
+      {!loading && blogs.length === 0 ? (
+        <div className="space-y-[20px] w-full">
+          <p className="text-center text-gray-600 py-8 montreg tracking-[1px] text-[16px]">
+            {t.contenidoPage?.noBlogs ||
+              "Aún no existen blogs disponibles. ¡Pronto tendremos contenido nuevo para ti!"}
+          </p>
+        </div>
+      ) : (
+        <div className="space-y-[20px] w-full">
+          {/* Blogs de la página actual o Skeletons durante loading */}
+          <div className="space-y-[20px]">
+            {loading
+              ? Array.from({ length: blogs.length > 0 ? blogs.length : Math.min(itemsPerPage, 3) }).map((_, index) => (
+                  <BlogItemSkeleton key={`blog-skeleton-${index}`} />
+                ))
+              : blogs.map((blog) => <BlogItem key={blog.id} blog={blog} />)}
+          </div>
 
-      {/* Información de la página */}
-      <div className="text-center text-sm text-gray-600 mt-4 min-h-[20px]">
-        {!loading && (
-          <>
-            Mostrando {startIndex + 1}-{startIndex + blogs.length} de {total} blogs
-            {totalPages > 1 && ` • Página ${currentPage} de ${totalPages}`}
-          </>
-        )}
-      </div>
+          {/* Controles de paginación */}
+          <PaginationControls
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setPage}
+            disabled={loading}
+          />
+
+          {/* Información de la página */}
+          <div className="text-center text-sm text-gray-600 mt-4 min-h-[20px]">
+            {!loading && (
+              <>
+                {lang === "en"
+                  ? `Showing ${((currentPage - 1) * itemsPerPage) + 1}-${((currentPage - 1) * itemsPerPage) + blogs.length} of ${total} blogs`
+                  : `Mostrando ${((currentPage - 1) * itemsPerPage) + 1}-${((currentPage - 1) * itemsPerPage) + blogs.length} de ${total} blogs`}
+                {totalPages > 1 &&
+                  (lang === "en"
+                    ? ` • Page ${currentPage} of ${totalPages}`
+                    : ` • Página ${currentPage} de ${totalPages}`)}
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

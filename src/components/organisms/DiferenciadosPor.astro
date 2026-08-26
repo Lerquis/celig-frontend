@@ -2,58 +2,18 @@
 import Container from "../atoms/Container.astro";
 import SectionTitle from "../atoms/SectionTitle.astro";
 import DiferenciadoItem from "../molecules/DiferenciadoItem.astro";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
 
-const diffBy = [
-  {
-    title1Sans: "Más de 550 ",
-    title1Serif: "matrimonios",
-    parragraph: `Ana Isabel Sibaja ha realizado más de 550 matrimonios entre personas del mismo sexo,
-    atendiendo a parejas nacionales y extranjerxs. La experiencia adquirida desde 2020 permite comprender
-    las necesidades particulares de cada pareja, especialmente las de quienes viven fuera de Costa Rica
-    y viajan exclusivamente para casarse.`,
-  },
-  {
-    title1Sans: "35 años de ",
-    title1Serif: "experiencia",
-    parragraph: `Tu matrimonio es preparado y celebrado por una abogada y notaria pública con 35 años de
-    experiencia profesional. Un matrimonio no es solo una celebración: es un acto jurídico que debe
-    prepararse con responsabilidad y precisión.`,
-  },
-  {
-    title1Sans: "Atención ",
-    title1Serif: "personalizada",
-    parragraph: `En CELIG cada pareja recibe atención directa. Ana Isabel las atiende personalmente y
-    dirige el proceso de principio a fin: desde la reservación hasta la celebración, inscripción y
-    trámites posteriores, siempre en comunicación directa.`,
-  },
-  {
-    title1Sans: "Grupo privado de ",
-    title1Serif: "WhatsApp",
-    parragraph: `Después de reservar creamos un grupo privado de WhatsApp con la pareja. Ahí enviamos los
-    borradores de las escrituras, revisamos los datos, coordinamos los detalles del matrimonio y, cuando
-    corresponde, los de la ceremonia.`,
-  },
-  {
-    title1Sans: "Experiencia con ",
-    title1Serif: "parejas extranjerxs",
-    parragraph: `Conocemos las necesidades particulares de quienes viven fuera de Costa Rica. Por eso gran
-    parte del proceso puede prepararse antes de que la pareja llegue al país: llegan solteros y se van
-    casadxs.`,
-  },
-  {
-    title1Sans: "Privacidad ",
-    title1Serif: "y respeto",
-    parragraph: `Cada pareja merece sentirse cómoda, respetada y segura. Ofrecemos un ambiente privado,
-    elegante y discreto, alejado de espacios impersonales o masivos.`,
-  },
-  {
-    title1Sans: "Seguridad ",
-    title1Serif: "jurídica",
-    parragraph: `Cada matrimonio se prepara cuidadosamente conforme a la legislación costarricense. Tu
-    tranquilidad comienza con la certeza de que tu matrimonio lo gestiona una abogada y notaria pública
-    con amplia experiencia profesional.`,
-  },
-];
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
+
+const diffBy: { title1Sans: string; title1Serif: string; parragraph: string }[] =
+  t("home.diferenciados.items") || [];
 ---
 
 <section class="mb-[200px] space-y-[100px]">
@@ -62,11 +22,11 @@ const diffBy = [
     customClass="space-y-[-50px] md:space-y-[-80px] title-animation"
   >
     <SectionTitle
-      title="Diferenciados"
+      title={t("home.diferenciados.title1")}
       customClass="col-start-1 col-span-4 md:col-span-8 text-center xl:col-span-12"
     />
     <SectionTitle
-      title="Por"
+      title={t("home.diferenciados.title2")}
       serif={true}
       customClass="col-start-1 col-span-4 md:col-span-8 text-center xl:col-span-12"
     />

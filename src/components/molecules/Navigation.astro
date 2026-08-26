@@ -3,12 +3,22 @@ import CleanLogo from "../atoms/CleanLogo.astro";
 import Container from "../atoms/Container.astro";
 import MenuBar from "../atoms/MenuBar.astro";
 import NavSocial from "../atoms/NavSocial.astro";
+import LanguageToggle from "../atoms/LanguageToggle.astro";
+import { getLangFromUrl, useTranslations, getLocalizedPath, type Locale } from "@/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 
 const links = [
-  { label: "Contenido", href: "/contenido" },
-  { label: "Servicios", href: "/servicios" },
-  { label: "Testimonios", href: "/testimonios" },
-  { label: "Contacto", href: "#contacto" },
+  { label: t("nav.content"), href: getLocalizedPath("/contenido", lang) },
+  { label: t("nav.services"), href: getLocalizedPath("/servicios", lang) },
+  { label: t("nav.testimonials"), href: getLocalizedPath("/testimonios", lang) },
+  { label: t("nav.contact"), href: "#contacto" },
 ];
 
 const socials = [
@@ -33,13 +43,15 @@ const socials = [
   },
 ];
 
-const directions = [
+const directions: string[] = t("nav.address") || [
   "Edificio SIGMA",
   "Segundo piso San Pedro",
   "Montes de Oca",
   "Costado Oeste del Mall San Pedro",
 ];
 ---
+
+<LanguageToggle currentLang={lang} />
 
 <div
   class={`fixed top-2 right-2 w-[120px] h-[60px] bg-black rounded-[1000px] origin-right cursor-pointer z-[100]
@@ -57,20 +69,22 @@ menu-toggle closed `}
   
   menu-copy`}
   >
-    <p class="uppercase m-0 p-0 rosdnl text-[16px]">Menu</p>
+    <p class="uppercase m-0 p-0 rosdnl text-[16px]">{t("nav.menu")}</p>
   </div>
 </div>
 
 <div class="fixed top-4 left-2 isolate logo-container z-50">
   <div class="flex gap-2 items-center col-start-1 col-span-3">
-    <CleanLogo width="w-[45px]" />
+    <a href={getLocalizedPath("/", lang)} aria-label="Inicio">
+      <CleanLogo width="w-[45px]" />
+    </a>
   </div>
 </div>
 
 <div
   class="fixed top-4 left-14 isolate text-container z-50 text-white mix-blend-difference"
 >
-  <a href="/" class="text-[24px] font-bold montreg">CELIG</a>
+  <a href={getLocalizedPath("/", lang)} class="text-[24px] font-bold montreg">CELIG</a>
 </div>
 
 <div
@@ -147,14 +161,15 @@ menu-toggle closed `}
     const logoContainer = document.querySelector(".logo-container");
     const textContainer = document.querySelector(".text-container");
     const menuToggle = document.querySelector(".menu-toggle");
+    const languageToggle = document.querySelector("#language-toggle");
 
     // Verificar si estamos en la página de inicio
-    const isHomePage = window.location.pathname === "/";
+    const isHomePage = window.location.pathname === "/" || window.location.pathname === "";
 
     if (isHomePage) {
       // En la página de inicio: ocultar hasta que se scrollee 100vh
       gsap.set([logoContainer, textContainer], { opacity: 0 });
-      gsap.set(menuToggle, { opacity: 1 }); // El menú siempre visible
+      gsap.set([menuToggle, languageToggle], { opacity: 1 }); // El menú y el idioma siempre visibles
 
       // Usar scroll directo para mostrar después de 100vh
       window.addEventListener("scroll", () => {
@@ -179,7 +194,7 @@ menu-toggle closed `}
       });
     } else {
       // En otras páginas: mostrar inmediatamente
-      gsap.set([logoContainer, textContainer, menuToggle], { opacity: 1 });
+      gsap.set([logoContainer, textContainer, menuToggle, languageToggle], { opacity: 1 });
     }
 
     // Resto de la funcionalidad del menú

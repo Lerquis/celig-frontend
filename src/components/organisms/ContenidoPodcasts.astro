@@ -5,6 +5,15 @@ import Container from "../atoms/Container.astro";
 import Parragraph from "../atoms/Parragraph.astro";
 import { Spotify } from "../icons/Spotify";
 import { ContenidoPodcastsReact } from "./ContenidoPodcastsReact";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 
 const PODCASTS_PER_PAGE = 6;
 
@@ -13,13 +22,13 @@ const response = await podcastApi.getPodcasts({ page: 1, limit: PODCASTS_PER_PAG
 if (response.status === 200) initialData = response.body;
 ---
 
-<Container customClass="content-container-podcasts hidden opacity-0 relative">
+<Container customClass="content-container-podcasts opacity-0 relative" style="display: none;">
   <a
     class="absolute flex flex-col md:flex-row gap-2 items-center justify-center left-[50%] translate-x-[-50%] hover:scale-[1.1] transition-all ease-in"
     href="https://open.spotify.com/show/4uHDYtDQvHSdy9SyA6R8p4?si=yUL2cZMLR5KHPFa2b2_jdQ&nd=1&dlsi=05d2cd3b21e74042"
     target="_blank"
   >
-    <Parragraph text="Nuestro Spotify" customClass="montbold" />
+    <Parragraph text={t("contenidoPage.ourSpotify")} customClass="montbold" />
 
     <Spotify fill="#22C55E" />
   </a>
@@ -28,6 +37,7 @@ if (response.status === 200) initialData = response.body;
     <ContenidoPodcastsReact
       initialData={initialData}
       itemsPerPage={PODCASTS_PER_PAGE}
+      lang={lang}
       client:load
     />
   </div>

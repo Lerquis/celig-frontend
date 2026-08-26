@@ -24,6 +24,18 @@ export function GaleriaLightbox({ images, selectedIndex, onClose }) {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    if (selectedIndex !== null && selectedIndex !== undefined) {
+      setActiveIndex(selectedIndex);
+      if (mainApi) {
+        mainApi.scrollTo(selectedIndex, true);
+      }
+      if (thumbsApi) {
+        thumbsApi.scrollTo(selectedIndex, true);
+      }
+    }
+  }, [selectedIndex, mainApi, thumbsApi]);
+
+  useEffect(() => {
     if (!mainApi || !thumbsApi) return;
 
     const onSelect = () => {
@@ -34,7 +46,9 @@ export function GaleriaLightbox({ images, selectedIndex, onClose }) {
 
     onSelect();
     mainApi.on("select", onSelect).on("reInit", onSelect);
-    return () => mainApi.off("select", onSelect);
+    return () => {
+      mainApi.off("select", onSelect);
+    };
   }, [mainApi, thumbsApi]);
 
   if (!isOpen) return null;
@@ -42,16 +56,17 @@ export function GaleriaLightbox({ images, selectedIndex, onClose }) {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogPortal>
-        <DialogOverlay className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+        <DialogOverlay className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <DialogPrimitive.Content
-          aria-describedby={undefined}
+          aria-describedby="lightbox-description"
           onOpenAutoFocus={(event) => {
             event.preventDefault();
             containerRef.current?.focus();
           }}
-          className="fixed inset-0 z-50 flex flex-col justify-between w-screen h-screen p-3 sm:p-5 md:p-6 text-white outline-none select-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+          className="fixed inset-0 z-[9999] flex flex-col justify-between w-screen h-screen p-3 sm:p-5 md:p-6 text-white outline-none select-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
         >
           <DialogTitle className="sr-only">Galería de imágenes</DialogTitle>
+          <DialogDescription id="lightbox-description" className="sr-only">Visualizador de imágenes a pantalla completa</DialogDescription>
 
           {/* Barra superior con contador a la izquierda y botón de cerrar centrado encima de las imágenes */}
           <div className="relative flex items-center justify-center w-full shrink-0 z-30 px-2 sm:px-4 pt-1 sm:pt-2 min-h-[44px]">

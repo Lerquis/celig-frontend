@@ -4,9 +4,18 @@ import Container from "../atoms/Container.astro";
 import CleanLogo from "../atoms/CleanLogo.astro";
 import FlagLine from "../atoms/FlagLine.astro";
 import { WhatsApp as WhatsAppIcon } from "../icons/WhatsApp";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
 
-const whatsappUrl =
-  "https://api.whatsapp.com/send/?phone=50683346441&text&type=phone_number&app_absent=0";
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
+
+const defaultText = encodeURIComponent(t("whatsapp.defaultMessage"));
+const whatsappUrl = `https://api.whatsapp.com/send/?phone=50683346441&text=${defaultText}&type=phone_number&app_absent=0`;
 ---
 
 <section
@@ -52,9 +61,9 @@ const whatsappUrl =
           class="leading-tight text-white text-[24px] md:text-[38px] xl:text-[48px]"
         >
           <span class="roblight block tracking-normal"
-            >MATRIMONIOS ENTRE PERSONAS DEL MISMO SEXO EN COSTA RICA.</span
+            >{t("home.landing.title1")}</span
           >
-          <span class="rosdcel block">Legalidad. Experiencia. Exclusividad.</span
+          <span class="rosdcel block">{t("home.landing.title2")}</span
           >
         </h2>
 
@@ -66,7 +75,7 @@ const whatsappUrl =
           <WhatsAppIcon
             className="h-[14px] w-[14px] md:h-[16px] md:w-[16px] fill-white whatsapp-shake-icon"
           />
-          Reservar mi matrimonio
+          {t("home.landing.cta")}
         </a>
       </div>
 
@@ -94,7 +103,7 @@ const whatsappUrl =
   <!-- Tagline + flag + arrow (solo md+) -->
   <Container fullWidth={false} customClass="items-center hidden md:grid">
     <p class="text-white roblight uppercase text-[20px] col-start-1 col-span-3">
-      Firma legal especializada en matrimonios entre personas del mismo sexo en Costa Rica
+      {t("home.landing.tagline")}
     </p>
     <div class="col-start-4 col-span-4 hidden md:flex xl:col-span-8">
       <FlagLine />

@@ -1,5 +1,17 @@
 ---
 import { WhatsApp as WhatsAppIcon } from "../icons/WhatsApp";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
+
+const defaultText = encodeURIComponent(t("whatsapp.defaultMessage"));
+const whatsappUrl = `https://api.whatsapp.com/send/?phone=50683346441&text=${defaultText}&type=phone_number&app_absent=0`;
 ---
 
 <div
@@ -8,12 +20,12 @@ import { WhatsApp as WhatsAppIcon } from "../icons/WhatsApp";
   style="transition-property: opacity, transform;"
 >
   <a
-    href="https://api.whatsapp.com/send/?phone=50683346441&text&type=phone_number&app_absent=0"
+    href={whatsappUrl}
     class="flex items-center gap-2"
   >
     <WhatsAppIcon />
     <span class="text-white font-bold sm:text-sm text-[12px] tracking-wide"
-      >AGENDA POR WHATSAPP</span
+      >{t("whatsapp.cta")}</span
     >
   </a>
 </div>

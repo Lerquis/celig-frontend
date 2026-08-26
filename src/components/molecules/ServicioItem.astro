@@ -1,8 +1,17 @@
 ---
 import ButtonPride from "../atoms/ButtonPride.astro";
 import Parragraph from "../atoms/Parragraph.astro";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
 
-const { label, href } = Astro.props;
+interface Props {
+  label: string;
+  href: string;
+  lang?: Locale;
+}
+
+const { label, href, lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 ---
 
 <div
@@ -12,7 +21,7 @@ const { label, href } = Astro.props;
     <Parragraph text={label} customClass="md:text-[20px]" />
     <ButtonPride customClass="w-fit h-fit justify-self-end">
       <span class="relative z-[5]">
-        <a {href} class="text-white no-underline">Leer más</a>
+        <a {href} class="text-white no-underline">{t("home.nuestrosServicios.readMore") || (lang === "en" ? "Read more" : "Leer más")}</a>
       </span>
     </ButtonPride>
   </div>

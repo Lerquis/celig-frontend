@@ -2,18 +2,38 @@
 import Container from "../atoms/Container.astro";
 import SectionTitle from "../atoms/SectionTitle.astro";
 import ServicioItem from "../molecules/ServicioItem.astro";
+import { getLangFromUrl, useTranslations, getLocalizedPath, type Locale } from "@/i18n";
 
-const services = [
-  { label: "Consulta Virtual", href: "/servicio/consulta-virtual" },
-  { label: "Consulta Presencial", href: "/servicio/consulta-presencial" },
-  { label: "Sucesiones", href: "/servicio/sucesiones" },
-  { label: "Defensa de derechos LGBTIQ+", href: "/servicio/derechos-lgbtiq+" },
-  {
-    label: "Matrimonios entre parejas del mismo sexo",
-    href: "/servicio/matrimonios",
-  },
-  { label: "Servicio Notariales", href: "/servicio/notariales" },
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
+
+const serviceLabels: Record<string, { es: string; en: string }> = {
+  "consulta-virtual": { es: "Consulta Virtual", en: "Virtual Consultation" },
+  "consulta-presencial": { es: "Consulta Presencial", en: "In-Person Consultation" },
+  "sucesiones": { es: "Sucesiones", en: "Estate & Probate" },
+  "derechos-lgbtiq+": { es: "Defensa de derechos LGBTIQ+", en: "LGBTIQ+ Rights Defense" },
+  "matrimonios": { es: "Matrimonios entre parejas del mismo sexo", en: "Same-Sex Marriages" },
+  "notariales": { es: "Servicios Notariales", en: "Notarial Services" },
+};
+
+const rawServices = [
+  { slug: "consulta-virtual", href: "/servicio/consulta-virtual" },
+  { slug: "consulta-presencial", href: "/servicio/consulta-presencial" },
+  { slug: "sucesiones", href: "/servicio/sucesiones" },
+  { slug: "derechos-lgbtiq+", href: "/servicio/derechos-lgbtiq+" },
+  { slug: "matrimonios", href: "/servicio/matrimonios" },
+  { slug: "notariales", href: "/servicio/notariales" },
 ];
+
+const services = rawServices.map((s) => ({
+  label: serviceLabels[s.slug]?.[lang] || serviceLabels[s.slug]?.es,
+  href: getLocalizedPath(s.href, lang),
+}));
 ---
 
 <section class="mb-[200px] space-y-[100px]" id="servicios">
@@ -21,15 +41,15 @@ const services = [
     fullWidth={false}
     customClass="space-y-[-50px] md:space-y-[-80px] title-animation"
   >
-    <SectionTitle title="Nuestros" customClass="col-start-1 col-span-4" />
+    <SectionTitle title={t("home.nuestrosServicios.title1")} customClass="col-start-1 col-span-4" />
     <SectionTitle
-      title="Servicios"
+      title={t("home.nuestrosServicios.title2")}
       serif={true}
       customClass="col-start-2 col-span-3"
     />
   </Container>
 
   <Container customClass="space-y-[20px] items-center">
-    {services.map((item) => <ServicioItem {...item} />)}
+    {services.map((item) => <ServicioItem {...item} lang={lang} />)}
   </Container>
 </section>

@@ -1,0 +1,89 @@
+---
+import { getLangFromUrl, type Locale } from "@/i18n";
+
+interface Props {
+  currentLang?: Locale;
+}
+
+const { currentLang } = Astro.props;
+const lang = currentLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+---
+
+<div
+  id="language-toggle"
+  class="fixed top-2 right-[128px] md:right-[134px] h-[60px] px-3.5 md:px-4 bg-black rounded-[1000px] flex items-center justify-center gap-1.5 md:gap-2 z-[100] shadow-md select-none text-[13px] md:text-[14px] montreg border border-white/10"
+  data-current-lang={lang}
+  aria-label="Selector de idioma / Language selector"
+>
+  <button
+    type="button"
+    id="lang-btn-es"
+    class={`cursor-pointer transition-all duration-200 uppercase tracking-wider py-1 px-1 rounded ${
+      lang === "es"
+        ? "text-white font-bold underline underline-offset-4 decoration-white/60"
+        : "text-white/40 hover:text-white/90"
+    }`}
+    aria-pressed={lang === "es"}
+  >
+    ES
+  </button>
+  <span class="text-white/25 text-[11px] font-light">|</span>
+  <button
+    type="button"
+    id="lang-btn-en"
+    class={`cursor-pointer transition-all duration-200 uppercase tracking-wider py-1 px-1 rounded ${
+      lang === "en"
+        ? "text-white font-bold underline underline-offset-4 decoration-white/60"
+        : "text-white/40 hover:text-white/90"
+    }`}
+    aria-pressed={lang === "en"}
+  >
+    EN
+  </button>
+</div>
+
+<script>
+  function setupLanguageToggle() {
+    const btnEs = document.getElementById("lang-btn-es");
+    const btnEn = document.getElementById("lang-btn-en");
+    const toggle = document.getElementById("language-toggle");
+
+    if (!toggle || !btnEs || !btnEn) return;
+
+    function switchLanguage(targetLang: "es" | "en") {
+      const url = new URL(window.location.href);
+      const currentParam = url.searchParams.get("lang");
+
+      if (targetLang === "en") {
+        url.searchParams.set("lang", "en");
+      } else {
+        url.searchParams.delete("lang");
+      }
+
+      // Guardar preferencia en cookie con 1 año de expiración
+      document.cookie = `celig_lang=${targetLang}; path=/; max-age=31536000; SameSite=Lax`;
+
+      // Si la URL cambió o para refrescar el contenido SSR
+      window.location.href = url.toString();
+    }
+
+    btnEs.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const current = toggle.getAttribute("data-current-lang");
+      if (current !== "es") switchLanguage("es");
+    });
+
+    btnEn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const current = toggle.getAttribute("data-current-lang");
+      if (current !== "en") switchLanguage("en");
+    });
+  }
+
+  // Ejecutar al cargar la página
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupLanguageToggle);
+  } else {
+    setupLanguageToggle();
+  }
+</script>

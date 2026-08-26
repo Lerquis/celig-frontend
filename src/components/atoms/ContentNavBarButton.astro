@@ -1,13 +1,15 @@
 ---
-const { text, tag, customClass, type } = Astro.props;
+const { text, tag, customClass, type, container, dataTag } = Astro.props;
+const containerKey = container || (text ? text.toLowerCase() : "");
 ---
 
 <button
   type={type ? type : "button"}
-  data-container={`content-container-${text.toLowerCase()}`}
+  data-container={!tag ? `content-container-${containerKey}` : undefined}
+  data-api-tag={dataTag || text}
   class={`bg-transparent py-2 px-4 border-[1px] border-dashed rounded-[4px] 
   montreg  cursor-pointer whitespace-nowrap transition-all
-  ${!tag ? `w-[150px] xl:w-[300px] mx-auto content-navbar-${text.toLowerCase()} hover:scale-[1.05] text-[18px] ` : "!min-w-fit content-blog-tag text-[12px] "}
+  ${!tag ? `w-[150px] xl:w-[300px] mx-auto content-navbar-${containerKey} hover:scale-[1.05] text-[18px] ` : "!min-w-fit content-blog-tag text-[12px] "}
   ${customClass}
   `}
 >

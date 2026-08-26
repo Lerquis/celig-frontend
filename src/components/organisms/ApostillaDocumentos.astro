@@ -3,38 +3,18 @@ import Container from "../atoms/Container.astro";
 import SectionTitle from "../atoms/SectionTitle.astro";
 import Parragraph from "../atoms/Parragraph.astro";
 import DiferenciadoItem from "../molecules/DiferenciadoItem.astro";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
 
-const apostillaItems = [
-  {
-    title1Sans: "Certificados de ",
-    title1Serif: "estado civil",
-    parragraph: `Gestionamos los certificados correspondientes cuando la pareja los necesite.`,
-  },
-  {
-    title1Sans: "Actas y ",
-    title1Serif: "certificaciones",
-    parragraph: `Una vez inscrito el matrimonio, gestionamos las actas o certificaciones de matrimonio
-    correspondientes.`,
-  },
-  {
-    title1Sans: "",
-    title1Serif: "Apostilla",
-    parragraph: `Cuando la documentación deba usarse en otro país, gestionamos su apostilla.`,
-  },
-  {
-    title1Sans: "",
-    title1Serif: "Traducción",
-    parragraph: `Cuando el país de destino o el trámite correspondiente lo requiera, gestionamos también
-    la traducción de los documentos.`,
-  },
-  {
-    title1Sans: "Envíos ",
-    title1Serif: "internacionales",
-    parragraph: `Enviamos actas de matrimonio, certificados de estado civil y demás documentación a
-    cualquier parte del mundo, para que las parejas extranjerxs no tengan que volver a Costa Rica solo
-    a retirarlos.`,
-  },
-];
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
+
+const apostillaItems: { title1Sans: string; title1Serif: string; parragraph: string }[] =
+  t("home.apostilla.items") || [];
 ---
 
 <section class="mb-[200px] space-y-[100px]">
@@ -43,11 +23,11 @@ const apostillaItems = [
     customClass="space-y-[-50px] md:space-y-[-80px] title-animation"
   >
     <SectionTitle
-      title="Apostilla y"
+      title={t("home.apostilla.title1")}
       customClass="col-start-1 col-span-4 md:col-span-8 text-center xl:col-span-12"
     />
     <SectionTitle
-      title="Envíos"
+      title={t("home.apostilla.title2")}
       serif={true}
       customClass="col-start-1 col-span-4 md:col-span-8 text-center xl:col-span-12"
     />
@@ -56,9 +36,7 @@ const apostillaItems = [
   <Container fullWidth={false}>
     <Parragraph
       customClass="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 text-animation text-center xl:w-[70%] xl:mx-auto"
-      text={`Nuestro servicio para parejas extranjerxs no termina el día de la boda. Después de la
-      inscripción del matrimonio podemos gestionar la documentación que necesiten para acreditar su
-      matrimonio o estado civil fuera de Costa Rica.`}
+      text={t("home.apostilla.intro")}
     />
   </Container>
 

@@ -1,12 +1,19 @@
 ---
-export const prerender = true;
-
 import { testimonialApi } from "@/api";
 import Container from "../atoms/Container.astro";
 import SectionTitle from "../atoms/SectionTitle.astro";
 import TestimonialItem from "../molecules/TestimonialItem.astro";
 import Footer from "../organisms/Footer.astro";
 import placeholderImage from "../../assets/placeholder.svg";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 
 const response = await testimonialApi.getTestimonials();
 const testimonials = response.body.testimonials;
@@ -18,16 +25,16 @@ const testimonials = response.body.testimonials;
     customClass="space-y-[-50px] md:space-y-[-80px] title-animation"
   >
     <SectionTitle
-      title="Historias de"
+      title={t("testimoniosPage.title1")}
       customClass="col-start-1 col-span-4 md:col-span-8"
     />
     <SectionTitle
-      title="Nuestros"
+      title={t("testimoniosPage.title2")}
       serif={true}
       customClass="col-start-2 col-span-3"
     />
     <SectionTitle
-      title="Clientes"
+      title={t("testimoniosPage.title3")}
       serif={true}
       customClass="col-start-1 col-span-4 md:col-start-3"
     />
@@ -50,5 +57,5 @@ const testimonials = response.body.testimonials;
     }
   </Container>
 
-  <Footer />
+  <Footer lang={lang} />
 </section>

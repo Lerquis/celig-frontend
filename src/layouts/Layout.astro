@@ -4,12 +4,26 @@ import "../styles/global.css";
 import { Toaster } from "@/components/ui/sonner";
 import Navigation from "@/components/molecules/Navigation.astro";
 import SEO from "@/components/SEO.astro";
+import { getLangFromUrl, type Locale } from "@/i18n";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  article?: any;
+  noindex?: boolean;
+  schema?: any;
+  lang?: Locale;
+}
 
 const { title, description, canonical, ogImage, ogType, article, noindex, schema } = Astro.props;
+const lang = Astro.props.lang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,9 +43,9 @@ const { title, description, canonical, ogImage, ogType, article, noindex, schema
     <script src="/src/js/app"></script>
   </head>
   <body>
-    <Navigation />
+    <Navigation lang={lang} />
     <slot />
-    <WhatsApp />
-    <Toaster client:only />
+    <WhatsApp lang={lang} />
+    <Toaster client:only="react" />
   </body>
 </html>

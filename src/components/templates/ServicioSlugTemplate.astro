@@ -3,8 +3,16 @@ import Parragraph from "@/components/atoms/Parragraph.astro";
 import Footer from "@/components/organisms/Footer.astro";
 import Container from "../atoms/Container.astro";
 import TitleServiceBlog from "../atoms/TitleServiceBlog.astro";
+import { getLangFromUrl, useTranslations, getLocalizedPath, type Locale } from "@/i18n";
 
-const { service } = Astro.props;
+interface Props {
+  service: any;
+  lang?: Locale;
+}
+
+const { service, lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 ---
 
 <section class="pt-24 space-y-[50px] xl:space-y-[100px]">
@@ -28,15 +36,14 @@ const { service } = Astro.props;
       service.slug === "derechos-lgbtiq+" && (
         <div class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 xl:w-[70%] xl:mx-auto montreg tracking-[1px] text-[16px] !leading-[25px] text-justify">
           <p>
-            Conoce el
+            {t("servicios.derechosTestimonialPre")}{" "}
             <a
-              href="/testimonios"
+              href={getLocalizedPath("/testimonios", lang)}
               class="cursor-pointer text-green-700 montbold"
             >
-              testimonio
+              {t("servicios.derechosTestimonialLink")}
             </a>{" "}
-            de muchos de nuestros clientes que cumplieron su sueño de un
-            matrimonio igualitario.
+            {t("servicios.derechosTestimonialPost")}
           </p>
         </div>
       )
@@ -45,12 +52,12 @@ const { service } = Astro.props;
 
   <Container>
     <p class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 xl:w-[70%] xl:mx-auto montlight tracking-[1px] text-[13px] leading-[20px] text-center text-black/50">
-      La contratación de este servicio implica la aceptación de nuestra{" "}
-      <a href="/politica-reembolsos" class="underline underline-offset-2 hover:text-black transition-colors duration-200">
-        Política de Reembolsos y Cancelaciones
+      {t("servicios.disclaimer")}{" "}
+      <a href={getLocalizedPath("/politica-reembolsos", lang)} class="underline underline-offset-2 hover:text-black transition-colors duration-200">
+        {t("servicios.disclaimerLink")}
       </a>.
     </p>
   </Container>
 
-  <Footer />
+  <Footer lang={lang} />
 </section>

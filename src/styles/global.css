@@ -316,9 +316,10 @@
 
 /* !Tags */
 .tag-selected {
-  background-color: #000;
-  color: #fff;
-  border-style: solid;
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #000 !important;
+  border-style: solid !important;
 }
 
 /* !Gallery! */

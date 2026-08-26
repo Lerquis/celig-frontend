@@ -1,4 +1,6 @@
 ---
+import type { Locale } from "@/i18n";
+
 export interface Props {
   title: string;
   description: string;
@@ -13,6 +15,7 @@ export interface Props {
   };
   noindex?: boolean;
   schema?: any;
+  lang?: Locale;
 }
 
 const {
@@ -24,6 +27,7 @@ const {
   article,
   noindex = false,
   schema,
+  lang = "es",
 } = Astro.props;
 
 const siteUrl = Astro.site || "https://celigcr.com";
@@ -38,15 +42,19 @@ const defaultSchema = {
   "@type": "Organization",
   name: "CELIG - Centro Legal LGBTIQ+",
   description:
-    "Servicios legales especializados para la comunidad LGBTIQ+ en Costa Rica. Matrimonios igualitarios, consultas legales, sucesiones y defensa de derechos.",
+    lang === "en"
+      ? "Specialized legal services for the LGBTIQ+ community in Costa Rica. Same-sex marriages, legal consultations, estate planning, and rights defense."
+      : "Servicios legales especializados para la comunidad LGBTIQ+ en Costa Rica. Matrimonios igualitarios, consultas legales, sucesiones y defensa de derechos.",
   url: siteUrl,
   logo: new URL("/CroppedLogo.PNG", siteUrl),
   founder: {
     "@type": "Person",
     name: "Ana Isabel Sibaja",
-    jobTitle: "Abogada Notaria",
+    jobTitle: lang === "en" ? "Attorney & Public Notary" : "Abogada Notaria",
     description:
-      "Notaria con más de 35 años de experiencia especializada en derechos LGBTIQ+",
+      lang === "en"
+        ? "Notary with over 35 years of experience specializing in LGBTIQ+ rights."
+        : "Notaria con más de 35 años de experiencia especializada en derechos LGBTIQ+",
   },
   areaServed: {
     "@type": "Country",
@@ -73,7 +81,7 @@ const defaultSchema = {
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImageURL} />
 <meta property="og:site_name" content="CELIG - Centro Legal LGBTIQ+" />
-<meta property="og:locale" content="es_CR" />
+<meta property="og:locale" content={lang === "en" ? "en_US" : "es_CR"} />
 
 {
   article && (
@@ -106,7 +114,7 @@ const defaultSchema = {
 <meta name="twitter:image" content={ogImageURL} />
 
 <!-- Metadatos adicionales -->
-<meta name="language" content="Spanish" />
+<meta name="language" content={lang === "en" ? "English" : "Spanish"} />
 <meta name="author" content="CELIG - Ana Isabel Sibaja" />
 <meta name="geo.region" content="CR" />
 <meta name="geo.placename" content="Costa Rica" />

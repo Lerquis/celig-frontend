@@ -16,8 +16,8 @@ const response = await galleryApi.getGallery({ page: 1, limit: IMAGES_PER_PAGE }
 if (response.status === 200) initialData = response.body;
 ---
 
-<Container customClass="content-container-galeria hidden opacity-0">
+<Container customClass="content-container-galeria opacity-0" style="display: none;">
   <div class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 space-y-6">
-    <GaleriaMasonry initialData={initialData} itemsPerPage={IMAGES_PER_PAGE} client:only />
+    <GaleriaMasonry initialData={initialData} itemsPerPage={IMAGES_PER_PAGE} client:load />
   </div>
 </Container>

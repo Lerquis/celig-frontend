@@ -2,9 +2,18 @@
 import Container from "../atoms/Container.astro";
 import SectionTitle from "../atoms/SectionTitle.astro";
 import Parragraph from "../atoms/Parragraph.astro";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
 
-const whatsappUrl =
-  "https://api.whatsapp.com/send/?phone=50683346441&text&type=phone_number&app_absent=0";
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
+
+const defaultText = encodeURIComponent(t("whatsapp.defaultMessage"));
+const whatsappUrl = `https://api.whatsapp.com/send/?phone=50683346441&text=${defaultText}&type=phone_number&app_absent=0`;
 ---
 
 <section class="mb-[200px] space-y-[100px]">
@@ -13,11 +22,11 @@ const whatsappUrl =
     customClass="space-y-[-50px] md:space-y-[-80px] title-animation"
   >
     <SectionTitle
-      title="¿Desean casarse"
+      title={t("home.ctaContacto.title1")}
       customClass="col-start-1 col-span-4 md:col-span-8 text-center xl:col-span-12"
     />
     <SectionTitle
-      title="en Costa Rica?"
+      title={t("home.ctaContacto.title2")}
       serif={true}
       customClass="col-start-1 col-span-4 md:col-span-8 text-center xl:col-span-12"
     />
@@ -26,19 +35,12 @@ const whatsappUrl =
   <Container fullWidth={false} customClass="space-y-[50px]">
     <Parragraph
       customClass="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 text-animation text-center xl:w-[70%] xl:mx-auto"
-      text={`Si son una pareja del mismo sexo, nacional o extranjerx, y quieren celebrar su matrimonio
-      legal en Costa Rica, escríbannos directamente. La Licda. Ana Isabel Sibaja atenderá personalmente
-      tu consulta y te indicará los documentos y pasos para reservar la fecha. Para las parejas
-      extranjerxs, el proceso puede prepararse antes de su llegada al país. Después del matrimonio
-      también podemos gestionar actas y certificaciones, certificados de estado civil, apostillas,
-      traducciones y envíos internacionales.`}
+      text={t("home.ctaContacto.p1")}
     />
 
     <Parragraph
       customClass="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 text-center uppercase tracking-wide !font-bold"
-      text={`Más de 550 matrimonios realizados. 35 años de experiencia legal y notarial. Parejas
-      nacionales y extranjerxs. Atención directa, privada y personalizada. Llegan solteros y se van
-      casadxs.`}
+      text={t("home.ctaContacto.p2")}
     />
 
     <div class="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 flex justify-center">
@@ -46,7 +48,7 @@ const whatsappUrl =
         href={whatsappUrl}
         class="w-fit px-5 py-3 border border-black text-black montreg text-[11px] md:text-[13px] uppercase tracking-wide rounded-[4px] hover:bg-black hover:text-white transition-all duration-300"
       >
-        Agendar Matrimonio
+        {t("home.ctaContacto.button")}
       </a>
     </div>
   </Container>

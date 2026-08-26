@@ -10,18 +10,26 @@ import OficinasPrivadas from "../organisms/OficinasPrivadas.astro";
 import Proceso from "../organisms/Proceso.astro";
 import QuienesSomos from "../organisms/QuienesSomos.astro";
 import Footer from "../organisms/Footer.astro";
+import { getLangFromUrl, type Locale } from "@/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
 ---
 
 <>
-  <Landing />
-  <QuienesSomos />
-  <Proceso />
-  <ApostillaDocumentos />
-  <OficinasPrivadas />
-  <DiferenciadosPor />
-  <NuestrosServicios />
-  <HistoriaClientes />
-  <NuestroContenido />
-  <CTAContacto />
-  <Footer />
+  <Landing lang={lang} />
+  <QuienesSomos lang={lang} />
+  <Proceso lang={lang} />
+  <ApostillaDocumentos lang={lang} />
+  <OficinasPrivadas lang={lang} />
+  <DiferenciadosPor lang={lang} />
+  <NuestrosServicios lang={lang} />
+  <HistoriaClientes lang={lang} />
+  <NuestroContenido lang={lang} />
+  <CTAContacto lang={lang} />
+  <Footer lang={lang} />
 </>

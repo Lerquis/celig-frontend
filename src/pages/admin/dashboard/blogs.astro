@@ -5,7 +5,6 @@ import Background from "@/components/atoms/General/Background.astro";
 import DashboardLayout from "@/layouts/DashboardLayout.astro";
 ---
 
-<DashboardLayout title="CMS CELIG - Blogs">
-  <Background />
-  <BlogsTemplateCMS client:only />
+<DashboardLayout title="Gestionar Blogs | CELIG">
+  <BlogsTemplateCMS client:only="react" />
 </DashboardLayout>

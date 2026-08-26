@@ -2,6 +2,15 @@
 import Container from "../atoms/Container.astro";
 import SectionTitle from "../atoms/SectionTitle.astro";
 import Parragraph from "../atoms/Parragraph.astro";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
 ---
 
 <section class="mb-[200px] space-y-[100px]">
@@ -10,11 +19,11 @@ import Parragraph from "../atoms/Parragraph.astro";
     customClass="space-y-[-50px] md:space-y-[-80px] title-animation"
   >
     <SectionTitle
-      title="Oficinas"
+      title={t("home.oficinasPrivadas.title1")}
       customClass="col-start-1 col-span-4 md:col-span-8 text-center xl:col-span-12"
     />
     <SectionTitle
-      title="Privadas"
+      title={t("home.oficinasPrivadas.title2")}
       serif={true}
       customClass="col-start-1 col-span-4 md:col-span-8 text-center xl:col-span-12"
     />
@@ -23,11 +32,7 @@ import Parragraph from "../atoms/Parragraph.astro";
   <Container fullWidth={false}>
     <Parragraph
       customClass="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 text-animation text-center xl:w-[70%] xl:mx-auto"
-      text={`CELIG te ofrece la posibilidad de celebrar tu matrimonio en oficinas privadas, elegantes
-      y discretas. Cada matrimonio se atiende de forma personalizada, en un espacio pensado para que
-      vivan ese momento con tranquilidad, comodidad y privacidad. Pueden optar por una boda civil
-      íntima o compartir el momento con quienes deseen tener presentes. También coordinamos
-      matrimonios en otros lugares de Costa Rica, según el servicio contratado.`}
+      text={t("home.oficinasPrivadas.p")}
     />
   </Container>
 </section>
