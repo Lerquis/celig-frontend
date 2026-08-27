@@ -12,7 +12,7 @@ const { slug } = Astro.params;
 const lang = getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
 const service = getServicioBySlug(slug as string, lang);
 
-if (!service) return Astro.redirect("/404");
+if (!service) return Astro.redirect(getLocalizedPath("/404", lang));
 
 // Generar descripción SEO basada en el contenido del servicio
 const getServiceDescription = (title: string, contenido: string) => {

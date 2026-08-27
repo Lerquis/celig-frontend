@@ -7,14 +7,15 @@ import GridOverlay from "@/components/atoms/General/GridOverlay.astro";
 import BlogsSlugTemplate from "@/components/templates/BlogsSlugTemplate.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getLangFromUrl, getLocalizedPath } from "@/i18n";
+import { getTranslatedTag } from "@/lib/tagTranslations";
 
 const { slug } = Astro.params;
 const lang = getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
 
 const response = await blogApi.getBlogsByTag();
-if (response.status !== 200) return Astro.redirect("/404");
+if (response.status !== 200) return Astro.redirect(getLocalizedPath("/404", lang));
 const blogInformation = response.body.blogs.find((b: any) => b.slug === slug);
-if (!blogInformation) return Astro.redirect("/404");
+if (!blogInformation) return Astro.redirect(getLocalizedPath("/404", lang));
 
 // Incrementar vistas del blog
 try {
@@ -23,19 +24,36 @@ try {
   console.error("Error updating blog views:", error);
 }
 
+// Determinar título y contenido según idioma con fallback inteligente
+const displayTitle =
+  lang === "en"
+    ? blogInformation.title_en || blogInformation.title || ""
+    : blogInformation.title || "";
+
+const displayContent =
+  lang === "en"
+    ? blogInformation.content_en || blogInformation.content || ""
+    : blogInformation.content || "";
+
+const translatedTags = (blogInformation.tags || []).map((t: string) =>
+  getTranslatedTag(t, lang)
+);
+
 // Generar descripción SEO del contenido del blog
-const blogDescription = blogInformation.content
-  ? blogInformation.content
+const blogDescription = displayContent
+  ? displayContent
       .substring(0, 160)
       .replace(/<[^>]*>/g, "")
       .trim()
-  : `Lee sobre ${blogInformation.title} en el blog de CELIG. Información legal LGBTIQ+ en Costa Rica.`;
+  : lang === "en"
+    ? `Read about ${displayTitle} on the CELIG blog. LGBTIQ+ legal information in Costa Rica.`
+    : `Lee sobre ${displayTitle} en el blog de CELIG. Información legal LGBTIQ+ en Costa Rica.`;
 
 // Schema.org para artículos de blog
 const blogSchema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  headline: blogInformation.title,
+  headline: displayTitle,
   description: blogDescription,
   author: {
     "@type": "Person",
@@ -59,19 +77,22 @@ const blogSchema = {
     "@id": `https://celigcr.com/blogs/${blogInformation.slug}`,
   },
   keywords:
-    blogInformation.tags?.join(", ") || "LGBTIQ+, derechos, legal, Costa Rica",
+    translatedTags.join(", ") ||
+    (lang === "en"
+      ? "LGBTIQ+, rights, legal, Costa Rica"
+      : "LGBTIQ+, derechos, legal, Costa Rica"),
 };
 
 const articleData = {
   publishedTime: blogInformation.createdAt,
   modifiedTime: blogInformation.updatedAt || blogInformation.createdAt,
   author: "Ana Isabel Sibaja",
-  tags: blogInformation.tags || [],
+  tags: translatedTags,
 };
 ---
 
 <Layout
-  title={`${blogInformation.title} | Blog CELIG - ${lang === "en" ? "LGBTIQ+ Rights Costa Rica" : "Derechos LGBTIQ+ Costa Rica"}`}
+  title={`${displayTitle} | Blog CELIG - ${lang === "en" ? "LGBTIQ+ Rights Costa Rica" : "Derechos LGBTIQ+ Costa Rica"}`}
   description={blogDescription}
   canonical={getLocalizedPath(`/blogs/${blogInformation.slug}`, lang)}
   ogImage={blogInformation.imageUrl || "/og-image.jpg"}

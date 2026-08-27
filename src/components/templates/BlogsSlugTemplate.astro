@@ -5,7 +5,8 @@ import Parragraph from "../atoms/Parragraph.astro";
 import TagBlog from "../atoms/TagBlog.astro";
 import TitleServiceBlog from "../atoms/TitleServiceBlog.astro";
 import Footer from "@/components/organisms/Footer.astro";
-import { getLangFromUrl, type Locale } from "@/i18n";
+import { getLangFromUrl, useTranslations, type Locale } from "@/i18n";
+import { getTranslatedTag } from "@/lib/tagTranslations";
 
 interface Props {
   blog: any;
@@ -14,35 +15,59 @@ interface Props {
 
 const { blog, lang: propLang } = Astro.props;
 const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
+const t = useTranslations(lang);
+
+const hasEnglishVersion = Boolean(blog.title_en);
+
+const displayTitle =
+  lang === "en" ? blog.title_en || blog.title || "" : blog.title || "";
+
+const displayContent =
+  lang === "en" ? blog.content_en || blog.content || "" : blog.content || "";
+
+const tags = Array.isArray(blog.tags) ? blog.tags : [];
 ---
 
 <section class="pt-24 space-y-[50px] xl:space-y-[100px]">
   <Container>
-    <TitleServiceBlog text={blog.title} />
+    <TitleServiceBlog text={displayTitle} />
     <div
       class={`col-start-1 col-span-4 md:col-span-8 md:w-[50%] md:mx-auto xl:col-span-12 flex flex-wrap 
       justify-center gap-2 mt-[-30px]`}
     >
-      {blog.tags.map((tag: string) => <TagBlog {tag} />)}
+      {tags.map((tag: string) => <TagBlog tag={getTranslatedTag(tag, lang)} />)}
     </div>
     <div
       class="col-start-1 col-span-4 md:col-span-8 md:w-[50%] md:mx-auto xl:col-span-12 flex justify-between"
     >
       <Parragraph text="Ana Isabel Sibaja" customClass="montbold" />
-      <Parragraph text={formatDateToDDMMYYYY(blog.updatedAt, false)} />
+      <Parragraph text={formatDateToDDMMYYYY(blog.updatedAt || blog.createdAt, false)} />
     </div>
+
+    {
+      lang === "en" && !hasEnglishVersion && (
+        <p class="col-start-1 col-span-4 md:col-span-8 md:w-[50%] md:mx-auto xl:col-span-12 text-center italic text-gray-500 text-[14px]">
+          {t(
+            "contenidoPage.noEnglishVersion",
+            "This article isn't available in English yet — showing the Spanish version. We apologize for the inconvenience."
+          )}
+        </p>
+      )
+    }
   </Container>
 
   <Container>
     {
-      blog.content
-        .split("\n\n")
-        .map((p: string) => (
-          <Parragraph
-            text={p}
-            customClass="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 xl:w-[70%] xl:mx-auto text-justify"
-          />
-        ))
+      displayContent
+        ? displayContent
+            .split("\n\n")
+            .map((p: string) => (
+              <Parragraph
+                text={p}
+                customClass="col-start-1 col-span-4 md:col-span-8 xl:col-span-12 xl:w-[70%] xl:mx-auto text-justify"
+              />
+            ))
+        : null
     }
   </Container>
 

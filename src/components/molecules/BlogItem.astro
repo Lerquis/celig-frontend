@@ -3,19 +3,41 @@ import { formatDateToDDMMYYYY } from "@/lib/dateFormatter";
 import ButtonPride from "../atoms/ButtonPride.astro";
 import Parragraph from "../atoms/Parragraph.astro";
 import { getLangFromUrl, useTranslations, getLocalizedPath, type Locale } from "@/i18n";
+import { getTranslatedTag } from "@/lib/tagTranslations";
 
 interface Props {
-  title: string;
+  title?: string;
+  title_en?: string;
   tags: string[];
-  updatedAt: string;
-  content: string;
+  updatedAt?: string;
+  createdAt?: string;
+  content?: string;
+  content_en?: string;
   slug: string;
   lang?: Locale;
 }
 
-const { title, tags, updatedAt, content, slug, lang: propLang } = Astro.props;
+const {
+  title,
+  title_en,
+  tags = [],
+  updatedAt,
+  createdAt,
+  content,
+  content_en,
+  slug,
+  lang: propLang,
+} = Astro.props;
+
 const lang = propLang || getLangFromUrl(Astro.url, Astro.request.headers.get("cookie"));
 const t = useTranslations(lang);
+
+const displayTitle = lang === "en" ? title_en || title || "" : title || "";
+
+const displayContent = lang === "en" ? content_en || content || "" : content || "";
+
+const date = updatedAt || createdAt || "";
+const translatedTags = (tags || []).map((tag: string) => getTranslatedTag(tag, lang));
 ---
 
 <div
@@ -25,13 +47,13 @@ const t = useTranslations(lang);
     <h3
       class="montreg text-[20px] xl:text-[24px] tracking-[1px] !leading-[25px]"
     >
-      {title}
+      {displayTitle}
     </h3>
-    <p class="text-[12px]">{tags.join(", ")}</p>
+    <p class="text-[12px]">{translatedTags.join(", ")}</p>
   </div>
-  <Parragraph text={content} customClass="truncate-multiline" />
+  <Parragraph text={displayContent} customClass="truncate-multiline" />
   <div class="flex justify-between items-end">
-    <Parragraph text={formatDateToDDMMYYYY(updatedAt, false)} />
+    <Parragraph text={formatDateToDDMMYYYY(date, false)} />
     <ButtonPride customClass="w-fit self-end">
       <span class="relative z-[5]">
         <a href={getLocalizedPath(`/blogs/${slug}`, lang)} class="text-white no-underline">

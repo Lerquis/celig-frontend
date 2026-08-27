@@ -1,6 +1,12 @@
 import { Input } from "@/components/ui/input";
-import { FormControl, FormField, FormItem, FormLabel } from "../../ui/form";
-import { Textarea } from "../../ui/textarea";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Textarea } from "@/components/ui/textarea";
 
 export const FormFieldCMS = ({
   form,
@@ -9,6 +15,7 @@ export const FormFieldCMS = ({
   label,
   placeholder,
   type,
+  className,
 }) => {
   return (
     <FormField
@@ -16,18 +23,20 @@ export const FormFieldCMS = ({
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem>
-          <FormControl />
-          <FormLabel>{label}</FormLabel>
-          {type === "textarea" ? (
-            <Textarea
-              placeholder={placeholder}
-              {...field}
-              className="min-h-[300px]"
-            />
-          ) : (
-            <Input type={type} placeholder={placeholder} {...field} />
-          )}
+        <FormItem className={className}>
+          {label && <FormLabel>{label}</FormLabel>}
+          <FormControl>
+            {type === "textarea" ? (
+              <Textarea
+                placeholder={placeholder}
+                {...field}
+                className="min-h-[150px]"
+              />
+            ) : (
+              <Input type={type} placeholder={placeholder} {...field} />
+            )}
+          </FormControl>
+          <FormMessage />
         </FormItem>
       )}
     />

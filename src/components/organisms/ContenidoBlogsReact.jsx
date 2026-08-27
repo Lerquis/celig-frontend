@@ -4,14 +4,7 @@ import { formatDateToDDMMYYYY } from "@/lib/dateFormatter";
 import { usePaginatedList } from "@/hooks/usePaginatedList";
 import { PaginationControls } from "@/components/molecules/PaginationControls";
 import { translations } from "@/i18n/ui";
-
-const TAG_DEFINITIONS = [
-  { apiKey: "Derechos de la Comunidad LGBTIQ+", labelKey: "derechosLgbtiq" },
-  { apiKey: "Derecho Familia", labelKey: "derechoFamilia" },
-  { apiKey: "Derecho Laboral", labelKey: "derechoLaboral" },
-  { apiKey: "Derecho Migratorio", labelKey: "derechoMigratorio" },
-  { apiKey: "Derecho Familias Homoparentales", labelKey: "familiasHomoparentales" },
-];
+import { TAG_DEFINITIONS, getTranslatedTag } from "@/lib/tagTranslations";
 
 export const ContenidoBlogsReact = ({
   initialData = { blogs: [] },
@@ -95,34 +88,62 @@ export const ContenidoBlogsReact = ({
   const readMoreText =
     t.contenidoPage?.readMore || (lang === "en" ? "Read more" : "Leer más");
 
-  const BlogItem = ({ blog }) => (
-    <div className="bg-white px-4 py-2 md:py-6 md:px-6 flex flex-col space-y-[20px] shadow-2xl rounded-sm">
-      {/* Header con título y tags */}
-      <div className="space-y-[5px]">
-        <h3 className="montreg text-[20px] xl:text-[24px] tracking-[1px] !leading-[25px]">
-          {blog.title}
-        </h3>
-        <p className="text-[12px]">{Array.isArray(blog.tags) ? blog.tags.join(", ") : ""}</p>
-      </div>
+  const BlogItem = ({ blog }) => {
+    const hasEnglishVersion = Boolean(blog.title_en);
 
-      {/* Contenido */}
-      <p className="montreg tracking-[1px] text-[16px] !leading-[25px] truncate-multiline">
-        {blog.excerpt ?? blog.content}
-      </p>
+    const displayTitle = lang === "en"
+      ? (blog.title_en || blog.title || "")
+      : (blog.title || "");
 
-      {/* Footer con fecha y botón */}
-      <div className="flex justify-between items-end">
-        <p className="montreg tracking-[1px] text-[16px] !leading-[25px]">
-          {formatDateToDDMMYYYY(blog.updatedAt, false)}
-        </p>
-        {createButtonPride(
-          readMoreText,
-          `/blogs/${blog.slug}${lang === "en" ? "?lang=en" : ""}`,
-          "w-fit self-end"
+    const rawContent = lang === "en"
+      ? (blog.content_en || blog.content || "")
+      : (blog.content || "");
+
+    const displayContent = lang === "en"
+      ? (blog.excerpt_en ?? blog.excerpt ?? rawContent)
+      : (blog.excerpt ?? rawContent);
+
+    const displayTags = Array.isArray(blog.tags)
+      ? blog.tags.map((tag) => getTranslatedTag(tag, lang))
+      : [];
+
+    return (
+      <div className="bg-white px-4 py-2 md:py-6 md:px-6 flex flex-col space-y-[20px] shadow-2xl rounded-sm">
+        {/* Header con título y tags */}
+        <div className="space-y-[5px]">
+          <h3 className="montreg text-[20px] xl:text-[24px] tracking-[1px] !leading-[25px]">
+            {displayTitle}
+          </h3>
+          <p className="text-[12px]">{displayTags.join(", ")}</p>
+        </div>
+
+        {/* Aviso: sin traducción al inglés todavía */}
+        {lang === "en" && !hasEnglishVersion && (
+          <p className="text-[12px] italic text-gray-500">
+            {t.contenidoPage?.noEnglishVersion ||
+              "This article isn't available in English yet — showing the Spanish version. We apologize for the inconvenience."}
+          </p>
         )}
+
+        {/* Contenido */}
+        <p className="montreg tracking-[1px] text-[16px] !leading-[25px] truncate-multiline">
+          {displayContent}
+        </p>
+
+        {/* Footer con fecha y botón */}
+        <div className="flex justify-between items-end">
+          <p className="montreg tracking-[1px] text-[16px] !leading-[25px]">
+            {formatDateToDDMMYYYY(blog.updatedAt || blog.createdAt, false)}
+          </p>
+          {createButtonPride(
+            readMoreText,
+            `/blogs/${blog.slug}${lang === "en" ? "?lang=en" : ""}`,
+            "w-fit self-end"
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const BlogItemSkeleton = () => (
     <div className="bg-white px-4 py-4 md:py-6 md:px-6 flex flex-col space-y-[20px] shadow-2xl rounded-sm animate-pulse min-h-[220px] justify-between">
@@ -191,7 +212,7 @@ export const ContenidoBlogsReact = ({
               ? Array.from({ length: blogs.length > 0 ? blogs.length : Math.min(itemsPerPage, 3) }).map((_, index) => (
                   <BlogItemSkeleton key={`blog-skeleton-${index}`} />
                 ))
-              : blogs.map((blog) => <BlogItem key={blog.id} blog={blog} />)}
+              : blogs.map((blog) => <BlogItem key={blog.id || blog._id || blog.slug} blog={blog} />)}
           </div>
 
           {/* Controles de paginación */}
@@ -212,7 +233,7 @@ export const ContenidoBlogsReact = ({
                 {totalPages > 1 &&
                   (lang === "en"
                     ? ` • Page ${currentPage} of ${totalPages}`
-                    : ` • Página ${currentPage} de ${totalPages}`)}
+                    : ` • Página ${currentPage} of ${totalPages}`)}
               </>
             )}
           </div>

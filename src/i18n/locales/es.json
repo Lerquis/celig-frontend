@@ -274,6 +274,7 @@
     "subscribeSuccess": "Te has suscrito a nuestros blogs",
     "subscribeError": "Algo salio mal en la suscripcion",
     "readMore": "Leer más",
+    "noEnglishVersion": "Este artículo aún no está disponible en inglés — se muestra la versión en español. Disculpa las molestias.",
     "noBlogs": "Aún no existen blogs disponibles. ¡Pronto tendremos contenido nuevo para ti!",
     "noPodcasts": "Aún no existen podcasts disponibles. ¡Pronto tendremos contenido nuevo para ti!",
     "showingBlogs": "Mostrando",
@@ -281,6 +282,16 @@
     "blogsWord": "blogs",
     "pageWord": "Página",
     "ourSpotify": "Nuestro Spotify"
+  },
+  "notFoundPage": {
+    "seo": {
+      "title": "Página no encontrada - CELIG",
+      "description": "La página o contenido que buscas no existe o pudo haber sido movido."
+    },
+    "title1": "Página",
+    "title2": "No Encontrada",
+    "message": "El contenido que buscas no existe, pudo haber sido eliminado, o el enlace que seguiste podría estar roto.",
+    "cta": "Volver al inicio"
   },
   "reembolsosPage": {
     "seo": {

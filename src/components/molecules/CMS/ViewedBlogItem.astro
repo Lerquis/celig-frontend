@@ -1,13 +1,15 @@
 ---
 const { blog } = Astro.props;
+const displayTitle = blog.title || "";
+const tags = Array.isArray(blog.tags) ? blog.tags : [];
 ---
 
 <div class="flex items-center justify-between gap-8">
   <div>
-    <p class="font-medium">{blog.title}</p>
+    <p class="font-medium">{displayTitle}</p>
     <p class="text-sm text-muted-foreground flex flex-wrap gap-2">
       {
-        blog.tags.map((tag: string) => (
+        tags.map((tag: string) => (
           <span class="bg-black text-white py-[4px] px-[8px] text-[10px] rounded-full">
             {tag}
           </span>
@@ -15,5 +17,5 @@ const { blog } = Astro.props;
       }
     </p>
   </div>
-  <span class="text-xs text-muted-foreground">{blog.views}</span>
+  <span class="text-xs text-muted-foreground">{blog.views ?? 0}</span>
 </div>

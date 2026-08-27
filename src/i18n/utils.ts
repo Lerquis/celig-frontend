@@ -1,24 +1,18 @@
 import { defaultLang, supportedLangs, translations, type Locale } from "./ui";
 
 /**
- * Obtiene el valor de una cookie por su nombre a partir del string header Cookie.
- */
-function parseCookie(cookieHeader: string | null | undefined, name: string): string | null {
-  if (!cookieHeader) return null;
-  const match = cookieHeader.match(new RegExp(`(^|;\\s*)(${name})=([^;]*)`));
-  return match ? decodeURIComponent(match[3]) : null;
-}
-
-/**
- * Determina el idioma activo a partir de la URL y/o las cookies.
- * Prioridad:
- * 1. Parámetro query `?lang=en` o `?lang=es` en la URL.
- * 2. Cookie `celig_lang` enviada en la cabecera HTTP o disponible en `document.cookie`.
- * 3. Idioma por defecto: 'es'.
+ * Determina el idioma activo a partir de la URL.
+ *
+ * El idioma se decide ÚNICAMENTE por el parámetro query `?lang=en` / `?lang=es`
+ * de la URL actual. Si la URL no trae ese parámetro, siempre es español (`es`),
+ * sin importar qué idioma se haya visto en una página anterior.
+ *
+ * (El segundo parámetro `cookieHeader` se mantiene por compatibilidad con los
+ * call sites existentes, pero ya no se usa para decidir el idioma.)
  */
 export function getLangFromUrl(
   urlOrString: URL | string,
-  cookieHeader?: string | null
+  _cookieHeader?: string | null
 ): Locale {
   let langParam: string | null = null;
 
@@ -35,22 +29,6 @@ export function getLangFromUrl(
 
   if (langParam && (supportedLangs as string[]).includes(langParam.toLowerCase())) {
     return langParam.toLowerCase() as Locale;
-  }
-
-  // Verificar en cookie de la petición SSR
-  if (cookieHeader) {
-    const cookieLang = parseCookie(cookieHeader, "celig_lang");
-    if (cookieLang && (supportedLangs as string[]).includes(cookieLang.toLowerCase())) {
-      return cookieLang.toLowerCase() as Locale;
-    }
-  }
-
-  // Verificar en navegador (cliente)
-  if (typeof document !== "undefined") {
-    const clientCookieLang = parseCookie(document.cookie, "celig_lang");
-    if (clientCookieLang && (supportedLangs as string[]).includes(clientCookieLang.toLowerCase())) {
-      return clientCookieLang.toLowerCase() as Locale;
-    }
   }
 
   return defaultLang;

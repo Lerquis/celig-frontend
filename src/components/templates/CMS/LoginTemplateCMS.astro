@@ -3,24 +3,19 @@ import { LoginForm } from "@/components/organisms/CMS/LoginFormCMS.jsx";
 import TextCMS from "@/components/atoms/CMS/TextCMS.astro";
 ---
 
-<div class="relative min-h-screen w-full grid grid-cols-12">
+<div class="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
   <img
     src="/HeroImage.jpeg"
     alt="CELIG"
-    class="h-full w-full object-cover brightness-35 flex absolute top-0 left-0"
+    class="h-full w-full object-cover brightness-35 absolute inset-0 z-0 pointer-events-none"
   />
   <div
-    class={`bg-white  flex items-center justify-center
-    
-    absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-lg
-    `}
+    class="bg-white relative z-10 p-6 md:p-8 rounded-lg shadow-2xl max-w-[420px] w-[90%] mx-auto flex flex-col gap-6"
   >
-    <div class="max-w-[400px] p-6 gap-[40px] flex flex-col">
-      <TextCMS
-        customClass="text-2xl font-bold text-center"
-        content="Bienvenido@ al Sistema de Gestión de Contenido de CELIG"
-      />
-      <LoginForm client:only="react" />
-    </div>
+    <TextCMS
+      customClass="text-2xl font-bold text-center text-black"
+      content="Bienvenido/a al Sistema de Gestión de Contenido de CELIG"
+    />
+    <LoginForm client:load />
   </div>
 </div>

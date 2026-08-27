@@ -60,10 +60,8 @@ const lang = currentLang || getLangFromUrl(Astro.url, Astro.request.headers.get(
         url.searchParams.delete("lang");
       }
 
-      // Guardar preferencia en cookie con 1 año de expiración
-      document.cookie = `celig_lang=${targetLang}; path=/; max-age=31536000; SameSite=Lax`;
-
-      // Si la URL cambió o para refrescar el contenido SSR
+      // El idioma se decide únicamente por el query param ?lang= de la URL,
+      // sin persistencia entre páginas: si el enlace no trae ?lang=en, es español.
       window.location.href = url.toString();
     }
 

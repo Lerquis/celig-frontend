@@ -37,13 +37,30 @@ export const columns = (onEdit, onDelete) => {
       enableHiding: false,
     },
     {
-      accessorKey: "title",
-      header: "Title",
-      cell: ({ row }) => (
-        <div className="max-w-[400px] truncate" title={row.getValue("title")}>
-          {row.getValue("title")}
-        </div>
-      ),
+      id: "title",
+      accessorFn: (row) => row.title || "",
+      header: "Título",
+      cell: ({ row }) => {
+        const blog = row.original;
+        const mainTitle = blog.title || "";
+        const enTitle = blog.title_en || null;
+
+        return (
+          <div className="max-w-[400px] flex flex-col gap-0.5">
+            <span className="truncate font-medium" title={mainTitle}>
+              {mainTitle}
+            </span>
+            {enTitle ? (
+              <span className="text-xs text-muted-foreground truncate" title={`EN: ${enTitle}`}>
+                <span className="inline-block bg-blue-100 text-blue-800 text-[10px] px-1 py-0.2 rounded mr-1 font-semibold">EN</span>
+                {enTitle}
+              </span>
+            ) : (
+              <span className="text-[10px] text-muted-foreground/60 italic">Sin traducción en inglés</span>
+            )}
+          </div>
+        );
+      },
       meta: {
         style: { maxWidth: "400px" },
       },
@@ -52,7 +69,7 @@ export const columns = (onEdit, onDelete) => {
       accessorKey: "tags",
       header: () => <div className="text-center">Tags</div>,
       cell: ({ row }) => {
-        const tags = row.getValue("tags");
+        const tags = row.getValue("tags") || [];
 
         return (
           <div className="min-w-[120px]">
@@ -84,7 +101,7 @@ export const columns = (onEdit, onDelete) => {
         );
       },
       cell: ({ row }) => (
-        <div className="text-center min-w-[60px]">{row.getValue("views")}</div>
+        <div className="text-center min-w-[60px]">{row.getValue("views") ?? 0}</div>
       ),
     },
 
@@ -111,8 +128,6 @@ export const columns = (onEdit, onDelete) => {
       id: "actions",
       enableHiding: false,
       cell: ({ row }) => {
-        // ! Se encuentra toda la información del blog
-        const blog = row.original;
         return (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -122,7 +137,7 @@ export const columns = (onEdit, onDelete) => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuLabel>Acciones</DropdownMenuLabel>
               <DropdownMenuSeparator />
 
               <DropdownMenuItem onClick={() => onEdit(row.original)}>
